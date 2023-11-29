@@ -41,6 +41,7 @@
       userName = "username";
       userEmail = "email@domain.com";
     };
+    gh.enable = true;
     tmux = {
       enable = true;
       mouse = true;
