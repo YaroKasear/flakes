@@ -30,6 +30,7 @@
     thefuck
     nerdfonts
     powerline-fonts
+    yubioath-flutter
     (python3.withPackages(ps: with ps; [pandas jinja2]))
   ];
 
@@ -95,6 +96,11 @@
           "zsh-navigation-tools"
         ];
       };
+      initExtra = ''
+        export GPG_TTY="$(tty)"
+        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+        gpgconf --launch gpg-agent
+      '';
     };
   };
   services = {

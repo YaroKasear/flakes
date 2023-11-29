@@ -83,6 +83,10 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
+    pam.services = {
+      login.u2fAuth = true;
+      sudo.u2fAuth = true;
+    };
   };
 
   services = {
@@ -119,9 +123,13 @@
     udev.packages = [
       pkgs.yubikey-personalization
     ];
+    pcscd.enable = true;
   };
 
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    ssh.startAgent = false;
+  };
 
   sound = {
     enable = true;
@@ -139,6 +147,7 @@
     wget
     polkit_gnome
     pavucontrol
+    yubikey-personalization
   ];
 
   system.stateVersion = "23.05"; 
