@@ -46,7 +46,7 @@
       publicKeys = [
         {
           source = ./yaro-key.asc
-        }
+        };
       ];
     };
     gpg-agent = {
