@@ -116,6 +116,9 @@
     openssh = {
       enable = true;
     };
+    udev.packages = [
+      pkgs.yubikey-personalization
+    ];
   };
 
   programs.zsh.enable = true;

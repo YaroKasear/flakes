@@ -38,8 +38,20 @@
     vscode.enable = true;
     git = {
       enable = true;
-      userName = "username";
-      userEmail = "email@domain.com";
+      userName = "Yaro Kasear";
+      userEmail = "yarokasear@gmail.com";
+    };
+    gpg = {
+      enable = true;
+      publicKeys = [
+        {
+          source = ./yaro-key.asc
+        }
+      ];
+    };
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
     };
     tmux = {
       enable = true;
