@@ -83,9 +83,11 @@
   security = {
     polkit.enable = true;
     rtkit.enable = true;
-    pam.services = {
-      login.u2fAuth = true;
-      sudo.u2fAuth = true;
+    pam.yubico = {
+      enable = true;
+      debug = true;
+      mode = "client";
+      id = "94905";
     };
   };
 
@@ -148,6 +150,7 @@
     polkit_gnome
     pavucontrol
     yubikey-personalization
+    nfs-utils
   ];
 
   system.stateVersion = "23.05"; 
