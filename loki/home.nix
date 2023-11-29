@@ -45,13 +45,9 @@
       enable = true;
       publicKeys = [
         {
-          source = ./yaro-key.asc
-        };
+          source = ../yaro-key.asc;
+        }
       ];
-    };
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
     };
     tmux = {
       enable = true;
@@ -101,7 +97,13 @@
       };
     };
   };
-  services.nextcloud-client.enable = true;
+  services = {
+    nextcloud-client.enable = true;
+    gpg-agent = {
+      enable = true;
+      enableSshSupport = true;
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
