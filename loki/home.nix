@@ -37,6 +37,7 @@
   programs = {
     firefox.enable = true;
     vscode.enable = true;
+    nix-index.enable = true;
     git = {
       enable = true;
       userName = "Yaro Kasear";

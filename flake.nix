@@ -7,9 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };  
 
-  outputs = { self, nixpkgs, home-manager }: 
+  outputs = { self, nixpkgs, home-manager, nix-index-database, ... }: 
     let 
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -28,6 +32,7 @@
               home-manager.useUserPackages = true;
               home-manager.users.yaro = {
                 imports = [
+                  nix-index-database.hmModules.nix-index
                   ./loki/home.nix
                 ];
               };
