@@ -85,9 +85,9 @@
     rtkit.enable = true;
     pam.yubico = {
       enable = true;
-      debug = true;
       mode = "client";
       id = "94905";
+      control = "required";
     };
   };
 

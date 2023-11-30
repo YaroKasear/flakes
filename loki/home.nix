@@ -47,8 +47,16 @@
       publicKeys = [
         {
           source = ../yaro-key.asc;
+          trust = 5;
         }
       ];
+      settings = {
+        no-greeting = true;
+        throw-keyids = true;
+      };
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
     };
     tmux = {
       enable = true;
