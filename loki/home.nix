@@ -4,6 +4,7 @@
 
   imports = [
     ../common/cli.nix
+    ../common/yubikey.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -34,7 +35,6 @@
     rsync
     nerdfonts
     powerline-fonts
-    yubioath-flutter
     (python3.withPackages(ps: with ps; [pandas jinja2]))
   ];
 
@@ -65,40 +65,11 @@
       userName = "Yaro Kasear";
       userEmail = "yarokasear@gmail.com";
     };
-    gpg = {
-      enable = true;
-      publicKeys = [
-        {
-          source = ../yaro-key.asc;
-          trust = 5;
-        }
-      ];
-      settings = {
-        no-greeting = true;
-        throw-keyids = true;
-      };
-      scdaemonSettings = {
-        disable-ccid = true;
-      };
-    };
   };
   services = {
     nextcloud-client.enable = true;
     autorandr.enable = true;
-    gpg-agent = {
-      enable = true;
-      enableSshSupport = true;
-      defaultCacheTtl = 60;
-      maxCacheTtl = 120;
-      extraConfig = ''
-        ttyname $GPG_TTY
-      '';
-    };
   };
-
-  pam.yubico.authorizedYubiKeys.ids = [
-    "ccccccvvktff"
-  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
