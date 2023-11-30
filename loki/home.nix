@@ -116,6 +116,11 @@
     gpg-agent = {
       enable = true;
       enableSshSupport = true;
+      defaultCacheTtl = 60;
+      maxCacheTtl = 120;
+      extraConfig = ''
+        ttyname $GPG_TTY
+      '';
     };
   };
 
