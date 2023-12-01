@@ -21,8 +21,6 @@
           signByDefault = false;
       };
       realName = "Conrad Nelson";
-      # signature.text = sops.secrets.signature;
-      signature.text = "test test test";
       thunderbird.enable = true;
     };
   };
