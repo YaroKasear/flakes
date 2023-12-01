@@ -13,6 +13,16 @@
       realName = "Yaro Kasear";
       thunderbird.enable = true;
     };
+    Wanachi = {
+      address = "wanachi@tlkmuck.org";
+      flavor = "gmail.com";
+      gpg = {
+          key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
+          signByDefault = true;
+      };
+      realName = "Wanachi";
+      thunderbird.enable = true;
+    };
     Work = {
       address = "cnelson@braunresearch.com";
       flavor = "gmail.com";

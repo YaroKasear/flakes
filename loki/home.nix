@@ -36,6 +36,7 @@
     powerline-fonts
     dex
     libreoffice-fresh
+    sops
     (python3.withPackages(ps: with ps; [pandas jinja2 lxml jupyter]))
   ];
 
