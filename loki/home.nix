@@ -5,6 +5,7 @@
   imports = [
     ../common/cli.nix
     ../common/yubikey.nix
+    ../common/accounts.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -24,7 +25,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    thunderbird
     skypeforlinux
     discord
     mattermost-desktop
@@ -35,13 +35,24 @@
     rsync
     nerdfonts
     powerline-fonts
-    (python3.withPackages(ps: with ps; [pandas jinja2]))
+    dex
+    libreoffice-fresh
+    (python3.withPackages(ps: with ps; [pandas jinja2 lxml jupyter]))
   ];
 
   programs = {
     firefox.enable = true;
     vscode.enable = true;
     nix-index.enable = true;
+    rofi.enable = true;
+    i3status.enable = true;
+    thunderbird = {
+      enable = true;
+      profiles.default = {
+        isDefault = true;
+        withExternalGnupg = true;
+      };
+    };
     autorandr = {
       enable = true;
       profiles = {
@@ -69,6 +80,22 @@
   services = {
     nextcloud-client.enable = true;
     autorandr.enable = true;
+  };
+
+  xsession = {
+    enable = true;
+    numlock.enable = true;
+    windowManager.i3 = {
+      enable = true;
+      config = {
+        terminal = "kitty";
+        modifier = "Mod4";
+        menu = "${pkgs.rofi}/bin/rofi -show drun";
+        fonts = {
+          names = ["FiraCode Nerd Font"];
+        };
+      };
+    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
