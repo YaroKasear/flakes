@@ -2,7 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    chroma
     thefuck
+    tinyfugue
   ];
 
   programs = {

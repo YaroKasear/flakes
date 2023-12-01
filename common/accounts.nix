@@ -1,6 +1,7 @@
 { config, pkgs, sops, ... }:
 
 {
+
   accounts.email.accounts = {
     Personal = {
       address = "yarokasear@gmail.com";

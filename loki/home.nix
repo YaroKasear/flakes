@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-
   imports = [
+    ./gui.nix
+    ../common/accounts.nix
     ../common/cli.nix
     ../common/yubikey.nix
-    ../common/accounts.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -24,78 +24,25 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    skypeforlinux
-    discord
-    mattermost-desktop
-    telegram-desktop
-    bitwarden
-    tinyfugue
-    chroma
     rsync
     nerdfonts
     powerline-fonts
-    dex
-    libreoffice-fresh
     sops
     (python3.withPackages(ps: with ps; [pandas jinja2 lxml jupyter]))
   ];
 
   programs = {
-    firefox.enable = true;
-    vscode.enable = true;
     nix-index.enable = true;
-    rofi.enable = true;
-    i3status.enable = true;
-    thunderbird = {
-      enable = true;
-      profiles.default = {
-        isDefault = true;
-        withExternalGnupg = true;
-      };
-    };
-    autorandr = {
-      enable = true;
-      profiles = {
-        "monitor" = {
-          fingerprint = {
-            DP-4 = "00ffffffffffff0010ace7a0555544302e1a0104a5351e7806ee91a3544c99260f505421080001010101010101010101010101010101565e00a0a0a02950302035000f282100001a000000ff0023415350757062706d6a5a5064000000fd001e9022de3b010a202020202020000000fc0044656c6c20533234313744470a01ca020312412309070183010000654b040001015a8700a0a0a03b50302035000f282100001a5aa000a0a0a04650302035000f282100001a6fc200a0a0a05550302035000f282100001a22e50050a0a0675008203a000f282100001e1c2500a0a0a01150302035000f282100001a0000000000000000000000000000000000000044";
-          };
-          config = {
-            DP-4 = {
-              enable = true;
-              mode = "2560x1440";
-              primary = true;
-              rate = "144.00";
-            };
-          };
-        };
-      };
-    };
     git = {
       enable = true;
       userName = "Yaro Kasear";
       userEmail = "yarokasear@gmail.com";
     };
   };
+
   services = {
     nextcloud-client.enable = true;
     autorandr.enable = true;
-  };
-
-  xsession = {
-    enable = true;
-    numlock.enable = true;
-    windowManager.i3 = {
-      enable = true;
-      config = {
-        terminal = "kitty";
-        modifier = "Mod4";
-        menu = "${pkgs.rofi}/bin/rofi -show drun";
-        fonts = {
-          names = ["FiraCode Nerd Font"];
-        };
-      };
-    };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
