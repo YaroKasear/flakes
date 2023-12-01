@@ -28,11 +28,10 @@
   };
 
   sops = {
-    defaultSopsFile = ../secrets/signature.yaml;
+    defaultSopsFile = ../secrets/secrets.yaml;
     gnupg = {
       home = "/home/yaro/.gnupg";
       sshKeyPaths = [];
     };
-    secrets.signature.path = "%r/signature.txt"; 
   };
 }
