@@ -96,17 +96,9 @@
       enable = true;
       layout = "us";
       videoDrivers = ["nvidia"];
-      # desktopManager = {
-      #     xterm.enable = false;
-      # };
       displayManager.lightdm.enable = true;
       windowManager.i3 = {
         enable = true;
-      #   extraPackages = with pkgs; [
-      #     dmenu
-      #     i3status
-      #     i3lock
-      #   ];
       };
     };
     pipewire = {

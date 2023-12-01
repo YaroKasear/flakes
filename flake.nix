@@ -11,9 +11,13 @@
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };  
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, ... }: 
+  outputs = { self, nixpkgs, home-manager, nix-index-database, sops-nix, ... }: 
     let 
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -37,6 +41,7 @@
                 ];
               };
             }
+            sops-nix.nixosModules.sops
           ];
 	};
       };
