@@ -37,22 +37,14 @@
               home-manager.users.yaro = {
                 imports = [
                   nix-index-database.hmModules.nix-index
+                  sops-nix.homeManagerModules.sops
                   ./loki/home.nix
                 ];
               };
             }
             sops-nix.nixosModules.sops
           ];
-	};
-      };
-      hmConfig = {
-        loki = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          # pkgs = pkgs;
-          modules = [
-            ./loki/home.nix
-          ];
-        };
+	      };
       };
     };
 }

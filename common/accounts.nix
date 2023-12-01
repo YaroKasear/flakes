@@ -1,3 +1,5 @@
+{ config, pkgs, sops, ... }:
+
 {
   accounts.email.accounts = {
     Personal = {
@@ -19,7 +21,17 @@
           signByDefault = false;
       };
       realName = "Conrad Nelson";
+      signature.text = sops.secrets.signature;
       thunderbird.enable = true;
     };
+  };
+
+  sops = {
+    defaultSopsFile = ../secrets/signature.yaml;
+    gnupg = {
+      home = "/home/yaro/.gnupg";
+      sshKeyPaths = [];
+    };
+    secrets.signature.path = "%r/signature.txt"; 
   };
 }
