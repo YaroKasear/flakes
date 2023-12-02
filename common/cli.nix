@@ -22,6 +22,7 @@
     };
     zsh = {
       enable = true;
+      enableAutosuggestions = true;
       oh-my-zsh = {
         enable = true;
         theme = "jonathan";
@@ -54,11 +55,10 @@
           "zsh-navigation-tools"
         ];
       };
-      initExtra = ''
-        export GPG_TTY="$(tty)"
-        export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-        gpgconf --launch gpg-agent
-      '';
+      shellAliases = {
+        icat = "kitten icat";
+        update-config = "sudo nixos-rebuild switch --flake /home/yaro/flakes#";
+      };
     };  
   };
 }
