@@ -10,7 +10,7 @@
       enable = true;
       publicKeys = [
         {
-          source = ../files/yaro-key.asc;
+          source = ../files/gnupg/pubkey.asc;
           trust = 5;
         }
       ];

@@ -143,6 +143,7 @@
     pavucontrol
     yubikey-personalization
     nfs-utils
+    nix-diff
   ];
 
   system.stateVersion = "23.05"; 
