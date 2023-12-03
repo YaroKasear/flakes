@@ -12,6 +12,7 @@
       dex
       libreoffice-fresh
       playerctl
+      virt-manager
     ];
     file = {
       layout = {
