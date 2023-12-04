@@ -1,8 +1,10 @@
 keys:
-  &yaro 8a676fdcaad929184299d020151a8f0401fb2e85
+  - &yaro 8a676fdcaad929184299d020151a8f0401fb2e85
+  - &loki age1p3cfga47d7jj0xxrggfu6pggptdajtlqgk3294j3antxe4pwas9svv7jlt
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - pgp:
       - *yaro
-      
+      age:
+      - *loki
