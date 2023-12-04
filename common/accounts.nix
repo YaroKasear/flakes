@@ -52,5 +52,8 @@
       home = "/home/yaro/.gnupg";
       sshKeyPaths = [];
     };
+    secrets.work_signature = { 
+      path = "/home/yaro/work_signature.txt";
+    };
   };
 }
