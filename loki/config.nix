@@ -141,6 +141,12 @@
   programs = {
     zsh.enable = true;
     ssh.startAgent = false;
+    gnupg = {
+      agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
+    };
   };
 
   sound = {

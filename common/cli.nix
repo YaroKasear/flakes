@@ -13,6 +13,10 @@
       mouse = true;
       tmuxinator.enable = true;
     };
+    vim = {
+      enable = true;
+      defaultEditor = true;
+    };
     fzf = {
       enable = true;
     };
