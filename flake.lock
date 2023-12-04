@@ -72,42 +72,12 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1701432845,
-        "narHash": "sha256-06sd2rQ+DPMSueh+hW4MiXbpMSdhQHJOi/sw0vuwqvs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "77da99a144cd341408308e0a37622f5edcc6c5ba",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
-        "sonic3air": "sonic3air",
         "sops-nix": "sops-nix"
-      }
-    },
-    "sonic3air": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-KWB0onq5eYld7u0Z+en4ellXWWH6DmDT9IuAJuQjMSc=",
-        "path": "/nix/store/3pl71scmgz5z3ixcw8gyhfbqr3d1yyhj-source/custom/sonic3air",
-        "type": "path"
-      },
-      "original": {
-        "path": "/nix/store/3pl71scmgz5z3ixcw8gyhfbqr3d1yyhj-source/custom/sonic3air",
-        "type": "path"
       }
     },
     "sops-nix": {

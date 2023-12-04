@@ -15,18 +15,14 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sonic3air = {
-      url = "./custom/sonic3air";
-    };
   };  
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, sops-nix, sonic3air, ... }: 
+  outputs = { self, nixpkgs, home-manager, nix-index-database, sops-nix, ... }: 
     let 
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
-        overlays = [sonic3air.overlay];
       };
       lib = nixpkgs.lib;
     in {

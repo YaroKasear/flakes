@@ -91,7 +91,7 @@
       };
       u2f = {
         cue = true;
-        # control = "required";
+        control = "required";
       };
     };
   };
