@@ -101,12 +101,12 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-hiZm5d08AwoB5jmEQj1NcjV1xKT34sFFKcH69b3Lhdc=",
-        "path": "/nix/store/pz2yypmb8rfvhkfrxnzh2xqv1bzjdljk-source/custom/sonic3air",
+        "narHash": "sha256-KWB0onq5eYld7u0Z+en4ellXWWH6DmDT9IuAJuQjMSc=",
+        "path": "/nix/store/b600rzwh2axpnsw37h2fn9adc7m4z3qp-source/custom/sonic3air",
         "type": "path"
       },
       "original": {
-        "path": "/nix/store/pz2yypmb8rfvhkfrxnzh2xqv1bzjdljk-source/custom/sonic3air",
+        "path": "/nix/store/b600rzwh2axpnsw37h2fn9adc7m4z3qp-source/custom/sonic3air",
         "type": "path"
       }
     },

@@ -5,30 +5,29 @@ stdenv.mkDerivation rec {
   version = "22.09.10.0-stable";
 
   src = fetchurl {
-    url="https://github.com/Eukaryot/sonic3air/releases/download/v${version}/sonic3air_game.tar.gz";
-    sha256 = "LAUtvU6COpcArHAPD8897KlD7/0GAExSNjhEtbBAljQ=";
+    url="https://github.com/Eukaryot/sonic3air/archive/refs/tags/v22.09.10.0-stable.tar.gz";
+    sha256 = "T4wZP7jbHqFM3LxJqgisLvayMBnjDB5xwfXhS/GZTTU=";
   };
 
-  installPhase = ''
-    mkdir -p $out
-    cp -r * $out
-    basepath1="$PWD"
-    basepath2="''${PWD// /\\ }"
-    outpath=''${out}/share/applications/sonic3air.desktop
-    mkdir -p ''${out}/share/applications/
-    
-    # Build .desktop launcher file
-    cat <<EOM > "$outpath"
-    [Desktop Entry]
-    Name=Sonic 3 A.I.R.
-    Type=Application
-    Encoding=UTF-8
-    Exec=$basepath2/sonic3air_linux
-    Icon=$basepath1/data/icon.png
-    Terminal=false
-    EOM
-    
-    # Set executable flag
-    chmod +x $outpath
+  nativeBuildInputs = with pkgs; [
+    cmake
+    pkg-config
+  ];
+
+  buildInputs = with pkgs; [
+    libGL
+    libGLU
+    alsa-lib
+    libpulseaudio
+    curl
+    xorg.libX11
+    xorg.libX11.dev
+    xorg.libXext
+  ];
+
+  cmakeFlags = [ "-DCMAKE_BUILD_TYPE=Release .." ];
+
+  preConfigure = ''
+    cd ./Oxygen/soncthrickles/build/_cmake
   '';
 }

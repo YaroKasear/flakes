@@ -30,6 +30,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    tmp.useTmpfs = true;
   }; 
 
   systemd = {
