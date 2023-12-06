@@ -3,12 +3,18 @@
 {
   home.packages = with pkgs; [
     chroma
-    mpv
     thefuck
+    mpvScripts.mpris
     tinyfugue
   ];
 
   programs = {
+    mpv = {
+      enable = true;
+      scripts = with pkgs; [
+        mpvScripts.mpris
+      ];
+    };
     tmux = {
       enable = true;
       mouse = true;

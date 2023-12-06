@@ -15,6 +15,7 @@
       virt-manager
       dotnet-runtime
       steam-run
+      dunst
     ];
     file = {
       layout = {
@@ -110,6 +111,7 @@
           { command = "kitty"; notification = false; }
           { command = "skypeforlinux"; notification = false; }
           { command = "telegram-desktop"; notification = false; }
+          { command = "dunst"; notification = false; }
         ];
       };
       extraConfig = "for_window [title=\"Picture-in-Picture\"] sticky enable";
