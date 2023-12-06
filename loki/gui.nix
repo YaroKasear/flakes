@@ -13,6 +13,8 @@
       libreoffice-fresh
       playerctl
       virt-manager
+      dotnet-runtime
+      steam-run
     ];
     file = {
       layout = {
