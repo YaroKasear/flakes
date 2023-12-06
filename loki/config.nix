@@ -91,14 +91,18 @@
       };
       u2f = {
         cue = true;
-        control = "required";
+        # control = "required";
       };
     };
   };
 
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
-    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    age = {
+      keyFile = /etc/syskey;
+      sshKeyPaths = [];
+    };
+    gnupg.sshKeyPaths = [];
     secrets."security/pam/u2f/authFile" = { 
       path = "/home/yaro/.config/Yubico/u2f_keys";
       mode = "0440";
