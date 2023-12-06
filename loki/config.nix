@@ -161,6 +161,7 @@
     wget
     polkit_gnome
     pavucontrol
+    pulseaudio
     yubikey-personalization
     nfs-utils
     nix-diff
