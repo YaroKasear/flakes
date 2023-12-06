@@ -98,11 +98,9 @@
 
   sops = {
     defaultSopsFile = ../secrets/secrets.yaml;
-    secrets.u2f_keys = {
-      path = "/home/yaro/.config/Yubico/u2f_keys";
-    };
     age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    secrets.u2f_keys = { 
+    secrets."security/pam/u2f/authFile" = { 
+      path = "/home/yaro/.config/Yubico/u2f_keys";
       mode = "0440";
       owner = config.users.users.yaro.name;
       group = config.users.users.yaro.group;

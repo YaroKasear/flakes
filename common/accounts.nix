@@ -43,6 +43,7 @@
       };
       realName = "Conrad Nelson";
       thunderbird.enable = true;
+      signature.text = sops.secrets."accounts/email/accounts/Work/signature/text";
     };
   };
 
@@ -52,8 +53,6 @@
       home = "/home/yaro/.gnupg";
       sshKeyPaths = [];
     };
-    secrets.work_signature = { 
-      path = "/home/yaro/work_signature.txt";
-    };
+    secrets."accounts/email/accounts/Work/signature/text" = { };
   };
 }
