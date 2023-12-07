@@ -16,6 +16,7 @@
       dotnet-runtime
       steam-run
       dunst
+      diffuse
     ];
     file = {
       layout = {
