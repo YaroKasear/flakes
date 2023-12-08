@@ -4,7 +4,13 @@
   imports = [
     ./gui.nix
     ../common/accounts.nix
-    ../common/cli.nix
+    ../common/programs/kitty.nix
+    ../common/programs/mpv.nix
+    ../common/programs/git.nix
+    ../common/programs/thunderbird.nix
+    ../common/programs/tmux.nix
+    ../common/programs/vim.nix
+    ../common/programs/zsh.nix
     ../common/yubikey.nix
   ];
 
@@ -28,16 +34,46 @@
     nerdfonts
     powerline-fonts
     sops
+    chroma
+    thefuck
+    mpvScripts.mpris
+    neofetch
+    fortune
+    neo-cowsay
+    tinyfugue
+    skypeforlinux
+    discord
+    mattermost-desktop
+    telegram-desktop
+    bitwarden
+    rsync
+    dex
+    libreoffice-fresh
+    playerctl
+    virt-manager
+    dotnet-runtime
+    steam-run
+    dunst
+    diffuse
     (python3.withPackages(ps: with ps; [pandas jinja2 lxml jupyter]))
   ];
 
-  programs = {
-    nix-index.enable = true;
-    git = {
-      enable = true;
-      userName = "Yaro Kasear";
-      userEmail = "yarokasear@gmail.com";
+  home = {
+    file = {
+      layout = {
+        source = ../files/i3/layout.json;
+        target = ".config/i3/layout.json";
+      };
     };
+  };
+
+  programs = {
+    fzf.enable = true;
+    nix-index.enable = true;
+    firefox.enable = true;
+    vscode.enable = true;
+    rofi.enable = true;
+    i3status.enable = true;
   };
 
   services = {

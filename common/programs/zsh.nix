@@ -1,39 +1,5 @@
-{ config, pkgs, ... }:
-
 {
-  home.packages = with pkgs; [
-    chroma
-    thefuck
-    mpvScripts.mpris
-    neofetch
-    fortune
-    neo-cowsay
-    tinyfugue
-  ];
-
   programs = {
-    mpv = {
-      enable = true;
-      scripts = with pkgs; [
-        mpvScripts.mpris
-      ];
-    };
-    tmux = {
-      enable = true;
-      mouse = true;
-      tmuxinator.enable = true;
-    };
-    vim = {
-      enable = true;
-      defaultEditor = true;
-    };
-    fzf = {
-      enable = true;
-    };
-    kitty = {
-      enable = true;
-      font.name = "FiraCode Nerd Font";
-    };
     zsh = {
       enable = true;
       enableAutosuggestions = true;

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./hw.nix
   ];
 
@@ -31,7 +31,7 @@
       efi.canTouchEfiVariables = true;
     };
     tmp.useTmpfs = true;
-  }; 
+  };
 
   systemd = {
     user.services.polkit-gnome-authentication-agent-1 = {
@@ -50,8 +50,8 @@
   };
 
   networking = {
-    hostName = "loki"; 
-    networkmanager.enable = true;  
+    hostName = "loki";
+    networkmanager.enable = true;
   };
 
   time.timeZone = "America/Chicago";
@@ -103,7 +103,7 @@
       sshKeyPaths = [];
     };
     gnupg.sshKeyPaths = [];
-    secrets."security/pam/u2f/authFile" = { 
+    secrets."security/pam/u2f/authFile" = {
       path = "/home/yaro/.config/Yubico/u2f_keys";
       mode = "0440";
       owner = config.users.users.yaro.name;
@@ -152,12 +152,11 @@
 
   users.users.yaro = {
     isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"]; 
+    extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"];
     shell = pkgs.zsh;
   };
 
   environment.systemPackages = with pkgs; [
-    vim 
     wget
     polkit_gnome
     pavucontrol
@@ -167,6 +166,6 @@
     nix-diff
   ];
 
-  system.stateVersion = "23.05"; 
+  system.stateVersion = "23.05";
 }
 

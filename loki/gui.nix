@@ -1,43 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  home = {
-    packages = with pkgs; [
-      skypeforlinux
-      discord
-      mattermost-desktop
-      telegram-desktop
-      bitwarden
-      rsync
-      dex
-      libreoffice-fresh
-      playerctl
-      virt-manager
-      dotnet-runtime
-      steam-run
-      dunst
-      diffuse
-    ];
-    file = {
-      layout = {
-        source = ../files/i3/layout.json;
-        target = ".config/i3/layout.json";
-      };
-    };
-  };
 
   programs = {
-    firefox.enable = true;
-    vscode.enable = true;
-    rofi.enable = true;
-    i3status.enable = true;
-    thunderbird = {
-      enable = true;
-      profiles.default = {
-        isDefault = true;
-        withExternalGnupg = true;
-      };
-    };
     autorandr = {
       enable = true;
       profiles = {
