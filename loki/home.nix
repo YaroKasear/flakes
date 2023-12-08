@@ -4,9 +4,10 @@
   imports = [
     ../common/accounts.nix
     ../common/programs/autorandr.nix
+    ../common/programs/git.nix
+    ../common/programs/gpg.nix
     ../common/programs/kitty.nix
     ../common/programs/mpv.nix
-    ../common/programs/git.nix
     ../common/programs/thunderbird.nix
     ../common/programs/tmux.nix
     ../common/programs/vim.nix
@@ -30,32 +31,37 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    rsync
-    nerdfonts
-    powerline-fonts
-    sops
-    chroma
-    thefuck
-    mpvScripts.mpris
-    neofetch
-    fortune
-    neo-cowsay
-    tinyfugue
-    skypeforlinux
-    discord
-    mattermost-desktop
-    telegram-desktop
     bitwarden
-    rsync
+    chroma
     dex
-    libreoffice-fresh
-    playerctl
-    virt-manager
-    dotnet-runtime
-    steam-run
-    dunst
     diffuse
-    (python3.withPackages(ps: with ps; [pandas jinja2 lxml jupyter]))
+    discord
+    dotnet-runtime
+    dunst
+    fortune
+    libreoffice-fresh
+    mattermost-desktop
+    mpvScripts.mpris
+    neo-cowsay
+    neofetch
+    nerdfonts
+    playerctl
+    powerline-fonts
+    rsync
+    skypeforlinux
+    sops
+    steam-run
+    telegram-desktop
+    thefuck
+    tinyfugue
+    virt-manager
+    yubioath-flutter
+    (python3.withPackages(ps: with ps; [
+      jinja2
+      jupyter
+      lxml
+      pandas
+    ]))
   ];
 
   home = {
@@ -66,6 +72,10 @@
       };
     };
   };
+
+  pam.yubico.authorizedYubiKeys.ids = [
+    "ccccccvvktff"
+  ];
 
   programs = {
     fzf.enable = true;
