@@ -14,62 +14,49 @@
     ../common/programs/zsh.nix
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "yaro";
-  home.homeDirectory = "/home/yaro";
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
-  home.packages = with pkgs; [
-    bitwarden
-    chroma
-    dex
-    diffuse
-    discord
-    dotnet-runtime
-    dunst
-    fortune
-    libreoffice-fresh
-    mattermost-desktop
-    mpvScripts.mpris
-    neo-cowsay
-    neofetch
-    nerdfonts
-    playerctl
-    powerline-fonts
-    rsync
-    skypeforlinux
-    sops
-    steam-run
-    telegram-desktop
-    thefuck
-    tinyfugue
-    virt-manager
-    yubioath-flutter
-    (python3.withPackages(ps: with ps; [
-      jinja2
-      jupyter
-      lxml
-      pandas
-    ]))
-  ];
-
   home = {
+    username = "yaro";
+    homeDirectory = "/home/yaro";
     file = {
       layout = {
         source = ../files/i3/layout.json;
         target = ".config/i3/layout.json";
       };
     };
+    packages = with pkgs; [
+      bitwarden
+      chroma
+      dex
+      diffuse
+      discord
+      dotnet-runtime
+      dunst
+      fortune
+      libreoffice-fresh
+      mattermost-desktop
+      mpvScripts.mpris
+      neo-cowsay
+      neofetch
+      nerdfonts
+      playerctl
+      powerline-fonts
+      rsync
+      skypeforlinux
+      sops
+      steam-run
+      telegram-desktop
+      thefuck
+      tinyfugue
+      virt-manager
+      yubioath-flutter
+      (python3.withPackages(ps: with ps; [
+        jinja2
+        jupyter
+        lxml
+        pandas
+      ]))
+    ];
+    stateVersion = "23.05";
   };
 
   pam.yubico.authorizedYubiKeys.ids = [
@@ -77,19 +64,16 @@
   ];
 
   programs = {
-    fzf.enable = true;
-    nix-index.enable = true;
-    home-manager.enable = true;
     firefox.enable = true;
-    vscode.enable = true;
-    rofi.enable = true;
+    fzf.enable = true;
+    home-manager.enable = true;
     i3status.enable = true;
+    nix-index.enable = true;
+    rofi.enable = true;
+    vscode.enable = true;
   };
 
-  services = {
-    nextcloud-client.enable = true;
-    autorandr.enable = true;
-  };
+  services.nextcloud-client.enable = true;
 
   xdg.desktopEntries = {
     sonic3air = {

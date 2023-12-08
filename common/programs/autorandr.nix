@@ -19,4 +19,8 @@
       };
     };
   };
+
+  services = {
+    autorandr.enable = true;
+  };
 }
