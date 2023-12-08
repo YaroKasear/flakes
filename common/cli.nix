@@ -5,6 +5,9 @@
     chroma
     thefuck
     mpvScripts.mpris
+    neofetch
+    fortune
+    neo-cowsay
     tinyfugue
   ];
 
@@ -70,6 +73,10 @@
         icat = "kitten icat";
         update-config = "sudo nixos-rebuild switch --flake /home/yaro/flakes#";
       };
-    };  
+      initExtra = ''
+        neofetch
+        fortune -a | cowsay --random --aurora --bold -n
+      '';
+    };
   };
 }
