@@ -12,7 +12,6 @@
     ../common/programs/tmux.nix
     ../common/programs/vim.nix
     ../common/programs/zsh.nix
-    ../common/yubikey.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

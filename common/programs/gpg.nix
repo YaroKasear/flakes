@@ -4,7 +4,7 @@
       enable = true;
       publicKeys = [
         {
-          source = ../files/gnupg/pubkey.asc;
+          source = ../../files/gnupg/pubkey.asc;
           trust = 5;
         }
       ];
