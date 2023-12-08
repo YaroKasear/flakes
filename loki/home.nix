@@ -2,20 +2,14 @@
 
 {
   imports = [
-    ../common/accounts.nix
+    ../common/home.nix
     ../common/programs/autorandr.nix
-    ../common/programs/git.nix
-    ../common/programs/gpg.nix
     ../common/programs/kitty.nix
     ../common/programs/mpv.nix
     ../common/programs/thunderbird.nix
-    ../common/programs/tmux.nix
-    ../common/programs/vim.nix
-    ../common/programs/zsh.nix
   ];
 
   home = {
-    username = "yaro";
     homeDirectory = "/home/yaro";
     file = {
       layout = {
@@ -24,14 +18,11 @@
       };
     };
     packages = with pkgs; [
-      bitwarden
-      chroma
       dex
       diffuse
       discord
       dotnet-runtime
       dunst
-      fortune
       libreoffice-fresh
       mattermost-desktop
       mpvScripts.mpris
@@ -45,32 +36,13 @@
       sops
       steam-run
       telegram-desktop
-      thefuck
-      tinyfugue
       virt-manager
-      yubioath-flutter
-      (python3.withPackages(ps: with ps; [
-        jinja2
-        jupyter
-        lxml
-        pandas
-      ]))
     ];
-    stateVersion = "23.05";
   };
-
-  pam.yubico.authorizedYubiKeys.ids = [
-    "vvelbjguhtlv"
-    "ccccccjfkvnh"
-    "ccccccvvktff"
-  ];
 
   programs = {
     firefox.enable = true;
-    fzf.enable = true;
-    home-manager.enable = true;
     i3status.enable = true;
-    nix-index.enable = true;
     rofi.enable = true;
     vscode.enable = true;
   };
