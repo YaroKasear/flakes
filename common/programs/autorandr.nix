@@ -15,22 +15,10 @@ in {
       profiles = {
         "monitor" = {
           fingerprint = {
-            HDMI-0 = dell_monitor.fp;
-            DP-0 = dell_monitor.fp;
-            DP-1 = dell_monitor.fp;
-            DP-2 = dell_monitor.fp;
-            DP-3 = dell_monitor.fp;
             DP-4 = dell_monitor.fp;
-            DP-5 = dell_monitor.fp;
           };
           config = {
-            HDMI-0 = dell_monitor.conf;
-            DP-0 = dell_monitor.conf;
-            DP-1 = dell_monitor.conf;
-            DP-2 = dell_monitor.conf;
-            DP-3 = dell_monitor.conf;
             DP-4 = dell_monitor.conf;
-            DP-5 = dell_monitor.conf;
           };
         };
       };
