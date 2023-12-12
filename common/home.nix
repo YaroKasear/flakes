@@ -19,7 +19,6 @@
   home = {
     username = "yaro";
     packages = with pkgs; [
-      bitwarden
       chroma
       diffuse
       fortune
@@ -30,8 +29,6 @@
       rsync
       sops
       thefuck
-      tinyfugue
-      yubioath-flutter
       (python3.withPackages(ps: with ps; [
         jinja2
         jupyter

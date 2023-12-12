@@ -18,6 +18,7 @@
       };
     };
     packages = with pkgs; [
+      bitwarden
       dex
       diffuse
       discord
@@ -36,7 +37,9 @@
       sops
       steam-run
       telegram-desktop
+      tinyfugue
       virt-manager
+      yubioath-flutter
     ];
   };
 

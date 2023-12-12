@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   programs = {
     gpg = {
@@ -20,7 +22,7 @@
 
   services = {
     gpg-agent = {
-      enable = true;
+      enable = pkgs.hostPlatform.isLinux;
       enableSshSupport = true;
       defaultCacheTtl = 60;
       maxCacheTtl = 120;
