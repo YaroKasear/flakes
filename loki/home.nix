@@ -33,6 +33,7 @@
       playerctl
       powerline-fonts
       rsync
+      scrot
       skypeforlinux
       sops
       steam-run
