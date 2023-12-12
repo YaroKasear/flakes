@@ -153,11 +153,14 @@
     mediaKeys.enable = true;
   };
 
-  users.users.yaro = {
-    isNormalUser = true;
-    extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"];
-    shell = pkgs.zsh;
-    hashedPasswordFile = config.sops.secrets."users/users/yaro/hashedPasswordFile".path;
+  users = {
+    mutableUsers = false;
+    users.yaro = {
+      isNormalUser = true;
+      extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"];
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.sops.secrets."users/users/yaro/hashedPasswordFile".path;
+    };
   };
 
   environment.systemPackages = with pkgs; [
