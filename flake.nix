@@ -61,6 +61,7 @@
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.yaro = {
               imports = [
                 nix-index-database.hmModules.nix-index
