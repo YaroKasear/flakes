@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -20,9 +20,9 @@
     username = "yaro";
     packages = with pkgs; [
       chroma
+      inputs.cowsay.packages.${system}.cowsay
       diffuse
       fortune
-      neo-cowsay
       neofetch
       nerdfonts
       powerline-fonts

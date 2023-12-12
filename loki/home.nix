@@ -27,7 +27,6 @@
       libreoffice-fresh
       mattermost-desktop
       mpvScripts.mpris
-      neo-cowsay
       neofetch
       nerdfonts
       networkmanagerapplet

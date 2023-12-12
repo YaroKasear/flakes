@@ -41,7 +41,7 @@
       };
       initExtra = ''
         neofetch
-        fortune -a | cowsay --random --aurora --bold -n
+        fortune -a | cowsay -n
       '';
     };
   };
