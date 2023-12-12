@@ -19,17 +19,12 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };  
+  };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, ... }: 
-    let 
-      pkgs = import nixpkgs {
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
-    in {
+  outputs = { self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, ... }:
+  {
       nixosConfigurations = {
-        loki = lib.nixosSystem {
+        loki = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
           modules = [
             ./loki/config.nix
