@@ -8,7 +8,13 @@
 
   nix.settings.experimental-features = "nix-command flakes";
 
-  programs.zsh.enable = true;  # default shell on catalina
+  programs = {
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+    zsh.enable = true; 
+  };
 
   system.configurationRevision = config.rev or config.dirtyRev or null;
 
