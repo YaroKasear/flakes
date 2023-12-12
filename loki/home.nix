@@ -30,6 +30,7 @@
       neo-cowsay
       neofetch
       nerdfonts
+      networkmanagerapplet
       playerctl
       powerline-fonts
       rsync
