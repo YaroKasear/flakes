@@ -49,7 +49,7 @@
         };
       };
       darwinConfigurations = {
-        "Gwyn" = nix-darwin.lib.darwinSystem {
+        Gwyn = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
             ./gwyn/config.nix
@@ -68,7 +68,7 @@
         };
       };
 
-    darwinPackages = self.darwinConfigurations."Gwyn".pkgs;
+    darwinPackages = self.darwinConfigurations.Gwyn.pkgs;
     };
 }
 
