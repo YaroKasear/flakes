@@ -19,14 +19,14 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-		snowfall-lib = {
-			url = "github:snowfallorg/lib";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-		cowsay = {
-			url = "github:snowfallorg/cowsay";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
+    snowfall-lib = {
+      url = "github:snowfallorg/lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    cowsay = {
+      url = "github:snowfallorg/cowsay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, ... }:
