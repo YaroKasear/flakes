@@ -87,6 +87,22 @@
         "type": "github"
       }
     },
+    "flake-compat_4": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1627913399,
+        "narHash": "sha256-hY8g6H2KFL8ownSiFeMOjwPC8P0ueXpCVEbxgda3pko=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "12c64ca55c1014cdc1b16ed5a804aa8576601ff2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1644229661,
@@ -189,6 +205,21 @@
         "type": "github"
       }
     },
+    "flake-utils_4": {
+      "locked": {
+        "lastModified": 1629481132,
+        "narHash": "sha256-JHgasjPR0/J1J3DRm4KxM4zTyAj4IOJY8vIl75v/kPI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "997f7efcb746a9c140ce1f13c72263189225f482",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -249,6 +280,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1702336390,
+        "narHash": "sha256-BRO8J8QbmyuS0XMh4UfY11akgTGZj1YhkqNvR83JrsI=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "fef05bf9c8e818f4ca1425ef4c18e6680becd072",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1702312524,
@@ -287,9 +334,11 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "snowfall-lib": "snowfall-lib_3",
-        "sops-nix": "sops-nix"
+        "sops-nix": "sops-nix",
+        "wallpaper-generator": "wallpaper-generator"
       }
     },
     "snowfall-lib": {
@@ -418,6 +467,28 @@
         "owner": "snowfallorg",
         "ref": "v1.0.0",
         "repo": "vhs",
+        "type": "github"
+      }
+    },
+    "wallpaper-generator": {
+      "inputs": {
+        "flake-compat": "flake-compat_4",
+        "flake-utils": "flake-utils_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1672425573,
+        "narHash": "sha256-/5axSF9ow9R+5VDaXS/ehs14kkIY6xICxoWJ791nHGY=",
+        "owner": "pinpox",
+        "repo": "wallpaper-generator",
+        "rev": "6461fa794745fb18f2b04f58015e9a2871ca7099",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pinpox",
+        "repo": "wallpaper-generator",
         "type": "github"
       }
     }

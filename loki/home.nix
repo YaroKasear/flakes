@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -30,6 +30,7 @@
       neofetch
       nerdfonts
       networkmanagerapplet
+      nitrogen
       playerctl
       powerline-fonts
       rsync
@@ -99,6 +100,7 @@
           "XF86AudioMute" = "exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle";
         };
         startup = [
+          { command = "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && nitrogen --restore"; notification = false; }
           { command = "i3-msg 'workspace 1; append_layout /home/yaro/.config/i3/layout.json'"; notification = false; }
           { command = "firefox"; notification = false; }
           { command = "thunderbird"; notification = false; }

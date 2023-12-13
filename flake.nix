@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,9 +28,13 @@
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wallpaper-generator = {
+      url = "github:pinpox/wallpaper-generator";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, nixos-hardware, ... }:
   {
     # specialArgs = { inherit inputs; };
     nixosConfigurations = {
@@ -37,7 +42,6 @@
       system = "x86_64-linux";
         modules = [
           ./loki/config.nix
-          sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -50,6 +54,12 @@
               ];
             };
           }
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+          nixos-hardware.nixosModules.common-pc
+          nixos-hardware.nixosModules.common-pc-ssd
+          sops-nix.nixosModules.sops
         ];
       };
     };

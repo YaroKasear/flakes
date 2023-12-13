@@ -21,6 +21,7 @@
     packages = with pkgs; [
       chroma
       inputs.cowsay.packages.${system}.cowsay
+      inputs.wallpaper-generator.packages.${system}.wp-gen
       diffuse
       fortune
       neofetch
