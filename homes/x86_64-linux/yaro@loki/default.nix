@@ -1,19 +1,21 @@
-{ config, pkgs, lib, inputs, ... }:
+{ lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
 
 {
   imports = [
-    ../common/home.nix
-    ../common/programs/autorandr.nix
-    ../common/programs/kitty.nix
-    ../common/programs/mpv.nix
-    ../common/programs/thunderbird.nix
+    ../../../common/home.nix
+    ../../../common/programs/autorandr.nix
+    ../../../common/programs/kitty.nix
+    ../../../common/programs/mpv.nix
+    ../../../common/programs/thunderbird.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   home = {
     homeDirectory = "/home/yaro";
     file = {
       layout = {
-        source = ../files/i3/layout.json;
+        source = ../../../files/i3/layout.json;
         target = ".config/i3/layout.json";
       };
     };
@@ -47,6 +49,7 @@
       wp-gen
       yubioath-flutter
     ];
+    stateVersion = "23.05";
   };
 
   programs = {

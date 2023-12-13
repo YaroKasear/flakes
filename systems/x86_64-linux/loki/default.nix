@@ -1,11 +1,9 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
 
 {
   imports = [
     ./hw.nix
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   nix = {
     package = pkgs.nixFlakes;
@@ -97,7 +95,7 @@
   };
 
   sops = {
-    defaultSopsFile = ../secrets/secrets.yaml;
+    defaultSopsFile = ../../../secrets/secrets.yaml;
     age = {
       keyFile = /etc/syskey;
       sshKeyPaths = [];

@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "The United Flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -34,57 +34,49 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, nix-index-database, sops-nix, nix-darwin, nixos-hardware, ... }:
-  {
-    # specialArgs = { inherit inputs; };
-    nixosConfigurations = {
-      loki = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-        modules = [
-          ./loki/config.nix
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.yaro = {
-              imports = [
-                nix-index-database.hmModules.nix-index
-                sops-nix.homeManagerModules.sops
-                ./loki/home.nix
-              ];
-            };
-          }
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-ssd
-          sops-nix.nixosModules.sops
-        ];
-      };
-    };
-    darwinConfigurations = {
-      Gwyn = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./gwyn/config.nix
-          home-manager.darwinModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.yaro = {
-              imports = [
-                nix-index-database.hmModules.nix-index
-                sops-nix.homeManagerModules.sops
-                ./gwyn/home.nix
-              ];
-            };
-          }
-        ];
-      };
-    };
+  outputs = inputs:
+    inputs.snowfall-lib.mkFlake {
+      inherit inputs;
+      src = ./.;
 
-    darwinPackages = self.darwinConfigurations.Gwyn.pkgs;
+      snowfall = {
+        meta = {
+          name = "united-flake";
+          title = "The United Flake";
+        };
+        namespace = "united";
+      };
+
+      channels-config = {
+        allowUnfree = true;
+      };
+
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
+        nixos-hardware.nixosModules.common-pc
+        sops-nix.nixosModules.sops
+      ];
+
+      systems.modules.darwin = with inputs; [
+        home-manager.darwinModules.home-manager
+      ];
+
+      systems.hosts.loki.modules = with inputs; [
+        nixos-hardware.nixosModules.common-pc-ssd
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-cpu-amd-pstate
+        nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+      ];
+
+      homes.users."yaro@loki".modules = with inputs; [
+        nix-index-database.hmModules.nix-index
+        sops-nix.homeManagerModules.sops
+      ];
+
+      homes.users."yaro@gwyn".modules = with inputs; [
+        nix-index-database.hmModules.nix-index
+        sops-nix.homeManagerModules.sops
+      ];
     };
 }
 
