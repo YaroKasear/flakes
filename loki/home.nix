@@ -1,8 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
-let
-  wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
-in {
+{
   imports = [
     ../common/home.nix
     ../common/programs/autorandr.nix
@@ -19,7 +17,10 @@ in {
         target = ".config/i3/layout.json";
       };
     };
-    packages = with pkgs; [
+    packages = with pkgs;
+    let
+      wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
+    in [
       bitwarden
       dex
       diffuse
