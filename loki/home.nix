@@ -1,6 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
 
-{
+let
+  wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
+in {
   imports = [
     ../common/home.nix
     ../common/programs/autorandr.nix
@@ -41,6 +43,7 @@
       telegram-desktop
       tinyfugue
       virt-manager
+      wp-gen
       yubioath-flutter
     ];
   };

@@ -18,10 +18,12 @@
 
   home = {
     username = "yaro";
-    packages = with pkgs; [
+    packages = with pkgs; 
+    let
+      cowsay = inputs.cowsay.packages.${system}.cowsay;
+    in [
       chroma
-      inputs.cowsay.packages.${system}.cowsay
-      inputs.wallpaper-generator.packages.${system}.wp-gen
+      cowsay
       diffuse
       fortune
       neofetch
