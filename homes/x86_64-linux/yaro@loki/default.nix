@@ -10,6 +10,7 @@ with lib.united;
     kitty.enable = true;
     mpv.enable = true;
     thunderbird.enable = true;
+    work.enable = true;
   };
 
   home = {

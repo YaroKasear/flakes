@@ -2,7 +2,7 @@
 
 {
   united = {
-    git.enable = true;
-    gnupg.enable = true;
+    common.enable = true;
+    work.enable = true;
   };
 }
