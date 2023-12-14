@@ -2,27 +2,17 @@
 
 with lib.united;
 {
-  imports = [
-    ../../../common/home.nix
-  ];
-
   nixpkgs.config.allowUnfree = true;
 
   united = {
     autorandr.enable = true;
-    git.enable = true;
-    gnupg.enable = true;
+    common.enable = true;
     kitty.enable = true;
     mpv.enable = true;
-    net-utils.enable = true;
     thunderbird.enable = true;
-    tmux.enable = true;
-    vim.enable = true;
-    zsh.enable = true;
   };
 
   home = {
-    homeDirectory = "/home/yaro";
     file = {
       layout = {
         source = ../../../files/i3/layout.json;
@@ -35,7 +25,6 @@ with lib.united;
     in [
       bitwarden
       dex
-      diffuse
       discord
       dotnet-runtime
       dunst
@@ -48,10 +37,8 @@ with lib.united;
       nitrogen
       playerctl
       powerline-fonts
-      rsync
       scrot
       skypeforlinux
-      sops
       steam-run
       telegram-desktop
       tinyfugue
@@ -59,7 +46,6 @@ with lib.united;
       wp-gen
       yubioath-flutter
     ];
-    stateVersion = "23.05";
   };
 
   programs = {
