@@ -73,7 +73,7 @@
         sops-nix.homeManagerModules.sops
       ];
 
-      homes.users."yaro@gwyn".modules = with inputs; [
+      homes.users."yaro@Gwyn".modules = with inputs; [
         nix-index-database.hmModules.nix-index
         sops-nix.homeManagerModules.sops
       ];
