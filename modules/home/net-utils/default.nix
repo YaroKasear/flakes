@@ -14,7 +14,6 @@ in {
       dig
       ldns
       mtr
-      traceroute
     ];
   };
 }

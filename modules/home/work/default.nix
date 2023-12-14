@@ -13,7 +13,6 @@ in {
     home = {
       packages = with pkgs;
       [
-        diffuse
         (python3.withPackages(ps: with ps; [
           jinja2
           jupyter

@@ -26,6 +26,7 @@ with lib.united;
     in [
       bitwarden
       dex
+      diffuse
       discord
       dotnet-runtime
       dunst
@@ -43,6 +44,7 @@ with lib.united;
       steam-run
       telegram-desktop
       tinyfugue
+      traceroute
       virt-manager
       wp-gen
       yubioath-flutter
