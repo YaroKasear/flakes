@@ -1,24 +1,24 @@
-{ config, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [ ];
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = "nix-command flakes";
+  };
 
-  services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
-
-  nix.settings.experimental-features = "nix-command flakes";
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   programs = {
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-    zsh.enable = true; 
+    zsh.enable = true;
   };
 
-  system.stateVersion = 4;
+  services.nix-daemon.enable = true;
 
-  nixpkgs.hostPlatform = "aarch64-darwin";
+  system.stateVersion = 4;
 
   users.users.yaro = {
     home = "/Users/yaro";
