@@ -16,8 +16,6 @@
     zsh.enable = true; 
   };
 
-  system.configurationRevision = config.rev or config.dirtyRev or null;
-
   system.stateVersion = 4;
 
   nixpkgs.hostPlatform = "aarch64-darwin";
