@@ -1,15 +1,25 @@
 { lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
 
+with lib.united;
 {
   imports = [
     ../../../common/home.nix
-    ../../../common/programs/autorandr.nix
-    ../../../common/programs/kitty.nix
-    ../../../common/programs/mpv.nix
-    ../../../common/programs/thunderbird.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
+
+  united = {
+    autorandr.enable = true;
+    git.enable = true;
+    gnupg.enable = true;
+    kitty.enable = true;
+    mpv.enable = true;
+    net-utils.enable = true;
+    thunderbird.enable = true;
+    tmux.enable = true;
+    vim.enable = true;
+    zsh.enable = true;
+  };
 
   home = {
     homeDirectory = "/home/yaro";

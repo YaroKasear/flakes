@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ../../../common/home.nix
-  ];
+  united = {
+    git.enable = true;
+    gnupg.enable = true;
+  };
 }

@@ -3,11 +3,6 @@
 {
   imports = [
     ./accounts.nix
-    ./programs/git.nix
-    ./programs/gpg.nix
-    ./programs/tmux.nix
-    ./programs/vim.nix
-    ./programs/zsh.nix
   ];
 
   pam.yubico.authorizedYubiKeys.ids = [
@@ -18,7 +13,7 @@
 
   home = {
     username = "yaro";
-    packages = with pkgs; 
+    packages = with pkgs;
     let
       cowsay = inputs.cowsay.packages.${system}.cowsay;
     in [
