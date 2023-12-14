@@ -52,13 +52,8 @@
       };
 
       systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
         nixos-hardware.nixosModules.common-pc
         sops-nix.nixosModules.sops
-      ];
-
-      systems.modules.darwin = with inputs; [
-        home-manager.darwinModules.home-manager
       ];
 
       systems.hosts.loki.modules = with inputs; [
