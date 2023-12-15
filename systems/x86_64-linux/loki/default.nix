@@ -169,6 +169,7 @@
     yubikey-personalization
     nfs-utils
     nix-diff
+    united.i3-wsman
   ];
 
   system.stateVersion = "23.05";

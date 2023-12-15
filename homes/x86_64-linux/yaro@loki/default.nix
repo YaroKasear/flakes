@@ -9,8 +9,8 @@ with lib.united;
     common.enable = true;
     kitty.enable = true;
     mpv.enable = true;
+    polybar.enable = true;
     thunderbird.enable = true;
-    work.enable = true;
   };
 
   home = {

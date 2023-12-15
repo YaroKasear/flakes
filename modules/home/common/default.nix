@@ -23,6 +23,14 @@ in {
         snowfallorg.flake
         sops
         thefuck
+        (python3.withPackages(ps: with ps; [
+          jinja2
+          jupyter
+          lxml
+          pandas
+          dbus-python
+          pygobject3
+        ]))
       ];
     };
 
