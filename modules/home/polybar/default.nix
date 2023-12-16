@@ -24,14 +24,16 @@ in {
       settings = {
         "bar/top" = {
           bottom = false;
+          enable-ipc = true;
           fixed-center = true;
+          height = 30;
           font = [
             "FiraCode Nerd Font:style=Regular"
             "Noto Color Emoji:scale=10:style=Regular"
           ];
           dpi = 0;
-          modules-left = "player-mpris-tail";
-          modules-right = "pulseaudio";
+          modules-left = "xwindow";
+          modules-right = "player-mpris-tail";
           pseudo-transparency = true;
         };
         "bar/bottom" = {
@@ -44,8 +46,21 @@ in {
             "Noto Color Emoji:scale=10:style=Regular"
           ];
           dpi = 0;
+          modules-left = "i3";
+          modules-right = "pulseaudio tray date";
           pseudo-transparency = true;
-          modules-left = "i3wsm-groups i3wsm-workspaces i3wsm-toggle-hidden i3wsm";
+        };
+        "module/i3" = {
+          type = "internal/i3";
+        };
+        "module/tray" = {
+          type = "internal/tray";
+        };
+        "module/date" = {
+          type = "internal/date";
+          date = "%B %e, %Y";
+          time = "%r";
+          label = " %date% %time%";
         };
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
@@ -69,38 +84,9 @@ in {
           exec = "~/.config/polybar/player-mpris-tail.py -f '{artist} - {title}'";
           tail = true;
         };
-        "module/i3wsm" = {
-          type = "custom/ipc";
-          hook = [
-            "${pkgs.united.i3-wsman}/bin/i3-wsman polybar"
-          ];
-        };
-        "module/i3wsm-groups" = {
-          type = "custom/ipc";
-          hook = [
-            "${pkgs.united.i3-wsman}/bin/i3-wsman polybar module-groups"
-          ];
-          initial = 1;
-          format = "<label>";
-          format-font = 1;
-        };
-        "module/i3wsm-toggle-hidden" = {
-          type = "custom/ipc";
-          hook = [
-            "${pkgs.united.i3-wsman}/bin/i3-wsman polybar module-toggle-hidden"
-          ];
-          initial = 1;
-          format = "<label>";
-          format-font = 1;
-        };
-        "module/i3wsm-workspaces" = {
-          type = "custom/ipc";
-          hook = [
-            "${pkgs.united.i3-wsman}/bin/i3-wsman polybar module-workspaces"
-          ];
-          initial = 1;
-          format = "<label>";
-          format-font = 1;
+        "module/xwindow" = {
+          type = "internal/xwindow";
+          label = "%title%";
         };
       };
     };
@@ -110,10 +96,6 @@ in {
         executable = true;
         source = ../../../files/polybar/player-mpris-tail.py;
         target = ".config/polybar/player-mpris-tail.py";
-      };
-      i3-wsman-polybar = {
-        source = ../../../files/polybar/i3-wsman.ini;
-        target = ".config/polybar/i3-wsman.ini";
       };
     };
   };
