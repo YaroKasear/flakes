@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/yaro/.nix-profile/bin/python3
 
 import sys
 import dbus
