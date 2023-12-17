@@ -70,6 +70,9 @@ in {
         "module/i3" = {
           type = "internal/i3";
           label-focused = "%index%";
+          label-unfocused = "%index%";
+          label-urgent = "%index%";
+          label-visible = "%index%";
           label-focused-overline = "\${colors.primary}";
           label-focused-background = "\${colors.primary}";
           label-focused-foreground = "\${colors.secondary}";

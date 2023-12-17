@@ -3,5 +3,6 @@
 {
   united = {
     common.enable = true;
+    kitty.enable = true;
   };
 }
