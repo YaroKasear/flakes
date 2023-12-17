@@ -16,7 +16,6 @@ in {
       let
         cowsay = inputs.cowsay.packages.${system}.cowsay;
       in [
-        btop
         chroma
         cowsay
         fortune
@@ -42,6 +41,7 @@ in {
     };
 
     united = {
+      btop.enable = true;
       git.enable = true;
       gnupg.enable = true;
       net-utils.enable = true;
