@@ -23,10 +23,15 @@ in {
       '';
       settings = let
         fonts = [
-          "FiraCode Nerd Font:style=Regular"
-          "Noto Color Emoji:scale=10:style=Regular"
+          "FiraCode Nerd Font:style=Regular:size=10;2"
+          "Noto Color Emoji:scale=10;2:style=Regular"
         ];
       in {
+        "colors" = config.united.user.colors;
+        "global/wm" = {
+          margin-top = 5;
+          margin-bottom = 5;
+        };
         "bar/top" = {
           bottom = false;
           enable-ipc = true;
@@ -34,9 +39,15 @@ in {
           height = 30;
           font = fonts;
           dpi = 0;
-          modules-left = "xwindow";
-          modules-right = "player-mpris-tail";
+          modules-left = "space xwindow";
+          modules-right = "player-mpris-tail space";
           pseudo-transparency = true;
+          background = [
+            "\${colors.tertiary}"
+            "\${colors.secondary}"
+            "\${colors.tertiary}"
+          ];
+          foreground = "\${colors.primary}";
         };
         "bar/bottom" = {
           bottom = true;
@@ -48,18 +59,40 @@ in {
           modules-left = "i3";
           modules-right = "pulseaudio tray date";
           pseudo-transparency = true;
+          background = [
+            "\${colors.tertiary}"
+            "\${colors.secondary}"
+            "\${colors.tertiary}"
+          ];
+          foreground = "\${colors.primary}";
+          margin-bottom = 5;
         };
         "module/i3" = {
           type = "internal/i3";
+          label-focused = "%index%";
+          label-focused-overline = "\${colors.primary}";
+          label-focused-background = "\${colors.primary}";
+          label-focused-foreground = "\${colors.secondary}";
+          label-focused-padding = 2;
+          label-unfocused-padding = 2;
+          label-urgent-background = "\${colors.alert}";
+          label-urgent-padding = 2;
+          label-visible-padding = 2;
         };
         "module/tray" = {
           type = "internal/tray";
+          tray-background = "\${colors.secondary}";
+          tray-foreground = "\${colors.primary}";
         };
         "module/date" = {
           type = "internal/date";
           date = "%B %e, %Y";
           time = "%r";
-          label = " %date% %time%";
+          label = " %date% %time% ";
+        };
+        "module/space" = {
+          type = "custom/text";
+          label = " ";
         };
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
@@ -69,8 +102,10 @@ in {
           format-muted-prefix = "🔇 ";
           bar-volume-width = 10;
           bar-volume-indicator = "|";
+          bar-volume-indicator-foreground = "\${colors.alert}";
           bar-volume-fill = "─";
           bar-volume-empty = "─";
+          bar-volume-empty-foreground = "\${colors.tertiary}";
           ramp-volume = [
             "🔈"
             "🔉"

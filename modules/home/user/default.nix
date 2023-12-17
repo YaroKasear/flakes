@@ -35,6 +35,46 @@ in {
         type = types.str;
         default = "#FF4848";
       };
+      white = mkOption {
+        type = types.str;
+        default = "#eeffff";
+      };
+      black = mkOption {
+        type = types.str;
+        default = "#15121c";
+      };
+      red = mkOption {
+        type = types.str;
+        default = "#cb5760";
+      };
+      green = mkOption {
+        type = types.str;
+        default = "#999f63";
+      };
+      yellow = mkOption {
+        type = types.str;
+        default = "#d4a067";
+      };
+      blue = mkOption {
+        type = types.str;
+        default = "#6c90a8";
+      };
+      purple = mkOption {
+        type = types.str;
+        default = "#776690";
+      };
+      cyan = mkOption {
+        type = types.str;
+        default = "#528a9b";
+      };
+      pink = mkOption {
+        type = types.str;
+        default = "#ffa8c5";
+      };
+      orange = mkOption {
+        type = types.str;
+        default = "#c87c3e";
+      };
     };
   };
 
