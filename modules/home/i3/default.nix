@@ -50,7 +50,7 @@ in {
         config = {
           defaultWorkspace = "workspace number 0";
           bars = [ ];
-          terminal = "kitty";
+          terminal = "kitty -1";
           modifier = "Mod4";
           menu = "${pkgs.rofi}/bin/rofi -show drun";
           fonts = {
@@ -75,7 +75,7 @@ in {
             { command = "thunderbird"; notification = false; }
             { command = "hexchat"; notification = false; }
             { command = "discord"; notification = false; }
-            { command = "kitty"; notification = false; }
+            { command = "kitty -1"; notification = false; }
             { command = "skypeforlinux"; notification = false; }
             { command = "telegram-desktop"; notification = false; }
             { command = "dunst"; notification = false; }
