@@ -21,16 +21,18 @@ in {
         polybar top &
         polybar bottom &
       '';
-      settings = {
+      settings = let
+        fonts = [
+          "FiraCode Nerd Font:style=Regular"
+          "Noto Color Emoji:scale=10:style=Regular"
+        ];
+      in {
         "bar/top" = {
           bottom = false;
           enable-ipc = true;
           fixed-center = true;
           height = 30;
-          font = [
-            "FiraCode Nerd Font:style=Regular"
-            "Noto Color Emoji:scale=10:style=Regular"
-          ];
+          font = fonts;
           dpi = 0;
           modules-left = "xwindow";
           modules-right = "player-mpris-tail";
@@ -41,10 +43,7 @@ in {
           enable-ipc = true;
           fixed-center = true;
           height = 30;
-          font = [
-            "FiraCode Nerd Font:style=Regular"
-            "Noto Color Emoji:scale=10:style=Regular"
-          ];
+          font = fonts;
           dpi = 0;
           modules-left = "i3";
           modules-right = "pulseaudio tray date";

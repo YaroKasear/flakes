@@ -14,6 +14,28 @@ let
 in {
   options.united.user = {
     enable = mkEnableOption "User";
+    colors = {
+      primary = mkOption {
+        type = types.str;
+        default = "#18FFD8";
+      };
+      secondary = mkOption {
+        type = types.str;
+        default = "#303060";
+      };
+      tertiary = mkOption {
+        type = types.str;
+        default = "#181830";
+      };
+      window = mkOption {
+        type = types.str;
+        default = "#189090";
+      };
+      alert = mkOption {
+        type = types.str;
+        default = "#FF4848";
+      };
+    };
   };
 
   config = mkIf cfg.enable {

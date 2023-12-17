@@ -14,6 +14,7 @@ in {
       autorandr.enable = true;
       kitty.enable = true;
       polybar.enable = true;
+      picom.enable = true;
     };
 
     home = {
@@ -38,7 +39,6 @@ in {
     };
 
     programs = {
-      i3status.enable = true;
       rofi.enable = true;
     };
 
@@ -54,7 +54,55 @@ in {
           modifier = "Mod4";
           menu = "${pkgs.rofi}/bin/rofi -show drun";
           fonts = {
-            names = ["FiraCode Nerd Font"];
+            names = [
+              "FiraCode Nerd Font"
+            ];
+          };
+          floating = {
+            titlebar = true;
+            border = 1;
+          };
+          gaps = {
+            inner = 5;
+            smartGaps = true;
+          };
+          colors = with config.united.user.colors; {
+            background = window;
+            focused = {
+              border = tertiary;
+              background = primary;
+              text = tertiary;
+              indicator = tertiary;
+              childBorder = tertiary;
+            };
+            focusedInactive = {
+              border = tertiary;
+              background = secondary;
+              text = primary;
+              indicator = tertiary;
+              childBorder = tertiary;
+            };
+            unfocused = {
+              border = tertiary;
+              background = tertiary;
+              text = window;
+              indicator = tertiary;
+              childBorder = tertiary;
+            };
+            urgent = {
+              border = tertiary;
+              background = alert;
+              text = tertiary;
+              indicator = tertiary;
+              childBorder = tertiary;
+            };
+            placeholder = {
+              border = tertiary;
+              background = tertiary;
+              text = primary;
+              indicator = tertiary;
+              childBorder = tertiary;
+            };
           };
           keybindings = let
             modifier = config.xsession.windowManager.i3.config.modifier;
