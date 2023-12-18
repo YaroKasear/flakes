@@ -18,6 +18,7 @@ in {
         i3Support = true;
       };
       script = ''
+        sleep 5s
         polybar top &
         polybar bottom &
       '';
