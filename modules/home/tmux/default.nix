@@ -25,6 +25,9 @@ in {
           bind-key "\\" split-window -fh -c "#{pane_current_path}"
           bind-key "-" split-window -v -c "#{pane_current_path}"
           bind-key "_" split-window -fv -c "#{pane_current_path}"
+          set -g default-terminal "''${TERM}"
+          bind-key -n Home send Escape "OH"
+          bind-key -n End send Escape "OF"
           set -g status-right-length 30
           set -g status-left-length 30
           set -g status-style bg='${tertiary}',fg='${primary},bold'
