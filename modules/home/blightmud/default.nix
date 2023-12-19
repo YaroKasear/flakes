@@ -26,7 +26,7 @@ in
         sshKeyPaths = [];
       };
       secrets."users/users/yaro/servers" = {
-        path = "${user.config-directory}/.config/blightmud/servers.ron";
+        path = ".config/blightmud/servers.ron";
       };
     };
   };
