@@ -15,6 +15,7 @@ in {
         enable = true;
         mouse = true;
         historyLimit = 5000;
+        tmuxinator.enable = true;
         extraConfig = with config.united.user.colors;
         ''
           bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
