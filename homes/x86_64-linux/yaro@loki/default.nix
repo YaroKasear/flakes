@@ -5,6 +5,7 @@ with lib.united;
   nixpkgs.config.allowUnfree = true;
 
   united = {
+    blightmud.enable = true;
     common.enable = true;
     mpv.enable = true;
     thunderbird.enable = true;

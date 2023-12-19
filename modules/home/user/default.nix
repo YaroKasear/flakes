@@ -14,6 +14,20 @@ let
 in {
   options.united.user = {
     enable = mkEnableOption "User";
+
+    name = mkOption {
+      type = types.str;
+      default = "yaro";
+    };
+    home-directory = mkOption {
+      type = types.str;
+      default = home-directory;
+    };
+    config-directory = mkOption {
+      type = types.str;
+      default = "${home-directory}/.config";
+    };
+
     colors = {
       primary = mkOption {
         type = types.str;
