@@ -17,11 +17,7 @@ in {
         pulseSupport = true;
         i3Support = true;
       };
-      script = ''
-        sleep 5s
-        polybar top &
-        polybar bottom &
-      '';
+      script = "echo 'I refuse to start as a systemd service since I launch before i3 is ready this way.'";
       settings = let
         fonts = [
           "FiraCode Nerd Font:style=Regular:size=10;2"
