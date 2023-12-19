@@ -5,11 +5,12 @@ with lib.united;
   nixpkgs.config.allowUnfree = true;
 
   united = {
-    blightmud.enable = true;
+    blightmud.enable = false;
     common.enable = true;
+    i3.enable = true;
     mpv.enable = true;
     thunderbird.enable = true;
-    i3.enable = true;
+    tinyfugue.enable = true;
   };
 
   home = {
