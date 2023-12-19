@@ -139,7 +139,6 @@ in {
         };
         realName = "Conrad Nelson";
         thunderbird.enable = true;
-        signature.text = sops.secrets."accounts/email/accounts/Work/signature/text";
       };
     };
 

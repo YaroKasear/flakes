@@ -10,7 +10,10 @@ with lib.united;
     i3.enable = true;
     mpv.enable = true;
     thunderbird.enable = true;
-    tinyfugue.enable = true;
+    tinyfugue = {
+      enable = true;
+      extraConfig = "/load -q ~/.worlds.tf";
+    };
   };
 
   home = {
@@ -30,7 +33,6 @@ with lib.united;
       skypeforlinux
       steam-run
       telegram-desktop
-      tinyfugue
       traceroute
       virt-manager
       yubioath-flutter
