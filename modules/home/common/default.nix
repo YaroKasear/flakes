@@ -20,6 +20,7 @@ in {
         cowsay
         fortune
         neofetch
+        nvd
         snowfallorg.flake
         sops
         thefuck
