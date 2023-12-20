@@ -1,4 +1,4 @@
-# ./.tmuxinator.yml
+# ~/.tmuxinator/mucks.yml
 
 name: mucks
 root: ~/
