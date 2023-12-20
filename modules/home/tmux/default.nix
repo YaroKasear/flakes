@@ -10,6 +10,14 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    home = {
+      file.mucks = {
+        source = ../../../files/tmuxinator/mucks.yml;
+        target = ".config/tmuxinator/mucks.yml";
+      };
+    };
+
     programs = {
       tmux = {
         enable = true;

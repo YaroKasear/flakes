@@ -1,0 +1,22 @@
+# ./.tmuxinator.yml
+
+name: mucks
+root: ~/
+
+windows:
+  - leaders:
+      layout: tiled
+      panes:
+        - tf sandbox.yaro
+        - tf tlk.wanachi
+        - tf tlk.kubwini
+        - tf tlk.bikira
+  - popular:
+      layout: tiled
+      panes:
+        - tf tlk.tamani
+        - tf tlk.yaro
+        - tf tlk.morowa
+        - tf tlk.tofauti
+        - tf tlk.jua
+
