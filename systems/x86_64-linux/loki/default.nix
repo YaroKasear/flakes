@@ -5,6 +5,10 @@
     ./hw.nix
   ];
 
+  united = {
+    kmscon.enable = true;
+  };
+
   nix = {
     package = pkgs.nixFlakes;
     optimise.automatic = true;
