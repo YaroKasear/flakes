@@ -10,10 +10,24 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    united = {
+      blightmud.enable = false;
+      thunderbird.enable = true;
+      tinyfugue.enable = true;
+    };
+
     home = {
       packages = with pkgs;
       [
-
+        bitwarden
+        libreoffice-fresh
+        mattermost-desktop
+        scrot
+        skypeforlinux
+        steam-run
+        traceroute
+        yubioath-flutter
       ];
     };
   };

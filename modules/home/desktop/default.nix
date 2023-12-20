@@ -16,26 +16,19 @@ in {
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
+      mpv.enable = true;
     };
 
     home = {
       packages = with pkgs;
       [
-        bitwarden
         diffuse
         discord
         dotnet-runtime
-        libreoffice-fresh
-        mattermost-desktop
         nerdfonts
         powerline-fonts
-        scrot
-        skypeforlinux
-        steam-run
         telegram-desktop
-        traceroute
         virt-manager
-        yubioath-flutter
       ];
     };
   };
