@@ -3,6 +3,9 @@
 with lib;
 with lib.united;
 let
+  is-linux = pkgs.stdenv.isLinux;
+  is-darwin = pkgs.stdenv.isDarwin;
+
   cfg = config.united.tmux;
 in {
   options.united.tmux = {
@@ -10,7 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home = {
+    home = mkIf is-linux {
       file.mucks = {
         source = ../../../files/tmuxinator/mucks.yml;
         target = ".config/tmuxinator/mucks.yml";
