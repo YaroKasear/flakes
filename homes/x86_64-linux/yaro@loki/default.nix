@@ -12,7 +12,40 @@ with lib.united;
     thunderbird.enable = true;
     tinyfugue = {
       enable = true;
-      extraConfig = "/load -q ~/.worlds.tf";
+      extraConfig = ''
+        /def -i putfile = /putfile_MUCK %*
+
+        /def -i putfile_MUCK =\
+            @edit %{2-%{1}}%;\
+            1 99999 d%;\
+            i%;\
+            /quote -S '%1%;\
+            .%;\
+            c%;\
+            q
+
+        /def -i getfile_MUCK =\
+            /def -i -w -1 -aG -p98 -msimple -t"Editor exited." _getfile_end =\
+                /log -w OFF%%;\
+                /undef _getfile_quiet%;\
+            /def -i -w -1 -p99 -msimple -t"Entering editor." _getfile_start =\
+                /sys rm -f '%1'%%;\
+                /log -w %1%%;\
+                /def -i -w -p97 -ag -mglob -t"*" _getfile_quiet%;\
+            @edit %{2-%{1}}%;\
+            1 99999 l%;\
+            q
+
+        /def log_session = /log -w$[world_info()] ~/Personal Cloud/tflogs/$[world_info()]-$[ftime("%Y-%m-%d", time())]-loki.txt
+        /def -F -hCONNECT start_logging = /log_session
+
+        /repeat -1800 i wf
+
+        /def -mregexp -t"> Guest(\d) has connected.*" -F -p2 = /repeat -10 1 page guest%P1 = Hello! Welcome to -x TLK MUCK! Please let me know of any questions! Use the command 'page wanachi="message"' without the single quotes to do so!
+        /def -mregexp -t"> Guest(\d) has connected.*" -p1 = /repeat -0.1 30 /bee
+
+        /load -q ~/.worlds.tf
+      '';
     };
   };
 
