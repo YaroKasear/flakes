@@ -35,13 +35,13 @@ in {
     };
 
     programs = {
-      fzf.enable = true;
       home-manager.enable = true;
       nix-index.enable = true;
     };
 
     united = {
       btop.enable = true;
+      fzf.enable = true;
       git.enable = true;
       gnupg.enable = true;
       net-utils.enable = true;
