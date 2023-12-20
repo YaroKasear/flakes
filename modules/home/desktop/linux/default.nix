@@ -21,6 +21,7 @@ in {
       packages = with pkgs;
       [
         bitwarden
+        diffuse
         libreoffice-fresh
         mattermost-desktop
         scrot

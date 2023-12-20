@@ -22,7 +22,6 @@ in {
     home = {
       packages = with pkgs;
       [
-        diffuse
         discord
         dotnet-runtime
         nerdfonts
