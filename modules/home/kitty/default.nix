@@ -13,8 +13,10 @@ in {
     programs = {
       kitty = {
         enable = true;
-        font.name = "FiraCode Nerd Font";
-        font.package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        font = {
+          name = "FiraCode Nerd Font";
+          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        };
         shellIntegration = {
           enableBashIntegration = true;
           enableZshIntegration = true;

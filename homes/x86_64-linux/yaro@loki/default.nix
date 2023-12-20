@@ -7,33 +7,11 @@ with lib.united;
   united = {
     blightmud.enable = false;
     common.enable = true;
+    desktop.enable = true;
     i3.enable = true;
     mpv.enable = true;
     thunderbird.enable = true;
     tinyfugue.enable = true;
-  };
-
-  home = {
-    packages = with pkgs;
-    [
-      bitwarden
-      diffuse
-      discord
-      dotnet-runtime
-      libreoffice-fresh
-      mattermost-desktop
-      mpvScripts.mpris
-      neofetch
-      nerdfonts
-      powerline-fonts
-      scrot
-      skypeforlinux
-      steam-run
-      telegram-desktop
-      traceroute
-      virt-manager
-      yubioath-flutter
-    ];
   };
 
   programs = {
