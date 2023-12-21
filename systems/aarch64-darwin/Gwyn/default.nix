@@ -8,6 +8,10 @@
 
   nixpkgs.hostPlatform = "aarch64-darwin";
 
+  homebrew = {
+    enable = true;
+  };
+
   programs = {
     gnupg.agent = {
       enable = true;

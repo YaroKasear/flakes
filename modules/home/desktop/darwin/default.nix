@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -10,11 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home = {
-      packages = with pkgs;
-      [
-
-      ];
-    };
+    programs.zsh.profileExtra = "eval \"$(/opt/homebrew/bin/brew shellenv)\"\n";
   };
 }
