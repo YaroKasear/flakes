@@ -50,6 +50,24 @@
         TimeoutStopSec = 10;
       };
     };
+    tmpfiles.settings = {
+      "10-fix-dotconfig" = {
+        "/home/yaro/.config" = {
+          d = {
+            user = "yaro";
+            group = "users";
+            mode = "0755";
+          };
+        };
+        "/home/yaro/.config/Yubico" = {
+          d = {
+            user = "yaro";
+            group = "users";
+            mode = "0755";
+          };
+        };
+      };
+    };
   };
 
   networking = {
