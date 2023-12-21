@@ -9,14 +9,10 @@
         "xhci_pci"
         "ahci"
         "usbhid"
-        "usb_storage"
         "sd_mod"
-        "sr_mod"
       ];
-      kernelModules = [ ];
     };
     kernelPackages = pkgs.linuxPackages_zen;
-    kernelModules = [ "kvm-amd" ];
     loader = {
       systemd-boot = {
         enable = true;
@@ -59,7 +55,6 @@
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
     enableRedistributableFirmware = lib.mkDefault true;
-    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -172,7 +167,7 @@
     xserver = {
       enable = true;
       layout = "us";
-      videoDrivers = ["nvidia"];
+      # videoDrivers = ["nvidia"];
       displayManager.lightdm.enable = true;
       windowManager.i3 = {
         enable = true;
