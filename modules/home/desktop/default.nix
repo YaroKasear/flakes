@@ -13,6 +13,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    nixpkgs.config.allowUnfree = true;
+
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;

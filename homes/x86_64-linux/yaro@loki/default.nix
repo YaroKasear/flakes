@@ -2,8 +2,6 @@
 
 with lib.united;
 {
-  nixpkgs.config.allowUnfree = true;
-
   united = {
     am2r.enable = true;
     common.enable = true;
