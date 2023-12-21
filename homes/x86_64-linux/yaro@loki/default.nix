@@ -5,6 +5,7 @@ with lib.united;
   nixpkgs.config.allowUnfree = true;
 
   united = {
+    am2r.enable = true;
     common.enable = true;
     desktop.enable = true;
     i3.enable = true;
@@ -26,15 +27,6 @@ with lib.united;
       terminal = false;
       categories = [ "Game" ];
       icon = "/mnt/games/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux/data/icon.png";
-    };
-    am2r = {
-      name = "Another Metroid 2 Remake";
-      genericName = "Metroid Fan Remake of Metroid 2: Return of Samus";
-      type = "Application";
-      exec = "steam-run  /mnt/games/Another\\ Metroid\\ 2\\ Remake/runner";
-      terminal = false;
-      categories = [ "Game" ];
-      icon = "/mnt/games/Another\\ Metroid\\ 2\\ Remake/icon.png";
     };
   };
 }
