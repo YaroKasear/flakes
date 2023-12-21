@@ -17,6 +17,7 @@ in {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
       mpv.enable = true;
+      vscode.enable = true;
     };
 
     home = {

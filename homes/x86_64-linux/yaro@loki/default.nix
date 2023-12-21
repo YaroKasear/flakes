@@ -14,7 +14,6 @@ with lib.united;
 
   programs = {
     firefox.enable = true;
-    vscode.enable = true;
   };
 
   services.nextcloud-client.enable = true;
