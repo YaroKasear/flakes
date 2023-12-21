@@ -13,6 +13,18 @@ in {
     programs = {
       vscode = {
         enable = true;
+        userSettings = {
+          "editor.wordWrap"= "on";
+          "git.confirmSync"= false;
+          "git.enableSmartCommit"= true;
+          "workbench.startupEditor"= "none";
+          "files.trimTrailingWhitespace"= true;
+          "editor.renderWhitespace"= "boundary";
+          "security.workspace.trust.untrustedFiles"= "open";
+          "editor.tabSize"= 2;
+          "editor.fontFamily"= "'FiraCode Nerd Font Mono','Droid Sans Mono', 'monospace', monospace";
+          "update.mode"= "none";
+        };
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "jinjahtml";
