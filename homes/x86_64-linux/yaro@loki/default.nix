@@ -9,6 +9,7 @@ with lib.united;
     common.enable = true;
     desktop.enable = true;
     i3.enable = true;
+    sonic3air.enable = true;
   };
 
   programs = {
@@ -17,16 +18,4 @@ with lib.united;
   };
 
   services.nextcloud-client.enable = true;
-
-  xdg.desktopEntries = {
-    sonic3air = {
-      name = "Sonic 3: Angel Island Revisited";
-      genericName = "Sonic Fan Remaster of Sonic 3 & Knuckles";
-      type = "Application";
-      exec = "steam-run /mnt/games/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux";
-      terminal = false;
-      categories = [ "Game" ];
-      icon = "/mnt/games/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux/data/icon.png";
-    };
-  };
 }

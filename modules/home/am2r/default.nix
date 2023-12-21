@@ -12,7 +12,7 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.file.config = {
+    home.file.am2r-config = {
       source = ../../../files/am2r/config.ini;
       target = ".config/AM2R/config.ini";
     };

@@ -1,0 +1,154 @@
+{
+	"ActiveSoundtrack" : 1,
+	"Audio_MusicVolume" : 0.80000001192092896,
+	"Audio_SoundVolume" : 0.80000001192092896,
+	"AutoAssignGamepadPlayerIndex" : 0,
+	"Backdrop" : 0,
+	"BackgroundBlur" : 4,
+	"CleanupSettings" : 0,
+	"DisplayIndex" : 0,
+	"FailSafeMode" : false,
+	"Filtering" : 1,
+	"FrameSync" : 0,
+	"Fullscreen" : 2,
+	"GameExePath" : "/home/yaro/Sonic 3: Angel Island Revisited/sonic3air_linux",
+	"GameRecordingMode" : -1,
+	"GameServer" : 
+	{
+		"GhostSync" : 
+		{
+			"ChannelName" : "world",
+			"Enabled" : 0,
+			"ShowOffscreenGhosts" : 1
+		},
+		"ServerAddress" : "sonic3air.org",
+		"ServerPortTCP" : 21095,
+		"ServerPortUDP" : 21094,
+		"ServerPortWSS" : 21096,
+		"UpdateCheck" : 
+		{
+			"ReleaseChannel" : 0
+		}
+	},
+	"GameSettings" : 
+	{
+		"SETTING_AIZ_BLIMPSEQUENCE" : 1,
+		"SETTING_AUDIO_COMPETITION_MENU" : 0,
+		"SETTING_AUDIO_CONTINUE_SCREEN" : 1,
+		"SETTING_AUDIO_EXTRALIFE_JINGLE" : 16,
+		"SETTING_AUDIO_HPZ_MUSIC" : 2,
+		"SETTING_AUDIO_INVINCIBILITY_THEME" : 16,
+		"SETTING_AUDIO_KNUCKLES_THEME" : 16,
+		"SETTING_AUDIO_MINIBOSS_THEME" : 16,
+		"SETTING_AUDIO_OUTRO" : 1,
+		"SETTING_AUDIO_SUPER_THEME" : 2,
+		"SETTING_AUDIO_TITLE_THEME" : 0,
+		"SETTING_BS_COUNTDOWN_RINGS" : 1,
+		"SETTING_BS_REPEAT_ON_FAIL" : 0,
+		"SETTING_BS_VISUAL_STYLE" : 3,
+		"SETTING_BUBBLE_SHIELD_BOUNCE" : 1,
+		"SETTING_CAMERA_OUTRUN" : 1,
+		"SETTING_CANCEL_FLIGHT" : 1,
+		"SETTING_CNZ_PROTOTYPE_MUSIC" : 0,
+		"SETTING_CONTINUE_MUSIC" : 1,
+		"SETTING_DISABLE_GHOST_SPAWN" : 0,
+		"SETTING_DROPDASH" : 1,
+		"SETTING_EXTENDED_CAMERA" : 1,
+		"SETTING_EXTENDED_HUD" : 1,
+		"SETTING_FBZ2_MIDBOSS_TRACK" : 1,
+		"SETTING_FIX_GLITCHES" : 1,
+		"SETTING_GFX_ANTIFLICKER" : 2,
+		"SETTING_HYPER_DASH_CONTROLS" : 0,
+		"SETTING_HYPER_TAILS" : 1,
+		"SETTING_ICZ_NIGHTTIME" : 1,
+		"SETTING_ICZ_PROTOTYPE_MUSIC" : 0,
+		"SETTING_INFINITE_LIVES" : 0,
+		"SETTING_INFINITE_TIME" : 0,
+		"SETTING_INSTA_SHIELD" : 1,
+		"SETTING_LBZ_BIGARMS" : 1,
+		"SETTING_LBZ_PROTOTYPE_MUSIC" : 0,
+		"SETTING_LEVELLAYOUTS" : 2,
+		"SETTING_LIVES_DISPLAY" : 0,
+		"SETTING_LRZ2_BOSS" : 0,
+		"SETTING_MAINTAIN_SHIELDS" : 1,
+		"SETTING_MONITOR_BEHAVIOR" : 1,
+		"SETTING_MONITOR_STYLE" : 0,
+		"SETTING_NO_CONTROL_LOCK" : 1,
+		"SETTING_RANDOM_MONITORS" : 0,
+		"SETTING_RANDOM_SPECIALSTAGES" : 1,
+		"SETTING_REGION_CODE" : 0,
+		"SETTING_SHIELD_TYPES" : 3,
+		"SETTING_SMOOTH_ROTATION" : 1,
+		"SETTING_SPEEDUP_AFTERIMGS" : 1,
+		"SETTING_SSZ_BOSS_TRACKS" : 1,
+		"SETTING_SUPERFAST_RUNANIM" : 1,
+		"SETTING_SUPER_CANCEL" : 1,
+		"SETTING_SUPER_SONIC_ABILITY" : 1,
+		"SETTING_TAILS_ASSIST_MODE" : 1,
+		"SETTING_TIME_ATTACK_GHOSTS" : 3,
+		"SETTING_UNDERWATER_AUDIO" : 1
+	},
+	"GameVersion" : "22.09.10.0",
+	"InstantTimeAttackRestart" : 0,
+	"ModSettings" : 
+	{
+		"1103 fbz bg + night bg" : 
+		{
+			"bgtype" : 1,
+			"time" : 1
+		},
+		"Outro Theme For Hidden Palace" : 
+		{
+			"HiddenPalaceZoneOutroTrack" : 0
+		},
+		"S3C Casual Mode" : 
+		{
+			"ShowHud" : 1,
+			"TakeDamage" : 0
+		},
+		"Title Cards Elements" : 
+		{
+			"BlueSphereResultStyle" : 0,
+			"MushroomValley" : 1,
+			"RedBarGameName" : 4
+		},
+		"menu sprites - MAIN" : 
+		{
+			"DataSelectContinues" : 0,
+			"DataSelectMenuStyle" : 2
+		},
+		"og_zone_order_37640.zip" : 
+		{
+			"knuxact2bosscnz" : 1
+		},
+		"s3c_zone_icons_1bf5e.zip" : 
+		{
+			"ExtraIcons" : 1,
+			"spriteType" : 1
+		}
+	},
+	"PerformanceDisplay" : 0,
+	"PlatformFlags" : -1,
+	"PreferredGamepadPlayer1" : "",
+	"PreferredGamepadPlayer2" : "",
+	"RenderMethod" : "auto",
+	"RomPath" : "/home/yaro/.local/share/Sonic3AIR/Sonic_Knuckles_wSonic3.bin",
+	"Scanlines" : 0,
+	"ScriptOptimizationLevel" : -1,
+	"Upscaling" : 0,
+	"VirtualGamepad" : 
+	{
+		"ButtonsPosX" : 0,
+		"ButtonsPosY" : 0,
+		"ButtonsSize" : 100,
+		"DPadPosX" : 0,
+		"DPadPosY" : 0,
+		"DPadSize" : 100,
+		"GameRecPosX" : 0,
+		"GameRecPosY" : 0,
+		"Opacity" : 0.80000001192092896,
+		"StartPosX" : 0,
+		"StartPosY" : 0
+	},
+	"Volume" : 1.0
+}
