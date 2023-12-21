@@ -1,12 +1,73 @@
 { lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
 
 {
-  imports = [
-    ./hw.nix
+  boot = {
+    extraModulePackages = [ ];
+    initrd = {
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "sr_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelModules = [ "kvm-amd" ];
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
+      };
+      efi.canTouchEfiVariables = true;
+    };
+    tmp.useTmpfs = true;
+  };
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
+  environment.systemPackages = with pkgs; [
+    wget
+    polkit_gnome
+    pavucontrol
+    pulseaudio
+    yubikey-personalization
+    nfs-utils
+    nix-diff
   ];
 
-  united = {
-    kmscon.enable = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    enableRedistributableFirmware = lib.mkDefault true;
+    cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  };
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  networking = {
+    hostName = "loki";
+    networkmanager.enable = true;
+    useDHCP = lib.mkDefault true;
   };
 
   nix = {
@@ -24,16 +85,11 @@
     '';
   };
 
-  boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
-      };
-      efi.canTouchEfiVariables = true;
-    };
-    tmp.useTmpfs = true;
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+  programs = {
+    zsh.enable = true;
+    ssh.startAgent = false;
   };
 
   systemd = {
@@ -70,36 +126,13 @@
     };
   };
 
-  networking = {
-    hostName = "loki";
-    networkmanager.enable = true;
-  };
-
   time.timeZone = "America/Chicago";
 
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
-    nvidia = {
-      modesetting.enable = true;
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-    };
+  united = {
+    base-mounts.enable = true;
+    game-mounts.enable = true;
+    kmscon.enable = true;
+    media-mounts.enable = true;
   };
 
   security = {
@@ -164,15 +197,12 @@
     pcscd.enable = true;
   };
 
-  programs = {
-    zsh.enable = true;
-    ssh.startAgent = false;
-  };
-
   sound = {
     enable = true;
     mediaKeys.enable = true;
   };
+
+  system.stateVersion = "23.05";
 
   users = {
     mutableUsers = false;
@@ -183,17 +213,4 @@
       hashedPasswordFile = config.sops.secrets."users/users/yaro/hashedPasswordFile".path;
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    wget
-    polkit_gnome
-    pavucontrol
-    pulseaudio
-    yubikey-personalization
-    nfs-utils
-    nix-diff
-  ];
-
-  system.stateVersion = "23.05";
 }
-
