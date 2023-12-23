@@ -13,9 +13,9 @@
 	"Fullscreen" : 2,
 	"GameExePath" : "/home/yaro/Sonic 3: Angel Island Revisited/sonic3air_linux",
 	"GameRecordingMode" : -1,
-	"GameServer" : 
+	"GameServer" :
 	{
-		"GhostSync" : 
+		"GhostSync" :
 		{
 			"ChannelName" : "world",
 			"Enabled" : 0,
@@ -25,12 +25,12 @@
 		"ServerPortTCP" : 21095,
 		"ServerPortUDP" : 21094,
 		"ServerPortWSS" : 21096,
-		"UpdateCheck" : 
+		"UpdateCheck" :
 		{
 			"ReleaseChannel" : 0
 		}
 	},
-	"GameSettings" : 
+	"GameSettings" :
 	{
 		"SETTING_AIZ_BLIMPSEQUENCE" : 1,
 		"SETTING_AUDIO_COMPETITION_MENU" : 0,
@@ -90,38 +90,38 @@
 	},
 	"GameVersion" : "22.09.10.0",
 	"InstantTimeAttackRestart" : 0,
-	"ModSettings" : 
+	"ModSettings" :
 	{
-		"1103 fbz bg + night bg" : 
+		"1103 fbz bg + night bg" :
 		{
 			"bgtype" : 1,
 			"time" : 1
 		},
-		"Outro Theme For Hidden Palace" : 
+		"Outro Theme For Hidden Palace" :
 		{
 			"HiddenPalaceZoneOutroTrack" : 0
 		},
-		"S3C Casual Mode" : 
+		"S3C Casual Mode" :
 		{
 			"ShowHud" : 1,
 			"TakeDamage" : 0
 		},
-		"Title Cards Elements" : 
+		"Title Cards Elements" :
 		{
 			"BlueSphereResultStyle" : 0,
 			"MushroomValley" : 1,
 			"RedBarGameName" : 4
 		},
-		"menu sprites - MAIN" : 
+		"menu sprites - MAIN" :
 		{
 			"DataSelectContinues" : 0,
 			"DataSelectMenuStyle" : 2
 		},
-		"og_zone_order_37640.zip" : 
+		"og_zone_order_37640.zip" :
 		{
 			"knuxact2bosscnz" : 1
 		},
-		"s3c_zone_icons_1bf5e.zip" : 
+		"s3c_zone_icons_1bf5e.zip" :
 		{
 			"ExtraIcons" : 1,
 			"spriteType" : 1
@@ -132,11 +132,11 @@
 	"PreferredGamepadPlayer1" : "",
 	"PreferredGamepadPlayer2" : "",
 	"RenderMethod" : "auto",
-	"RomPath" : "/home/yaro/.local/share/Sonic3AIR/Sonic_Knuckles_wSonic3.bin",
+	"RomPath" : "/mnt/games/Emulation/roms/genesis/Sonic_Knuckles_wSonic3.bin",
 	"Scanlines" : 0,
 	"ScriptOptimizationLevel" : -1,
 	"Upscaling" : 0,
-	"VirtualGamepad" : 
+	"VirtualGamepad" :
 	{
 		"ButtonsPosX" : 0,
 		"ButtonsPosY" : 0,
