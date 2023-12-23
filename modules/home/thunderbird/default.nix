@@ -19,9 +19,5 @@ in {
         };
       };
     };
-
-    sops.secrets.thunderbird-logins = {
-      path = ".thunderbird/default/logins.json";
-    };
   };
 }
