@@ -8,10 +8,10 @@
 	"CleanupSettings" : 0,
 	"DisplayIndex" : 0,
 	"FailSafeMode" : false,
-	"Filtering" : 1,
+	"Filtering" : 6,
 	"FrameSync" : 0,
 	"Fullscreen" : 2,
-	"GameExePath" : "/home/yaro/Sonic 3: Angel Island Revisited/sonic3air_linux",
+	"GameExePath" : "/mnt/games/Sonic 3: Angel Island Revisited/sonic3air_linux",
 	"GameRecordingMode" : -1,
 	"GameServer" :
 	{
@@ -41,7 +41,7 @@
 		"SETTING_AUDIO_KNUCKLES_THEME" : 16,
 		"SETTING_AUDIO_MINIBOSS_THEME" : 16,
 		"SETTING_AUDIO_OUTRO" : 1,
-		"SETTING_AUDIO_SUPER_THEME" : 2,
+		"SETTING_AUDIO_SUPER_THEME" : 0,
 		"SETTING_AUDIO_TITLE_THEME" : 0,
 		"SETTING_BS_COUNTDOWN_RINGS" : 1,
 		"SETTING_BS_REPEAT_ON_FAIL" : 0,
