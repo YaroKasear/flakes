@@ -124,10 +124,8 @@
   time.timeZone = "America/Chicago";
 
   united = {
-    base-mounts.enable = true;
-    game-mounts.enable = true;
+    desktop-mounts.enable = true;
     kmscon.enable = true;
-    media-mounts.enable = true;
   };
 
   security = {
