@@ -15,29 +15,5 @@ in {
       "ccccccjfkvnh"
       "ccccccvvktff"
     ];
-
-    programs.gpg = {
-      publicKeys = [
-        {
-          source = ../../../files/gnupg/yubikey.asc;
-          trust = 5;
-        }
-      ];
-      scdaemonSettings = {
-        disable-ccid = true;
-      };
-    };
-
-    services = {
-      gpg-agent = {
-        enable = pkgs.hostPlatform.isLinux;
-        enableSshSupport = true;
-        defaultCacheTtl = 60;
-        maxCacheTtl = 120;
-        extraConfig = ''
-          ttyname $GPG_TTY
-        '';
-      };
-    };
   };
 }

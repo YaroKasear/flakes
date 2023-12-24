@@ -3,6 +3,9 @@
 with lib;
 with lib.united;
 let
+  is-linux = pkgs.stdenv.isLinux;
+  is-darwin = pkgs.stdenv.isDarwin;
+
   cfg = config.united.gnupg;
 in {
   options.united.gnupg = {
@@ -17,6 +20,28 @@ in {
           no-greeting = true;
           throw-keyids = true;
         };
+        publicKeys = [
+          {
+            source = ../../../files/gnupg/yubikey.asc;
+            trust = 5;
+          }
+        ];
+        scdaemonSettings = {
+          disable-ccid = true;
+        };
+      };
+    };
+
+    services = mkIf is-linux {
+      gpg-agent = {
+        enable = pkgs.hostPlatform.isLinux;
+        enableSshSupport = true;
+        defaultCacheTtl = 60;
+        maxCacheTtl = 120;
+        pinentryFlavor = "gtk2";
+        extraConfig = ''
+          ttyname $GPG_TTY
+        '';
       };
     };
   };
