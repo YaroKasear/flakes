@@ -13,6 +13,7 @@ in {
     united = {
       autorandr.enable = true;
       kitty.enable = true;
+      nitrogen.enable = true;
       polybar.enable = true;
       picom.enable = true;
     };
@@ -32,7 +33,6 @@ in {
         dex
         dunst
         networkmanagerapplet
-        nitrogen
         playerctl
         wp-gen
       ];

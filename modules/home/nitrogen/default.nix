@@ -11,17 +11,17 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; {
+      packages = with pkgs; [
         nitrogen
-      };
+      ];
       file = {
         bg-saved = {
           source = ../../../files/nitrogen/bg-saved.cfg;
-          target = ".config/nitrogen/bg-saved.cfg"
+          target = ".config/nitrogen/bg-saved.cfg";
         };
         nitrogen = {
           source = ../../../files/nitrogen/nitrogen.cfg;
-          target = ".config/nitrogen/nitrogen.cfg"
+          target = ".config/nitrogen/nitrogen.cfg";
         };
       };
     };
