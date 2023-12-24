@@ -38,7 +38,7 @@ in {
         enableSshSupport = true;
         defaultCacheTtl = 60;
         maxCacheTtl = 120;
-        pinentryFlavor = "gtk2";
+        pinentryFlavor = "gnome3";
         extraConfig = ''
           ttyname $GPG_TTY
         '';
