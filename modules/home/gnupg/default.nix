@@ -34,7 +34,7 @@ in {
 
     services = mkIf is-linux {
       gpg-agent = {
-        enable = pkgs.hostPlatform.isLinux;
+        enable = true;
         enableSshSupport = true;
         defaultCacheTtl = 60;
         maxCacheTtl = 120;
