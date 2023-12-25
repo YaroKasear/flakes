@@ -13,6 +13,7 @@ in {
 
     united = {
       blightmud.enable = false;
+      redshift.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;
     };
@@ -26,6 +27,7 @@ in {
         mattermost-desktop
         scrot
         skypeforlinux
+        steam
         steam-run
         traceroute
         yubioath-flutter
