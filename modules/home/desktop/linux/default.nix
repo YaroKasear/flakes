@@ -12,8 +12,6 @@ in {
   config = mkIf cfg.enable {
 
     united = {
-      blightmud.enable = false;
-      redshift.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;
     };

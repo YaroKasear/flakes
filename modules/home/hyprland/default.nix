@@ -9,8 +9,17 @@ in {
     enable = mkEnableOption "Hyprland";
   };
 
+
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      libsForQt5.qt5.qtwayland
+      libsForQt5.qt5ct
+      libva
+    ];
+
     programs.wofi.enable = true;
+
+    united.kitty.enable = true;
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -19,8 +28,13 @@ in {
         "$terminal" = "kitty";
         "$menu" = "wofi --show drun";
         env = [
-          "XCURSOR_SIZE,24"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "GBM_BACKEND,nvidia-drm"
+          "LIBVA_DRIVER_NAME,nvidia"
           "QT_QPA_PLATFORMTHEME,qt5ct"
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "XCURSOR_SIZE,24"
+          "XDG_SESSION_TYPE,wayland"
         ];
         input = {
           kb_layout = "us";
