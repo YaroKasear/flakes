@@ -125,7 +125,7 @@
 
   united = {
     desktop-mounts.enable = true;
-    kmscon.enable = true;
+    kmscon.enable = false;
   };
 
   security = {
@@ -163,10 +163,10 @@
 
   services = {
     xserver = {
-      enable = true;
+      enable = false;
       layout = "us";
       # videoDrivers = ["nvidia"];
-      displayManager.lightdm.enable = true;
+      displayManager.lightdm.enable = false;
       windowManager.i3 = {
         enable = true;
       };
@@ -180,7 +180,7 @@
       pulse.enable = true;
     };
     gnome.gnome-keyring.enable = true;
-    gpm.enable = true;
+    gpm.enable = false;
     openssh = {
       enable = true;
     };

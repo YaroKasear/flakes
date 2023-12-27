@@ -6,7 +6,8 @@ with lib.united;
     am2r.enable = true;
     common.enable = true;
     desktop.enable = true;
-    i3.enable = true;
+    hyprland.enable = true;
+    i3.enable = false;
     sonic3air.enable = true;
   };
 
