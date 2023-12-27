@@ -30,7 +30,7 @@ in {
         steam
         steam-run
         traceroute
-        # yubioath-flutter Broken!
+        yubioath-flutter
       ];
     };
   };
