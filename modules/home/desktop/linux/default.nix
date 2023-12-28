@@ -7,6 +7,8 @@ let
 in {
   options.united.desktop.linux = {
     enable = mkEnableOption "Linux Desktop";
+
+    waylandSupport = mkEnableOption "Wayland Support";
   };
 
   config = mkIf cfg.enable {

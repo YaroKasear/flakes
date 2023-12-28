@@ -15,7 +15,11 @@ in {
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
       libva
+      hyprpaper
+      swaynotificationcenter
+      xdg-desktop-portal-hyprland
     ];
+
 
     programs.wofi.enable = true;
 
@@ -23,42 +27,75 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
-      settings = {
-        monitor = ",preferred,auto,auto";
+      settings = with config.united.user.colors; {
+        "$primary" = "rgb(${lib.replaceStrings ["#"] [""] primary})";
+        "$secondary" = "rgb(${lib.replaceStrings ["#"] [""] secondary})";
+        "$tertiary" = "rgb(${lib.replaceStrings ["#"] [""] tertiary})";
+        "$window" = "rgb(${lib.replaceStrings ["#"] [""] window})";
+        "$alert" = "rgb(${lib.replaceStrings ["#"] [""] alert})";
+        "$white" = "rgb(${lib.replaceStrings ["#"] [""] white})";
+        "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
+        "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
+        "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";
+        "$yellow" = "rgb(${lib.replaceStrings ["#"] [""] yellow})";
+        "$blue" = "rgb(${lib.replaceStrings ["#"] [""] blue})";
+        "$purple" = "rgb(${lib.replaceStrings ["#"] [""] purple})";
+        "$cyan" = "rgb(${lib.replaceStrings ["#"] [""] cyan})";
+        "$pink" = "rgb(${lib.replaceStrings ["#"] [""] pink})";
+        "$orange" = "rgb(${lib.replaceStrings ["#"] [""] orange})";
+
+        exec-once = "swaync";
+
+        monitor = ",highrr,auto,auto";
         "$terminal" = "kitty";
         "$menu" = "wofi --show drun";
+
         env = [
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "GBM_BACKEND,nvidia-drm"
           "LIBVA_DRIVER_NAME,nvidia"
           "QT_QPA_PLATFORMTHEME,qt5ct"
           "WLR_NO_HARDWARE_CURSORS,1"
+          "WLR_DRM_NO_ATOMIC,1"
           "XCURSOR_SIZE,24"
+          "XDG_CURRENT_DESKTOP=Hyprland"
+          "XDG_SESSION_DESKTOP=Hyprland"
           "XDG_SESSION_TYPE,wayland"
+          "__GL_GSYNC_ALLOWED,1"
         ];
+
         input = {
-          kb_layout = "us";
-          follow_mouse = 1;
-          sensitivity = 0;
+          numlock_by_default = true;
         };
+
         general = {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
+          "col.inactive_border" = "$secondary";
+          "col.active_border" = "$primary";
           layout = "dwindle";
+          resize_on_border = true;
+          allow_tearing = true;
         };
+
         decoration = {
           rounding = 10;
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
-            vibrancy = 0.1696;
-          };
           drop_shadow = true;
           shadow_range = 4;
           shadow_render_power = 3;
         };
+
+        dwindle = {
+          smart_split = true;
+          smart_resizing = true;
+        };
+
+        master = {
+          allow_small_split = true;
+          new_is_master = false;
+        };
+
         animations = {
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
@@ -71,29 +108,42 @@ in {
             "workspaces, 1, 6, default"
           ];
         };
-        dwindle = {
-          pseudotile = true;
-          preserve_split = true;
+
+        misc = {
+          background_color = "$tertiary";
+          disable_hyprland_logo = true;
+          vrr = 1;
         };
-        master = {
-          new_is_master = true;
-        };
-        misc.force_default_wallpaper = -1;
-        windowrulev2 = "nomaximizerequest, class:.*";
+
+        windowrulev2 = [
+          "nomaximizerequest, class:.*"
+          "float, title:^(Picture-in-Picture)$"
+          "size 800 450, title:(Picture-in-Picture)"
+          "pin, title:^(Picture-in-Picture)$"
+          "float, title:^(Firefox)$"
+          "size 800 450, title:(Firefox)"
+          "pin, title:^(Firefox)"
+          "immediate, class:^(cs2)$"
+        ];
+
         "$mainMod" = "SUPER";
+
         bind = [
           "$mainMod, Q, exec, $terminal"
-          "$mainMod, C, killactive,"
-          "$mainMod, M, exit,"
-          "$mainMod, E, exec, $fileManager"
-          "$mainMod, V, togglefloating,"
-          "$mainMod, R, exec, $menu"
-          "$mainMod, P, pseudo, # dwindle"
-          "$mainMod, J, togglesplit,"
+          "$mainMod SHIFT, Q, killactive,"
+          "$mainMod SHIFT, E, exit,"
+          "$mainMod, E, togglegroup,"
+          "$mainMod, code:65, togglefloating,"
+          "$mainMod SHIFT, code:65, pin,"
+          "$mainMod SHIFT, N, exec, swanc-client -t sw"
+          "$mainMod, D, exec, $menu"
+          "$mainMod, F, fullscreen,"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
+          "$mainMod SHIFT, left, swapnext, prev"
+          "$mainMod SHIFT, right, swapnext,"
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
@@ -119,6 +169,7 @@ in {
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
         ];
+
         bindm = [
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"

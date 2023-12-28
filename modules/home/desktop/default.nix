@@ -18,6 +18,7 @@ in {
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
+      discord.enable = true;
       mpv.enable = true;
       vscode.enable = true;
     };
@@ -25,7 +26,7 @@ in {
     home = {
       packages = with pkgs;
       [
-        discord
+        # discord
         dotnet-runtime
         nerdfonts
         powerline-fonts
