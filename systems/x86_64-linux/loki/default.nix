@@ -38,6 +38,12 @@
     nix-diff
   ];
 
+  fileSystems."/mnt/containers" = {
+    device = "storage.kasear.net:/mnt/data/containers";
+    fsType = "nfs";
+    options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+  };
+
   hardware = {
     opengl = {
       enable = true;

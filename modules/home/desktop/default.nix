@@ -32,6 +32,9 @@ in {
         noto-fonts-color-emoji
         powerline-fonts
         telegram-desktop
+        unifont
+        unifont_upper
+        symbola
         virt-manager
       ];
     };
