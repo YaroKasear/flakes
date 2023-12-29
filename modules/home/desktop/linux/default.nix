@@ -12,11 +12,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-
     united = {
       thunderbird.enable = true;
       tinyfugue.enable = true;
     };
+
+    fonts.fontconfig.enable = true;
 
     home = {
       packages = with pkgs;

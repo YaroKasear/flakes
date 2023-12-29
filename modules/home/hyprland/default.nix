@@ -9,7 +9,6 @@ in {
     enable = mkEnableOption "Hyprland";
   };
 
-
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       libsForQt5.qt5.qtwayland
@@ -20,10 +19,12 @@ in {
       xdg-desktop-portal-hyprland
     ];
 
-
     programs.wofi.enable = true;
 
-    united.kitty.enable = true;
+    united = {
+      kitty.enable = true;
+      waybar.enable = true;
+    };
 
     wayland.windowManager.hyprland = {
       enable = true;
@@ -44,7 +45,10 @@ in {
         "$pink" = "rgb(${lib.replaceStrings ["#"] [""] pink})";
         "$orange" = "rgb(${lib.replaceStrings ["#"] [""] orange})";
 
-        exec-once = "swaync";
+        exec-once = [
+          "swaync"
+          "waybar"
+        ];
 
         monitor = ",highrr,auto,auto";
         "$terminal" = "kitty";

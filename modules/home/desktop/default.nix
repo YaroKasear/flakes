@@ -26,9 +26,10 @@ in {
     home = {
       packages = with pkgs;
       [
-        # discord
         dotnet-runtime
+        font-awesome
         nerdfonts
+        noto-fonts-color-emoji
         powerline-fonts
         telegram-desktop
         virt-manager
