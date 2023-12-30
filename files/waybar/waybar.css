@@ -41,6 +41,16 @@ tooltip label {
     font-weight: bold;
 }
 
+#window, #status {
+    padding: 2px 5px;
+    background: @primary;
+    color: @secondary;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 #mode, #clock, #battery {
     padding: 0 10px;
 }

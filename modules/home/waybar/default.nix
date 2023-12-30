@@ -21,6 +21,7 @@ in {
         topBar = {
           layer = "top";
           spacing = 4;
+          height = 32;
           modules-left = [
             "wireplumber"
           ];
@@ -104,18 +105,28 @@ in {
         };
         bottomBar = {
           layer = "top";
+          height = 32;
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
           modules-left = ["hyprland/workspaces"];
           modules-center = ["hyprland/window"];
-          modules-right = ["tray" "user"];
+          modules-right = ["group/status"];
           user = {
-            format = "{user} ";
+            format = " {user} ";
+          };
+          "custom/spacer" = {
+            format = " ";
           };
           "hyprland/workspaces" = {
             format = "{id}";
-            format-window-separator = " ";
+          };
+          "hyprland/window" = {
+            format = " {title} ";
+          };
+          "group/status" = {
+            orientation = "inherit";
+            modules = [ "custom/spacer" "tray" "user" ];
           };
         };
       };
