@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  is-wayland = config.united.wayland.enable;
+
   cfg = config.united.desktop.linux;
 in {
   options.united.desktop.linux = {
@@ -13,6 +15,8 @@ in {
 
   config = mkIf cfg.enable {
     united = {
+      i3.enable = !is-wayland;
+      hyprland.enable = is-wayland;
       thunderbird.enable = true;
       tinyfugue.enable = true;
     };
@@ -26,6 +30,7 @@ in {
         diffuse
         libreoffice-fresh
         mattermost-desktop
+        playerctl
         scrot
         skypeforlinux
         steam

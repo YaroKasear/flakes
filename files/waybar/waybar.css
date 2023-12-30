@@ -1,0 +1,52 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: FiraCode Nerd Font, NotoSans Nerd Font;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: @secondary;
+    color: @primary;
+}
+
+window#waybar.topBar {
+    border-bottom: 1px solid @primary;
+}
+
+window#waybar.bottomBar {
+    border-top: 1px solid @primary;
+}
+
+tooltip {
+  background: @secondary;
+  border: 1px solid @primary;
+}
+
+tooltip label {
+  color: @primary;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background: transparent;
+    color: @primary;
+    border-top: 3px solid transparent;
+}
+
+#workspaces button.focused {
+    background: @window;
+    border-top: 3px solid @primary;
+}
+
+#mode, #clock, #battery {
+    padding: 0 10px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: black;
+    }
+}

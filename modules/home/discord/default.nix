@@ -3,8 +3,7 @@
 with lib;
 with lib.united;
 let
-  is-linux = pkgs.stdenv.isLinux;
-  is-darwin = pkgs.stdenv.isDarwin;
+  is-wayland = config.united.wayland.enable;
 
   cfg = config.united.discord;
 in {
@@ -13,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = if is-linux
+    home.packages = if is-wayland
     then
       [
         (pkgs.writeShellScriptBin "discord" ''
@@ -22,10 +21,10 @@ in {
       ]
     else
       [
-        discord
+        pkgs.discord
       ];
 
-    xdg.desktopEntries = mkIf is-linux {
+    xdg.desktopEntries = mkIf is-wayland {
       discord = {
         categories = [
           "Network"

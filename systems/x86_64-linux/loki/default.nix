@@ -132,6 +132,7 @@
   united = {
     desktop-mounts.enable = true;
     kmscon.enable = false;
+    wayland.enable = true;
   };
 
   security = {

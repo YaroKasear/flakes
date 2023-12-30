@@ -31,7 +31,7 @@ in {
     colors = {
       primary = mkOption {
         type = types.str;
-        default = "#18FFD8";
+        default = "#18ffd8";
       };
       secondary = mkOption {
         type = types.str;
@@ -47,7 +47,7 @@ in {
       };
       alert = mkOption {
         type = types.str;
-        default = "#FF4848";
+        default = "#ff4848";
       };
       white = mkOption {
         type = types.str;

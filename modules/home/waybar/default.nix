@@ -10,24 +10,32 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.file.waybar-css = {
+      source = ../../../files/waybar/waybar.css;
+      target = ".config/waybar/waybar.css";
+    };
+
     programs.waybar = {
       enable = true;
       settings = {
         topBar = {
           layer = "top";
           height = 32;
+          spacing = 4;
           modules-left = [
-            "cava"
             "wireplumber"
           ];
           modules-center = [
-            "clock"
+            "cava"
           ];
           modules-right = [
             "group/group-power"
+            "clock"
           ];
           name = "topBar";
-          # mode = "dock";
+          wireplumber = {
+            scroll-step = 5.0;
+          };
           cava = {
             format-icons = [
               "▁"
@@ -79,17 +87,17 @@ in {
             ];
           };
           "custom/quit" = {
-            format = "󰗼";
+            format = "󰗼 ";
             tooltip = false;
             on-click = "hyprctl dispatch exit";
           };
           "custom/reboot" = {
-            format = "󰜉";
+            format = "󰜉 ";
             tooltip = false;
             on-click = "reboot";
           };
           "custom/power" = {
-            format = "";
+            format = " ";
             tooltip = false;
             on-click = "shutdown now";
           };
@@ -97,16 +105,36 @@ in {
         bottomBar = {
           layer = "top";
           height = 32;
+          spacing = 4;
           name = "bottomBar";
           position = "bottom";
           modules-left = ["hyprland/workspaces"];
           modules-center = ["hyprland/window"];
           modules-right = ["tray" "user"];
           user = {
-            format = "{user}";
+            format = "{user} ";
           };
         };
       };
+      style = with config.united.user.colors; ''
+        @define-color primary ${primary};
+        @define-color secondary ${secondary};
+        @define-color tertiary ${tertiary};
+        @define-color window ${window};
+        @define-color alert ${alert};
+        @define-color white ${white};
+        @define-color black ${black};
+        @define-color red ${red};
+        @define-color green ${green};
+        @define-color yellow ${yellow};
+        @define-color blue ${blue};
+        @define-color purple ${purple};
+        @define-color cyan ${cyan};
+        @define-color pink ${pink};
+        @define-color orange ${orange};
+
+        @import url("waybar.css");
+      '';
     };
 
     united.cava.enable = true;

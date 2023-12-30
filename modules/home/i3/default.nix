@@ -33,7 +33,6 @@ in {
         dex
         dunst
         networkmanagerapplet
-        playerctl
         wp-gen
       ];
     };
