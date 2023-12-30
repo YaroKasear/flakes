@@ -21,21 +21,26 @@ in {
         topBar = {
           layer = "top";
           spacing = 4;
-          height = 32;
+          height = 24;
           modules-left = [
             "wireplumber"
           ];
           modules-center = [
-            "cava"
+              "custom/spacer"
+              "cava"
           ];
           modules-right = [
+            "custom/spacer"
             "group/group-power"
             "clock"
           ];
           name = "topBar";
           wireplumber = {
-            format = " {volume}%";
+            format = " {volume}% ";
             scroll-step = 5.0;
+          };
+          "custom/spacer" = {
+            format = " ";
           };
           cava = {
             format-icons = [
@@ -105,7 +110,7 @@ in {
         };
         bottomBar = {
           layer = "top";
-          height = 32;
+          height = 24;
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
@@ -113,6 +118,7 @@ in {
           modules-center = ["hyprland/window"];
           modules-right = ["group/status"];
           user = {
+            icon = true;
             format = " {user} ";
           };
           "custom/spacer" = {
@@ -126,7 +132,7 @@ in {
           };
           "group/status" = {
             orientation = "inherit";
-            modules = [ "custom/spacer" "tray" "user" ];
+            modules = [ "custom/spacer" "tray" "custom/spacer" "user" ];
           };
         };
       };

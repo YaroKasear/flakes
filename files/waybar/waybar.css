@@ -27,12 +27,11 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 2px 5px;
+    padding: 0 5px;
     background: @secondary;
     color: @primary;
     border-radius: 10px;
     margin-left: 10px;
-    margin-bottom: 10px;
 }
 
 #workspaces button.active {
@@ -41,13 +40,12 @@ tooltip label {
     font-weight: bold;
 }
 
-#window, #status {
-    padding: 2px 5px;
+.topBar .modules-left, .modules-center, .modules-right {
+    padding: 0 5px;
     background: @primary;
     color: @secondary;
     border-radius: 10px;
     margin-left: 10px;
-    margin-bottom: 10px;
     font-weight: bold;
 }
 
