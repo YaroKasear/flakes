@@ -23,6 +23,10 @@ in {
       type = types.str;
       default = home-directory;
     };
+    icon = mkOption {
+      type = types.path;
+      default = "${home-directory}/.face";
+    };
     config-directory = mkOption {
       type = types.str;
       default = "${home-directory}/.config";
@@ -96,6 +100,10 @@ in {
     home = {
       username = "yaro";
       homeDirectory = home-directory;
+      file.pfp = {
+        source = ../../../files/user/techkat.png;
+        target = cfg.icon;
+      };
     };
 
     accounts.email.accounts = {
