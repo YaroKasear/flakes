@@ -16,6 +16,7 @@ in {
       let
         cowsay = inputs.cowsay.packages.${system}.cowsay;
       in [
+        asciiquarium
         chroma
         cowsay
         fortune

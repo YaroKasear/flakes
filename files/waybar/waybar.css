@@ -7,16 +7,14 @@
 }
 
 window#waybar {
-    background: @secondary;
+    background: transparent;
     color: @primary;
 }
 
 window#waybar.topBar {
-    border-bottom: 1px solid @primary;
 }
 
 window#waybar.bottomBar {
-    border-top: 1px solid @primary;
 }
 
 tooltip {
@@ -29,15 +27,16 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background: transparent;
+    padding: 2px 5px;
+    background: @secondary;
     color: @primary;
-    border-top: 3px solid transparent;
+    border-radius: 10px;
 }
 
-#workspaces button.focused {
-    background: @window;
-    border-top: 3px solid @primary;
+#workspaces button.active {
+    background: @primary;
+    color: @secondary;
+    font-weight: bold;
 }
 
 #mode, #clock, #battery {

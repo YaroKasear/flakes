@@ -15,12 +15,11 @@ in {
       target = ".config/waybar/waybar.css";
     };
 
-    programs.waybar = {
+    programs.waybar = with config.united.user.colors; {
       enable = true;
       settings = {
         topBar = {
           layer = "top";
-          height = 32;
           spacing = 4;
           modules-left = [
             "wireplumber"
@@ -34,6 +33,7 @@ in {
           ];
           name = "topBar";
           wireplumber = {
+            format = " {volume}%";
             scroll-step = 5.0;
           };
           cava = {
@@ -104,7 +104,6 @@ in {
         };
         bottomBar = {
           layer = "top";
-          height = 32;
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
@@ -114,9 +113,13 @@ in {
           user = {
             format = "{user} ";
           };
+          "hyprland/workspaces" = {
+            format = "{id}";
+            format-window-separator = " ";
+          };
         };
       };
-      style = with config.united.user.colors; ''
+      style = ''
         @define-color primary ${primary};
         @define-color secondary ${secondary};
         @define-color tertiary ${tertiary};
