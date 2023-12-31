@@ -170,10 +170,9 @@
 
   services = {
     xserver = {
-      enable = false;
+      enable = !config.united.wayland.enable;
       layout = "us";
-      # videoDrivers = ["nvidia"];
-      displayManager.lightdm.enable = false;
+      displayManager.lightdm.enable = !config.united.wayland.enable;
       windowManager.i3 = {
         enable = true;
       };
