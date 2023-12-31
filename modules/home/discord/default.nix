@@ -15,31 +15,32 @@ in {
     home.packages = if is-wayland
     then
       [
-        (pkgs.writeShellScriptBin "discord" ''
-          exec ${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland
-        '')
+        # (pkgs.writeShellScriptBin "discord" ''
+        #   exec ${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland
+        # '')
+        pkgs.webcord-vencord
       ]
     else
       [
         pkgs.discord
       ];
 
-    xdg.desktopEntries = mkIf is-wayland {
-      discord = {
-        categories = [
-          "Network"
-          "InstantMessaging"
-        ];
-        exec = "${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        genericName = "All-in-one cross-platform voice and text chat for gamers";
-        icon = "discord";
-        mimeType = [ "x-scheme-handler/discord" ];
-        name = "Discord";
-        type = "Application";
-        settings = {
-          Version = "1.4";
-        };
-      };
-    };
+    # xdg.desktopEntries = mkIf is-wayland {
+    #   discord = {
+    #     categories = [
+    #       "Network"
+    #       "InstantMessaging"
+    #     ];
+    #     exec = "${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    #     genericName = "All-in-one cross-platform voice and text chat for gamers";
+    #     icon = "discord";
+    #     mimeType = [ "x-scheme-handler/discord" ];
+    #     name = "Discord";
+    #     type = "Application";
+    #     settings = {
+    #       Version = "1.4";
+    #     };
+    #   };
+    # };
   };
 }
