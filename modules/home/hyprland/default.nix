@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -12,12 +12,15 @@ in {
   config = mkIf cfg.enable {
     home = {
       packages = with pkgs; [
+        grim
         libsForQt5.qt5.qtwayland
         libsForQt5.qt5ct
         libva
         hyprpaper
+        slurp
         swaynotificationcenter
         xdg-desktop-portal-hyprland
+        xwaylandvideobridge
       ];
       file.hyprpaper-conf = {
         source = ../../../files/hypr/hyprpaper.conf;
@@ -52,6 +55,7 @@ in {
         "$orange" = "rgb(${lib.replaceStrings ["#"] [""] orange})";
 
         exec-once = [
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "swaync"
           "waybar"
           "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
@@ -135,6 +139,10 @@ in {
           "size 800 450, title:(Firefox)"
           "pin, title:^(Firefox)"
           "immediate, class:^(cs2)$"
+          "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
+          "noanim,class:^(xwaylandvideobridge)$"
+          "nofocus,class:^(xwaylandvideobridge)$"
+          "noinitialfocus,class:^(xwaylandvideobridge)$"
         ];
 
         "$mainMod" = "SUPER";
