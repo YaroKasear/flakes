@@ -25,7 +25,9 @@ in {
 
     home = {
       packages = with pkgs;
-      [
+      let
+        wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
+      in [
         bitwarden
         diffuse
         libreoffice-fresh
@@ -37,6 +39,7 @@ in {
         steam-run
         traceroute
         yubioath-flutter
+        wp-gen
       ];
     };
   };

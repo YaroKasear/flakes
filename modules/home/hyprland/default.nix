@@ -10,14 +10,20 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      libsForQt5.qt5.qtwayland
-      libsForQt5.qt5ct
-      libva
-      hyprpaper
-      swaynotificationcenter
-      xdg-desktop-portal-hyprland
-    ];
+    home = {
+      packages = with pkgs; [
+        libsForQt5.qt5.qtwayland
+        libsForQt5.qt5ct
+        libva
+        hyprpaper
+        swaynotificationcenter
+        xdg-desktop-portal-hyprland
+      ];
+      file.hyprpaper-conf = {
+        source = ../../../files/hypr/hyprpaper.conf;
+        target = ".config/hypr/hyprpaper.conf";
+      };
+    };
 
     programs.wofi.enable = true;
 
@@ -48,6 +54,7 @@ in {
         exec-once = [
           "swaync"
           "waybar"
+          "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
         ];
 
         monitor = ",highrr,auto,auto";
