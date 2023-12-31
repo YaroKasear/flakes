@@ -14,6 +14,10 @@ in {
       enable = true;
       latitude = 42.01;
       longitude = -97.25;
+      settings.general = {
+        brightness-day = 1.0;
+        brightness-night = 0.7;
+      };
       tray = true;
     };
   };
