@@ -95,6 +95,18 @@ in {
           allow_tearing = true;
         };
 
+        group = {
+          "col.border_active" = "$primary";
+          "col.border_inactive" = "$secondary";
+          groupbar = {
+            "col.active" = "$primary";
+            "col.inactive" = "$secondary";
+            font_family = "FiraCode Nerd Font";
+            font_size = 10;
+            gradients = false;
+          };
+        };
+
         decoration = {
           rounding = 10;
           drop_shadow = true;

@@ -12,6 +12,7 @@ window#waybar {
 }
 
 window#waybar.topBar {
+  margin-top: 40px;
 }
 
 window#waybar.bottomBar {
@@ -46,6 +47,7 @@ tooltip label {
     color: @secondary;
     border-radius: 10px;
     margin-left: 10px;
+    margin-right: 10px;
     font-weight: bold;
 }
 

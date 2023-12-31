@@ -22,6 +22,7 @@ in {
           layer = "top";
           spacing = 4;
           height = 24;
+          margin-top = 10;
           modules-left = [
             "wireplumber"
           ];
@@ -114,6 +115,7 @@ in {
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
+          margin-bottom = 10;
           modules-left = ["hyprland/workspaces"];
           modules-center = ["hyprland/window"];
           modules-right = ["group/status"];
