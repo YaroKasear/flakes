@@ -23,10 +23,7 @@
     tmp.useTmpfs = true;
   };
 
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
+  united.common.enable = true;
 
   environment.systemPackages = with pkgs; [
     wget
@@ -85,8 +82,6 @@
       max-free = ${toString (5 * 1024 * 1024 * 1024)}
     '';
   };
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   programs = {
     zsh.enable = true;
