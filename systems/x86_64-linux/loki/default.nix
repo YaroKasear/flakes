@@ -196,7 +196,7 @@
     mediaKeys.enable = true;
   };
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "unstable";
 
   users = {
     mutableUsers = false;
