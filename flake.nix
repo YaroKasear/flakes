@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
+    nixos.url = "github:nixos/nixpkgs/nixos-unstable";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     cowsay = {
@@ -79,12 +81,14 @@
           sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
-          nixos-generators.nixosModules.all-formats
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+        ];
+        hosts.iso.modules = with inputs; [
+          nixos-generators.nixosModules.install-iso
         ];
       };
 
