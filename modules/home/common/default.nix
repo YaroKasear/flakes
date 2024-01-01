@@ -20,6 +20,7 @@ in {
         chroma
         cowsay
         fortune
+        mosquitto
         neofetch
         nvd
         snowfallorg.flake
