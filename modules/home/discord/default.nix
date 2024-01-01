@@ -25,22 +25,21 @@ in {
         pkgs.discord
       ];
 
-    # xdg.desktopEntries = mkIf is-wayland {
-    #   discord = {
-    #     categories = [
-    #       "Network"
-    #       "InstantMessaging"
-    #     ];
-    #     exec = "${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-    #     genericName = "All-in-one cross-platform voice and text chat for gamers";
-    #     icon = "discord";
-    #     mimeType = [ "x-scheme-handler/discord" ];
-    #     name = "Discord";
-    #     type = "Application";
-    #     settings = {
-    #       Version = "1.4";
-    #     };
-    #   };
-    # };
+    xdg.desktopEntries = mkIf is-wayland {
+      webcord = {
+        categories = [
+          "Network"
+          "InstantMessaging"
+        ];
+        comment = "A Discord and SpaceBar electron-based client implemented without Discord API";
+        exec = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+        icon = "webcord";
+        name = "WebCord";
+        type = "Application";
+        settings = {
+          Version = "1.4";
+        };
+      };
+    };
   };
 }
