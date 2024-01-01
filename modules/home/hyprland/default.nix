@@ -4,6 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.hyprland;
+  home-directory = config.united.user.home-directory;
+  pictures-directory = "${home-directory}/Pictures";
 in {
   options.united.hyprland = {
     enable = mkEnableOption "Hyprland";
@@ -176,6 +178,8 @@ in {
           "$mainMod, down, movefocus, d"
           "$mainMod SHIFT, left, swapnext, prev"
           "$mainMod SHIFT, right, swapnext,"
+          ",Print,exec,grim ${pictures-directory}/Screenshots/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
+          "SHIFT,Print,exec,slurp | grim -g - ${pictures-directory}/Screenshots/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
