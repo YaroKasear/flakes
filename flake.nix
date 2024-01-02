@@ -88,7 +88,7 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
         hosts.iso.modules = with inputs; [
-          nixos-generators.nixosModules.install-iso
+          nixos-generators.nixosModules.all-formats
         ];
       };
 

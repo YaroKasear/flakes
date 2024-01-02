@@ -12,7 +12,6 @@
         "sd_mod"
       ];
     };
-    kernelPackages = pkgs.linuxPackages_zen;
     loader = {
       systemd-boot = {
         enable = true;
@@ -20,20 +19,9 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    tmp.useTmpfs = true;
   };
 
   united.common.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    wget
-    polkit_gnome
-    pavucontrol
-    pulseaudio
-    yubikey-personalization
-    nfs-utils
-    nix-diff
-  ];
 
   fileSystems."/mnt/containers" = {
     device = "storage.kasear.net:/mnt/data/containers";
@@ -42,11 +30,6 @@
   };
 
   hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-    };
     nvidia = {
       modesetting.enable = true;
       powerManagement = {
@@ -57,19 +40,14 @@
       nvidiaSettings = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
-    enableRedistributableFirmware = lib.mkDefault true;
   };
-
-  i18n.defaultLocale = "en_US.UTF-8";
 
   networking = {
     hostName = "loki";
     networkmanager.enable = true;
-    useDHCP = lib.mkDefault true;
   };
 
   nix = {
-    package = pkgs.nixFlakes;
     optimise.automatic = true;
     gc = {
       automatic = true;
@@ -77,31 +55,12 @@
       options = "--delete-older-than 7d";
     };
     extraOptions = ''
-      experimental-features = nix-command flakes
       min-free = ${toString (1024 * 1024 * 1024)}
       max-free = ${toString (5 * 1024 * 1024 * 1024)}
     '';
   };
 
-  programs = {
-    zsh.enable = true;
-    ssh.startAgent = false;
-  };
-
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      description = "polkit-gnome-authentication-agent-1";
-      wantedBy = [ "graphical-session.target" ];
-      wants = [ "graphical-session.target" ];
-      after = [ "graphical-session.target" ];
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-        Restart = "on-failure";
-        RestartSec = 1;
-        TimeoutStopSec = 10;
-      };
-    };
     tmpfiles.settings = {
       "10-fix-dotconfig" = {
         "/home/yaro/.config" = {
@@ -126,13 +85,9 @@
 
   united = {
     desktop-mounts.enable = true;
-    kmscon.enable = true;
-    wayland.enable = true;
   };
 
   security = {
-    polkit.enable = true;
-    rtkit.enable = true;
     pam = {
       services = {
         login.u2fAuth = true;
@@ -162,40 +117,6 @@
       "users/users/yaro/hashedPasswordFile".neededForUsers = true;
     };
   };
-
-  services = {
-    xserver = {
-      enable = !config.united.wayland.enable;
-      layout = "us";
-      displayManager.lightdm.enable = !config.united.wayland.enable;
-      windowManager.i3 = {
-        enable = true;
-      };
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      pulse.enable = true;
-    };
-    gnome.gnome-keyring.enable = true;
-    openssh = {
-      enable = true;
-    };
-    udev.packages = [
-      pkgs.yubikey-personalization
-    ];
-    pcscd.enable = true;
-  };
-
-  sound = {
-    enable = true;
-    mediaKeys.enable = true;
-  };
-
-  system.stateVersion = "unstable";
 
   users = {
     mutableUsers = false;
