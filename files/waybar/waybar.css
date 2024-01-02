@@ -11,13 +11,6 @@ window#waybar {
     color: @primary;
 }
 
-window#waybar.topBar {
-  margin-top: 40px;
-}
-
-window#waybar.bottomBar {
-}
-
 tooltip {
   background: @secondary;
   border: 1px solid @primary;
