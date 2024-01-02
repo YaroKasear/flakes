@@ -126,7 +126,7 @@
 
   united = {
     desktop-mounts.enable = true;
-    kmscon.enable = false;
+    kmscon.enable = true;
     wayland.enable = true;
   };
 
@@ -181,7 +181,6 @@
       pulse.enable = true;
     };
     gnome.gnome-keyring.enable = true;
-    gpm.enable = false;
     openssh = {
       enable = true;
     };

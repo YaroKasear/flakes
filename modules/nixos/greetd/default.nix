@@ -4,6 +4,26 @@ with lib;
 with lib.united;
 let
   cfg = config.united.greetd;
+
+  hyprConfig = pkgs.writeText "greetd-hypr-config" ''
+    env=__GLX_VENDOR_LIBRARY_NAME,nvidia
+    env=GBM_BACKEND,nvidia-drm
+    env=LIBVA_DRIVER_NAME,nvidia
+    env=QT_QPA_PLATFORMTHEME,qt5ct
+    env=WLR_NO_HARDWARE_CURSORS,1
+    env=WLR_DRM_NO_ATOMIC,1
+    env=XCURSOR_SIZE,24
+    env=XDG_CURRENT_DESKTOP=Hyprland
+    env=XDG_SESSION_DESKTOP=Hyprland
+    env=XDG_SESSION_TYPE,wayland
+    env=__GL_GSYNC_ALLOWED,1
+
+    misc {
+      disable_hyprland_logo=true
+    }
+
+    exec-once = regreet; hyprctl dispatch exit
+  '';
 in {
   options.united.greetd = {
     enable = mkEnableOption "Greetd";
@@ -14,14 +34,34 @@ in {
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland"
+          command = "${pkgs.hyprland}/bin/Hyprland -c ${hyprConfig}";
+          user = "greeter";
+        };
+      };
+      vt = 1;
+    };
+
+    environment.systemPackages = with pkgs; [
+      canta-theme
+      greetd.regreet # Why isn't this installed with programs.regreet.enable = true?
+      roboto
+    ];
+
+    programs.regreet = {
+      enable = true;
+      settings = {
+        GTK = {
+          application_prefer_dark_theme = true;
+          font_name = "Roboto 16";
+          theme_name = "Canta";
         };
       };
     };
 
     environment.etc."greetd/environments".text = ''
-      hyprland
+      Hyprland
       zsh
-    ''
+      bash
+    '';
   };
 }

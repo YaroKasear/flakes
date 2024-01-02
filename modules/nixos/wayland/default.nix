@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    united.greetd.enable = true;
+
     programs.hyprland.enable = true;
   };
 }
