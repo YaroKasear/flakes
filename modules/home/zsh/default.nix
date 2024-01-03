@@ -57,6 +57,14 @@ in {
           update-log = "ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
         };
         initExtra = ''
+          alexa_tts () {
+          	mosquitto_pub -h private.kasear.net -t "tts" -m "''${1}" -u yaro -P $(cat /run/user/1000/secrets/mosquitto-password)
+          }
+
+          alexa_news () {
+          	mosquitto_pub -h private.kasear.net -t "tts" -m "<amazon:domain name=\"news\">''${1}</amazon:domain>" -u yaro -P $(cat /run/user/1000/secrets/mosquitto-password)
+          }
+
           neofetch
           fortune -a | cowsay -n
         '';

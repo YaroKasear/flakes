@@ -167,6 +167,7 @@ in {
         sshKeyPaths = [];
       };
       secrets."accounts/email/accounts/Work/signature/text" = { };
+      secrets."mosquitto-password" = { };
     };
   };
 }
