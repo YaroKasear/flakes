@@ -27,9 +27,9 @@ in {
       type = types.path;
       default = "${home-directory}/.face";
     };
-    muck-notify = mkOption {
+    bell = mkOption {
       type = types.path;
-      default = "${home-directory}/.local/share/sound/muck-notify.mp3";
+      default = "${home-directory}/.local/share/sound/bell.mp3";
     };
     config-directory = mkOption {
       type = types.str;
@@ -109,9 +109,9 @@ in {
           source = ../../../files/user/techkat.png;
           target = cfg.icon;
         };
-        muck-notify = {
-          source = ../../../files/user/muck-notify.png;
-          target = cfg.muck-notify;
+        bell = {
+          source = ../../../files/user/bell.mp3;
+          target = cfg.bell;
         };
       };
     };
