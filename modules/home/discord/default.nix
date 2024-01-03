@@ -15,9 +15,6 @@ in {
     home.packages = if is-wayland
     then
       [
-        # (pkgs.writeShellScriptBin "discord" ''
-        #   exec ${pkgs.discord}/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland
-        # '')
         pkgs.webcord-vencord
       ]
     else
