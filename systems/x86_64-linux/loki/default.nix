@@ -85,6 +85,7 @@
 
   united = {
     desktop-mounts.enable = true;
+    kmscon.enable = true;
   };
 
   security = {

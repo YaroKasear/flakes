@@ -27,6 +27,10 @@ in {
       type = types.path;
       default = "${home-directory}/.face";
     };
+    muck-notify = mkOption {
+      type = types.path;
+      default = "${home-directory}/.local/share/sound/muck-notify.mp3";
+    };
     config-directory = mkOption {
       type = types.str;
       default = "${home-directory}/.config";
@@ -100,9 +104,15 @@ in {
     home = {
       username = "yaro";
       homeDirectory = home-directory;
-      file.pfp = {
-        source = ../../../files/user/techkat.png;
-        target = cfg.icon;
+      file = {
+        pfp = {
+          source = ../../../files/user/techkat.png;
+          target = cfg.icon;
+        };
+        muck-notify = {
+          source = ../../../files/user/muck-notify.png;
+          target = cfg.muck-notify;
+        };
       };
     };
 
