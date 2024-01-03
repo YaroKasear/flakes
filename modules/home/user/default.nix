@@ -29,7 +29,7 @@ in {
     };
     bell = mkOption {
       type = types.path;
-      default = "${home-directory}/.local/share/sound/bell.mp3";
+      default = "${home-directory}/.local/share/sound/bell.oga";
     };
     config-directory = mkOption {
       type = types.str;
@@ -110,7 +110,7 @@ in {
           target = cfg.icon;
         };
         bell = {
-          source = ../../../files/user/bell.mp3;
+          source = ../../../files/user/bell.oga;
           target = cfg.bell;
         };
       };

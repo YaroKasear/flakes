@@ -31,6 +31,7 @@ in {
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "
+          bell_path ${home-directory}/.local/share/sound/bell.oga
           foreground ${primary}
           background ${tertiary}
           background_opacity 0.8
