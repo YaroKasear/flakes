@@ -31,7 +31,6 @@ in {
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "
-          bell_path "${home-directory}/.config/sound/bell.mp3"
           foreground ${primary}
           background ${tertiary}
           background_opacity 0.8
