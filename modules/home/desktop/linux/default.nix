@@ -17,6 +17,7 @@ in {
     united = {
       i3.enable = !is-wayland;
       hyprland.enable = is-wayland;
+      mattermost-desktop.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;
     };
@@ -31,7 +32,6 @@ in {
         bitwarden
         diffuse
         libreoffice-fresh
-        mattermost-desktop
         playerctl
         scrot
         skypeforlinux
