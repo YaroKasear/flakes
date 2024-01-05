@@ -40,6 +40,7 @@ in {
         traceroute
         yubioath-flutter
         wp-gen
+        xdg-utils
       ];
     };
 
