@@ -19,13 +19,6 @@ in {
     };
 
     home = {
-      # file = {
-      #   layout = {
-      #     source = ../../../files/i3/layout.json;
-      #     target = ".config/i3/layout.json";
-      #   };
-      # };
-
       packages = with pkgs; [
         dex
         dunst
@@ -34,7 +27,7 @@ in {
       ];
     };
 
-    xdg.configFile."i3/layout.json".source = ./files/i3/layout.json;
+    xdg.configFile."i3/layout.json".source = ./files/layout.json;
 
     programs = {
       rofi.enable = true;
