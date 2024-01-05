@@ -13,13 +13,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # home = mkIf is-linux {
-    #   file.mucks = {
-    #     source = ../../../files/tmuxinator/mucks.yml;
-    #     target = ".config/tmuxinator/mucks.yml";
-    #   };
-    # };
-
     xdg.configFile."tmuxinator/mucks.yml".source = mkIf is-linux ./files/mucks.yml;
 
     programs = {
