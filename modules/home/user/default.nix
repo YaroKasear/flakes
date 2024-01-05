@@ -106,11 +106,11 @@ in {
       homeDirectory = home-directory;
       file = {
         pfp = {
-          source = ../../../files/user/techkat.png;
+          source = ./files/techkat.png;
           target = cfg.icon;
         };
         bell = {
-          source = ../../../files/user/bell.oga;
+          source = ./files/bell.oga;
           target = cfg.bell;
         };
       };
