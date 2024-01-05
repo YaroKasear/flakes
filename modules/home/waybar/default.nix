@@ -10,10 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.file.waybar-css = {
-      source = ../../../files/waybar/waybar.css;
-      target = ".config/waybar/waybar.css";
-    };
+    xdg.configFile."waybar/waybar.css".source = ./files/waybar.css;
 
     programs.waybar = with config.united.user.colors; {
       enable = true;
