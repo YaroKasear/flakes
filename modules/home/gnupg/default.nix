@@ -22,7 +22,7 @@ in {
         };
         publicKeys = [
           {
-            source = ./files/gnupg/yubikey.asc;
+            source = ./files/yubikey.asc;
             trust = 5;
           }
         ];
