@@ -10,11 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # home.file.s3air-config = {
-    #   source = ../../../files/sonic3air/settings.json;
-    #   target = ".config/Sonic3AIR/settings.json";
-    # };
-
     xdg = {
       desktopEntries = {
         sonic3air = {
