@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  is-wayland = config.united.wayland.enable;
+
   cfg = config.united.mattermost-desktop;
 in {
   options.united.mattermost-desktop = {
@@ -13,7 +15,7 @@ in {
     home.packages = [ pkgs.mattermost-desktop ];
 
     xdg.desktopEntries = mkIf is-wayland {
-      webcord = {
+      mattermost = {
         categories = [
           "Network"
           "InstantMessaging"

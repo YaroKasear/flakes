@@ -19,8 +19,10 @@ in {
         libsForQt5.qt5ct
         libva
         hyprpaper
+        inputs.hyprpicker.packages.x86_64-linux.hyprpicker
         slurp
         swaynotificationcenter
+        wl-clipboard
         xdg-desktop-portal-hyprland
         xwaylandvideobridge
       ];
@@ -31,6 +33,8 @@ in {
     };
 
     programs.wofi.enable = true;
+
+    services.cliphist.enable = true;
 
     united = {
       gammastep.enable = true;
@@ -62,6 +66,8 @@ in {
           "swaync"
           "waybar"
           "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
+          "wl-paste --type text --watch cliphist store"
+          "wl-paste --type image --watch cliphist store"
         ];
 
         monitor = ",highrr,auto,auto";
@@ -172,6 +178,8 @@ in {
           "$mainMod SHIFT, N, exec, swanc-client -t sw"
           "$mainMod, D, exec, $menu"
           "$mainMod, F, fullscreen,"
+          "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+          "$mainMod SHIFT, P, exec, hyprpicker | wl-copy"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"

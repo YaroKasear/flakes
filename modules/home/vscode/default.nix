@@ -13,6 +13,7 @@ in {
     programs = {
       vscode = {
         enable = true;
+        mutableExtensionsDir = false;
         userSettings = {
           "editor.wordWrap"= "on";
           "git.confirmSync"= false;
@@ -61,6 +62,12 @@ in {
             publisher = "mechatroner";
             version = "3.9.0";
             sha256 = "O64XF8AwlAzRHIuExB4VITn2UXpNKM7hYk0wMbrPQAI=";
+          }
+          {
+            name = "live-server";
+            publisher = "ms-vscode";
+            version = "0.4.13";
+            sha256 = "WOx5kmy7etu/am665jAyryYNWTONK5Zx9klo9k/Iog4=";
           }
         ];
       };
