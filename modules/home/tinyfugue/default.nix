@@ -85,6 +85,35 @@ in
 
         /def -mregexp -t"> Guest(\d) has connected.*" -F -p2 = /repeat -10 1 page guest%P1 = Hello! Welcome to -x TLK MUCK! Please let me know of any questions! Use the command 'page wanachi="message"' without the single quotes to do so!
         /def -mregexp -t"> Guest(\d) has connected.*" -p1 = /repeat -0.1 30 /bee
+        /def -mregexp -t".*In a page-pose to you, .*.*" alert_page_post = /repeat -0.5 2 /beep
+        /def -mregexp -t".*Na'go'zi.*" alert_ngz = /repeat -0.5 2 /beep
+        /def -mregexp -t".*wizzes.*" alert_wizzes = /repeat -0.5 2 /beep
+        /def -mregexp -t".*fc-chat.*" alert_fc = /repeat -0.5 2 /beep
+        /def -mregexp -t".*plc-chat.*" alert_plc = /repeat -0.5 2 /beep
+        /def -mregexp -t".*Hutolewa.*" alert_htw = /repeat -0.5 2 /beep
+        /def -mregexp -t".* would like to join you." alert_mjoin = /repeat -0.5 2 /beep
+        /def -mregexp -t".* has connected." alert_connect = /repeat -0.1 10 /beep
+        /def -mregexp -t"It is now your pose." alert_poseorder = /repeat -0.1 10 /beep
+        /def -mregexp -t".* has arrived." alert_arrive = /repeat -0.1 10 /beep
+        /def -mregexp -t".* has disconnected." alert_disconnect = /repeat -0.1 5 /beep
+        /def -mregexp -t".* has left." alert_left = /repeat -0.1 5 /beep
+        /def -mregexp -t".* says, .*" alert_say = /beep
+        /def -mregexp -t"\[OOC\].*" alert_ooc = /repeat -0.1 2 /beep
+        /def -mregexp -t".*Ketekh.*" alert_ketekh = /repeat -0.1 2 /beep
+        /def -mregexp -t".*Yaro.*" alert_yaro = /repeat -1 2 /beep
+        /def -mregexp -t".*Kubwini.*" alert_kubwini = /repeat -1 2 /beep
+        /def -mregexp -t".*Tamani.*" alert_tamani = /repeat -1 2 /beep
+        /def -mregexp -t".*Ukarimu.*" alert_ukarimu = /repeat -1 2 /beep
+        /def -mregexp -t".*Bikira.*" alert_bikira = /repeat -1 2 /beep
+        /def -mregexp -t".*Morowa.*" alert_morowa = /repeat -1 2 /beep
+        /def -mregexp -t".*Tofauti.*" alert_tofauti = /repeat -1 2 /beep
+        /def -mregexp -t".*Wanachi.*" alert_wanachi = /repeat -1 2 /beep
+        /def -mregexp -t".*Taya.*" alert_taya = /repeat -1 2 /beep
+        /def -mregexp -t".* tried to page you." alert_blocked = /repeat -0.1 30 /beep
+        /def -mregexp -t".*CCS request.*" alert_ccs = /repeat -0.1 30 /beep
+
+        /def -mregexp -t"> Guest(\d) has connected.*" -F -p2 = /repeat -10 1 page guest%P1 = Hello! Welcome to -x TLK MUCK! Please let me know of any questions! Use the command 'page wanachi="message"' without the single quotes to do so!
+        /def -mregexp -t"> Guest(\d) has connected.*" -p1 = /repeat -0.1 30 /beep
 
         /load -q ~/.worlds.tf
       '';
