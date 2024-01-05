@@ -41,16 +41,19 @@ in {
           bind-key -n End send Escape "OF"
           set -g status-right-length 30
           set -g status-left-length 30
-          set -g status-style bg='${tertiary}',fg='${primary},bold'
+          set -g status-style bg='${tertiary}',fg='${primary},bold,noreverse'
           set -g status-left '#[bg=${tertiary}]#[fg=${primary}]#{?client_prefix,#[bg=${tertiary}]#[fg=${red}],}'
           set -ga status-left '#[bg=${primary}]#[fg=${secondary}]#{?client_prefix,#[bg=${red}],} #(whoami)@#(hostname) #(uname) #(uname -r) '
           set -ga status-left '#[bg=${tertiary}]#[fg=${primary}]#{?client_prefix,#[bg=${tertiary}]#[fg=${red}],}'
           set -g status-justify absolute-centre
-          set-window-option -g window-status-style bg='${secondary},fg=${primary},bold'
-          set-window-option -g window-status-current-style bg='${primary}',fg='${secondary},bold'
+          set-window-option -g window-status-style bg='${secondary},fg=${primary},bold,noreverse'
+          set-window-option -g window-status-current-style bg='${primary}',fg='${secondary},bold,noreverse'
+          set-window-option -g window-status-activity-style 'bold,noreverse'
+          set-window-option -g window-status-bell-style 'bold,noreverse'
           set -g window-status-current-format "#[fg=${primary}]#[bg=${tertiary}]#[fg=${secondary}]#[bg=${primary}] #I #W #[fg=${primary}]#[bg=${tertiary}]"
-          set -g window-status-format "#[fg=${secondary}]#[bg=${tertiary}]#[fg=${primary}]#[bg=${secondary}] #I #W #[bg=${tertiary}]#[fg=${secondary}]"
-          set -g status-right '#[bg=${tertiary}]#[fg=${primary}]'
+          set -g window-status-format "#[fg=${secondary}]#[bg=${tertiary}]#{?window_bell_flag,#[bg=${tertiary}]#[fg=${red}],}"
+          set -ga window-status-format "#[fg=${primary}]#[bg=${secondary}]#{?window_bell_flag,#[bg=${red}]#[fg=${secondary}],} #I #W "
+          set -ga window-status-format "#[bg=${tertiary}]#[fg=${secondary}]#{?window_bell_flag,#[bg=${tertiary}]#[fg=${red}],}"
           set -ga status-right '#[bg=${primary}]#[fg=${secondary}] %a %H:%M:%S %Y-%m-%d #[bg=${tertiary}]#[fg=${primary}]'
         '';
       };
