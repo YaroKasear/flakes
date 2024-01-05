@@ -26,11 +26,13 @@ in {
         xdg-desktop-portal-hyprland
         xwaylandvideobridge
       ];
-      file.hyprpaper-conf = {
-        source = ../../../files/hypr/hyprpaper.conf;
-        target = ".config/hypr/hyprpaper.conf";
-      };
+      # file.hyprpaper-conf = {
+      #   source = ./files/hyprpaper.conf;
+      #   target = ".config/hypr/hyprpaper.conf";
+      # };
     };
+
+    xdg.configFile."hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
 
     programs.wofi.enable = true;
 
