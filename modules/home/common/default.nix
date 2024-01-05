@@ -54,5 +54,7 @@ in {
       yubikey.enable = true;
       zsh.enable = true;
     };
+
+    xdg.enable = true;
   };
 }
