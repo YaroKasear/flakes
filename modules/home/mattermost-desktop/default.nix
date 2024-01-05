@@ -15,7 +15,7 @@ in {
     home.packages = [ pkgs.mattermost-desktop ];
 
     xdg.desktopEntries = mkIf is-wayland {
-      mattermost = {
+      mattermost-wl = {
         categories = [
           "Network"
           "InstantMessaging"
@@ -23,7 +23,7 @@ in {
         comment = "Mattermost Desktop application for Linux";
         exec = "${pkgs.mattermost-desktop}/bin/mattermost-desktop --disable-gpu-sandbox";
         icon = "${pkgs.mattermost-desktop}/share/mattermost-desktop/app_icon.png";
-        name = "Mattermost";
+        name = "MattermostWL";
         terminal = false;
         type = "Application";
         settings = {
