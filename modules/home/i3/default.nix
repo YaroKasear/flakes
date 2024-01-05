@@ -19,12 +19,12 @@ in {
     };
 
     home = {
-      file = {
-        layout = {
-          source = ../../../files/i3/layout.json;
-          target = ".config/i3/layout.json";
-        };
-      };
+      # file = {
+      #   layout = {
+      #     source = ../../../files/i3/layout.json;
+      #     target = ".config/i3/layout.json";
+      #   };
+      # };
 
       packages = with pkgs; [
         dex
@@ -33,6 +33,8 @@ in {
         wp-gen
       ];
     };
+
+    xdg.configFile."i3/layout.json".source = ./files/i3/layout.json;
 
     programs = {
       rofi.enable = true;
