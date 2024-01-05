@@ -14,16 +14,11 @@ in {
       packages = with pkgs; [
         nitrogen
       ];
-      file = {
-        bg-saved = {
-          source = ../../../files/nitrogen/bg-saved.cfg;
-          target = ".config/nitrogen/bg-saved.cfg";
-        };
-        nitrogen = {
-          source = ../../../files/nitrogen/nitrogen.cfg;
-          target = ".config/nitrogen/nitrogen.cfg";
-        };
-      };
+    };
+
+    xdg.configFile = {
+      "nitrogen/bg-saved.cfg".source = ./files/bg-saved.cfg;
+      "nitrogen/nitrogen.cfg".source = ./files/nitrogen.cfg;
     };
   };
 }
