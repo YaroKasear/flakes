@@ -23,7 +23,6 @@ in {
         dex
         dunst
         networkmanagerapplet
-        wp-gen
       ];
     };
 

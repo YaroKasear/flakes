@@ -465,6 +465,18 @@
         "type": "github"
       }
     },
+    "player-mpris-tail": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-QP4D7Dd28i5JcjEKdsj09Lc+wBagu255NMarGlydB64=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py"
+      }
+    },
     "root": {
       "inputs": {
         "cowsay": "cowsay",
@@ -476,6 +488,7 @@
         "nixos-generators": "nixos-generators",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "player-mpris-tail": "player-mpris-tail",
         "snowfall-flake": "snowfall-flake",
         "snowfall-lib": "snowfall-lib_4",
         "sops-nix": "sops-nix",

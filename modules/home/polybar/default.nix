@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -125,12 +125,14 @@ in {
       };
     };
 
-    home.file = {
-      player-mpris-tail = {
-        executable = true;
-        source = ../../../files/polybar/player-mpris-tail.py;
-        target = ".config/polybar/player-mpris-tail.py";
-      };
-    };
+    # home.file = {
+    #   player-mpris-tail = {
+    #     executable = true;
+    #     source = ../../../files/polybar/player-mpris-tail.py;
+    #     target = ".config/polybar/player-mpris-tail.py";
+    #   };
+    # };
+
+    xdg.configFile."polybar/player-mpris-tail.py".source = inputs.player-mpris-tail;
   };
 }
