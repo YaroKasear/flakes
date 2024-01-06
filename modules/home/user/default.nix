@@ -160,16 +160,9 @@ in {
       };
     };
 
-    sops = {
-      defaultSopsFile = ../../../secrets/secrets.yaml;
-      gnupg = {
-        home = "/home/yaro/.gnupg";
-        sshKeyPaths = [];
-      };
-      secrets = {
-        mosquitto-password.sopsFile = ./secrets.yaml;
-        signature.sopsFile = ./secrets.yaml;
-      };
+    sops.secrets = mkIf config.united.sops.enable {
+      mosquitto-password.sopsFile = ./secrets.yaml;
+      signature.sopsFile = ./secrets.yaml;
     };
   };
 }

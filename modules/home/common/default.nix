@@ -48,6 +48,7 @@ in {
       git.enable = true;
       gnupg.enable = true;
       net-utils.enable = true;
+      sops.enable = true;
       tmux.enable = true;
       user.enable = true;
       vim.enable = true;

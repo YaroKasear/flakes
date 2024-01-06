@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     sops = {
       defaultSopsFile = ../../../secrets/secrets.yaml;
-      gnupg = mkIf config.user.gnupg.enable; {
+      gnupg = mkIf config.united.gnupg.enable {
         home = "/home/yaro/.gnupg";
         sshKeyPaths = [];
       };
