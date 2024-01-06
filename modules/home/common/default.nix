@@ -26,6 +26,7 @@ in {
         snowfallorg.flake
         sops
         thefuck
+        unzip
         (python3.withPackages(ps: with ps; [
           jinja2
           jupyter
