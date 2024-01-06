@@ -109,13 +109,17 @@
     };
     gnupg.sshKeyPaths = [];
     secrets = {
-      "security/pam/u2f/authFile" = {
+      authfile = {
         path = "/home/yaro/.config/Yubico/u2f_keys";
         mode = "0440";
         owner = config.users.users.yaro.name;
         group = config.users.users.yaro.group;
+        sopsFile = ./secrets.yaml;
       };
-      "users/users/yaro/hashedPasswordFile".neededForUsers = true;
+      hashedpw = {
+        neededForUsers = true;
+        sopsFile = ./secrets.yaml;
+      };
     };
   };
 
@@ -125,7 +129,7 @@
       isNormalUser = true;
       extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"];
       shell = pkgs.zsh;
-      hashedPasswordFile = config.sops.secrets."users/users/yaro/hashedPasswordFile".path;
+      hashedPasswordFile = config.sops.secrets.hashedpw.path;
     };
   };
 }
