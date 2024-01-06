@@ -33,6 +33,11 @@
       flake = false;
     };
 
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-index-database = {
       url = "github:Mic92/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -87,10 +92,12 @@
 
       systems = {
         modules.nixos = with inputs; [
+          nix-gaming.nixosModules.pipewireLowLatency
           nixos-hardware.nixosModules.common-pc
           sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
+          nix-gaming.nixosModules.steamCompat
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-amd

@@ -35,8 +35,6 @@ in {
         playerctl
         scrot
         skypeforlinux
-        steam
-        steam-run
         traceroute
         yubioath-flutter
         wp-gen
