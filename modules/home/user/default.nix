@@ -166,8 +166,10 @@ in {
         home = "/home/yaro/.gnupg";
         sshKeyPaths = [];
       };
-      secrets."accounts/email/accounts/Work/signature/text" = { };
-      secrets."mosquitto-password" = { };
+      secrets = {
+        mosquitto-password.sopsFile = ./secrets.yaml;
+        signature.sopsFile = ./secrets.yaml;
+      };
     };
   };
 }
