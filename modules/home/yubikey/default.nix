@@ -15,5 +15,13 @@ in {
       "ccccccjfkvnh"
       "ccccccvvktff"
     ];
+
+    sops.secrets.authfile = {
+      path = "/home/yaro/.config/Yubico/u2f_keys";
+      mode = "0440";
+      owner = config.users.users.yaro.name;
+      group = config.users.users.yaro.group;
+      sopsFile = ./
+    };
   };
 }
