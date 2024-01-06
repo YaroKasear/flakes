@@ -19,15 +19,9 @@ in
       ];
     };
 
-    sops = {
-      defaultSopsFile = ../../../secrets/secrets.yaml;
-      gnupg = {
-        home = "/home/yaro/.gnupg";
-        sshKeyPaths = [];
-      };
-      secrets."users/users/yaro/servers" = {
-        path = ".config/blightmud/servers.ron";
-      };
+    sops.secrets.servers = mkIf config.united.sops.enable {
+      path = "$XDG_CONFIG_HOME/blightmud/servers.ron";
+      sopsFile = ./secrets.yaml;
     };
   };
 }
