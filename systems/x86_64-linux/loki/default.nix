@@ -86,6 +86,7 @@
   united = {
     desktop-mounts.enable = true;
     kmscon.enable = true;
+    steam.enable = true;
   };
 
   security = {
@@ -127,7 +128,7 @@
     mutableUsers = false;
     users.yaro = {
       isNormalUser = true;
-      extraGroups = ["wheel" "video" "audio" "networkmanager" "lp"];
+      extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode"];
       shell = pkgs.zsh;
       hashedPasswordFile = config.sops.secrets.hashedpw.path;
     };

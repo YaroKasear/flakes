@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -12,11 +12,27 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ steam-run ];
 
-    programs.steam = {
-      enable = true;
-      extraCompatPackages = [
-        inputs.nix-gaming.packages.${pkgs.system}.proton-ge
-      ];
+    programs = {
+      steam = {
+        enable = true;
+        extraCompatPackages = [
+          inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+        ];
+      };
+      gamemode = {
+        enable = true;
+        settings = {
+          general = {
+            defaultgov = "powersave";
+            desiredgov = "performance";
+            inhibit_screensaver = 0;
+            ioprio = 0;
+            reaper_freq = 5;
+            renice = 10;
+            softrealtime = "auto";
+          };
+        };
+      };
     };
   };
 }

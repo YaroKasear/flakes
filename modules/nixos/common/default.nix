@@ -11,7 +11,8 @@ in {
 
   config = mkIf cfg.enable {
     boot = {
-      kernelPackages = pkgs.linuxPackages_zen;
+      # kernelPackages = pkgs.linuxPackages_zen;
+      kernelPackages = pkgs.linuxPackages_xanmod_latest;
       tmp.useTmpfs = true;
     };
 
