@@ -26,6 +26,7 @@ in {
     home = {
       packages = with pkgs;
       [
+        audacity
         dotnet-runtime
         font-awesome
         nerdfonts
