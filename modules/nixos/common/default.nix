@@ -94,6 +94,7 @@ in {
     system.stateVersion = "unstable";
 
     systemd = {
+      enableEmergencyMode = false;
       user.services.polkit-gnome-authentication-agent-1 = {
         description = "polkit-gnome-authentication-agent-1";
         wantedBy = [ "graphical-session.target" ];
@@ -112,5 +113,7 @@ in {
     united = {
       wayland.enable = true;
     };
+
+    users.users.root.hashedPassword = "!";
   };
 }

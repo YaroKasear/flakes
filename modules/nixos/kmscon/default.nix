@@ -19,10 +19,6 @@ in {
             name = "FiraCode Nerd Font";
             package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
           }
-          {
-            name = "Noto Color Emoji";
-            package = pkgs.noto-fonts-color-emoji;
-          }
         ];
       };
     };
