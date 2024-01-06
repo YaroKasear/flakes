@@ -138,13 +138,9 @@ in
       };
     };
 
-    sops = {
-      defaultSopsFile = ../../../secrets/secrets.yaml;
-      gnupg = {
-        home = "/home/yaro/.gnupg";
-        sshKeyPaths = [];
-      };
-      secrets.worlds-tf.path = ".worlds.tf";
+    sops.secrets.worlds = mkIf config.united.sops.enable {
+      path = ".worlds.tf";
+      sopsFile = ./secrets.yaml;
     };
   };
 }

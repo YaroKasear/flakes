@@ -10,6 +10,8 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [ sops ];
+
     sops = {
       defaultSopsFile = ../../../secrets/secrets.yaml;
       gnupg = mkIf config.united.gnupg.enable {
