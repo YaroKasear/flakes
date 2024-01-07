@@ -21,6 +21,7 @@ in {
       mattermost-desktop.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;
+      wine.enable = true;
     };
 
     fonts.fontconfig.enable = true;
