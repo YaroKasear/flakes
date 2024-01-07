@@ -15,6 +15,9 @@ in {
       ranger
     ];
 
-    xdg.configFile.ranger.source = ./files;
+    xdg.configFile = {
+      ranger.source = ./files;
+      "ranger/plugins/ranger_devicons".source = inputs.ranger-devicons;
+    };
   };
 }
