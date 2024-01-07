@@ -50,7 +50,7 @@ in {
           set -g window-status-format "#[fg=${selection_foreground}]#[bg=${background}]#{?window_bell_flag,#[bg=${background}]#[fg=${red}],}"
           set -ga window-status-format "#[fg=${selection_background}]#[bg=${selection_foreground}]#{?window_bell_flag,#[bg=${red}]#[fg=${selection_foreground}],} #I #W "
           set -ga window-status-format "#[bg=${background}]#[fg=${selection_foreground}]#{?window_bell_flag,#[bg=${background}]#[fg=${red}],}"
-          set -ga status-right '#[bg=${selection_background}]#[fg=${selection_foreground}] %a %H:%M:%S %Y-%m-%d #[bg=${background}]#[fg=${selection_background}]'
+          set -g status-right '#[fg=${selection_background}]#[bg=${background}]#[bg=${selection_background}]#[fg=${selection_foreground}] %a %H:%M:%S %Y-%m-%d #[bg=${background}]#[fg=${selection_background}]'
         '';
       };
     };
