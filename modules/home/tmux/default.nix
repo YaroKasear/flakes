@@ -13,7 +13,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.configFile."tmuxinator/mucks.yml".source = mkIf is-linux ./files/mucks.yml;
+    xdg.configFile = mkIf is-linux {
+      "tmuxinator/mucks.yml".source = ./files/mucks.yml;
+    };
 
     programs = {
       tmux = {
