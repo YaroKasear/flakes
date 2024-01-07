@@ -19,6 +19,7 @@ in {
       hyprland.enable = is-wayland;
       lutris.enable = true;
       mattermost-desktop.enable = true;
+      ranger.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;
       wine.enable = true;
