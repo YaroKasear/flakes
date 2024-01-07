@@ -63,10 +63,8 @@ in {
         "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";
         "$yellow" = "rgb(${lib.replaceStrings ["#"] [""] yellow})";
         "$blue" = "rgb(${lib.replaceStrings ["#"] [""] blue})";
-        "$purple" = "rgb(${lib.replaceStrings ["#"] [""] purple})";
+        "$magenta" = "rgb(${lib.replaceStrings ["#"] [""] magenta})";
         "$cyan" = "rgb(${lib.replaceStrings ["#"] [""] cyan})";
-        "$pink" = "rgb(${lib.replaceStrings ["#"] [""] pink})";
-        "$orange" = "rgb(${lib.replaceStrings ["#"] [""] orange})";
 
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

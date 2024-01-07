@@ -32,10 +32,11 @@ in {
           bind-key "-" split-window -v -c "#{pane_current_path}"
           bind-key "_" split-window -fv -c "#{pane_current_path}"
           set -g default-terminal "''${TERM}"
+          set -ga terminal-overrides ",xterm-*:Tc"
           bind-key -n Home send Escape "OH"
           bind-key -n End send Escape "OF"
-          set -g status-right-length 30
-          set -g status-left-length 30
+          set -g status-right-length 40
+          set -g status-left-length 40
           set -g status-style bg='${tertiary}',fg='${primary},bold,noreverse'
           set -g status-left '#[bg=${tertiary}]#[fg=${primary}]#{?client_prefix,#[bg=${tertiary}]#[fg=${red}],}'
           set -ga status-left '#[bg=${primary}]#[fg=${secondary}]#{?client_prefix,#[bg=${red}],} #(whoami)@#(hostname) #(uname) #(uname -r) '

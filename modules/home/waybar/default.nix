@@ -64,7 +64,7 @@ in {
               format = with config.united.user.colors; {
                 months = "<span color='${white}'><b>{}</b></span>";
                 days = "<span color='${primary}'><b>{}</b></span>";
-                weeks = "<span color='${pink}'><b>W{}</b></span>";
+                weeks = "<span color='${magenta}'><b>W{}</b></span>";
                 weekdays = "<span color='${yellow}'><b>{}</b></span>";
                 today = "<span color='${white}'><b><u>{}</u></b></span>";
               };
@@ -149,10 +149,8 @@ in {
         @define-color green ${green};
         @define-color yellow ${yellow};
         @define-color blue ${blue};
-        @define-color purple ${purple};
+        @define-color magenta ${magenta};
         @define-color cyan ${cyan};
-        @define-color pink ${pink};
-        @define-color orange ${orange};
 
         @import url("waybar.css");
       '';
