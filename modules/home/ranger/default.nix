@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -10,7 +10,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ ranger ];
+    home.packages = with pkgs; [
+      config.nur.repos.mic92.source-code-pro-nerdfonts
+      ranger
+    ];
 
     xdg.configFile.ranger.source = ./files;
   };

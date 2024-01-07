@@ -8,6 +8,8 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nur.url = github:nix-community/NUR;
+
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,6 +96,7 @@
         modules.nixos = with inputs; [
           nix-gaming.nixosModules.pipewireLowLatency
           nixos-hardware.nixosModules.common-pc
+          nur.nixosModules.nur
           sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
@@ -112,6 +115,7 @@
       homes.users = {
         "yaro@loki".modules = with inputs; [
           nix-index-database.hmModules.nix-index
+          nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
