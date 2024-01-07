@@ -28,11 +28,12 @@ in {
         thefuck
         unzip
         (python3.withPackages(ps: with ps; [
+          dbus-python
           jinja2
           jupyter
           lxml
           pandas
-          dbus-python
+          pillow
           pygobject3
         ]))
       ];
