@@ -42,6 +42,9 @@ in {
 
     wayland.windowManager.hyprland = {
       enable = true;
+      plugins = [
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+      ];
       settings = with config.united.user.colors; {
         "$primary" = "rgb(${lib.replaceStrings ["#"] [""] primary})";
         "$secondary" = "rgb(${lib.replaceStrings ["#"] [""] secondary})";
@@ -109,7 +112,8 @@ in {
             "col.inactive" = "$secondary";
             font_family = "FiraCode Nerd Font";
             font_size = 10;
-            gradients = false;
+            gradients = true;
+            render_titles = true;
           };
         };
 
@@ -217,6 +221,13 @@ in {
           "$mainMod, mouse:273, resizewindow"
         ];
       };
+      extraConfig = ''
+        plugin {
+          hyprwinwrap {
+            class = kitty-bg
+          }
+        }
+      '';
     };
   };
 }

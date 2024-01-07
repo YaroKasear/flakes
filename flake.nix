@@ -25,6 +25,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     hyprpicker = {
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -122,6 +132,7 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
+          hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops

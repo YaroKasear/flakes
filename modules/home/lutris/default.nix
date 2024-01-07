@@ -19,7 +19,7 @@ in {
         extraPkgs = pkgs: [
         ];
       })
-      legendary-gl
+      heroic
     ];
   };
 }
