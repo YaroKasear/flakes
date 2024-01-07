@@ -16,7 +16,13 @@ in {
     ];
 
     xdg.configFile = {
-      ranger.source = ./files;
+      "ranger" = {
+        source = lib.cleanSourceWith {
+          src = lib.cleanSource ./files/.;
+        };
+
+        recursive = true;
+      };
       "ranger/plugins/ranger_devicons".source = inputs.ranger-devicons;
     };
   };
