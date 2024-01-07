@@ -11,6 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      inputs.nix-gaming.packages.${pkgs.system}.proton-ge
       steam-run
     ];
 

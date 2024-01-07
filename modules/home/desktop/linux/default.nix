@@ -17,6 +17,7 @@ in {
     united = {
       i3.enable = !is-wayland;
       hyprland.enable = is-wayland;
+      lutris.enable = true;
       mattermost-desktop.enable = true;
       thunderbird.enable = true;
       tinyfugue.enable = true;

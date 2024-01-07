@@ -16,7 +16,7 @@ in {
       (lutris.override {
         extraLibraries = pkgs: [
         ];
-        extraPackages = pkgs: [
+        extraPkgs = pkgs: [
         ];
       })
     ];
