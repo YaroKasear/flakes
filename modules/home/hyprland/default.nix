@@ -28,7 +28,13 @@ in {
       ];
     };
 
-    xdg.configFile."hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
+    xdg.configFile = {
+      "hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
+      "kitty/kittybg.conf".text = ''
+        background ${config.united.user.colors.secondary}
+        background_image /tmp/background.png
+      '';
+    };
 
     programs.wofi.enable = true;
 
@@ -69,6 +75,7 @@ in {
           "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
+          "kitty -c $XDG_CONFIG/kitty/kittybg.conf --class=\"kitty-bg\" asciiquarium"
         ];
 
         monitor = ",highrr,auto,auto";
