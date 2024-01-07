@@ -87,7 +87,10 @@
           title = "The United Flake";
         };
         namespace = "united";
+        package-namespace = "united";
       };
+
+      package-namespace = "united";
 
       channels-config = {
         allowUnfree = true;

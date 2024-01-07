@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       steam-run
+      united.hitman-woa
     ];
 
     programs = {

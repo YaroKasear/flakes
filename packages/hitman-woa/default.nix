@@ -1,11 +1,9 @@
 { pkgs, inputs, ... }:
 
 {
-  environment.systemPackages =
-    # or home.packages
-    [
+  environment.systemPackages = with pkgs; [
       dxvk
-      inputs.nix-gaming.packages.${pkgs.system}.vkd3d-proton;
+      inputs.nix-gaming.packages.${pkgs.system}.vkd3d-proton
     ]
     # construct a list from the output attrset
     ++ (inputs.nix-gaming.lib.legendaryBuilder pkgs
