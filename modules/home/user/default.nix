@@ -69,8 +69,8 @@ in {
       active_tab_background = mkOpt types.str "#eeeeee" "My active tab background color!";
       inactive_tab_foreground = mkOpt types.str "#444444" "My inactive tab foreground color!";
       inactive_tab_background = mkOpt types.str "#999999" "My inactive tab background color!";
-      tab_bar_background = mkOpt types.str "${cfg.colors.selection_background}";
-      tab_bar_margin_color = mkOpt types.str "${cfg.colors.selection_background}";
+      tab_bar_background = mkOpt types.str "${cfg.colors.selection_background}" "My tab bar background color!";
+      tab_bar_margin_color = mkOpt types.str "${cfg.colors.selection_background}" "My tab bar margin color!";
 
       mark1_background = mkOpt types.str "${cfg.colors.black}" "Mark 1 background color!";
       mark1_foreground = mkOpt types.str "#98d3cb" "Mark 1 foreground color!";

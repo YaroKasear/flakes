@@ -8,12 +8,12 @@
 
 window#waybar {
     background: transparent;
-    color: @primary;
+    color: @foreground;
 }
 
 tooltip {
-  background: @secondary;
-  border: 1px solid @primary;
+  background: @background;
+  border: 1px solid @active_border_color;
 }
 
 tooltip label {
@@ -22,22 +22,22 @@ tooltip label {
 
 #workspaces button {
     padding: 0 5px;
-    background: @secondary;
-    color: @primary;
+    background: @background;
+    color: @foreground;
     border-radius: 10px;
     margin-left: 10px;
 }
 
 #workspaces button.active {
-    background: @primary;
-    color: @secondary;
+    background: @selection_background;
+    color: @selection_foreground;
     font-weight: bold;
 }
 
 .topBar .modules-left, .modules-center, .modules-right {
     padding: 0 5px;
-    background: @primary;
-    color: @secondary;
+    background: @selection_background;
+    color: @selection_foreground;
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;

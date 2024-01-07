@@ -23,8 +23,8 @@ in {
             bar_delimiter = 32;
           };
           color = with config.united.user.colors; {
-            foreground = "'${primary}'";
-            background = "'${secondary}'";
+            foreground = "'${foreground}'";
+            background = "'${background}'";
           };
         };
       };

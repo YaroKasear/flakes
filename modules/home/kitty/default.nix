@@ -24,16 +24,52 @@ in {
           enableZshIntegration = true;
         };
         extraConfig = with config.united.user.colors; let
-          primaryColor = lib.replaceStrings ["#"] ["_"] primary;
-          secondaryColor = lib.replaceStrings ["#"] ["_"] secondary;
-          tertiaryColor = lib.replaceStrings ["#"] ["_"] tertiary;
+          foregroundColor = lib.replaceStrings ["#"] ["_"] selection_foreground;
+          backgroundColor = lib.replaceStrings ["#"] ["_"] selection_background;
         in ''
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "
           bell_path ${home-directory}/.local/share/sound/bell.oga
-          foreground ${primary}
-          background ${tertiary}
+          foreground ${foreground}
+          background ${background}
+          selection_foreground ${selection_foreground}
+          selection_background ${selection_background}
+          cursor ${cursor}
+          cursor_text_color ${cursor_text_color}
+          url_color ${url_color}
+          visual_bell_color ${visual_bell_color}
+          active_border_color ${active_border_color}
+          inactive_border_color ${inactive_border_color}
+          bell_border_color ${bell_border_color}
+          active_tab_foreground ${active_tab_foreground}
+          active_tab_background ${active_tab_background}
+          inactive_tab_foreground ${inactive_tab_foreground}
+          inactive_tab_background ${inactive_tab_background}
+          tab_bar_background ${tab_bar_background}
+          tab_bar_margin_color ${tab_bar_margin_color}
+          mark1_background ${mark1_background}
+          mark1_foreground ${mark1_foreground}
+          mark2_background ${mark2_background}
+          mark2_foreground ${mark2_foreground}
+          mark3_background ${mark3_background}
+          mark3_foreground ${mark3_foreground}
+          color0 ${color0}
+          color1 ${color1}
+          color2 ${color2}
+          color3 ${color3}
+          color4 ${color4}
+          color5 ${color5}
+          color6 ${color6}
+          color7 ${color7}
+          color8 ${color8}
+          color9 ${color9}
+          color10 ${color10}
+          color11 ${color11}
+          color12 ${color12}
+          color13 ${color13}
+          color14 ${color14}
+          color15 ${color15}
           background_opacity 0.8
           background_blur 32
           tab_bar_edge bottom
@@ -44,8 +80,8 @@ in {
           tab_bar_style separator
           tab_bar_min_tabs 1
           tab_separator ""
-          tab_title_template "{fmt.fg.${secondaryColor}}{fmt.bg.default}{fmt.fg.${primaryColor}}{fmt.bg.${secondaryColor}} {title.split()[0]} {fmt.fg.${secondaryColor}}{fmt.bg.default} "
-          active_tab_title_template "{fmt.fg.${primaryColor}}{fmt.bg.default}{fmt.fg.${secondaryColor}}{fmt.bg.${primaryColor}} {title.split()[0]} {fmt.fg.${primaryColor}}{fmt.bg.default} "
+          tab_title_template "{fmt.fg.${backgroundColor}}{fmt.bg.default}{fmt.fg.${foregroundColor}}{fmt.bg.${backgroundColor}} {title.split()[0]} {fmt.fg.${backgroundColor}}{fmt.bg.default} "
+          active_tab_title_template "{fmt.fg.${foregroundColor}}{fmt.bg.default}{fmt.fg.${backgroundColor}}{fmt.bg.${foregroundColor}} {title.split()[0]} {fmt.fg.${foregroundColor}}{fmt.bg.default} "
         '';
       };
     };

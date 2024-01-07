@@ -31,7 +31,7 @@ in {
     xdg.configFile = {
       "hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
       "kitty/kittybg.conf".text = ''
-        background ${config.united.user.colors.secondary}
+        background ${config.united.user.colors.background}
         background_image /tmp/background.png
       '';
     };
@@ -52,12 +52,6 @@ in {
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
       settings = with config.united.user.colors; {
-        "$primary" = "rgb(${lib.replaceStrings ["#"] [""] primary})";
-        "$secondary" = "rgb(${lib.replaceStrings ["#"] [""] secondary})";
-        "$tertiary" = "rgb(${lib.replaceStrings ["#"] [""] tertiary})";
-        "$window" = "rgb(${lib.replaceStrings ["#"] [""] window})";
-        "$alert" = "rgb(${lib.replaceStrings ["#"] [""] alert})";
-        "$white" = "rgb(${lib.replaceStrings ["#"] [""] white})";
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
         "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
         "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";
@@ -65,6 +59,62 @@ in {
         "$blue" = "rgb(${lib.replaceStrings ["#"] [""] blue})";
         "$magenta" = "rgb(${lib.replaceStrings ["#"] [""] magenta})";
         "$cyan" = "rgb(${lib.replaceStrings ["#"] [""] cyan})";
+        "$white" = "rgb(${lib.replaceStrings ["#"] [""] white})";
+        "$black_dull" = "rgb(${lib.replaceStrings ["#"] [""] black_dull})";
+        "$black_bright" = "rgb(${lib.replaceStrings ["#"] [""] black_bright})";
+        "$red_dull" = "rgb(${lib.replaceStrings ["#"] [""] red_dull})";
+        "$red_bright" = "rgb(${lib.replaceStrings ["#"] [""] red_bright})";
+        "$green_dull" = "rgb(${lib.replaceStrings ["#"] [""] green_dull})";
+        "$green_bright" = "rgb(${lib.replaceStrings ["#"] [""] green_bright})";
+        "$yellow_dull" = "rgb(${lib.replaceStrings ["#"] [""] yellow_dull})";
+        "$yellow_bright" = "rgb(${lib.replaceStrings ["#"] [""] yellow_bright})";
+        "$blue_dull" = "rgb(${lib.replaceStrings ["#"] [""] blue_dull})";
+        "$blue_bright" = "rgb(${lib.replaceStrings ["#"] [""] blue_bright})";
+        "$magenta_dull" = "rgb(${lib.replaceStrings ["#"] [""] magenta_dull})";
+        "$magenta_bright" = "rgb(${lib.replaceStrings ["#"] [""] magenta_bright})";
+        "$cyan_dull" = "rgb(${lib.replaceStrings ["#"] [""] cyan_dull})";
+        "$cyan_bright" = "rgb(${lib.replaceStrings ["#"] [""] cyan_bright})";
+        "$white_dull" = "rgb(${lib.replaceStrings ["#"] [""] white_dull})";
+        "$white_bright" = "rgb(${lib.replaceStrings ["#"] [""] white_bright})";
+        "$foreground" = "rgb(${lib.replaceStrings ["#"] [""] foreground})";
+        "$background" = "rgb(${lib.replaceStrings ["#"] [""] background})";
+        "$selection_foreground" = "rgb(${lib.replaceStrings ["#"] [""] selection_foreground})";
+        "$selection_background" = "rgb(${lib.replaceStrings ["#"] [""] selection_background})";
+        "$cursor" = "rgb(${lib.replaceStrings ["#"] [""] cursor})";
+        "$cursor_text_color" = "rgb(${lib.replaceStrings ["#"] [""] cursor_text_color})";
+        "$url_color" = "rgb(${lib.replaceStrings ["#"] [""] url_color})";
+        "$visual_bell_color" = "rgb(${lib.replaceStrings ["#"] [""] visual_bell_color})";
+        "$active_border_color" = "rgb(${lib.replaceStrings ["#"] [""] active_border_color})";
+        "$inactive_border_color" = "rgb(${lib.replaceStrings ["#"] [""] inactive_border_color})";
+        "$bell_border_color" = "rgb(${lib.replaceStrings ["#"] [""] bell_border_color})";
+        "$active_tab_foreground" = "rgb(${lib.replaceStrings ["#"] [""] active_tab_foreground})";
+        "$active_tab_background" = "rgb(${lib.replaceStrings ["#"] [""] active_tab_background})";
+        "$inactive_tab_foreground" = "rgb(${lib.replaceStrings ["#"] [""] inactive_tab_foreground})";
+        "$inactive_tab_background" = "rgb(${lib.replaceStrings ["#"] [""] inactive_tab_background})";
+        "$tab_bar_background" = "rgb(${lib.replaceStrings ["#"] [""] tab_bar_background})";
+        "$tab_bar_margin_color" = "rgb(${lib.replaceStrings ["#"] [""] tab_bar_margin_color})";
+        "$mark1_background" = "rgb(${lib.replaceStrings ["#"] [""] mark1_background})";
+        "$mark1_foreground" = "rgb(${lib.replaceStrings ["#"] [""] mark1_foreground})";
+        "$mark2_background" = "rgb(${lib.replaceStrings ["#"] [""] mark2_background})";
+        "$mark2_foreground" = "rgb(${lib.replaceStrings ["#"] [""] mark2_foreground})";
+        "$mark3_background" = "rgb(${lib.replaceStrings ["#"] [""] mark3_background})";
+        "$mark3_foreground" = "rgb(${lib.replaceStrings ["#"] [""] mark3_foreground})";
+        "$color0" = "rgb(${lib.replaceStrings ["#"] [""] color0})";
+        "$color1" = "rgb(${lib.replaceStrings ["#"] [""] color1})";
+        "$color2" = "rgb(${lib.replaceStrings ["#"] [""] color2})";
+        "$color3" = "rgb(${lib.replaceStrings ["#"] [""] color3})";
+        "$color4" = "rgb(${lib.replaceStrings ["#"] [""] color4})";
+        "$color5" = "rgb(${lib.replaceStrings ["#"] [""] color5})";
+        "$color6" = "rgb(${lib.replaceStrings ["#"] [""] color6})";
+        "$color7" = "rgb(${lib.replaceStrings ["#"] [""] color7})";
+        "$color8" = "rgb(${lib.replaceStrings ["#"] [""] color8})";
+        "$color9" = "rgb(${lib.replaceStrings ["#"] [""] color9})";
+        "$color10" = "rgb(${lib.replaceStrings ["#"] [""] color10})";
+        "$color11" = "rgb(${lib.replaceStrings ["#"] [""] color11})";
+        "$color12" = "rgb(${lib.replaceStrings ["#"] [""] color12})";
+        "$color13" = "rgb(${lib.replaceStrings ["#"] [""] color13})";
+        "$color14" = "rgb(${lib.replaceStrings ["#"] [""] color14})";
+        "$color15" = "rgb(${lib.replaceStrings ["#"] [""] color15})";
 
         exec-once = [
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
@@ -102,19 +152,19 @@ in {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.inactive_border" = "$secondary";
-          "col.active_border" = "$primary";
+          "col.inactive_border" = "$inactive_border_color";
+          "col.active_border" = "$active_border_color";
           layout = "dwindle";
           resize_on_border = true;
           allow_tearing = true;
         };
 
         group = {
-          "col.border_active" = "$primary";
-          "col.border_inactive" = "$secondary";
+          "col.border_active" = "$active_border_color";
+          "col.border_inactive" = "$inactive_border_color";
           groupbar = {
-            "col.active" = "$primary";
-            "col.inactive" = "$secondary";
+            "col.active" = "$active_tab_background";
+            "col.inactive" = "$inactive_tab_background";
             font_family = "FiraCode Nerd Font";
             font_size = 10;
             gradients = true;
@@ -153,7 +203,7 @@ in {
         };
 
         misc = {
-          background_color = "$tertiary";
+          background_color = "$background";
           disable_hyprland_logo = true;
           vrr = 1;
         };
