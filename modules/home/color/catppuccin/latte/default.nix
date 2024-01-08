@@ -108,6 +108,12 @@ in {
       };
     };
 
-    programs.vim.settings.termguicolors = true;
+    programs.vim.extraConfig = ''
+      set termguicolors
+
+      colorscheme catppuccin_latte
+    '';
+
+    home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
   };
 }

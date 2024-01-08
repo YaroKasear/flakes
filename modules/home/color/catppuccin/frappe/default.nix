@@ -114,8 +114,6 @@ in {
       colorscheme catppuccin_frappe
     '';
 
-    home.file = {
-      ".vim/colors".source = "${inputs.catppuccin}/colors";
-    };
+    home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
   };
 }
