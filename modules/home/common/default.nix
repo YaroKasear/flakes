@@ -3,8 +3,6 @@
 with lib;
 with lib.united;
 let
-  colors = config.united.color;
-
   cfg = config.united.common;
 in {
   options.united.common = {
@@ -58,20 +56,18 @@ in {
       yubikey.enable = true;
       zsh.enable = true;
       user.enable = true;
-      colors = {
+      color = with config.united.color; {
         enable = true;
-        colors = with colors; {
-          visual_bell_color = "#bfe0ff";
-          active_tab_background = "#0dc9c9";
-          active_border_color = active_tab_background;
-          inactive_tab_background = "#197d60";
-          inactive_tab_foreground = "#d0d0d0";
-          inactive_border_color = inactive_tab_background;
-          tab_bar_background = background;
-          tab_bar_margin_color = background;
-          selection_background = active_tab_background;
-          selection_foreground = active_tab_foreground;
-        };
+        visual_bell_color = "#bfe0ff";
+        active_tab_background = "#0dc9c9";
+        active_border_color = active_tab_background;
+        inactive_tab_background = "#197d60";
+        inactive_tab_foreground = "#d0d0d0";
+        inactive_border_color = inactive_tab_background;
+        tab_bar_background = background;
+        tab_bar_margin_color = background;
+        selection_background = active_tab_background;
+        selection_foreground = active_tab_foreground;
       };
     };
 
