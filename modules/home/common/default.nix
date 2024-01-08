@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  colors = config.united.colors;
+
   cfg = config.united.common;
 in {
   options.united.common = {
@@ -44,7 +46,7 @@ in {
       nix-index.enable = true;
     };
 
-    united = with config.united.user.colors; {
+    united = {
       btop.enable = true;
       fzf.enable = true;
       git.enable = true;
@@ -55,7 +57,8 @@ in {
       vim.enable = true;
       yubikey.enable = true;
       zsh.enable = true;
-      user = {
+      user.enable = true;
+      colors = {
         enable = true;
         colors = {
           visual_bell_color = "#bfe0ff";

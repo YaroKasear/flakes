@@ -14,7 +14,7 @@ let
     else
       "/home/yaro";
 
-  cfg = config.united.color;
+  cfg = config.united.colors;
 in {
   options.united.color = {
     enable = mkEnableOption "Color";

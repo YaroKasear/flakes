@@ -15,7 +15,7 @@ in {
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        colors = with config.united.user.colors; {
+        colors = with config.united.colors; {
           fg = foreground;
           bg = background;
           "fg+" = selection_foreground;
