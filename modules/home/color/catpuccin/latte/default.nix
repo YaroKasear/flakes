@@ -20,13 +20,21 @@ in {
       background = extraColors.base;
 
       selection_background = extraColors.surface2;
+      selection_foreground = extraColors.text;
 
       cursor = extraColors.rosewater;
       cursor_text_color = extraColors.base;
       url_color = blue;
+      active_tab_foreground = extraColors.surface0;
+      active_tab_background = active_border_color;
       active_border_color = extraColors.lavender;
+      inactive_tab_foreground = extraColors.text;
+      inactive_tab_background = inactive_border_color;
       inactive_border_color = extraColors.overlay0;
       bell_border_color = yellow;
+
+      tab_bar_background = background;
+      tab_bar_margin_color = background
 
       color0 = extraColors.subtext1;
       color1 = red;

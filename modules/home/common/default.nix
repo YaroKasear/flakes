@@ -68,7 +68,8 @@ in {
         # tab_bar_margin_color = background;
         # selection_background = active_tab_background;
         # selection_foreground = active_tab_foreground;
-        catpuccin.latte.enable = true;
+        catpuccin.latte.enable = false;
+        catpuccin.frappe.enable = true;
       };
     };
 

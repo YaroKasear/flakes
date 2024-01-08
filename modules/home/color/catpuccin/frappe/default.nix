@@ -11,75 +11,83 @@ in {
 
   config = mkIf cfg.enable {
     united.color = rec {
-      red = "#d20f39";
-      green = "#40a02b";
-      yellow = "#df8e1d";
-      blue = "#1e66f5";
+      red = "#e78284";
+      green = "#a6d189";
+      yellow = "#e5c890";
+      blue = "#8caaee";
 
       foreground = extraColors.text;
       background = extraColors.base;
 
       selection_background = extraColors.surface2;
+      selection_foreground = extraColors.text;
 
       cursor = extraColors.rosewater;
-      cursor_text_color = extraColors.base;
+      cursor_text_color = extraColors.crust;
       url_color = blue;
+      active_tab_foreground = extraColors.surface0;
+      active_tab_background = active_border_color;
       active_border_color = extraColors.lavender;
+      inactive_tab_foreground = extraColors.text;
+      inactive_tab_background = inactive_border_color;
       inactive_border_color = extraColors.overlay0;
       bell_border_color = yellow;
 
-      color0 = extraColors.subtext1;
+      tab_bar_background = background;
+      tab_bar_margin_color = background;
+
+      color0 = extraColors.surface1;
       color1 = red;
       color2 = green;
       color3 = yellow;
       color4 = blue;
       color5 = extraColors.pink;
       color6 = extraColors.teal;
-      color7 = extraColors.surface2;
-      color8 = extraColors.subtext0;
+      color7 = extraColors.subtext1;
+      color8 = extraColors.surface2;
       color9 = red;
       color10 = green;
       color11 = yellow;
       color12 = blue;
       color13 = extraColors.pink;
       color14 = extraColors.teal;
-      color15 = extraColors.surface1;
+      color15 = extraColors.subtext0;
 
       mark1_background = extraColors.lavender;
-      mark1_foreground = extraColors.base;
+      mark1_foreground = extraColors.crust;
       mark2_background = extraColors.mauve;
-      mark2_foreground = extraColors.base;
+      mark2_foreground = extraColors.crust;
       mark3_background = extraColors.sapphire;
-      mark3_foreground = extraColors.base;
+      mark3_foreground = extraColors.crust;
 
       extraColors = rec {
-        base = "#eff1f5";
+        base = "#303446";
 
-        crust = "#dce0e8";
-        mantle = "#e6e9ef";
+        crust = "#232634";
+        mantle = "#292c3c";
 
-        surface0 = "#ccd0da";
-        surface1 = "#bcc0cc";
-        surface2 = "#acb0be";
+        surface0 = "#414559";
+        surface1 = "#51576d";
+        surface2 = "#626880";
 
-        overlay0 = "#9ca0b0";
-        overlay1 = "#8c8fa1";
-        overlay2 = "#7c7f93";
+        overlay0 = "#737994";
+        overlay1 = "#838ba7";
+        overlay2 = "#949cbb";
 
-        text = "#4c4f69";
+        text = "#c6d0f5";
 
-        subtext0 = "#6c6f85";
-        subtext1 = "#5c5f77";
+        subtext0 = "#a5adce";
+        subtext1 = "#b5bfe2";
 
-        lavender = "#7287fd";
-        maroon = "#e64553";
-        mauve = "#8839ef";
-        peach = "#fe640b";
-        pink = "#ea76cb";
-        rosewater = "#dc8a78";
-        sapphire = "#209fb5";
-        sky = "#04a5e5";
-        teal = "#179299";
+        lavender = "#babbf1";
+        maroon = "#ea999c";
+        mauve = "#ca9ee6";
+        peach = "#ef9f76";
+        pink = "#f4b8e4";
+        rosewater = "#f2d5cf";
+        sapphire = "#f2d5cf";
+        sky = "#99d1db";
+        teal = "#81c8be";
 
         color16 = peach;
         color17 = rosewater;
@@ -91,12 +99,12 @@ in {
         rainbow_color5 = sapphire;
         rainbow_color6 = lavender;
 
-        rainbow_color_p1 = "#833255";
-        rainbow_color_p2 = "#88684a";
-        rainbow_color_p3 = "#45704f";
-        rainbow_color_p4 = "#45704f";
-        rainbow_color_p5 = "#3757a3";
-        rainbow_color_p6 = "#6444a0";
+        rainbow_color_p1 = "#d4b3c9";
+        rainbow_color_p2 = "#d3cece";
+        rainbow_color_p3 = "#bad1cb";
+        rainbow_color_p4 = "#accee0";
+        rainbow_color_p5 = "#b1c2f2";
+        rainbow_color_p6 = "#c9bdf0";
       };
     };
   };
