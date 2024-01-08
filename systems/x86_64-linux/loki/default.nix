@@ -21,6 +21,11 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    united.hitman-woa
+  ];
+
+
   united.common.enable = true;
 
   fileSystems."/mnt/containers" = {
