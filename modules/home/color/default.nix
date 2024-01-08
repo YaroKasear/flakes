@@ -14,16 +14,10 @@ let
     else
       "/home/yaro";
 
-  cfg = config.united.user;
+  cfg = config.united.color;
 in {
-  options.united.user = {
-    enable = mkEnableOption "User";
-
-    name = mkOpt types.str "yaro" "My user name!";
-    home-directory = mkOpt types.str home-directory "My home directory!";
-    icon = mkOpt types.path "${home-directory}/.face" "My profile pic!";
-    bell = mkOpt types.path "${home-directory}/.local/share/sound/bell.oga" "My bell sound!";
-
+  options.united.color = {
+    enable = mkEnableOption "Color";
     colors = {
       # These are all based on kitty's color settings, which should allow for a more than rich enough selection!
 
@@ -96,73 +90,8 @@ in {
       color14 = mkOpt types.str "#14ffff" "Color 14";
       color15 = mkOpt types.str "#ffffff" "Color 15";
     };
+    extraColors = mkOpt types.attrsOf types.str "Additional colors without any explicit role!";
   };
 
-  config = mkIf cfg.enable {
-    home = {
-      username = "yaro";
-      homeDirectory = home-directory;
-      file = {
-        pfp = {
-          source = ./files/techkat.png;
-          target = cfg.icon;
-        };
-        bell = {
-          source = ./files/bell.oga;
-          target = cfg.bell;
-        };
-      };
-    };
-
-    united.color.enable = true;
-
-    accounts.email.accounts = {
-      Personal = {
-        address = "yarokasear@gmail.com";
-        flavor = "gmail.com";
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = true;
-        };
-        primary = true;
-        realName = "Yaro Kasear";
-        thunderbird.enable = true;
-      };
-      Heartbeat = {
-        address = "yaro@kasear.net";
-        flavor = "gmail.com";
-        gpg = {
-          key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-          signByDefault = true;
-        };
-        realName = "Yaro Kasear";
-        thunderbird.enable = true;
-      };
-      Wanachi = {
-        address = "wanachi@tlkmuck.org";
-        flavor = "gmail.com";
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = true;
-        };
-        realName = "Wanachi";
-        thunderbird.enable = true;
-      };
-      Work = {
-        address = "cnelson@braunresearch.com";
-        flavor = "gmail.com";
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = false;
-        };
-        realName = "Conrad Nelson";
-        thunderbird.enable = true;
-      };
-    };
-
-    sops.secrets = mkIf config.united.sops.enable {
-      mosquitto-password.sopsFile = ./secrets.yaml;
-      signature.sopsFile = ./secrets.yaml;
-    };
-  };
+  config = mkIf cfg.enable { };
 }
