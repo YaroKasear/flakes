@@ -23,7 +23,7 @@ in {
         mouse = true;
         historyLimit = 5000;
         tmuxinator.enable = true;
-        extraConfig = with config.united.colors;
+        extraConfig = with config.united.color;
         ''
           bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
           unbind C-Space

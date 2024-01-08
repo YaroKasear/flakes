@@ -45,7 +45,7 @@ in {
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
-      settings = with config.united.colors; {
+      settings = with config.united.color; {
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
         "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
         "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";

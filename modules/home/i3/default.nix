@@ -56,7 +56,7 @@ in {
             inner = 5;
             smartGaps = true;
           };
-          colors = with config.united.colors; {
+          colors = with config.united.color; {
             background = window;
             focused = {
               border = tertiary;

@@ -3,7 +3,7 @@
 with lib;
 with lib.united;
 let
-  colors = config.united.colors;
+  colors = config.united.color;
 
   cfg = config.united.common;
 in {
@@ -60,7 +60,7 @@ in {
       user.enable = true;
       colors = {
         enable = true;
-        colors = with config.united.colors.colors; {
+        colors = with colors; {
           visual_bell_color = "#bfe0ff";
           active_tab_background = "#0dc9c9";
           active_border_color = active_tab_background;
