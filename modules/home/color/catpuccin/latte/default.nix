@@ -49,7 +49,7 @@ in {
       mark1_foreground = extraColors.base;
       mark2_background = extraColors.mauve;
       mark2_foreground = extraColors.base;
-      mark3_background = extraColors.sapphire;
+      mark3_background = extraColors.sapphire`;
       mark3_foreground = extraColors.base;
 
       extraColors = rec {
@@ -72,15 +72,19 @@ in {
         subtext1 = "#5c5f77";
 
         lavender = "#7287fd";
-        rosewater = "#dc8a78";
-        pink = "#ea76cb";
-        teal = "#179299";
-        peach = "#fe640b";
+        maroon = "#e64553";
         mauve = "#8839ef";
+        peach = "#fe640b";
+        pink = "#ea76cb";
+        rosewater = "#dc8a78";
         sapphire = "#209fb5";
+        sky = "#04a5e5";
+        teal = "#179299";
 
         color16 = peach;
         color17 = rosewater;
+
+        rainbow_color1 = red;
       };
     };
   };
