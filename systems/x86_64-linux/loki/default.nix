@@ -22,7 +22,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    united.hitman-woa
+    # united.hitman-woa
   ];
 
 

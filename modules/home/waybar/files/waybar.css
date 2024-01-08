@@ -21,11 +21,12 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background: @background;
-    color: @foreground;
     border-radius: 10px;
+    background: @inactive_tab_background;
+    color: @inactive_tab_foreground;
+    font-weight: bold;
     margin-left: 10px;
+    padding: 0 5px;
 }
 
 #workspaces button.active {

@@ -39,6 +39,7 @@ in {
           bind-key -n End send Escape "OF"
           set -g status-right-length 40
           set -g status-left-length 40
+          set -g message-style bg=${visual_bell_color},fg=${active_tab_foreground},bold
           set -g pane-active-border-style fg=${active_border_color}
           set -g pane-border-style fg=${inactive_border_color}
           set -g status-style bg='${background}',fg='${active_tab_background},bold,noreverse'

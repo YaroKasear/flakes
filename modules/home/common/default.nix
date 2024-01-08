@@ -58,7 +58,7 @@ in {
       user = {
         enable = true;
         colors = {
-          visual_bell_color = red;
+          visual_bell_color = "#bfe0ff";
           active_tab_background = "#0dc9c9";
           active_border_color = active_tab_background;
           inactive_tab_background = "#197d60";
@@ -66,6 +66,8 @@ in {
           inactive_border_color = inactive_tab_background;
           tab_bar_background = background;
           tab_bar_margin_color = background;
+          selection_background = active_tab_background;
+          selection_foreground = active_tab_foreground;
         };
       };
     };
