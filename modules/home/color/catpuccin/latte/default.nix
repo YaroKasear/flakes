@@ -10,5 +10,78 @@ in {
   };
 
   config = mkIf cfg.enable {
+    united.color = rec {
+      red = "#d20f39";
+      green = "#40a02b";
+      yellow = "#df8e1d";
+      blue = "#1e66f5";
+
+      foreground = extraColors.text;
+      background = extraColors.base;
+
+      selection_background = extraColors.surface2;
+
+      cursor = extraColors.rosewater;
+      cursor_text_color = extraColors.base;
+      url_color = blue;
+      active_border_color = extraColors.lavender;
+      inactive_border_color = extraColors.overlay0;
+      bell_border_color = yellow;
+
+      color0 = extraColors.subtext1;
+      color1 = red;
+      color2 = green;
+      color3 = yellow;
+      color4 = blue;
+      color5 = extraColors.pink;
+      color6 = extraColors.teal;
+      color7 = extraColors.surface2;
+      color8 = extraColors.subtext0;
+      color9 = red;
+      color10 = green;
+      color11 = yellow;
+      color12 = blue;
+      color13 = extraColors.pink;
+      color14 = extraColors.teal;
+      color15 = extraColors.surface1;
+
+      mark1_background = extraColors.lavender;
+      mark1_foreground = extraColors.base;
+      mark2_background = extraColors.mauve;
+      mark2_foreground = extraColors.base;
+      mark3_background = extraColors.sapphire;
+      mark3_foreground = extraColors.base;
+
+      extraColors = rec {
+        base = "#eff1f5";
+
+        crust = "#dce0e8";
+        mantle = "#e6e9ef";
+
+        surface0 = "#ccd0da";
+        surface1 = "#bcc0cc";
+        surface2 = "#acb0be";
+
+        overlay0 = "#9ca0b0";
+        overlay1 = "#8c8fa1";
+        overlay2 = "#7c7f93";
+
+        text = "#4c4f69";
+
+        subtext0 = "#6c6f85";
+        subtext1 = "#5c5f77";
+
+        lavender = "#7287fd";
+        rosewater = "#dc8a78";
+        pink = "#ea76cb";
+        teal = "#179299";
+        peach = "#fe640b";
+        mauve = "#8839ef";
+        sapphire = "#209fb5";
+
+        color16 = peach;
+        color17 = rosewater;
+      };
+    };
   };
 }
