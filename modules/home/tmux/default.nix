@@ -39,20 +39,22 @@ in {
           bind-key -n End send Escape "OF"
           set -g status-right-length 40
           set -g status-left-length 40
-          set -g status-style bg='${background}',fg='${selection_background},bold,noreverse'
-          set -g status-left '#[bg=${background}]#[fg=${selection_background}]#{?client_prefix,#[bg=${background}]#[fg=${red}],}'
-          set -ga status-left '#[bg=${selection_background}]#[fg=${selection_foreground}]#{?client_prefix,#[bg=${red}],} #(whoami)@#(hostname) #(uname) #(uname -r) '
-          set -ga status-left '#[bg=${background}]#[fg=${selection_background}]#{?client_prefix,#[bg=${background}]#[fg=${red}],}'
+          set -g pane-active-border-style fg=${active_border_color}
+          set -g pane-border-style fg=${inactive_border_color}
+          set -g status-style bg='${background}',fg='${active_tab_background},bold,noreverse'
+          set -g status-left '#[bg=${background}]#[fg=${active_tab_background}]#{?client_prefix,#[bg=${background}]#[fg=${visual_bell_color}],}'
+          set -ga status-left '#[bg=${active_tab_background}]#[fg=${active_tab_foreground}]#{?client_prefix,#[bg=${visual_bell_color}],} #(whoami)@#(hostname) #(uname) #(uname -r) '
+          set -ga status-left '#[bg=${background}]#[fg=${active_tab_background}]#{?client_prefix,#[bg=${background}]#[fg=${visual_bell_color}],}'
           set -g status-justify absolute-centre
-          set-window-option -g window-status-style bg='${selection_foreground},fg=${selection_background},bold,noreverse'
-          set-window-option -g window-status-current-style bg='${selection_background}',fg='${selection_foreground},bold,noreverse'
+          set-window-option -g window-status-style bg='${active_tab_foreground},fg=${active_tab_background},bold,noreverse'
+          set-window-option -g window-status-current-style bg='${active_tab_background}',fg='${active_tab_foreground},bold,noreverse'
           set-window-option -g window-status-activity-style 'bold,noreverse'
           set-window-option -g window-status-bell-style 'bold,noreverse'
-          set -g window-status-current-format "#[fg=${selection_background}]#[bg=${background}]#[fg=${selection_foreground}]#[bg=${selection_background}] #I #W #[fg=${selection_background}]#[bg=${background}]"
-          set -g window-status-format "#[fg=${selection_foreground}]#[bg=${background}]#{?window_bell_flag,#[bg=${background}]#[fg=${red}],}"
-          set -ga window-status-format "#[fg=${selection_background}]#[bg=${selection_foreground}]#{?window_bell_flag,#[bg=${red}]#[fg=${selection_foreground}],} #I #W "
-          set -ga window-status-format "#[bg=${background}]#[fg=${selection_foreground}]#{?window_bell_flag,#[bg=${background}]#[fg=${red}],}"
-          set -g status-right '#[fg=${selection_background}]#[bg=${background}]#[bg=${selection_background}]#[fg=${selection_foreground}] %a %H:%M:%S %Y-%m-%d #[bg=${background}]#[fg=${selection_background}]'
+          set -g window-status-current-format "#[fg=${active_tab_background}]#[bg=${background}]#[fg=${active_tab_foreground}]#[bg=${active_tab_background}] #I #W #[fg=${active_tab_background}]#[bg=${background}]"
+          set -g window-status-format "#[fg=${inactive_tab_background}]#[bg=${background}]#{?window_bell_flag,#[bg=${background}]#[fg=${visual_bell_color}],}"
+          set -ga window-status-format "#[fg=${inactive_tab_foreground}]#[bg=${inactive_tab_background}]#{?window_bell_flag,#[bg=${visual_bell_color}]#[fg=${active_tab_foreground}],} #I #W "
+          set -ga window-status-format "#[fg=${inactive_tab_background}]#[bg=${background}]#{?window_bell_flag,#[bg=${background}]#[fg=${visual_bell_color}],}"
+          set -g status-right '#[fg=${active_tab_background}]#[bg=${background}]#[bg=${active_tab_background}]#[fg=${active_tab_foreground}] %a %H:%M:%S %Y-%m-%d #[bg=${background}]#[fg=${active_tab_background}]'
         '';
       };
     };

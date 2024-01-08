@@ -24,8 +24,10 @@ in {
           enableZshIntegration = true;
         };
         extraConfig = with config.united.user.colors; let
-          foregroundColor = lib.replaceStrings ["#"] ["_"] selection_foreground;
-          backgroundColor = lib.replaceStrings ["#"] ["_"] selection_background;
+          activeForegroundColor = lib.replaceStrings ["#"] ["_"] active_tab_foreground;
+          activeBackgroundColor = lib.replaceStrings ["#"] ["_"] active_tab_background;
+          inactiveForegroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_foreground;
+          inactiveBackgroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_background;
         in ''
           enable_audio_bell yes
           window_alert_on_bell yes
@@ -80,8 +82,8 @@ in {
           tab_bar_style separator
           tab_bar_min_tabs 1
           tab_separator ""
-          tab_title_template "{fmt.fg.${backgroundColor}}{fmt.bg.default}{fmt.fg.${foregroundColor}}{fmt.bg.${backgroundColor}} {title.split()[0]} {fmt.fg.${backgroundColor}}{fmt.bg.default} "
-          active_tab_title_template "{fmt.fg.${foregroundColor}}{fmt.bg.default}{fmt.fg.${backgroundColor}}{fmt.bg.${foregroundColor}} {title.split()[0]} {fmt.fg.${foregroundColor}}{fmt.bg.default} "
+          tab_title_template "{fmt.fg.${inactiveBackgroundColor}}{fmt.bg.default}{fmt.fg.${inactiveForegroundColor}}{fmt.bg.${inactiveBackgroundColor}}{fmt.bold} {title.split()[0]} {fmt.fg.${inactiveBackgroundColor}}{fmt.bg.default} "
+          active_tab_title_template "{fmt.fg.${activeBackgroundColor}}{fmt.bg.default}{fmt.fg.${activeForegroundColor}}{fmt.bg.${activeBackgroundColor}}{fmt.bold} {title.split()[0]} {fmt.fg.${activeBackgroundColor}}{fmt.bg.default} "
         '';
       };
     };
