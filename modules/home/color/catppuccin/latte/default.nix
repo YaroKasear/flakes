@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  catppuccin = (pkgs.catppuccin.override { variant = "latte"; });
+
   cfg = config.united.color.catppuccin.latte;
 in {
   options.united.color.catppuccin.latte = {
@@ -108,6 +110,8 @@ in {
       };
     };
 
+    home.packages = [ catppuccin ];
+
     programs = {
       vim.extraConfig = ''
         set termguicolors
@@ -137,11 +141,13 @@ in {
             "ui.semanticTokens" = true;
            };
            "workbench.colorTheme" = "Catppuccin Latte";
-           "workbench.iconTheme" = "catppuccin-frappe";
+           "workbench.iconTheme" = "catppuccin-latte";
         };
       };
     };
 
     home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
+
+    xdg.configFile."btop/themes/catppuccin_latte.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
   };
 }

@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
+
   cfg = config.united.color.catppuccin.frappe;
 in {
   options.united.color.catppuccin.frappe = {
@@ -108,7 +110,10 @@ in {
       };
     };
 
+    home.packages = [ catppuccin ];
+
     programs = {
+      btop.settings.color_theme = "catppuccin_frappe";
       vim.extraConfig = ''
         set termguicolors
 
@@ -143,5 +148,7 @@ in {
     };
 
     home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
+
+    xdg.configFile."btop/themes/catppuccin_frappe.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
   };
 }
