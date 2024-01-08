@@ -122,6 +122,12 @@ in {
             version = "3.10.1";
             sha256 = "er1ugqZDrw4vLc9luAZ6kkehQ27fSMFQDBjQwmD4D8Q=";
           }
+          {
+            name = "catppuccin-vsc-icons";
+            publisher = "Catppuccin";
+            version = "0.33.0";
+            sha256 = "UcwaISy0lkBzlrRBZFH/sw2D8EDtKltBWD7xgfAw3U8=";
+          }
         ];
         userSettings = {
           "editor.semanticHighlighting.enabled" = true;
@@ -131,6 +137,7 @@ in {
             "ui.semanticTokens" = true;
            };
            "workbench.colorTheme" = "Catppuccin Latte";
+           "workbench.iconTheme" = "catppuccin-frappe";
         };
       };
     };
