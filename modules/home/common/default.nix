@@ -60,7 +60,7 @@ in {
       user.enable = true;
       colors = {
         enable = true;
-        colors = {
+        colors = with config.united.colors.colors; {
           visual_bell_color = "#bfe0ff";
           active_tab_background = "#0dc9c9";
           active_border_color = active_tab_background;
