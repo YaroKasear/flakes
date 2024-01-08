@@ -107,5 +107,7 @@ in {
         rainbow_color_p6 = "#6444a0";
       };
     };
+
+    programs.vim.settings.termguicolors = true;
   };
 }

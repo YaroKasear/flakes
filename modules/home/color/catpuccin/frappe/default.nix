@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -106,6 +106,16 @@ in {
         rainbow_color_p5 = "#b1c2f2";
         rainbow_color_p6 = "#c9bdf0";
       };
+    };
+
+    programs.vim.extraConfig = ''
+      set termguicolors
+
+      colorscheme catppuccin_frappe
+    '';
+
+    home.file = {
+      ".vim/colors".source = inputs.catpuccin-vim;
     };
   };
 }
