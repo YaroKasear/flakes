@@ -3,10 +3,10 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.color.catpuccin.latte;
+  cfg = config.united.color.catppuccin.latte;
 in {
-  options.united.color.catpuccin.latte = {
-    enable = mkEnableOption "Catpuccin Latte theme!";
+  options.united.color.catppuccin.latte = {
+    enable = mkEnableOption "catppuccin Latte theme!";
   };
 
   config = mkIf cfg.enable {

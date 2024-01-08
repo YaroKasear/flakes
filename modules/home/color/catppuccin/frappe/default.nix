@@ -3,10 +3,10 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.color.catpuccin.frappe;
+  cfg = config.united.color.catppuccin.frappe;
 in {
-  options.united.color.catpuccin.frappe = {
-    enable = mkEnableOption "Catpuccin Frappe theme!";
+  options.united.color.catppuccin.frappe = {
+    enable = mkEnableOption "catppuccin Frappe theme!";
   };
 
   config = mkIf cfg.enable {
@@ -115,7 +115,7 @@ in {
     '';
 
     home.file = {
-      ".vim/colors".source = inputs.catpuccin-vim;
+      ".vim/colors".source = "${inputs.catppuccin}/colors";
     };
   };
 }

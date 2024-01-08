@@ -10,7 +10,7 @@
 
     nur.url = github:nix-community/NUR;
 
-    catpuccin-vim = {
+    catppuccin-vim = {
       url = "github:catppuccin/vim";
       flake = false;
     };

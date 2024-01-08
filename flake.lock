@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "catpuccin-vim": {
+    "catppuccin-vim": {
       "flake": false,
       "locked": {
         "lastModified": 1694537504,
@@ -686,7 +686,7 @@
     },
     "root": {
       "inputs": {
-        "catpuccin-vim": "catpuccin-vim",
+        "catppuccin-vim": "catppuccin-vim",
         "cowsay": "cowsay",
         "darwin": "darwin",
         "home-manager": "home-manager",
