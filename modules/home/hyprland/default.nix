@@ -274,6 +274,7 @@ in {
         plugin {
           hyprwinwrap {
             class = kitty-bg
+            size: 100%;
           }
         }
       '';
