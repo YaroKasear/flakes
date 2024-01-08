@@ -113,6 +113,17 @@ in {
     home.packages = [ catppuccin ];
 
     programs = {
+      cava.settings.color = {
+        gradient = 1;
+        gradient_color_1 = "#179299";
+        gradient_color_2 = "#04a5e5";
+        gradient_color_3 = "#209fb5";
+        gradient_color_4 = "#1e66f5";
+        gradient_color_5 = "#8839ef";
+        gradient_color_6 = "#ea76cb";
+        gradient_color_7 = "#e64553";
+        gradient_color_8 = "#d20f39";
+      };
       vim.extraConfig = ''
         set termguicolors
 
