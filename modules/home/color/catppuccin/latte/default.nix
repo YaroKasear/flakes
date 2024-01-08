@@ -108,11 +108,32 @@ in {
       };
     };
 
-    programs.vim.extraConfig = ''
-      set termguicolors
+    programs = {
+      vim.extraConfig = ''
+        set termguicolors
 
-      colorscheme catppuccin_latte
-    '';
+        colorscheme catppuccin_latte
+      '';
+      vscode = {
+        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "catppuccin-vsc";
+            publisher = "Catppuccin";
+            version = "3.10.1";
+            sha256 = "er1ugqZDrw4vLc9luAZ6kkehQ27fSMFQDBjQwmD4D8Q=";
+          }
+        ];
+        userSettings = {
+          "editor.semanticHighlighting.enabled" = true;
+          "terminal.integrated.minimumContrastRatio" = 1;
+           "window.titleBarStyle" = "custom";
+           gopls = {
+            "ui.semanticTokens" = true;
+           };
+           "workbench.colorTheme" = "Catppuccin Latte";
+        };
+      };
+    };
 
     home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
   };
