@@ -34,7 +34,7 @@ in {
       bell_border_color = yellow;
 
       tab_bar_background = background;
-      tab_bar_margin_color = background
+      tab_bar_margin_color = background;
 
       color0 = extraColors.subtext1;
       color1 = red;
