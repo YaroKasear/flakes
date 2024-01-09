@@ -46,7 +46,7 @@ in {
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
       sourceFirst = true;
-      settings = with config.united.color; mkDefault {
+      settings = with config.united.color; {
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
         "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
         "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";
@@ -147,19 +147,19 @@ in {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.inactive_border" = "$inactive_border_color";
-          "col.active_border" = "$active_border_color";
+          "col.inactive_border" = mkDefault "$inactive_border_color";
+          "col.active_border" = mkDefault "$active_border_color";
           layout = "dwindle";
           resize_on_border = true;
           allow_tearing = true;
         };
 
         group = {
-          "col.border_active" = "$active_border_color";
-          "col.border_inactive" = "$inactive_border_color";
+          "col.border_active" = mkDefault "$active_border_color";
+          "col.border_inactive" = mkDefault "$inactive_border_color";
           groupbar = {
-            "col.active" = "$active_tab_background";
-            "col.inactive" = "$inactive_tab_background";
+            "col.active" = mkDefault "$active_tab_background";
+            "col.inactive" = mkDefault "$inactive_tab_background";
             font_family = "FiraCode Nerd Font";
             font_size = 10;
             gradients = true;
@@ -198,7 +198,7 @@ in {
         };
 
         misc = {
-          background_color = "$background";
+          background_color = mkDefault "$background";
           disable_hyprland_logo = true;
           vrr = 2;
         };

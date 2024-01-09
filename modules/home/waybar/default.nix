@@ -137,7 +137,7 @@ in {
           };
         };
       };
-      style = ''
+      style = mkDefault ''
         @define-color black ${black};
         @define-color red ${red};
         @define-color green ${green};
