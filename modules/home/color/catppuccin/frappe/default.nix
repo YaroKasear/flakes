@@ -143,13 +143,6 @@ in {
         plugins = with pkgs; [
           tmuxPlugins.catppuccin
         ];
-        extraConfig = mkForce ''
-          bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
-          set -g default-terminal "''${TERM}"
-          set -ga terminal-overrides ",xterm-*:Tc"
-          bind-key -n Home send Escape "OH"
-          bind-key -n End send Escape "OF"
-        '';
       };
       nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
         enable = true;
@@ -181,11 +174,19 @@ in {
            "workbench.iconTheme" = "catppuccin-frappe";
         };
       };
+      zsh = mkIf config.united.zsh.enable {
+        initExtra = "source ~/.config/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh";
+      };
     };
+
+    united.color.catppuccin.enable = true;
 
     xdg.configFile = {
       "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
         source = "${catppuccin}/btop/catppuccin_frappe.theme";
+      };
+      "zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
+        source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh";
       };
     };
   };

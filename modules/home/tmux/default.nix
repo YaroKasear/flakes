@@ -30,6 +30,13 @@ in {
           set -ga terminal-overrides ",xterm-*:Tc"
           bind-key -n Home send Escape "OH"
           bind-key -n End send Escape "OF"
+          unbind C-Space
+          set -g prefix C-Space
+          bind C-Space send-prefix
+          bind-key "|" split-window -h -c "#{pane_current_path}"
+          bind-key "\\" split-window -fh -c "#{pane_current_path}"
+          bind-key "-" split-window -v -c "#{pane_current_path}"
+          bind-key "_" split-window -fv -c "#{pane_current_path}"
           set -g status-right-length 40
           set -g status-left-length 40
           set -g message-style bg=${visual_bell_color},fg=${active_tab_foreground},bold

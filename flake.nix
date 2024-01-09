@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-zsh-highlighing = {
+      url = "github:catppuccin/zsh-syntax-highlighting";
+      flake = false;
+    };
+
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";

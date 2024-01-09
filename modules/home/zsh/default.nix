@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -14,6 +14,7 @@ in {
       zsh = {
         enable = true;
         enableAutosuggestions = true;
+        syntaxHighlighting.enable = true;
         oh-my-zsh = {
           enable = true;
           theme = "jonathan";
