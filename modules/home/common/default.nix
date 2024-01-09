@@ -19,6 +19,7 @@ in {
         asciiquarium
         chroma
         cowsay
+        file
         fortune
         mosquitto
         neofetch

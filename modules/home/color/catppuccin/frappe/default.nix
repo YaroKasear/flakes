@@ -110,11 +110,18 @@ in {
       };
     };
 
-    home.packages = [
-      catppuccin
-      pkgs.kitty-themes
-      pkgs.catppuccin-cursors.frappeDark
-    ];
+    home = {
+      pointerCursor = {
+        package = pkgs.catppuccin-cursors.frappeDark;
+        name = "Catppuccin-Frappe-Dark-Cursors";
+        size = 24;
+      };
+      packages = [
+        catppuccin
+        pkgs.kitty-themes
+        pkgs.catppuccin-cursors.frappeDark
+      ];
+    };
 
     gtk.cursorTheme = {
       package = pkgs.catppuccin-cursors.frappeDark;

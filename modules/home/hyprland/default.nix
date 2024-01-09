@@ -118,6 +118,7 @@ in {
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" asciiquarium"
+          (mkIf config.united.color.catppuccin.frappe.enable "hyprctl setcursor Catppuccin-Frappe-Dark 24")
         ];
 
         monitor = ",highrr,auto,auto";
@@ -199,7 +200,7 @@ in {
         misc = {
           background_color = "$background";
           disable_hyprland_logo = true;
-          vrr = 1;
+          vrr = 2;
         };
 
         windowrulev2 = [
