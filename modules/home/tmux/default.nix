@@ -26,13 +26,6 @@ in {
         extraConfig = with config.united.color; mkDefault
         ''
           bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
-          unbind C-Space
-          set -g prefix C-Space
-          bind C-Space send-prefix
-          bind-key "|" split-window -h -c "#{pane_current_path}"
-          bind-key "\\" split-window -fh -c "#{pane_current_path}"
-          bind-key "-" split-window -v -c "#{pane_current_path}"
-          bind-key "_" split-window -fv -c "#{pane_current_path}"
           set -g default-terminal "''${TERM}"
           set -ga terminal-overrides ",xterm-*:Tc"
           bind-key -n Home send Escape "OH"

@@ -143,7 +143,13 @@ in {
         plugins = with pkgs; [
           tmuxPlugins.catppuccin
         ];
-        extraConfig = mkForce "";
+        extraConfig = mkForce ''
+          bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+          set -g default-terminal "''${TERM}"
+          set -ga terminal-overrides ",xterm-*:Tc"
+          bind-key -n Home send Escape "OH"
+          bind-key -n End send Escape "OF"
+        '';
       };
       nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
         enable = true;
