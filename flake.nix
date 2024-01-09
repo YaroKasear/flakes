@@ -60,6 +60,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ranger-devicons = {
       url = "github:alexanderjeurissen/ranger_devicons";
       flake = false;
@@ -134,11 +139,13 @@
         "yaro@loki".modules = with inputs; [
           hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
           nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
         ];
       };
