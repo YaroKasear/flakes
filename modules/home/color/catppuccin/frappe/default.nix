@@ -384,7 +384,7 @@ in {
         source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh";
       };
       "hypr/frappe.conf" = mkIf config.united.hyprland.enable {
-        source = "${inputs.catppuccin-hyprland}/themes/frappe.conf";
+        source = "${catppuccin}/hyprland/frappe.conf";
       };
     };
   };
