@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-hyprland = {
+      url = "github:catppuccin/hyprland";
+      flake = false;
+    };
+
     catppuccin-zsh-highlighing = {
       url = "github:catppuccin/zsh-syntax-highlighting";
       flake = false;

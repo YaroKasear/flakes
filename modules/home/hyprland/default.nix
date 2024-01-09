@@ -45,7 +45,8 @@ in {
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
-      settings = with config.united.color; {
+      sourceFirst = true;
+      settings = with config.united.color; mkDefault {
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
         "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
         "$green" = "rgb(${lib.replaceStrings ["#"] [""] green})";
@@ -118,7 +119,6 @@ in {
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" asciiquarium"
-          (mkIf config.united.color.catppuccin.frappe.enable "hyprctl setcursor Catppuccin-Frappe-Dark 24")
         ];
 
         monitor = ",highrr,auto,auto";
