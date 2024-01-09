@@ -139,6 +139,12 @@ in {
         prompt = "#ca9ee6";
         "hl+" = "#e78284";
       };
+      tmux = {
+        plugins = with pkgs; [
+          tmuxPlugins.catppuccin
+        ];
+        extraConfig = mkForce "";
+      };
       vim = {
         extraConfig = ''
           set termguicolors
