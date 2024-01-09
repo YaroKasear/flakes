@@ -146,9 +146,9 @@ in {
         include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Frappe.conf
       '';
       tmux = mkIf config.united.tmux.enable {
-        plugins = with pkgs; [
-          tmuxPlugins.catppuccin
-        ];
+        extraConfig = ''
+          source ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin-frappe.tmuxtheme
+        '';
       };
       nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
         enable = true;

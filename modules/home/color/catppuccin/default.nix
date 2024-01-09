@@ -15,20 +15,45 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      tmux.extraConfig = ''
-        bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
-        set -g default-terminal "''${TERM}"
-        set -ga terminal-overrides ",xterm-*:Tc"
-        bind-key -n Home send Escape "OH"
-        bind-key -n End send Escape "OF"
-        unbind C-Space
-        set -g prefix C-Space
-        bind C-Space send-prefix
-        bind-key "|" split-window -h -c "#{pane_current_path}"
-        bind-key "\\" split-window -fh -c "#{pane_current_path}"
-        bind-key "-" split-window -v -c "#{pane_current_path}"
-        bind-key "_" split-window -fv -c "#{pane_current_path}"
-      '';
+      tmux = {
+        plugins = with pkgs; [
+          {
+            plugin = tmuxPlugins.catppuccin;
+            extraConfig = ''
+              set -g @catppuccin_window_left_separator "█"
+              set -g @catppuccin_window_right_separator "█ "
+              set -g @catppuccin_window_number_position "right"
+              set -g @catppuccin_window_middle_separator "  █"
+
+              set -g @catppuccin_window_default_fill "number"
+
+              set -g @catppuccin_window_current_fill "number"
+              set -g @catppuccin_window_current_text "#{pane_current_path}"
+
+              set -g @catppuccin_status_modules_right "application session date_time"
+              set -g @catppuccin_status_left_separator  ""
+              set -g @catppuccin_status_right_separator " "
+              set -g @catppuccin_status_right_separator_inverse "yes"
+              set -g @catppuccin_status_fill "all"
+              set -g @catppuccin_status_connect_separator "no"
+            '';
+          }
+        ];
+        extraConfig = ''
+          bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+          set -g default-terminal "''${TERM}"
+          set -ga terminal-overrides ",xterm-*:Tc"
+          bind-key -n Home send Escape "OH"
+          bind-key -n End send Escape "OF"
+          unbind C-Space
+          set -g prefix C-Space
+          bind C-Space send-prefix
+          bind-key "|" split-window -h -c "#{pane_current_path}"
+          bind-key "\\" split-window -fh -c "#{pane_current_path}"
+          bind-key "-" split-window -v -c "#{pane_current_path}"
+          bind-key "_" split-window -fv -c "#{pane_current_path}"
+        '';
+      };
       kitty.extraConfig = ''
         enable_audio_bell yes
         window_alert_on_bell yes
