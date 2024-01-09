@@ -113,7 +113,8 @@ in {
     home.packages = [ catppuccin ];
 
     programs = {
-      cava.settings.color = {
+      btop.settings.color_theme = mkIf config.united.btop.enable "catppuccin_latte";
+      cava.settings.color = mkIf config.united.cava.enable {
         gradient = 1;
         gradient_color_1 = "#179299";
         gradient_color_2 = "#04a5e5";
@@ -124,7 +125,7 @@ in {
         gradient_color_7 = "#e64553";
         gradient_color_8 = "#d20f39";
       };
-      fzf.colors = with config.united.color; {
+      fzf.colors = with config.united.color; mkIf config.united.fzf.enable {
         "bg+" = "#ccd0da";
         bg = "#eff1f5";
         spinner = "#dc8a78";
@@ -138,21 +139,17 @@ in {
         prompt = "#8839ef";
         "hl+" = "#d20f39";
       };
-      tmux = {
+      tmux = mkIf config.united.tmux.enable {
         plugins = with pkgs; [
           tmuxPlugins.catppuccin
         ];
         extraConfig = mkForce "";
       };
-      vim = {
-        extraConfig = ''
-          set termguicolors
-
-          colorscheme catppuccin_latte
-        '';
-        plugins = [ pkgs.vimPlugins.catppuccin-vim ];
+      nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
+        enable = true;
+        flavour = "frappe";
       };
-      vscode = {
+      vscode = mkIf config.united.vscode.enable {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "catppuccin-vsc";
@@ -180,6 +177,10 @@ in {
       };
     };
 
-    xdg.configFile."btop/themes/catppuccin_latte.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
+    xdg.configFile = {
+      "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
+        source = "${catppuccin}/btop/catppuccin_frappe.theme";
+      };
+    };
   };
 }

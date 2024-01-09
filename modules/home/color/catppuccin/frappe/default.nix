@@ -145,6 +145,10 @@ in {
         ];
         extraConfig = mkForce "";
       };
+      nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
+        enable = true;
+        flavour = "frappe";
+      };
       vscode = mkIf config.united.vscode.enable {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
@@ -174,7 +178,9 @@ in {
     };
 
     xdg.configFile = {
-      "btop/themes/catppuccin_frappe.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
+      "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
+        source = "${catppuccin}/btop/catppuccin_frappe.theme";
+      };
     };
   };
 }
