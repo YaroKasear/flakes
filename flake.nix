@@ -10,11 +10,6 @@
 
     nur.url = github:nix-community/NUR;
 
-    catppuccin-vim = {
-      url = "github:catppuccin/vim";
-      flake = false;
-    };
-
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";

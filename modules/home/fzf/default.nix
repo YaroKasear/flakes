@@ -16,13 +16,13 @@ in {
         enableBashIntegration = true;
         enableZshIntegration = true;
         colors = with config.united.color; {
-          fg = foreground;
-          bg = background;
-          "fg+" = selection_foreground;
-          "bg+" = selection_background;
-          hl = white;
-          preview-fg = foreground;
-          preview-bg = background;
+          fg = mkDefault foreground;
+          bg = mkDefault background;
+          "fg+" = mkDefault selection_foreground;
+          "bg+" = mkDefault selection_background;
+          hl = mkDefault white;
+          preview-fg = mkDefault foreground;
+          preview-bg = mkDefault background;
         };
         tmux.enableShellIntegration = true;
       };

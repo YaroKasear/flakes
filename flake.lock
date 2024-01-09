@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "catppuccin-vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1694537504,
-        "narHash": "sha256-Z3ZfpmMrnKugOhu8cuGZGMM8hVy0GpaOfuGNyQBkGdY=",
-        "owner": "catppuccin",
-        "repo": "vim",
-        "rev": "be4725cfc3fb6ed96f706d9d1bd5baa24d2b048c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "vim",
-        "type": "github"
-      }
-    },
     "cowfiles": {
       "flake": false,
       "locked": {
@@ -686,7 +670,6 @@
     },
     "root": {
       "inputs": {
-        "catppuccin-vim": "catppuccin-vim",
         "cowsay": "cowsay",
         "darwin": "darwin",
         "home-manager": "home-manager",

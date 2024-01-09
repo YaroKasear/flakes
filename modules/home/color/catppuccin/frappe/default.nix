@@ -125,11 +125,28 @@ in {
         gradient_color_7 = "'#ea999c'";
         gradient_color_8 = "'#e78284'";
       };
-      vim.extraConfig = ''
-        set termguicolors
+      fzf.colors = with config.united.color; {
+        "bg+" = "#414559";
+        bg = "#303446";
+        spinner = "#f2d5cf";
+        hl = "#e78284";
+        fg = "#c6d0f5";
+        header = "#e78284";
+        info = "#ca9ee6";
+        pointer = "#f2d5cf";
+        marker = "#f2d5cf";
+        "fg+" = "#f2d5cf";
+        prompt = "#ca9ee6";
+        "hl+" = "#e78284";
+      };
+      vim = {
+        extraConfig = ''
+          set termguicolors
 
-        colorscheme catppuccin_frappe
-      '';
+          colorscheme catppuccin_frappe
+        '';
+        plugins = [ pkgs.vimPlugins.catppuccin-vim ];
+      };
       vscode = {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
@@ -158,8 +175,8 @@ in {
       };
     };
 
-    home.file.".vim/colors".source = "${inputs.catppuccin-vim}/colors";
-
-    xdg.configFile."btop/themes/catppuccin_frappe.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
+    xdg.configFile = {
+      "btop/themes/catppuccin_frappe.theme".source = "${catppuccin}/btop/catppuccin_frappe.theme";
+    };
   };
 }
