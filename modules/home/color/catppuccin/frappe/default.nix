@@ -113,7 +113,14 @@ in {
     home.packages = [
       catppuccin
       pkgs.kitty-themes
+      pkgs.catppuccin-cursors.frappeDark
     ];
+
+    gtk.cursorTheme = {
+      package = pkgs.catppuccin-cursors.frappeDark;
+      name = "Catppuccin-Frappe-Dark";
+      size = 24;
+    };
 
     programs = {
       btop.settings.color_theme = mkIf config.united.btop.enable "catppuccin_frappe";
