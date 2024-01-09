@@ -4,6 +4,7 @@ with lib;
 with lib.united;
 let
   catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
+  catppuccin-gtk = (pkgs.catppuccin-gtk.override { variant = "frappe"; });
 
   cfg = config.united.color.catppuccin.frappe;
 in {
@@ -123,10 +124,16 @@ in {
       ];
     };
 
-    gtk.cursorTheme = {
-      package = pkgs.catppuccin-cursors.frappeDark;
-      name = "Catppuccin-Frappe-Dark";
-      size = 24;
+    gtk = {
+      cursorTheme = {
+        package = pkgs.catppuccin-cursors.frappeDark;
+        name = "Catppuccin-Frappe-Dark";
+        size = 24;
+      };
+      theme = {
+        name = "Catppuccin-Frappe-Standard-Blue-Dark";
+        package = catppuccin-gtk;
+      };
     };
 
     programs = {
