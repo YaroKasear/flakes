@@ -1,5 +1,53 @@
 {
   "nodes": {
+    "catppuccin-swaync-frappe": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-dl6YowWD7uTFCcgqBgzGkA+xbkpsKc7yjjMz5MDOSh0=",
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/frappe.css"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/frappe.css"
+      }
+    },
+    "catppuccin-swaync-latte": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-obQudQDk5+KAfv7zxfaxwJD/tL5HLuVoJ3ErH6M28lE=",
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/latte.css"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/latte.css"
+      }
+    },
+    "catppuccin-swaync-macchiato": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-9VPpaa6jLD9uolPw82k/LKoTNkEq4TbLGfP3udh2O6I=",
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/macchiato.css"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/macchiato.css"
+      }
+    },
+    "catppuccin-swaync-mocha": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-hV8dmNVl/D+omXLU4Q/dxS89AJ9d0esIWjnbX9QjKQs=",
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/mocha.css"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/mocha.css"
+      }
+    },
     "catppuccin-zsh-highlighing": {
       "flake": false,
       "locked": {
@@ -857,6 +905,10 @@
     },
     "root": {
       "inputs": {
+        "catppuccin-swaync-frappe": "catppuccin-swaync-frappe",
+        "catppuccin-swaync-latte": "catppuccin-swaync-latte",
+        "catppuccin-swaync-macchiato": "catppuccin-swaync-macchiato",
+        "catppuccin-swaync-mocha": "catppuccin-swaync-mocha",
         "catppuccin-zsh-highlighing": "catppuccin-zsh-highlighing",
         "cowsay": "cowsay",
         "darwin": "darwin",

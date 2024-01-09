@@ -386,6 +386,9 @@ in {
       "hypr/frappe.conf" = mkIf config.united.hyprland.enable {
         source = "${catppuccin}/hyprland/frappe.conf";
       };
+      "swaync/style.css" = mkIf config.united.hyprland.enable {
+        source = "${inputs.catppuccin-swaync-frappe}";
+      };
     };
   };
 }

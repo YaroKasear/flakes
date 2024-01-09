@@ -15,6 +15,26 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    catppuccin-swaync-latte = {
+      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/latte.css";
+      flake = false;
+    };
+
+    catppuccin-swaync-frappe = {
+      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/frappe.css";
+      flake = false;
+    };
+
+    catppuccin-swaync-mocha = {
+      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/mocha.css";
+      flake = false;
+    };
+
+    catppuccin-swaync-macchiato = {
+      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/macchiato.css";
+      flake = false;
+    };
+
     catppuccin-zsh-highlighing = {
       url = "github:catppuccin/zsh-syntax-highlighting";
       flake = false;
