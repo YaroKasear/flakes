@@ -28,7 +28,7 @@ in {
           activeBackgroundColor = lib.replaceStrings ["#"] ["_"] active_tab_background;
           inactiveForegroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_foreground;
           inactiveBackgroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_background;
-        in ''
+        in mkDefault ''
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "
