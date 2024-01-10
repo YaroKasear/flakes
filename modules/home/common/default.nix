@@ -24,6 +24,7 @@ in {
         mosquitto
         neofetch
         nvd
+        p7zip
         snowfallorg.flake
         sops
         thefuck

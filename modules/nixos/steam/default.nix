@@ -11,7 +11,14 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      protontricks
       steam-run
+      steamtinkerlaunch
+      unixtools.xxd
+      xdotool
+      xorg.xprop
+      xorg.xwininfo
+      yad
     ];
 
     programs = {

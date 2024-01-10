@@ -8,37 +8,37 @@
 
 window#waybar {
     background: transparent;
-    color: @foreground;
+    color: @text;
 }
 
 tooltip {
-  background: @background;
+  background: @crust;
   border: 1px solid @active_border_color;
 }
 
 tooltip label {
-  color: @foreground;
+  color: @text;
 }
 
 #workspaces button {
     border-radius: 10px;
-    background: @inactive_tab_background;
-    color: @inactive_tab_foreground;
+    background: @overlay0;
+    color: @text;
     font-weight: bold;
     margin-left: 10px;
     padding: 0 5px;
 }
 
 #workspaces button.active {
-    background: @active_tab_background;
-    color: @active_tab_foreground;
+    background: @lavender;
+    color: @text;
     font-weight: bold;
 }
 
 .topBar .modules-left, .modules-center, .modules-right {
     padding: 0 5px;
-    background: @active_tab_background;
-    color: @active_tab_foreground;
+    background: @lavender;
+    color: @text;
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;

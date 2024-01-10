@@ -264,6 +264,13 @@ in {
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
+          ",XF86AudioPlay, exec, playerctl play-pause"
+          ",XF86AudioStop, exec, playerctl stop"
+          ",XF86AudioPrev, exec, playerctl previous"
+          ",XF86AudioNext, exec, playerctl next"
+          ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ];
 
         bindm = [
