@@ -277,6 +277,11 @@ in {
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
+
+        debug = {
+          enable_stdout_logs = true;
+          disable_logs = false;
+        };
       };
       extraConfig = ''
         plugin {
