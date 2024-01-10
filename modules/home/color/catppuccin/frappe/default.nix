@@ -214,7 +214,7 @@ in {
            "workbench.iconTheme" = "catppuccin-frappe";
         };
       };
-      waybar.style = mkIf config.united.waybar.enable(mkDefault ''
+      waybar.style = mkIf config.united.waybar.enable(mkForce ''
         @import url("frappe.css");
         @import url("catppuccin.css");
       '');

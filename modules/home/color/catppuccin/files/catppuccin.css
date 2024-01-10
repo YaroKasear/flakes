@@ -22,23 +22,23 @@ tooltip label {
 
 #workspaces button {
     border-radius: 10px;
-    background: @overlay0;
-    color: @text;
+    background: transparent;
+    color: @overlay0;
     font-weight: bold;
     margin-left: 10px;
     padding: 0 5px;
 }
 
 #workspaces button.active {
-    background: @lavender;
-    color: @text;
+    background: transparent;
+    color: @lavender;
     font-weight: bold;
 }
 
 .topBar .modules-left, .modules-center, .modules-right {
     padding: 0 5px;
     background: @lavender;
-    color: @text;
+    color: @crust;
     border-radius: 10px;
     margin-left: 10px;
     margin-right: 10px;
