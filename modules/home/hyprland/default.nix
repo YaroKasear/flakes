@@ -268,9 +268,12 @@ in {
           ",XF86AudioStop, exec, playerctl stop"
           ",XF86AudioPrev, exec, playerctl previous"
           ",XF86AudioNext, exec, playerctl next"
+          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ];
+
+        binde = [
           ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"
           ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
         ];
 
         bindm = [
