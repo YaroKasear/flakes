@@ -54,7 +54,7 @@ in {
       net-utils.enable = true;
       sops.enable = true;
       tmux.enable = true;
-      vim.enable = true;
+      nixvim.enable = true;
       yubikey.enable = true;
       zsh.enable = true;
       user.enable = true;

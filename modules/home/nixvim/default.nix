@@ -16,7 +16,7 @@ in {
         defaultEditor = true;
       };
       zsh.shellAliases = {
-        nixvim = "nvim";
+        vim = "nvim";
       };
     };
   };

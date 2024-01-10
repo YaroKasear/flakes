@@ -126,9 +126,9 @@ in {
         pkgs.kitty-themes
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
-      file = {
-        ".vim/colors/frappe.vim".source = mkIf config.united.vim.enable "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
-        ".vim/colors/catppuccin.vim".source = mkIf config.united.vim.enable "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
+      file = mkIf config.united.vim.enable {
+        ".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
+        ".vim/colors/catppuccin.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
       };
     };
 
