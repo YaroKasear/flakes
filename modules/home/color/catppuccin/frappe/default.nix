@@ -5,10 +5,7 @@ with lib.united;
 let
   is-linux = pkgs.stdenv.isLinux;
 
-  catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
-  catppuccin-gtk = mkIf is-linux (pkgs.catppuccin-gtk.override { variant = "frappe"; });
   home-directory = config.united.user.home-directory;
-  pictures-directory = "${home-directory}/Pictures";
 
   cfg = config.united.color.catppuccin.frappe;
 in {
@@ -122,7 +119,7 @@ in {
         size = 24;
       };
       packages = [
-        catppuccin
+        (pkgs.catppuccin.override { variant = "frappe"; })
         pkgs.kitty-themes
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
@@ -140,7 +137,7 @@ in {
       };
       theme = {
         name = "Catppuccin-Frappe-Standard-Blue-Dark";
-        package = mkIf is-linux catppuccin-gtk;
+        package = mkIf is-linux (pkgs.catppuccin-gtk.override { variant = "frappe"; });
       };
     };
 
@@ -252,7 +249,9 @@ in {
       };
     };
 
-    xdg.configFile = {
+    xdg.configFile = let
+      catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
+    in {
       "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
         source = "${catppuccin}/btop/catppuccin_frappe.theme";
       };
