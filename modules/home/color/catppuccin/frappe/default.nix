@@ -3,8 +3,10 @@
 with lib;
 with lib.united;
 let
+  is-linux = pkgs.stdenv.isLinux;
+
   catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
-  catppuccin-gtk = (pkgs.catppuccin-gtk.override { variant = "frappe"; });
+  catppuccin-gtk = mkIf is-linux (pkgs.catppuccin-gtk.override { variant = "frappe"; });
   home-directory = config.united.user.home-directory;
   pictures-directory = "${home-directory}/Pictures";
 
@@ -114,7 +116,7 @@ in {
     };
 
     home = {
-      pointerCursor = {
+      pointerCursor = mkIf is-linux {
         package = pkgs.catppuccin-cursors.frappeDark;
         name = "Catppuccin-Frappe-Dark-Cursors";
         size = 24;
@@ -122,19 +124,19 @@ in {
       packages = [
         catppuccin
         pkgs.kitty-themes
-        pkgs.catppuccin-cursors.frappeDark
+        (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
     };
 
     gtk = {
-      cursorTheme = {
+      cursorTheme = mkIf is-linux {
         package = pkgs.catppuccin-cursors.frappeDark;
         name = "Catppuccin-Frappe-Dark";
         size = 24;
       };
       theme = {
         name = "Catppuccin-Frappe-Standard-Blue-Dark";
-        package = catppuccin-gtk;
+        package = mkIf is-linux catppuccin-gtk;
       };
     };
 
