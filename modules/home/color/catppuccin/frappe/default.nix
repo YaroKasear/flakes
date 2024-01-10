@@ -126,6 +126,10 @@ in {
         pkgs.kitty-themes
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
+      file = {
+        ".vim/colors/frappe.vim".source = mkIf config.united.vim.enable "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
+        ".vim/colors/catppuccin.vim".source = mkIf config.united.vim.enable "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
+      };
     };
 
     gtk = {
@@ -175,9 +179,17 @@ in {
           source ${pkgs.tmuxPlugins.catppuccin}/share/tmux-plugins/catppuccin/catppuccin-frappe.tmuxtheme
         '';
       };
-      nixvim.colorschemes.catppuccin = mkIf config.united.vim.enable {
+      nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
         enable = true;
         flavour = "frappe";
+      };
+      vim = mkIf config.united.vim.enable {
+        plugins = [
+          pkgs.vimPlugins.catppuccin-vim
+        ];
+        extraConfig = ''
+          colorscheme catppuccin_frappe
+        '';
       };
       vscode = mkIf config.united.vscode.enable {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
