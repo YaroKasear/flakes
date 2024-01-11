@@ -1,10 +1,116 @@
 * {
-    /* reference the color by using @color-name */
-    color: @text;
-  }
+  font-family: FiraCode Nerd Font;
+  font-size: 17px;
+  min-height: 0;
+}
 
-  window#waybar {
-    /* you can also GTK3 CSS functions! */
-    background-color: shade(@base, 0.9);
-    border: 2px solid alpha(@crust, 0.3);
-  }
+#waybar {
+  background: alpha(#1E1E2E, 0.7);
+  color: @text;
+  margin: 5px 5px;
+}
+
+#waybar.bottomBar {
+  background: transparent;
+}
+
+#waybar.topBar .modules-left,
+#waybar.topBar .modules-center,
+#waybar.topBar .modules-right {
+  background-color: @surface0;
+  border: 1px solid @surface0;
+  border-radius: 1rem;
+  margin: 5px;
+}
+
+#cava {
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+#window {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#taskbar {
+  background-color: alpha(@surface0, 0.7);
+  border: 1px solid alpha(@overlay0, 0.8);
+  border-radius: 52px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+#taskbar button.active {
+  background-color: @lavender;
+  border-radius: 52px;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+#clock {
+  color: @blue;
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 1rem;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 1rem;
+}
+
+#custom-music {
+  color: @mauve;
+  border-radius: 1rem;
+}
+
+#custom-lock {
+    border-radius: 1rem 0px 0px 1rem;
+    color: @lavender;
+}
+
+#custom-power {
+    margin-right: 1rem;
+    border-radius: 0px 1rem 1rem 0px;
+    color: @red;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 1rem;
+}

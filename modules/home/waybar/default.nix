@@ -18,8 +18,8 @@ in {
         topBar = {
           layer = "top";
           spacing = 4;
-          height = 24;
-          # margin-top = 10;
+          height = 32;
+          margin-top = 0;
           modules-left = [
             "hyprland/window"
           ];
@@ -105,7 +105,7 @@ in {
             on-click = "shutdown now";
           };
           "hyprland/window" = {
-            format = " {title} ";
+            format = "{title}";
           };
           user = {
             icon = true;
@@ -114,18 +114,21 @@ in {
         };
         bottomBar = {
           layer = "top";
-          height = 24;
+          height = 52;
           spacing = 4;
+          width = 2;
+          margin-bottom = 5;
           name = "bottomBar";
           position = "bottom";
           modules-left = [];
           modules-center = ["wlr/taskbar"];
-          modules-right = ["group/status"];
+          modules-right = [];
           "wlr/taskbar" = {
             format = "{icon}";
             all-outputs = false;
             sort-by-app-id = true;
             on-click = "activate";
+            icon-size = 52;
             ignore-list = [
               "_HIDE_ME_"
               "Picture-in-Picture"
