@@ -19,8 +19,9 @@ in {
           layer = "top";
           spacing = 4;
           height = 24;
-          margin-top = 10;
+          # margin-top = 10;
           modules-left = [
+            "hyprland/window"
             "wireplumber"
           ];
           modules-center = [
@@ -44,14 +45,6 @@ in {
             bars = 24;
             methos = "pipewire";
             format-icons = [
-              # "▁"
-              # "▂"
-              # "▃"
-              # "▄"
-              # "▅"
-              # "▆"
-              # "▇"
-              # "█"
               "🞗"
               "🞘"
               "🞙"
@@ -98,11 +91,6 @@ in {
               "custom/quit"
             ];
           };
-          "custom/quit" = {
-            format = "󰗼 ";
-            tooltip = false;
-            on-click = "hyprctl dispatch exit";
-          };
           "custom/reboot" = {
             format = "󰜉 ";
             tooltip = false;
@@ -113,6 +101,9 @@ in {
             tooltip = false;
             on-click = "shutdown now";
           };
+          "hyprland/window" = {
+            format = " {title} ";
+          };
         };
         bottomBar = {
           layer = "top";
@@ -120,9 +111,8 @@ in {
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
-          margin-bottom = 10;
-          modules-left = ["hyprland/workspaces"];
-          modules-center = ["hyprland/window"];
+          modules-left = ["hyprland/workspaces" "wlr/taskbar"];
+          modules-center = [];
           modules-right = ["group/status"];
           user = {
             icon = true;
@@ -132,17 +122,23 @@ in {
             format = " ";
           };
           "hyprland/workspaces" = {
-            #format = "{id}";
             format = "⬤";
             on-scroll-up = "hyprctl dispatch workspace e-1";
             on-scroll-down = "hyprctl dispatch workspace e+1";
           };
-          "hyprland/window" = {
-            format = " {title} ";
-          };
           "group/status" = {
             orientation = "inherit";
             modules = [ "custom/spacer" "tray" "custom/spacer" "user" ];
+          };
+          "wlr/taskbar" = {
+            format = "{icon}";
+            all-outputs = false;
+            sort-by-app-id = true;
+            on-click = "activate";
+            ignore-list = [
+              "_HIDE_ME_"
+              "Picture-in-Picture"
+            ];
           };
         };
       };

@@ -2,56 +2,6 @@
     border: none;
     border-radius: 0;
     font-family: FiraCode Nerd Font, NotoSans Nerd Font;
-    font-size: 13px;
+    font-size: 12px;
     min-height: 0;
-}
-
-window#waybar {
-    background: transparent;
-    color: @text;
-}
-
-tooltip {
-  background: @crust;
-  border: 1px solid @active_border_color;
-}
-
-tooltip label {
-  color: @text;
-}
-
-#workspaces button {
-    border-radius: 10px;
-    background: transparent;
-    color: @overlay0;
-    font-weight: bold;
-    margin-left: 10px;
-    padding: 0 5px;
-}
-
-#workspaces button.active {
-    background: transparent;
-    color: @lavender;
-    font-weight: bold;
-}
-
-.topBar .modules-left, .modules-center, .modules-right {
-    padding: 0 5px;
-    background: @lavender;
-    color: @crust;
-    border-radius: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-weight: bold;
-}
-
-#mode, #clock, #battery {
-    padding: 0 10px;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
 }

@@ -44,6 +44,7 @@ in {
       enable = true;
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
       sourceFirst = true;
       settings = with config.united.color; {
@@ -118,7 +119,7 @@ in {
           "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
-          "kitty --class=\"kitty-bg\" asciiquarium"
+          "kitty --class=\"kitty-bg\" -T _HIDE_ME_ asciiquarium"
         ];
 
         monitor = ",highrr,auto,auto";
@@ -205,10 +206,11 @@ in {
 
         windowrulev2 = [
           "nomaximizerequest, class:.*"
-          "float, title:^(Picture-in-Picture)$"
+          # "float, title:^(Picture-in-Picture)$"
+          "float, class:.*"
           "size 800 450, title:(Picture-in-Picture)"
           "pin, title:^(Picture-in-Picture)$"
-          "float, title:^(Firefox)$"
+          # "float, title:^(Firefox)$"
           "size 800 450, title:(Firefox)"
           "pin, title:^(Firefox)"
           "immediate, class:^(cs2)$"
@@ -286,11 +288,16 @@ in {
           disable_logs = false;
         };
       };
-      extraConfig = ''
+      extraConfig = mkDefault ''
         plugin {
           hyprwinwrap {
             class = kitty-bg
             size: 100%;
+          }
+          hyprbars {
+            bar_height = 20
+            hyprbars-button = rgb(ff4040), 12, , hyprctl dispatch killactive
+            hyprbars-button = rgb(eeee11), 12, , hyprctl dispatch fullscreen 1
           }
         }
       '';
