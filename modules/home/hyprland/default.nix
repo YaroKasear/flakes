@@ -296,8 +296,11 @@ in {
           }
           hyprbars {
             bar_height = 20
-            hyprbars-button = rgb(ff4040), 12, , hyprctl dispatch killactive
-            hyprbars-button = rgb(eeee11), 12, , hyprctl dispatch fullscreen 1
+            bar_color = $background
+            bat_text_font = FiraCode Nerd Font
+            col.text = $foreground
+            hyprbars-button = $red, 12, , hyprctl dispatch killactive
+            hyprbars-button = $green, 12, , hyprctl dispatch fullscreen 1
           }
         }
       '';
