@@ -114,7 +114,7 @@ in {
         };
         bottomBar = {
           layer = "top";
-          height = 52;
+          height = 48;
           spacing = 4;
           width = 2;
           margin-bottom = 5;
@@ -128,7 +128,7 @@ in {
             all-outputs = false;
             sort-by-app-id = true;
             on-click = "activate";
-            icon-size = 52;
+            icon-size = 32;
             ignore-list = [
               "_HIDE_ME_"
               "Picture-in-Picture"
