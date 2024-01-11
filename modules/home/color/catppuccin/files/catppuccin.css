@@ -1,7 +1,10 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: FiraCode Nerd Font, NotoSans Nerd Font;
-    font-size: 12px;
-    min-height: 0;
-}
+    /* reference the color by using @color-name */
+    color: @text;
+  }
+
+  window#waybar {
+    /* you can also GTK3 CSS functions! */
+    background-color: shade(@base, 0.9);
+    border: 2px solid alpha(@crust, 0.3);
+  }

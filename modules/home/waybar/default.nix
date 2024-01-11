@@ -22,27 +22,31 @@ in {
           # margin-top = 10;
           modules-left = [
             "hyprland/window"
-            "wireplumber"
           ];
           modules-center = [
-              "custom/spacer"
-              "cava"
+            "cava"
+            "hyprland/workspaces"
+            "cava"
           ];
           modules-right = [
-            "custom/spacer"
-            "group/group-power"
+            "wireplumber"
+            "tray"
             "clock"
+            "user"
+            "group/group-power"
           ];
           name = "topBar";
+          "hyprland/workspaces" = {
+            format = "⬤";
+            on-scroll-up = "hyprctl dispatch workspace e-1";
+            on-scroll-down = "hyprctl dispatch workspace e+1";
+          };
           wireplumber = {
             format = " {volume}% ";
             scroll-step = 5.0;
           };
-          "custom/spacer" = {
-            format = " ";
-          };
           cava = {
-            bars = 24;
+            bars = 12;
             methos = "pipewire";
             format-icons = [
               "🞗"
@@ -88,7 +92,6 @@ in {
             modules = [
               "custom/power"
               "custom/reboot"
-              "custom/quit"
             ];
           };
           "custom/reboot" = {
@@ -104,6 +107,10 @@ in {
           "hyprland/window" = {
             format = " {title} ";
           };
+          user = {
+            icon = true;
+            format = " {user} ";
+          };
         };
         bottomBar = {
           layer = "top";
@@ -111,25 +118,9 @@ in {
           spacing = 4;
           name = "bottomBar";
           position = "bottom";
-          modules-left = ["hyprland/workspaces" "wlr/taskbar"];
-          modules-center = [];
+          modules-left = [];
+          modules-center = ["wlr/taskbar"];
           modules-right = ["group/status"];
-          user = {
-            icon = true;
-            format = " {user} ";
-          };
-          "custom/spacer" = {
-            format = " ";
-          };
-          "hyprland/workspaces" = {
-            format = "⬤";
-            on-scroll-up = "hyprctl dispatch workspace e-1";
-            on-scroll-down = "hyprctl dispatch workspace e+1";
-          };
-          "group/status" = {
-            orientation = "inherit";
-            modules = [ "custom/spacer" "tray" "custom/spacer" "user" ];
-          };
           "wlr/taskbar" = {
             format = "{icon}";
             all-outputs = false;
