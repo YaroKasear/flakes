@@ -114,7 +114,7 @@ in {
         };
         bottomBar = {
           layer = "top";
-          height = 48;
+          height = 60;
           spacing = 4;
           width = 2;
           margin-bottom = 5;
