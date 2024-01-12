@@ -20,6 +20,12 @@ in {
     qt = {
       enable = true;
       platformTheme = "gtk3";
+      style = {
+        name = "lightly";
+        package = with pkgs; [
+          libsForQt5.lightly
+        ];
+      };
     };
   };
 }
