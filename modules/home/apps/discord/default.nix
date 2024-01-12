@@ -5,7 +5,7 @@ with lib.united;
 let
   is-wayland = config.united.wayland.enable;
 
-  cfg = config.united.apps.discord;
+  cfg = config.united.discord;
 in {
   options.united.discord = {
     enable = mkEnableOption "Discord";
