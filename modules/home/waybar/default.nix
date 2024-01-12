@@ -205,6 +205,6 @@ in {
       '';
     };
 
-    united.cava.enable = false;
+    united.cava.enable = true;
   };
 }
