@@ -11,7 +11,6 @@
 }
 
 .modules-left,
-.modules-center,
 .modules-right {
   background-color: @surface0;
   border: 1px solid @surface0;
@@ -49,8 +48,10 @@
 }
 
 #taskbar button {
-  background-color: transparent;
-  border: 1px solid @overlay0;
+  background-color: @surface0;
+  border: 1px solid @surface0;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
   border-radius: 1rem;
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;

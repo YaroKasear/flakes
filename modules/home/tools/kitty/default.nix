@@ -72,7 +72,7 @@ in {
           color13 ${color13}
           color14 ${color14}
           color15 ${color15}
-          background_opacity 0.8
+          background_opacity 0.5
           background_blur 32
           tab_bar_edge bottom
           tab_bar_align center
