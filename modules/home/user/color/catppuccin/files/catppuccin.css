@@ -5,7 +5,7 @@
 }
 
 #waybar {
-  background: alpha(#1E1E2E, 0.7);
+  background: alpha(@base, 0.7);
   color: @text;
   margin: 5px 5px;
 }

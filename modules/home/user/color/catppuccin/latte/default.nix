@@ -27,7 +27,7 @@ in {
       selection_foreground = extraColors.text;
 
       cursor = extraColors.rosewater;
-      cursor_text_color = extraColors.crust;
+      cursor_text_color = extraColors.base;
       url_color = blue;
       active_tab_foreground = extraColors.surface0;
       active_tab_background = active_border_color;
@@ -40,29 +40,29 @@ in {
       tab_bar_background = background;
       tab_bar_margin_color = background;
 
-      color0 = extraColors.surface1;
+      color0 = extraColors.subtext1;
       color1 = red;
       color2 = green;
       color3 = yellow;
       color4 = blue;
       color5 = extraColors.pink;
       color6 = extraColors.teal;
-      color7 = extraColors.subtext1;
-      color8 = extraColors.surface2;
+      color7 = extraColors.surface2;
+      color8 = extraColors.subtext0;
       color9 = red;
       color10 = green;
       color11 = yellow;
       color12 = blue;
       color13 = extraColors.pink;
       color14 = extraColors.teal;
-      color15 = extraColors.subtext0;
+      color15 = extraColors.surface1;
 
       mark1_background = extraColors.lavender;
-      mark1_foreground = extraColors.crust;
+      mark1_foreground = extraColors.base;
       mark2_background = extraColors.mauve;
-      mark2_foreground = extraColors.crust;
+      mark2_foreground = extraColors.base;
       mark3_background = extraColors.sapphire;
-      mark3_foreground = extraColors.crust;
+      mark3_foreground = extraColors.base;
 
       extraColors = rec {
         base = "#eff1f5";
@@ -114,13 +114,13 @@ in {
 
     home = {
       pointerCursor = mkIf is-linux {
-        package = pkgs.catppuccin-cursors.latteDark;
-        name = "Catppuccin-latte-Dark-Cursors";
+        package = pkgs.catppuccin-cursors.latteLight;
+        name = "Catppuccin-Latte-Light-Cursors";
         size = 24;
       };
       packages = [
         (pkgs.catppuccin.override { variant = "latte"; })
-        (mkIf is-linux pkgs.catppuccin-cursors.latteDark)
+        (mkIf is-linux pkgs.catppuccin-cursors.latteLight)
       ];
       file = mkIf config.united.vim.enable {
         ".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";
@@ -129,12 +129,12 @@ in {
 
     gtk = {
       cursorTheme = mkIf is-linux {
-        package = pkgs.catppuccin-cursors.latteDark;
-        name = "Catppuccin-latte-Dark";
+        package = pkgs.catppuccin-cursors.latteLight;
+        name = "Catppuccin-Latte-Light";
         size = 24;
       };
       theme = {
-        name = "Catppuccin-latte-Standard-Blue-Dark";
+        name = "Catppuccin-Latte-Standard-Blue-Light";
         package = mkIf is-linux (pkgs.catppuccin-gtk.override { variant = "latte"; });
       };
     };
@@ -143,31 +143,31 @@ in {
       btop.settings.color_theme = mkIf config.united.btop.enable "catppuccin_latte";
       cava.settings.color = mkIf config.united.cava.enable {
         gradient = 1;
-        gradient_color_1 = "'#81c8be'";
-        gradient_color_2 = "'#99d1db'";
-        gradient_color_3 = "'#85c1dc'";
-        gradient_color_4 = "'#8caaee'";
-        gradient_color_5 = "'#ca9ee6'";
-        gradient_color_6 = "'#f4b8e4'";
-        gradient_color_7 = "'#ea999c'";
-        gradient_color_8 = "'#e78284'";
+        gradient_color_1 = "'#179299'";
+        gradient_color_2 = "'#04a5e5'";
+        gradient_color_3 = "'#209fb5'";
+        gradient_color_4 = "'#1e66f5'";
+        gradient_color_5 = "'#8839ef'";
+        gradient_color_6 = "'#ea76cb'";
+        gradient_color_7 = "'#e64553'";
+        gradient_color_8 = "'#d20f39'";
       };
       fzf.colors = with config.united.color; mkIf config.united.fzf.enable {
-        "bg+" = "#414559";
-        bg = "#303446";
-        spinner = "#f2d5cf";
-        hl = "#e78284";
-        fg = "#c6d0f5";
-        header = "#e78284";
-        info = "#ca9ee6";
-        pointer = "#f2d5cf";
-        marker = "#f2d5cf";
-        "fg+" = "#f2d5cf";
-        prompt = "#ca9ee6";
-        "hl+" = "#e78284";
+        "bg+" = "#ccd0da";
+        bg = "#eff1f5";
+        spinner = "#dc8a78";
+        hl = "#d20f39";
+        fg = "#4c4f69";
+        header = "#d20f39";
+        info = "#8839ef";
+        pointer = "#dc8a78";
+        marker = "#dc8a78";
+        "fg+" = "#4c4f69";
+        prompt = "#8839ef";
+        "hl+" = "#d20f39";
       };
       kitty.extraConfig = mkIf config.united.kitty.enable ''
-        include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-latte.conf
+        include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Latte.conf
       '';
       tmux = mkIf config.united.tmux.enable {
         extraConfig = ''
@@ -184,7 +184,7 @@ in {
       };
       vscode = mkIf config.united.vscode.enable {
         userSettings = {
-          "workbench.colorTheme" = "Catppuccin Frappé";
+          "workbench.colorTheme" = "Catppuccin Latte";
           "workbench.iconTheme" = "catppuccin-latte";
         };
       };
