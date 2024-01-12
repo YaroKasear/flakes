@@ -144,14 +144,14 @@
 
       systems = {
         modules.nixos = with inputs; [
+          nix-flatpak.nixosModules.nix-flatpak
           nix-gaming.nixosModules.pipewireLowLatency
+          nix-gaming.nixosModules.steamCompat
           nixos-hardware.nixosModules.common-pc
           nur.nixosModules.nur
           sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
-          nix-flatpak.nixosModules.nix-flatpak
-          nix-gaming.nixosModules.steamCompat
           nixos-generators.nixosModules.all-formats
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-ssd
