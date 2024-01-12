@@ -29,6 +29,7 @@ in {
         audacity
         dotnet-runtime
         font-awesome
+        gimp
         nerdfonts
         noto-fonts-color-emoji
         powerline-fonts
