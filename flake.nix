@@ -70,6 +70,8 @@
       flake = false;
     };
 
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -148,6 +150,7 @@
           sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
+          nix-flatpak.nixosModules.nix-flatpak
           nix-gaming.nixosModules.steamCompat
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-ssd
@@ -163,6 +166,7 @@
       homes.users = {
         "yaro@loki".modules = with inputs; [
           hyprland.homeManagerModules.default
+          nix-flatpak.homeManagerModules.nix-flatpak
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
