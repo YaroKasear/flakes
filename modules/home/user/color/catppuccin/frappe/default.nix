@@ -120,12 +120,10 @@ in {
       };
       packages = [
         (pkgs.catppuccin.override { variant = "frappe"; })
-        pkgs.kitty-themes
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
       file = mkIf config.united.vim.enable {
         ".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
-        ".vim/colors/catppuccin.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
       };
     };
 
@@ -177,41 +175,17 @@ in {
         '';
       };
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
-        enable = true;
         flavour = "frappe";
       };
       vim = mkIf config.united.vim.enable {
-        plugins = [
-          pkgs.vimPlugins.catppuccin-vim
-        ];
         extraConfig = ''
           colorscheme catppuccin_frappe
         '';
       };
       vscode = mkIf config.united.vscode.enable {
-        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "catppuccin-vsc";
-            publisher = "Catppuccin";
-            version = "3.10.1";
-            sha256 = "er1ugqZDrw4vLc9luAZ6kkehQ27fSMFQDBjQwmD4D8Q=";
-          }
-          {
-            name = "catppuccin-vsc-icons";
-            publisher = "Catppuccin";
-            version = "0.33.0";
-            sha256 = "UcwaISy0lkBzlrRBZFH/sw2D8EDtKltBWD7xgfAw3U8=";
-          }
-        ];
         userSettings = {
-          "editor.semanticHighlighting.enabled" = true;
-          "terminal.integrated.minimumContrastRatio" = 1;
-           "window.titleBarStyle" = "custom";
-           gopls = {
-            "ui.semanticTokens" = true;
-           };
-           "workbench.colorTheme" = "Catppuccin Frappé";
-           "workbench.iconTheme" = "catppuccin-frappe";
+          "workbench.colorTheme" = "Catppuccin Frappé";
+          "workbench.iconTheme" = "catppuccin-frappe";
         };
       };
       waybar.style = mkIf config.united.waybar.enable(mkForce ''
@@ -283,9 +257,6 @@ in {
       };
       "waybar/frappe.css" = mkIf config.united.waybar.enable {
         source = "${catppuccin}/waybar/frappe.css";
-      };
-      "waybar/catppuccin.css" = mkIf config.united.waybar.enable {
-        source = ../files/catppuccin.css;
       };
     };
   };

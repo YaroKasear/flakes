@@ -14,7 +14,46 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home = {
+      packages = with pkgs; [ kitty-themes ];
+      file = mkIf config.united.vim.enable {
+        ".vim/colors/catppuccin.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
+      };
+    };
+
     programs = {
+      nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
+        enable = true;
+      };
+      vim = mkIf config.united.vim.enable {
+        plugins = [
+          pkgs.vimPlugins.catppuccin-vim
+        ];
+      };
+      vscode = mkIf config.united.vscode.enable {
+        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "catppuccin-vsc";
+            publisher = "Catppuccin";
+            version = "3.10.1";
+            sha256 = "er1ugqZDrw4vLc9luAZ6kkehQ27fSMFQDBjQwmD4D8Q=";
+          }
+          {
+            name = "catppuccin-vsc-icons";
+            publisher = "Catppuccin";
+            version = "0.33.0";
+            sha256 = "UcwaISy0lkBzlrRBZFH/sw2D8EDtKltBWD7xgfAw3U8=";
+          }
+        ];
+        userSettings = {
+          "editor.semanticHighlighting.enabled" = true;
+          "terminal.integrated.minimumContrastRatio" = 1;
+           "window.titleBarStyle" = "custom";
+           gopls = {
+            "ui.semanticTokens" = true;
+          };
+        };
+      };
       tmux = {
         plugins = with pkgs; [
           {
@@ -69,6 +108,10 @@ in {
         tab_powerline_style         slanted
         tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else \'\'}
       '';
+    };
+
+    xdg.configFile."waybar/catppuccin.css" = mkIf config.united.waybar.enable {
+      source = ../files/catppuccin.css;
     };
   };
 }
