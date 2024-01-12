@@ -10,5 +10,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home = {
+      packages = with pkgs; [
+        (mkIf config.united.wayland.enable libsForQt5.qt5.qtwayland)
+        libsForQt5.qt5ct
+      ];
+    };
+
+    qt = {
+      enable = true;
+      platformTheme = "gtk3";
+    };
   };
 }
