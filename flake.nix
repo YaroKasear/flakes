@@ -173,6 +173,14 @@
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
+        "yaro@iso".modules = with inputs; [
+          hyprland.homeManagerModules.default
+          nix-flatpak.homeManagerModules.nix-flatpak
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          sops-nix.homeManagerModules.sops
+        ];
         "yaro@Gwyn".modules = with inputs; [
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim

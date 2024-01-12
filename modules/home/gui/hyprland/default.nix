@@ -15,8 +15,6 @@ in {
     home = {
       packages = with pkgs; [
         grim
-        libsForQt5.qt5.qtwayland
-        libsForQt5.qt5ct
         libva
         hyprpaper
         inputs.hyprpicker.packages.x86_64-linux.hyprpicker

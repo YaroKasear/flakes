@@ -5,6 +5,7 @@ with lib.united;
   united = {
     common.enable = true;
     desktop.enable = true;
+    wayland.enable = true;
   };
 
   programs = {
