@@ -65,8 +65,6 @@
     '';
   };
 
-  services.flatpak.enable = true;
-
   systemd = {
     tmpfiles.settings = {
       "10-fix-dotconfig" = {
