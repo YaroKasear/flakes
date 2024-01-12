@@ -152,6 +152,7 @@
         hosts.loki.modules = with inputs; [
           nix-flatpak.nixosModules.nix-flatpak
           nix-gaming.nixosModules.steamCompat
+          nixos-generators.nixosModules.all-formats
           nixos-hardware.nixosModules.common-pc
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-amd

@@ -48,7 +48,8 @@
 
   networking = {
     hostName = "loki";
-    networkmanager.enable = true;
+    networkmanager.enable = false;
+    wireless.enable = false;
   };
 
   nix = {
