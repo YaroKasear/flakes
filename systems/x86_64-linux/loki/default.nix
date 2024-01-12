@@ -48,7 +48,7 @@
 
   networking = {
     hostName = "loki";
-    networkmanager.enable = false;
+    networkmanager.enable = true;
     wireless.enable = false;
   };
 

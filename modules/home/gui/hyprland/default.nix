@@ -119,7 +119,7 @@ in {
           "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
-          "kitty --class=\"kitty-bg\" -T _HIDE_ME_ asciiquarium"
+          "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
         ];
 
         monitor = ",highrr,auto,auto";
@@ -303,6 +303,13 @@ in {
             hyprbars-button = $green, 12, , hyprctl dispatch fullscreen 1
           }
         }
+      '';
+    };
+
+    xdg.configFile."kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
+      text = ''
+        background #000000
+        background_opacity 0.0
       '';
     };
   };

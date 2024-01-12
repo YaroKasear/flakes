@@ -10,21 +10,17 @@
   margin: 5px 5px;
 }
 
-#waybar.bottomBar {
-  background: transparent;
-}
-
-#waybar.topBar .modules-left,
-#waybar.topBar .modules-center,
-#waybar.topBar .modules-right {
+.modules-left,
+.modules-center,
+.modules-right {
   background-color: @surface0;
   border: 1px solid @surface0;
   border-radius: 1rem;
-  margin: 5px;
+  margin: 0.25rem;
 }
 
 #cava {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
 }
 
 #workspaces button {
@@ -48,9 +44,6 @@
 }
 
 #taskbar {
-  background-color: alpha(@surface0, 0.7);
-  border: 1px solid alpha(@overlay0, 0.8);
-  border-radius: 52px;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -58,9 +51,9 @@
 #taskbar button {
   background-color: transparent;
   border: 1px solid @overlay0;
-  border-radius: 52px;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 #taskbar button.active {

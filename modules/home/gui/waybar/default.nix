@@ -15,21 +15,21 @@ in {
     programs.waybar = with config.united.color; {
       enable = true;
       settings = {
-        topBar = {
+        bar = {
           layer = "top";
+          position = "bottom";
           spacing = 4;
           height = 32;
-          margin-top = 0;
+          margin-bottom = 0;
           modules-left = [
-            "hyprland/window"
+            "hyprland/workspaces"
           ];
           modules-center = [
-            "cava"
-            "hyprland/workspaces"
-            "cava"
+            "wlr/taskbar"
           ];
           modules-right = [
             "wireplumber"
+            "cava"
             "tray"
             "clock"
             "user"
@@ -46,7 +46,7 @@ in {
             scroll-step = 5.0;
           };
           cava = {
-            bars = 12;
+            bars = 2;
             methos = "pipewire";
             format-icons = [
               "🞗"
@@ -111,24 +111,11 @@ in {
             icon = true;
             format = " {user} ";
           };
-        };
-        bottomBar = {
-          layer = "top";
-          height = 60;
-          spacing = 4;
-          width = 2;
-          margin-bottom = 5;
-          name = "bottomBar";
-          position = "bottom";
-          modules-left = [];
-          modules-center = ["wlr/taskbar"];
-          modules-right = [];
           "wlr/taskbar" = {
             format = "{icon}";
             all-outputs = false;
             sort-by-app-id = true;
             on-click = "activate";
-            icon-size = 32;
             ignore-list = [
               "_HIDE_ME_"
               "Picture-in-Picture"
