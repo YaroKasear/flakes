@@ -16,9 +16,9 @@ in {
   config = mkIf cfg.enable {
     united.color = rec {
       red = "#d20f39";
-      green = "#a6d189";
-      yellow = "#e5c890";
-      blue = "#8caaee";
+      green = "#40a02b";
+      yellow = "#df8e1d";
+      blue = "#1e66f5";
 
       foreground = extraColors.text;
       background = extraColors.base;
@@ -65,33 +65,33 @@ in {
       mark3_foreground = extraColors.crust;
 
       extraColors = rec {
-        base = "#303446";
+        base = "#eff1f5";
 
-        crust = "#232634";
-        mantle = "#292c3c";
+        crust = "#dce0e8";
+        mantle = "#e6e9ef";
 
-        surface0 = "#414559";
-        surface1 = "#51576d";
-        surface2 = "#626880";
+        surface0 = "#ccd0da";
+        surface1 = "#bcc0cc";
+        surface2 = "#acb0be";
 
-        overlay0 = "#737994";
-        overlay1 = "#838ba7";
-        overlay2 = "#949cbb";
+        overlay0 = "#9ca0b0";
+        overlay1 = "#8c8fa1";
+        overlay2 = "#7c7f93";
 
-        text = "#c6d0f5";
+        text = "#4c4f69";
 
-        subtext0 = "#a5adce";
-        subtext1 = "#b5bfe2";
+        subtext0 = "#6c6f85";
+        subtext1 = "#5c5f77";
 
-        lavender = "#babbf1";
-        maroon = "#ea999c";
-        mauve = "#ca9ee6";
-        peach = "#ef9f76";
-        pink = "#f4b8e4";
-        rosewater = "#f2d5cf";
-        sapphire = "#f2d5cf";
-        sky = "#99d1db";
-        teal = "#81c8be";
+        lavender = "#7287fd";
+        maroon = "#e64553";
+        mauve = "#8839ef";
+        peach = "#fe640b";
+        pink = "#ea76cb";
+        rosewater = "#dc8a78";
+        sapphire = "#209fb5";
+        sky = "#04a5e5";
+        teal = "#179299";
 
         color16 = peach;
         color17 = rosewater;
@@ -103,12 +103,12 @@ in {
         rainbow_color5 = sapphire;
         rainbow_color6 = lavender;
 
-        rainbow_color_p1 = "#d4b3c9";
-        rainbow_color_p2 = "#d3cece";
-        rainbow_color_p3 = "#bad1cb";
-        rainbow_color_p4 = "#accee0";
-        rainbow_color_p5 = "#b1c2f2";
-        rainbow_color_p6 = "#c9bdf0";
+        rainbow_color_p1 = "#833255";
+        rainbow_color_p2 = "#88684a";
+        rainbow_color_p3 = "#45704f";
+        rainbow_color_p4 = "#346a7d";
+        rainbow_color_p5 = "#3757a3";
+        rainbow_color_p6 = "#6444a0";
       };
     };
 

@@ -60,7 +60,8 @@ in {
       user.enable = true;
       color = with config.united.color; {
         enable = true;
-        catppuccin.frappe.enable = true;
+        catppuccin.latte.enable = true;
+        catppuccin.frappe.enable = false;
       };
     };
 
