@@ -37,5 +37,9 @@ in {
         };
       };
     };
+
+    services.flatpak.packages = [
+      "io.github.loot.loot"
+    ];
   };
 }
