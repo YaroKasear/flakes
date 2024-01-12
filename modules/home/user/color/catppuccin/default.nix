@@ -111,7 +111,7 @@ in {
     };
 
     xdg.configFile."waybar/catppuccin.css" = mkIf config.united.waybar.enable {
-      source = ../files/catppuccin.css;
+      source = ./files/catppuccin.css;
     };
   };
 }
