@@ -11,7 +11,9 @@
         "usbhid"
         "sd_mod"
       ];
+      systemd.enable = true;
     };
+    kernelParams = ["quiet"];
     loader = {
       systemd-boot = {
         enable = true;
