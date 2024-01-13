@@ -16,7 +16,7 @@ in {
       let
         cowsay = inputs.cowsay.packages.${system}.cowsay;
       in [
-        asciiquarium
+        asciiquarium-transparent
         chroma
         cowsay
         file
