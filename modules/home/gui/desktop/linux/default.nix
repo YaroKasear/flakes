@@ -40,6 +40,7 @@ in {
         scrot
         skypeforlinux
         traceroute
+        virt-manager
         yubioath-flutter
         wp-gen
         xdg-utils

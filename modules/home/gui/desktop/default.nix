@@ -38,7 +38,6 @@ in {
         unifont
         unifont_upper
         symbola
-        virt-manager
       ];
     };
   };
