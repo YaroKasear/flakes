@@ -17,7 +17,17 @@
         enable = true;
         configurationLimit = 5;
       };
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+    };
+    plymouth = {
+      enable = true;
+      theme = "catppuccin-frappe";
+      themePackages = [
+        (pkgs.catppuccin-plymouth.override { variant = "frappe"; })
+      ];
     };
   };
 
