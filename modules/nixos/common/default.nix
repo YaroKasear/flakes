@@ -29,6 +29,7 @@ in {
       yubikey-personalization
       nfs-utils
       nix-diff
+      pcscliteWithPolkit.out
     ];
 
     hardware = {
