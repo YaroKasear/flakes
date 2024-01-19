@@ -41,6 +41,7 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       plugins = [
+        inputs.hy3.packages.${pkgs.system}.hy3
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
