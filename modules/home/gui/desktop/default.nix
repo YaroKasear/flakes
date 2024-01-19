@@ -20,7 +20,6 @@ in {
       desktop.linux.enable = is-linux;
       discord.enable = true;
       mpv.enable = true;
-      obs-studio.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
     };
