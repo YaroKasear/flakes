@@ -13,6 +13,10 @@
       ];
       systemd.enable = true;
     };
+    kernelModules = [
+      "nvidia-uvm"
+      "usb-storage"
+    ];
     kernelParams = ["quiet"];
     loader = {
       systemd-boot = {
