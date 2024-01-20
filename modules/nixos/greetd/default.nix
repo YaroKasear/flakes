@@ -24,26 +24,37 @@ let
 
     exec-once = regreet; hyprctl dispatch exit
   '';
+
+  kanshiConfig = pkgs.writeText "greetd-kanshi-config" ''
+    profile {
+      output "Dell Inc. Dell S2417DG #ASPupbpmjZPd" mode 2560x1440
+    }
+  '';
 in {
   options.united.greetd = {
     enable = mkEnableOption "Greetd";
   };
 
   config = mkIf cfg.enable {
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.hyprland}/bin/Hyprland -c ${hyprConfig}";
-          user = "greeter";
+    services = {
+      greetd = {
+        enable = true;
+        settings = {
+          default_session = {
+            # command = "Hyprland -c ${hyprConfig}";
+            command = "cage -s -- sh -c 'kanshi -c ${kanshiConfig} & regreet'";
+            user = "greeter";
+          };
         };
+        vt = 1;
       };
-      vt = 1;
     };
 
     environment.systemPackages = with pkgs; [
+      cage
       canta-theme
       greetd.regreet # Why isn't this installed with programs.regreet.enable = true?
+      kanshi
       roboto
     ];
 
