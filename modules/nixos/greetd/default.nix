@@ -50,13 +50,18 @@ in {
       };
     };
 
-    environment.systemPackages = with pkgs; [
-      cage
-      canta-theme
-      greetd.regreet # Why isn't this installed with programs.regreet.enable = true?
-      kanshi
-      roboto
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        cage
+        canta-theme
+        greetd.regreet # Why isn't this installed with programs.regreet.enable = true?
+        kanshi
+        roboto
+      ];
+      variables = {
+        WLR_NO_HARDWARE_CURSORS = "1";
+      };
+    };
 
     programs.regreet = {
       enable = true;
