@@ -11,6 +11,11 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
+      oh-my-posh = {
+        enable = true;
+        useTheme = "atomic";
+        enableZshIntegration = true;
+      };
       zsh = {
         enable = true;
         enableAutosuggestions = true;
