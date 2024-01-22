@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  home-directory = config.united.user.home-directory;
+
   cfg = config.united.zsh;
 in {
   options.united.zsh = {
@@ -71,7 +73,7 @@ in {
           	mosquitto_pub -h private.kasear.net -t "tts" -m "<amazon:domain name=\"news\">''${1}</amazon:domain>" -u yaro -P $(cat /run/user/1000/secrets/mosquitto-password)
           }
 
-          neofetch
+          neofetch --kitty ${../../user/files/techkat.png}
           fortune -a | cowsay -n
         '';
       };

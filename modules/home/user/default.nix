@@ -38,6 +38,7 @@ in {
           source = ./files/bell.oga;
           target = cfg.bell;
         };
+        "Pictures/techkat.png".source = ./files/techkat.png;
       };
     };
 
