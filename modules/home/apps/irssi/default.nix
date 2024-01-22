@@ -48,7 +48,6 @@ in {
         "move 100%-900 0, class:twitchChat"
         "pin, class:twitchChat"
         "noborder, class:twitchChat"
-        "noblur, class:twitchChat"
       ];
     };
 
