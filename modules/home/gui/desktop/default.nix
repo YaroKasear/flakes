@@ -19,6 +19,7 @@ in {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
       discord.enable = true;
+      irssi.enable = true;
       mpv.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;

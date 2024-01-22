@@ -43,7 +43,7 @@ in {
       plugins = [
         inputs.hy3.packages.${pkgs.system}.hy3
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
-        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
       sourceFirst = true;
       settings = with config.united.color; {
@@ -294,14 +294,6 @@ in {
           hyprwinwrap {
             class = kitty-bg
             size: 100%;
-          }
-          hyprbars {
-            bar_height = 20
-            bar_color = $background
-            bat_text_font = FiraCode Nerd Font
-            col.text = $foreground
-            hyprbars-button = $red, 12, , hyprctl dispatch killactive
-            hyprbars-button = $green, 12, , hyprctl dispatch fullscreen 1
           }
         }
       '';

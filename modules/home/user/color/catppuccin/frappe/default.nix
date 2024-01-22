@@ -228,14 +228,6 @@ in {
             class = kitty-bg
             size: 100%;
           }
-          hyprbars {
-            bar_height = 20
-            bar_color = $base
-            bat_text_font = FiraCode Nerd Font
-            col.text = $text
-            hyprbars-button = $red, 12, , hyprctl dispatch killactive
-            hyprbars-button = $green, 12, , hyprctl dispatch fullscreen 1
-          }
         }
       '';
     };
