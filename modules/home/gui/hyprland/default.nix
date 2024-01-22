@@ -210,7 +210,7 @@ in {
           # "float, class:.*"
           "size 800 450, title:(Picture-in-Picture)"
           "pin, title:^(Picture-in-Picture)$"
-          # "float, title:^(Firefox)$"
+          "float, title:^(Firefox)$"
           "size 800 450, title:(Firefox)"
           "pin, title:^(Firefox)"
           "immediate, class:^(cs2)$"
