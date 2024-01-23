@@ -39,7 +39,6 @@ in {
         unifont
         unifont_upper
         symbola
-        yubikey-personalization-gui
       ];
     };
   };

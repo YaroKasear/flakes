@@ -13,24 +13,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs = {
-      gpg = {
-        enable = true;
-        settings = {
-          no-greeting = true;
-          throw-keyids = true;
-        };
-        publicKeys = [
-          {
-            source = ./files/yubikey.asc;
-            trust = 5;
-          }
-        ];
-        scdaemonSettings = {
-          disable-ccid = true;
-        };
-      };
-    };
+    programs .gpg.enable = true;
 
     services = mkIf is-linux {
       gpg-agent = {

@@ -27,8 +27,6 @@ in {
       pavucontrol
       polkit_gnome
       pulseaudio
-      yubico-piv-tool
-      yubikey-personalization
       wget
     ];
 
