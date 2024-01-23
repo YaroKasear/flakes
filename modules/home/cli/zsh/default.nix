@@ -24,7 +24,6 @@ in {
         syntaxHighlighting.enable = true;
         oh-my-zsh = {
           enable = true;
-          # theme = "jonathan";
           plugins = [
             "aliases"
             "colored-man-pages"
