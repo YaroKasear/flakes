@@ -229,7 +229,7 @@ in {
           "$mainMod, E, togglegroup,"
           "$mainMod, code:65, togglefloating,"
           "$mainMod SHIFT, code:65, pin,"
-          "$mainMod SHIFT, N, exec, swanc-client -t sw"
+          "$mainMod SHIFT, N, exec, swaync-client -t sw"
           "ALT, F2, exec, wofi --show run"
           "$mainMod, D, exec, $menu"
           "$mainMod, F, fullscreen,"

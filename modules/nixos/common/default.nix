@@ -22,13 +22,14 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      wget
-      polkit_gnome
-      pavucontrol
-      pulseaudio
-      yubikey-personalization
       nfs-utils
       nix-diff
+      pavucontrol
+      polkit_gnome
+      pulseaudio
+      yubico-piv-tool
+      yubikey-personalization
+      wget
     ];
 
     hardware = {

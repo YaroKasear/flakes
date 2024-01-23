@@ -39,6 +39,8 @@ in {
         unifont
         unifont_upper
         symbola
+        yubico-piv-tool
+        yubikey-personalization-gui
       ];
     };
   };
