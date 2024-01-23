@@ -73,8 +73,10 @@ in {
           	mosquitto_pub -h private.kasear.net -t "tts" -m "<amazon:domain name=\"news\">''${1}</amazon:domain>" -u yaro -P $(cat /run/user/1000/secrets/mosquitto-password)
           }
 
-          neofetch --kitty ${../../user/files/techkat.png}
-          fortune -a | cowsay -n
+          if ! { [ -n "$TMUX" ]; } then
+            neofetch --kitty ${../../user/files/techkat.png}
+            fortune -a | cowsay -n
+          fi
         '';
       };
     };
