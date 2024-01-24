@@ -118,6 +118,7 @@ in {
     };
 
     united = {
+      kmscon.enable = true;
       wayland.enable = true;
     };
 
