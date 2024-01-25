@@ -81,34 +81,6 @@
     '';
   };
 
-  systemd = {
-    tmpfiles.settings = {
-      "10-fix-dotconfig" = {
-        "/home/yaro/.config" = {
-          d = {
-            user = "yaro";
-            group = "users";
-            mode = "0755";
-          };
-        };
-        "/home/yaro/.config/Yubico" = {
-          d = {
-            user = "yaro";
-            group = "users";
-            mode = "0755";
-          };
-        };
-      };
-    };
-  };
-
-  time.timeZone = "America/Chicago";
-
-  united = {
-    desktop-mounts.enable = true;
-    steam.enable = true;
-  };
-
   security = {
     pam = {
       services = {
@@ -142,6 +114,34 @@
         sopsFile = ./secrets.yaml;
       };
     };
+  };
+
+  systemd = {
+    tmpfiles.settings = {
+      "10-fix-dotconfig" = {
+        "/home/yaro/.config" = {
+          d = {
+            user = "yaro";
+            group = "users";
+            mode = "0755";
+          };
+        };
+        "/home/yaro/.config/Yubico" = {
+          d = {
+            user = "yaro";
+            group = "users";
+            mode = "0755";
+          };
+        };
+      };
+    };
+  };
+
+  time.timeZone = "America/Chicago";
+
+  united = {
+    desktop-mounts.enable = true;
+    steam.enable = true;
   };
 
   users = {
