@@ -19,6 +19,7 @@ in {
       hyprland.enable = is-wayland;
       lutris.enable = true;
       mattermost-desktop.enable = true;
+      nextcloud.enable = true;
       obs-studio.enable = true;
       qt.enable = true;
       ranger.enable = true;

@@ -46,7 +46,7 @@ in {
       yubikey-manager
       yubikey-personalization
       yubico-piv-tool
-      (mkIf config.united.desktop.enable yubikey-personalization-gui)
+      (mkIf (config.united.desktop.enable && is-linux) yubikey-personalization-gui)
     ];
 
     pam.yubico.authorizedYubiKeys.ids = [
