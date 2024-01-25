@@ -33,6 +33,7 @@ in {
     services.cliphist.enable = true;
 
     united = {
+      ags.enable = true;
       gammastep.enable = true;
       kitty.enable = true;
       waybar.enable = true;
@@ -119,7 +120,7 @@ in {
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
-          "systemctl --user restart nextcloud-client"
+          "sleep 30s; systemctl --user restart nextcloud-client"
         ];
 
         monitor = ",highrr,auto,auto";

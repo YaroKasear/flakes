@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 with lib.united;
@@ -10,8 +10,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      inputs.ags.packages.${system}.ags;
-    ];
+    programs.ags = {
+      enable = true;
+    };
+
+    xdg.configFile = {
+      "ags" = {
+        source = ./files;
+        recursive = true;
+      };
+    };
   };
 }

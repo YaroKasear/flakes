@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "ags": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1706128098,
+        "narHash": "sha256-yntWXqK2jBZlZaQaFq1D8UNYT8S/ZOpVqbS4U61DYko=",
+        "owner": "Aylur",
+        "repo": "ags",
+        "rev": "c96f8ecf2767fb777244615dcae7e4885d0a335c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Aylur",
+        "repo": "ags",
+        "type": "github"
+      }
+    },
     "catppuccin-swaync-frappe": {
       "flake": false,
       "locked": {
@@ -913,6 +933,7 @@
     },
     "root": {
       "inputs": {
+        "ags": "ags",
         "catppuccin-swaync-frappe": "catppuccin-swaync-frappe",
         "catppuccin-swaync-latte": "catppuccin-swaync-latte",
         "catppuccin-swaync-macchiato": "catppuccin-swaync-macchiato",

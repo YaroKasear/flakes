@@ -173,6 +173,7 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
+          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
