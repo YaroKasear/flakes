@@ -21,6 +21,7 @@ in {
       discord.enable = true;
       irssi.enable = true;
       mpv.enable = true;
+      nextcloud.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
     };

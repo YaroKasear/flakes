@@ -10,7 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.nextcloude = {
+    services.nextcloud-client = {
       enable = true;
       startInBackground = true;
     };
