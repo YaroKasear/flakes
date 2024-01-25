@@ -119,6 +119,7 @@ in {
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
+          "systemctl --user restart nextcloud-client"
         ];
 
         monitor = ",highrr,auto,auto";

@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     services.nextcloud-client = {
       enable = true;
-      startInBackground = true;
+      startInBackground = false;
     };
   };
 }
