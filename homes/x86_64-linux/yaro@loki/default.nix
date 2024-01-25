@@ -13,6 +13,4 @@ with lib.united;
   programs = {
     firefox.enable = true;
   };
-
-  services.nextcloud-client.enable = true;
 }
