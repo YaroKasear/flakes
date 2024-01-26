@@ -44,7 +44,6 @@ in {
       plugins = [
         inputs.hy3.packages.${pkgs.system}.hy3
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
       sourceFirst = true;
       settings = with config.united.color; {
@@ -116,7 +115,7 @@ in {
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "swaync"
           "waybar"
-          "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && hyprpaper"
+          "hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
@@ -301,11 +300,44 @@ in {
       '';
     };
 
-    xdg.configFile."kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
-      text = ''
-        background #000000
-        background_opacity 0.0
-      '';
+    systemd.user = {
+      services.random-wallpaper = {
+        Unit = {
+          Description = "Change to a random wallpaper!";
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = "${home-directory}/${config.xdg.configFile."hypr/random-wallpaper.sh".target}";
+        };
+      };
+      timers.random-wallpaper = {
+        Unit = {
+          Description = "Regularly change to a random wallpaper!";
+        };
+        Timer = {
+          OnCalendar = "*:0/30";
+        };
+      };
+    };
+
+    xdg.configFile = {
+      "kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
+        text = ''
+          background #000000
+          background_opacity 0.0
+        '';
+      };
+      "hypr/random-wallpaper.sh" = {
+        text = ''
+          #!${pkgs.bash}/bin/bash
+
+          wallpaper_directory="${pictures-directory}/Wallpaper/"
+          wallpaper="$wallpaper_directory$(${pkgs.coreutils-full}/bin/ls $wallpaper_directory | ${pkgs.coreutils-full}/bin/shuf -n 1)"
+
+          ${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper "DP-3,$wallpaper"
+        '';
+        executable = true;
+      };
     };
   };
 }
