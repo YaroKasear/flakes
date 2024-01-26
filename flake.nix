@@ -166,21 +166,11 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
-        hosts.iso.modules = with inputs; [
-          nixos-generators.nixosModules.all-formats
-        ];
       };
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
           ags.homeManagerModules.default
-          hyprland.homeManagerModules.default
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@iso".modules = with inputs; [
           hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
