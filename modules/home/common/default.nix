@@ -59,7 +59,7 @@ in {
       yubikey.enable = true;
       zsh.enable = true;
       user.enable = true;
-      color = with config.united.color; {
+      style = with config.united.style; {
         enable = true;
         catppuccin.latte.enable = false;
         catppuccin.frappe.enable = true;

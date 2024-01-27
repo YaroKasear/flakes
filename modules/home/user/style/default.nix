@@ -5,10 +5,10 @@ with lib.united;
 let
   inherit (lib.united) mkOpt enabled;
 
-  cfg = config.united.color;
+  cfg = config.united.style;
 in {
-  options.united.color = {
-    enable = mkEnableOption "Color";
+  options.united.style = {
+    enable = mkEnableOption "Style module!";
     # These are all based on kitty's color settings, which should allow for a more than rich enough selection!
 
     black = mkOpt types.str "${cfg.black_dull}" "My black color!";

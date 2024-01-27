@@ -23,7 +23,7 @@ in {
         mouse = true;
         historyLimit = 5000;
         tmuxinator.enable = true;
-        extraConfig = with config.united.color; mkDefault
+        extraConfig = with config.united.style; mkDefault
         ''
           bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
           set -g default-terminal "''${TERM}"

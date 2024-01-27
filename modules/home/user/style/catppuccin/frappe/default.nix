@@ -7,14 +7,14 @@ let
 
   home-directory = config.united.user.home-directory;
 
-  cfg = config.united.color.catppuccin.frappe;
+  cfg = config.united.style.catppuccin.frappe;
 in {
-  options.united.color.catppuccin.frappe = {
+  options.united.style.catppuccin.frappe = {
     enable = mkEnableOption "catppuccin Frappe theme!";
   };
 
   config = mkIf cfg.enable {
-    united.color = rec {
+    united.style = rec {
       red = "#e78284";
       green = "#a6d189";
       yellow = "#e5c890";
@@ -152,7 +152,7 @@ in {
         gradient_color_7 = "'#ea999c'";
         gradient_color_8 = "'#e78284'";
       };
-      fzf.colors = with config.united.color; mkIf config.united.fzf.enable {
+      fzf.colors = with config.united.style; mkIf config.united.fzf.enable {
         "bg+" = "#414559";
         bg = "#303446";
         spinner = "#f2d5cf";
@@ -197,7 +197,7 @@ in {
       };
     };
 
-    united.color.catppuccin.enable = true;
+    united.style.catppuccin.enable = true;
 
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {

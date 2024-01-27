@@ -24,7 +24,7 @@ in {
           "Noto Color Emoji:scale=10;2:style=Regular"
         ];
       in {
-        "colors" = config.united.color;
+        "colors" = config.united.style;
         "global/wm" = {
           margin-top = 5;
           margin-bottom = 5;

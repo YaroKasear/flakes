@@ -7,9 +7,9 @@ let
 
   home-directory = config.united.user.home-directory;
 
-  cfg = config.united.color.catppuccin;
+  cfg = config.united.style.catppuccin;
 in {
-  options.united.color.catppuccin = {
+  options.united.style.catppuccin = {
     enable = mkEnableOption "Default settings not to be overridden by Catppuccin themes.";
   };
 

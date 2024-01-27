@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     xdg.configFile."waybar/waybar.css".source = ./files/waybar.css;
 
-    programs.waybar = with config.united.color; {
+    programs.waybar = with config.united.style; {
       enable = true;
       settings = {
         bar = {
@@ -66,7 +66,7 @@ in {
               weeks-pos = "right";
               on-scroll = 1;
               on-click-right = "mode";
-              format = with config.united.color; {
+              format = with config.united.style; {
                 months = "<span color='${white}'><b>{}</b></span>";
                 days = "<span color='${foreground}'><b>{}</b></span>";
                 weeks = "<span color='${magenta}'><b>W{}</b></span>";
