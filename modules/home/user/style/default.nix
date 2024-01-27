@@ -87,8 +87,373 @@ in {
     gtk.enable = true;
 
     home.file = {
-      "style.css".text = ''
+      "style/test.html".text = ''
+        <html>
+          <head>
+            <style>
+              .fg-black {
+                color: ${cfg.colors.black};
+              }
 
+              .bg-black {
+                background-color: ${cfg.colors.black};
+              }
+
+              .border-black {
+                border-color: ${cfg.colors.black};
+              }
+
+              .fg-black-bright {
+                color: ${cfg.colors.black_bright};
+              }
+
+              .bg-black-bright {
+                background-color: ${cfg.colors.black_bright};
+              }
+
+              .border-black-bright {
+                border-color: ${cfg.colors.black_bright};
+              }
+
+              .fg-black-dull {
+                color: ${cfg.colors.black_dull};
+              }
+
+              .bg-black-dull {
+                background-color: ${cfg.colors.black_dull};
+              }
+
+              .border-black-dull {
+                border-color: ${cfg.colors.black_dull};
+              }
+
+              .fg-red {
+                color: ${cfg.colors.red};
+              }
+
+              .bg-red {
+                background-color: ${cfg.colors.red};
+              }
+
+              .border-red {
+                border-color: ${cfg.colors.red};
+              }
+
+              .fg-red-bright {
+                color: ${cfg.colors.red_bright};
+              }
+
+              .bg-red-bright {
+                background-color: ${cfg.colors.red_bright};
+              }
+
+              .border-red-bright {
+                border-color: ${cfg.colors.red_bright};
+              }
+
+              .fg-red-dull {
+                color: ${cfg.colors.red_dull};
+              }
+
+              .bg-red-dull {
+                background-color: ${cfg.colors.red_dull};
+              }
+
+              .border-red-dull {
+                border-color: ${cfg.colors.red_dull};
+              }
+
+              .fg-green {
+                color: ${cfg.colors.green};
+              }
+
+              .bg-green {
+                background-color: ${cfg.colors.green};
+              }
+
+              .border-green {
+                border-color: ${cfg.colors.green};
+              }
+
+              .fg-green-bright {
+                color: ${cfg.colors.green_bright};
+              }
+
+              .bg-green-bright {
+                background-color: ${cfg.colors.green_bright};
+              }
+
+              .border-green-bright {
+                border-color: ${cfg.colors.green_bright};
+              }
+
+              .fg-green-dull {
+                color: ${cfg.colors.green_dull};
+              }
+
+              .bg-green-dull {
+                background-color: ${cfg.colors.green_dull};
+              }
+
+              .border-green-dull {
+                border-color: ${cfg.colors.green_dull};
+              }
+
+              .fg-yellow {
+                color: ${cfg.colors.yellow};
+              }
+
+              .bg-yellow {
+                background-color: ${cfg.colors.yellow};
+              }
+
+              .border-yellow {
+                border-color: ${cfg.colors.yellow};
+              }
+
+              .fg-yellow-bright {
+                color: ${cfg.colors.yellow_bright};
+              }
+
+              .bg-yellow-bright {
+                background-color: ${cfg.colors.yellow_bright};
+              }
+
+              .border-yellow-bright {
+                border-color: ${cfg.colors.yellow_bright};
+              }
+
+              .fg-yellow-dull {
+                color: ${cfg.colors.yellow_dull};
+              }
+
+              .bg-yellow-dull {
+                background-color: ${cfg.colors.yellow_dull};
+              }
+
+              .border-yellow-dull {
+                border-color: ${cfg.colors.yellow_dull};
+              }
+
+              .fg-blue {
+                color: ${cfg.colors.blue};
+              }
+
+              .bg-blue {
+                background-color: ${cfg.colors.blue};
+              }
+
+              .border-blue {
+                border-color: ${cfg.colors.blue};
+              }
+
+              .fg-blue-bright {
+                color: ${cfg.colors.blue_bright};
+              }
+
+              .bg-blue-bright {
+                background-color: ${cfg.colors.blue_bright};
+              }
+
+              .border-blue-bright {
+                border-color: ${cfg.colors.blue_bright};
+              }
+
+              .fg-blue-dull {
+                color: ${cfg.colors.blue_dull};
+              }
+
+              .bg-blue-dull {
+                background-color: ${cfg.colors.blue_dull};
+              }
+
+              .border-blue-dull {
+                border-color: ${cfg.colors.blue_dull};
+              }
+
+              .fg-magenta {
+                color: ${cfg.colors.magenta};
+              }
+
+              .bg-magenta {
+                background-color: ${cfg.colors.magenta};
+              }
+
+              .border-magenta {
+                border-color: ${cfg.colors.magenta};
+              }
+
+              .fg-magenta-bright {
+                color: ${cfg.colors.magenta_bright};
+              }
+
+              .bg-magenta-bright {
+                background-color: ${cfg.colors.magenta_bright};
+              }
+
+              .border-magenta-bright {
+                border-color: ${cfg.colors.magenta_bright};
+              }
+
+              .fg-magenta-dull {
+                color: ${cfg.colors.magenta_dull};
+              }
+
+              .bg-magenta-dull {
+                background-color: ${cfg.colors.magenta_dull};
+              }
+
+              .border-magenta-dull {
+                border-color: ${cfg.colors.magenta_dull};
+              }
+
+              .fg-cyan {
+                color: ${cfg.colors.cyan};
+              }
+
+              .bg-cyan {
+                background-color: ${cfg.colors.cyan};
+              }
+
+              .border-cyan {
+                border-color: ${cfg.colors.cyan};
+              }
+
+              .fg-cyan-bright {
+                color: ${cfg.colors.cyan_bright};
+              }
+
+              .bg-cyan-bright {
+                background-color: ${cfg.colors.cyan_bright};
+              }
+
+              .border-cyan-bright {
+                border-color: ${cfg.colors.cyan_bright};
+              }
+
+              .fg-cyan-dull {
+                color: ${cfg.colors.cyan_dull};
+              }
+
+              .bg-cyan-dull {
+                background-color: ${cfg.colors.cyan_dull};
+              }
+
+              .border-cyan-dull {
+                border-color: ${cfg.colors.cyan_dull};
+              }
+
+              .fg-white {
+                color: ${cfg.colors.white};
+              }
+
+              .bg-white {
+                background-color: ${cfg.colors.white};
+              }
+
+              .border-white {
+                border-color: ${cfg.colors.white};
+              }
+
+              .fg-white-bright {
+                color: ${cfg.colors.white_bright};
+              }
+
+              .bg-white-bright {
+                background-color: ${cfg.colors.white_bright};
+              }
+
+              .border-white-bright {
+                border-color: ${cfg.colors.white_bright};
+              }
+
+              .fg-white-dull {
+                color: ${cfg.colors.white_dull};
+              }
+
+              .bg-white-dull {
+                background-color: ${cfg.colors.white_dull};
+              }
+
+              .border-white-dull {
+                border-color: ${cfg.colors.white_dull};
+              }
+
+              table {
+                table-layout: fixed;
+                width: 75%;
+              }
+            </style>
+          </head>
+          <body>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>
+                    Default
+                  </th>
+                  <th>
+                    Dull
+                  </th>
+                  <th>
+                    Bright
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Black</th>
+                  <td class="bg-black"></td>
+                  <td class="bg-black-dull"></td>
+                  <td class="bg-black-bright"></td>
+                </tr>
+                <tr>
+                  <th>Red</th>
+                  <td class="bg-red"></td>
+                  <td class="bg-red-dull"></td>
+                  <td class="bg-red-bright"></td>
+                </tr>
+                <tr>
+                  <th>Green</th>
+                  <td class="bg-green"></td>
+                  <td class="bg-green-dull"></td>
+                  <td class="bg-green-bright"></td>
+                </tr>
+                <tr>
+                  <th>Yellow</th>
+                  <td class="bg-yellow"></td>
+                  <td class="bg-yellow-dull"></td>
+                  <td class="bg-yellow-bright"></td>
+                </tr>
+                <tr>
+                  <th>Blue</th>
+                  <td class="bg-blue"></td>
+                  <td class="bg-blue-dull"></td>
+                  <td class="bg-blue-bright"></td>
+                </tr>
+                <tr>
+                  <th>Magenta</th>
+                  <td class="bg-magenta"></td>
+                  <td class="bg-magenta-dull"></td>
+                  <td class="bg-magenta-bright"></td>
+                </tr>
+                <tr>
+                  <th>Cyan</th>
+                  <td class="bg-cyan"></td>
+                  <td class="bg-cyan-dull"></td>
+                  <td class="bg-cyan-bright"></td>
+                </tr>
+                <tr>
+                  <th>White</th>
+                  <td class="bg-white"></td>
+                  <td class="bg-white-dull"></td>
+                  <td class="bg-white-bright"></td>
+                </tr>
+              </tbody>
+            </table>
+          </body>
+        </html>
       '';
     };
   };
