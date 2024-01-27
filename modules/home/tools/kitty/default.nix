@@ -23,7 +23,7 @@ in {
           enableBashIntegration = true;
           enableZshIntegration = true;
         };
-        extraConfig = with config.united.style; let
+        extraConfig = with config.united.style.colors; let
           activeForegroundColor = lib.replaceStrings ["#"] ["_"] active_tab_foreground;
           activeBackgroundColor = lib.replaceStrings ["#"] ["_"] active_tab_background;
           inactiveForegroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_foreground;

@@ -22,7 +22,7 @@ in {
           output = {
             bar_delimiter = 32;
           };
-          color = with config.united.style; mkDefault {
+          color = with config.united.style.colors; mkDefault {
             foreground = "'${foreground}'";
             background = "'${background}'";
           };
