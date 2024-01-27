@@ -81,7 +81,7 @@ in {
         extraConfig = ''
           bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
           set -g default-terminal "''${TERM}"
-          set -ga terminal-overrides ",xterm-*:Tc"
+          set -ga terminal-overrides ",xterm-*:Tc"{
           bind-key -n Home send Escape "OH"
           bind-key -n End send Escape "OF"
           unbind C-Space
