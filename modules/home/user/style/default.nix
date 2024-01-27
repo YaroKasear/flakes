@@ -84,5 +84,11 @@ in {
 
   config = mkIf cfg.enable {
     gtk.enable = true;
+
+    home.file = {
+      "style.css".text = ''
+
+      '';
+    };
   };
 }
