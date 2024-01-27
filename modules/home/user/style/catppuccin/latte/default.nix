@@ -7,9 +7,9 @@ let
 
   home-directory = config.united.user.home-directory;
 
-  cfg = config.united.style.colors.colors.catppuccin.latte;
+  cfg = config.united.style.catppuccin.latte;
 in {
-  options.united.style.colors.colors.catppuccin.latte = {
+  options.united.style.catppuccin.latte = {
     enable = mkEnableOption "Catppuccin Latte theme!";
   };
 
@@ -199,7 +199,7 @@ in {
       };
     };
 
-    united.style.colors.colorscatppuccin.enable = true;
+    united.style.catppuccin.enable = true;
 
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {

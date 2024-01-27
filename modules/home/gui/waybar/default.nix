@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     xdg.configFile."waybar/waybar.css".source = ./files/waybar.css;
 
-    programs.waybar = with config.united.style; {
+    programs.waybar = with config.united.style.colors; {
       enable = true;
       settings = {
         bar = {

@@ -15,7 +15,7 @@ in {
         enable = true;
         enableBashIntegration = true;
         enableZshIntegration = true;
-        colors = with config.united.style; {
+        colors = with config.united.style.colors; {
           fg = mkDefault foreground;
           bg = mkDefault background;
           "fg+" = mkDefault selection_foreground;
