@@ -16,6 +16,7 @@ in {
         userName = "Yaro Kasear";
         userEmail = "yarokasear@gmail.com";
       };
+      zsh.oh-my-zsh.plugins = mkIf config.united.zsh.enable [ "git" ];
     };
   };
 }

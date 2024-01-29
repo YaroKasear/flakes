@@ -35,7 +35,6 @@ in {
             "emoji"
             "emoji-clock"
             "extract"
-            "git"
             "gnu-utils"
             "isodate"
             "lol"
