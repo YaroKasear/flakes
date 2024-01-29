@@ -9,7 +9,10 @@ let
 in {
   options.united.style = {
     enable = mkEnableOption "Style module!";
-    # These are all based on kitty's color settings, which should allow for a more than rich enough selection!
+    format = {
+      interface-font = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
+      terminal-font = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
+    };
     colors = {
       black = mkOpt types.str "${cfg.colors.black_dull}" "My black color!";
       red = mkOpt types.str "${cfg.colors.red_bright}" "My red color!";
@@ -86,585 +89,586 @@ in {
   config = mkIf cfg.enable {
     gtk.enable = true;
 
-    home.file =
-      let style-css = ''
-        * {
-          background-color: ${cfg.colors.background};
-          box-sizing: border-box;
-          color: ${cfg.colors.foreground};
-        }
-
-        thead, tbody, tr, th, td {
-          background-color: inherit;
-          color: inherit;
-        }
-
-        .fg-black {
-          color: ${cfg.colors.black};
-        }
-
-        .bg-black {
-          background-color: ${cfg.colors.black};
-        }
-
-        .border-black {
-          border-color: ${cfg.colors.black};
-        }
-
-        .fg-black-bright {
-          color: ${cfg.colors.black_bright};
-        }
-
-        .bg-black-bright {
-          background-color: ${cfg.colors.black_bright};
-        }
-
-        .border-black-bright {
-          border-color: ${cfg.colors.black_bright};
-        }
-
-        .fg-black-dull {
-          color: ${cfg.colors.black_dull};
-        }
-
-        .bg-black-dull {
-          background-color: ${cfg.colors.black_dull};
-        }
-
-        .border-black-dull {
-          border-color: ${cfg.colors.black_dull};
-        }
-
-        .fg-red {
-          color: ${cfg.colors.red};
-        }
-
-        .bg-red {
-          background-color: ${cfg.colors.red};
-        }
-
-        .border-red {
-          border-color: ${cfg.colors.red};
-        }
-
-        .fg-red-bright {
-          color: ${cfg.colors.red_bright};
-        }
-
-        .bg-red-bright {
-          background-color: ${cfg.colors.red_bright};
-        }
-
-        .border-red-bright {
-          border-color: ${cfg.colors.red_bright};
-        }
-
-        .fg-red-dull {
-          color: ${cfg.colors.red_dull};
-        }
-
-        .bg-red-dull {
-          background-color: ${cfg.colors.red_dull};
-        }
-
-        .border-red-dull {
-          border-color: ${cfg.colors.red_dull};
-        }
-
-        .fg-green {
-          color: ${cfg.colors.green};
-        }
-
-        .bg-green {
-          background-color: ${cfg.colors.green};
-        }
-
-        .border-green {
-          border-color: ${cfg.colors.green};
-        }
-
-        .fg-green-bright {
-          color: ${cfg.colors.green_bright};
-        }
-
-        .bg-green-bright {
-          background-color: ${cfg.colors.green_bright};
-        }
-
-        .border-green-bright {
-          border-color: ${cfg.colors.green_bright};
-        }
-
-        .fg-green-dull {
-          color: ${cfg.colors.green_dull};
-        }
-
-        .bg-green-dull {
-          background-color: ${cfg.colors.green_dull};
-        }
-
-        .border-green-dull {
-          border-color: ${cfg.colors.green_dull};
-        }
-
-        .fg-yellow {
-          color: ${cfg.colors.yellow};
-        }
-
-        .bg-yellow {
-          background-color: ${cfg.colors.yellow};
-        }
-
-        .border-yellow {
-          border-color: ${cfg.colors.yellow};
-        }
-
-        .fg-yellow-bright {
-          color: ${cfg.colors.yellow_bright};
-        }
-
-        .bg-yellow-bright {
-          background-color: ${cfg.colors.yellow_bright};
-        }
-
-        .border-yellow-bright {
-          border-color: ${cfg.colors.yellow_bright};
-        }
-
-        .fg-yellow-dull {
-          color: ${cfg.colors.yellow_dull};
-        }
-
-        .bg-yellow-dull {
-          background-color: ${cfg.colors.yellow_dull};
-        }
-
-        .border-yellow-dull {
-          border-color: ${cfg.colors.yellow_dull};
-        }
-
-        .fg-blue {
-          color: ${cfg.colors.blue};
-        }
-
-        .bg-blue {
-          background-color: ${cfg.colors.blue};
-        }
-
-        .border-blue {
-          border-color: ${cfg.colors.blue};
-        }
-
-        .fg-blue-bright {
-          color: ${cfg.colors.blue_bright};
-        }
-
-        .bg-blue-bright {
-          background-color: ${cfg.colors.blue_bright};
-        }
-
-        .border-blue-bright {
-          border-color: ${cfg.colors.blue_bright};
-        }
-
-        .fg-blue-dull {
-          color: ${cfg.colors.blue_dull};
-        }
-
-        .bg-blue-dull {
-          background-color: ${cfg.colors.blue_dull};
-        }
-
-        .border-blue-dull {
-          border-color: ${cfg.colors.blue_dull};
-        }
-
-        .fg-magenta {
-          color: ${cfg.colors.magenta};
-        }
-
-        .bg-magenta {
-          background-color: ${cfg.colors.magenta};
-        }
-
-        .border-magenta {
-          border-color: ${cfg.colors.magenta};
-        }
-
-        .fg-magenta-bright {
-          color: ${cfg.colors.magenta_bright};
-        }
-
-        .bg-magenta-bright {
-          background-color: ${cfg.colors.magenta_bright};
-        }
-
-        .border-magenta-bright {
-          border-color: ${cfg.colors.magenta_bright};
-        }
-
-        .fg-magenta-dull {
-          color: ${cfg.colors.magenta_dull};
-        }
-
-        .bg-magenta-dull {
-          background-color: ${cfg.colors.magenta_dull};
-        }
-
-        .border-magenta-dull {
-          border-color: ${cfg.colors.magenta_dull};
-        }
-
-        .fg-cyan {
-          color: ${cfg.colors.cyan};
-        }
-
-        .bg-cyan {
-          background-color: ${cfg.colors.cyan};
-        }
-
-        .border-cyan {
-          border-color: ${cfg.colors.cyan};
-        }
-
-        .fg-cyan-bright {
-          color: ${cfg.colors.cyan_bright};
-        }
-
-        .bg-cyan-bright {
-          background-color: ${cfg.colors.cyan_bright};
-        }
-
-        .border-cyan-bright {
-          border-color: ${cfg.colors.cyan_bright};
-        }
-
-        .fg-cyan-dull {
-          color: ${cfg.colors.cyan_dull};
-        }
-
-        .bg-cyan-dull {
-          background-color: ${cfg.colors.cyan_dull};
-        }
-
-        .border-cyan-dull {
-          border-color: ${cfg.colors.cyan_dull};
-        }
-
-        .fg-white {
-          color: ${cfg.colors.white};
-        }
-
-        .bg-white {
-          background-color: ${cfg.colors.white};
-        }
-
-        .border-white {
-          border-color: ${cfg.colors.white};
-        }
-
-        .fg-white-bright {
-          color: ${cfg.colors.white_bright};
-        }
-
-        .bg-white-bright {
-          background-color: ${cfg.colors.white_bright};
-        }
-
-        .border-white-bright {
-          border-color: ${cfg.colors.white_bright};
-        }
-
-        .fg-white-dull {
-          color: ${cfg.colors.white_dull};
-        }
-
-        .bg-white-dull {
-          background-color: ${cfg.colors.white_dull};
-        }
-
-        .border-white-dull {
-          border-color: ${cfg.colors.white_dull};
-        }
-
-        .fg-color0 {
-          color: ${cfg.colors.color0}
-        }
-
-        .bg-color0 {
-          background-color: ${cfg.colors.color0}
-        }
-
-        .border-color0 {
-          background-color: ${cfg.colors.color0}
-        }
-
-        .fg-color1 {
-          color: ${cfg.colors.color1}
-        }
-
-        .bg-color1 {
-          background-color: ${cfg.colors.color1}
-        }
-
-        .border-color1 {
-          background-color: ${cfg.colors.color1}
-        }
-
-        .fg-color2 {
-          color: ${cfg.colors.color2}
-        }
-
-        .bg-color2 {
-          background-color: ${cfg.colors.color2}
-        }
-
-        .border-color2 {
-          background-color: ${cfg.colors.color2}
-        }
-
-        .fg-color3 {
-          color: ${cfg.colors.color3}
-        }
-
-        .bg-color3 {
-          background-color: ${cfg.colors.color3}
-        }
-
-        .border-color3 {
-          background-color: ${cfg.colors.color3}
-        }
-
-        .fg-color4 {
-          color: ${cfg.colors.color4}
-        }
-
-        .bg-color4 {
-          background-color: ${cfg.colors.color4}
-        }
-
-        .border-color4 {
-          background-color: ${cfg.colors.color4}
-        }
-
-        .fg-color5 {
-          color: ${cfg.colors.color5}
-        }
-
-        .bg-color5 {
-          background-color: ${cfg.colors.color5}
-        }
-
-        .border-color5 {
-          background-color: ${cfg.colors.color5}
-        }
-
-        .fg-color6 {
-          color: ${cfg.colors.color6}
-        }
-
-        .bg-color6 {
-          background-color: ${cfg.colors.color6}
-        }
-
-        .border-color6 {
-          background-color: ${cfg.colors.color6}
-        }
-
-        .fg-color7 {
-          color: ${cfg.colors.color7}
-        }
-
-        .bg-color7 {
-          background-color: ${cfg.colors.color7}
-        }
-
-        .border-color7 {
-          background-color: ${cfg.colors.color7}
-        }
-
-        .fg-color7 {
-          color: ${cfg.colors.color7}
-        }
-
-        .bg-color7 {
-          background-color: ${cfg.colors.color7}
-        }
-
-        .border-color7 {
-          background-color: ${cfg.colors.color7}
-        }
-
-        .fg-color8 {
-          color: ${cfg.colors.color8}
-        }
-
-        .bg-color8 {
-          background-color: ${cfg.colors.color8}
-        }
-
-        .border-color8 {
-          background-color: ${cfg.colors.color8}
-        }
-
-        .fg-color9 {
-          color: ${cfg.colors.color9}
-        }
-
-        .bg-color9 {
-          background-color: ${cfg.colors.color9}
-        }
-
-        .border-color9 {
-          background-color: ${cfg.colors.color9}
-        }
-
-        .fg-color10 {
-          color: ${cfg.colors.color10}
-        }
-
-        .bg-color10 {
-          background-color: ${cfg.colors.color10}
-        }
-
-        .border-color10 {
-          background-color: ${cfg.colors.color10}
-        }
-
-        .fg-color11 {
-          color: ${cfg.colors.color11}
-        }
-
-        .bg-color11 {
-          background-color: ${cfg.colors.color11}
-        }
-
-        .border-color11 {
-          background-color: ${cfg.colors.color11}
-        }
-
-        .fg-color12 {
-          color: ${cfg.colors.color12}
-        }
-
-        .bg-color12 {
-          background-color: ${cfg.colors.color12}
-        }
-
-        .border-color12 {
-          background-color: ${cfg.colors.color12}
-        }
-
-        .fg-color13 {
-          color: ${cfg.colors.color13}
-        }
-
-        .bg-color13 {
-          background-color: ${cfg.colors.color13}
-        }
-
-        .border-color13 {
-          background-color: ${cfg.colors.color13}
-        }
-
-        .fg-color14 {
-          color: ${cfg.colors.color14}
-        }
-
-        .bg-color14 {
-          background-color: ${cfg.colors.color14}
-        }
-
-        .border-color14 {
-          background-color: ${cfg.colors.color14}
-        }
-
-        .fg-color15 {
-          color: ${cfg.colors.color15}
-        }
-
-        .bg-color15 {
-          background-color: ${cfg.colors.color15}
-        }
-
-        .border-color15 {
-          background-color: ${cfg.colors.color15}
-        }
-
-        .container {
-          display: flex;
-        }
-
-        .border {
-          border-width: 1px;
-          border-style: solid;
-        };
-
-        .left {
-          left: 0;
-          margin-right: auto;
-        }
-
-        .center {
-          left: 0;
-          right: 0;
-          margin: auto;
-        }
-
-        .right {
-          right: 0;
-          margin-left: auto;
-        }
-
-        .w-25 {
-          width: 25%;
-        }
-
-        .w-50 {
-          width: 50%;
-        }
-
-        .w-75 {
-          width: 75%;
-        }
-
-        .w-100 {
-          width: 100%;
-        }
-
-        .h-25 {
-          height: 25%;
-        }
-
-        .h-50 {
-          height: 50%;
-        }
-
-        .h-75 {
-          height: 75%;
-        }
-
-        .h-100 {
-          height: 100%;
-        }
-      '';
-    in {
+    home.file = {
       "style/test.html".text = ''
         <html>
           <head>
             <style>
-              ${style-css}
+              :root {
+                --black: ${cfg.colors.black};
+                --red: ${cfg.colors.red};
+                --green: ${cfg.colors.green};
+                --yellow: ${cfg.colors.yellow};
+                --blue: ${cfg.colors.blue};
+                --magenta: ${cfg.colors.magenta};
+                --cyan: ${cfg.colors.cyan};
+                --white: ${cfg.colors.white};
+                --black_dull: ${cfg.colors.black_dull};
+                --black_bright: ${cfg.colors.black_bright};
+                --red_dull: ${cfg.colors.red_dull};
+                --red_bright: ${cfg.colors.red_bright};
+                --green_dull: ${cfg.colors.green_dull};
+                --green_bright: ${cfg.colors.green_bright};
+                --yellow_dull: ${cfg.colors.yellow_dull};
+                --yellow_bright: ${cfg.colors.yellow_bright};
+                --blue_dull: ${cfg.colors.blue_dull};
+                --blue_bright: ${cfg.colors.blue_bright};
+                --magenta_dull: ${cfg.colors.magenta_dull};
+                --magenta_bright: ${cfg.colors.magenta_bright};
+                --cyan_dull: ${cfg.colors.cyan_dull};
+                --cyan_bright: ${cfg.colors.cyan_bright};
+                --white_dull: ${cfg.colors.white_dull};
+                --white_bright: ${cfg.colors.white_bright};
+                --foreground: ${cfg.colors.foreground};
+                --background: ${cfg.colors.background};
+                --selection_foreground: ${cfg.colors.selection_foreground};
+                --selection_background: ${cfg.colors.selection_background};
+                --cursor: ${cfg.colors.cursor};
+                --cursor_text_color: ${cfg.colors.cursor_text_color};
+                --url_color: ${cfg.colors.url_color};
+                --visual_bell_color: ${cfg.colors.visual_bell_color};
+                --active_border_color: ${cfg.colors.active_border_color};
+                --inactive_border_color: ${cfg.colors.inactive_border_color};
+                --bell_border_color: ${cfg.colors.bell_border_color};
+                --active_tab_foreground: ${cfg.colors.active_tab_foreground};
+                --active_tab_background: ${cfg.colors.active_tab_background};
+                --inactive_tab_foreground: ${cfg.colors.inactive_tab_foreground};
+                --inactive_tab_background: ${cfg.colors.inactive_tab_background};
+                --tab_bar_background: ${cfg.colors.tab_bar_background};
+                --tab_bar_margin_color: ${cfg.colors.tab_bar_margin_color};
+                --mark1_background: ${cfg.colors.mark1_background};
+                --mark1_foreground: ${cfg.colors.mark1_foreground};
+                --mark2_background: ${cfg.colors.mark2_background};
+                --mark2_foreground: ${cfg.colors.mark2_foreground};
+                --mark3_background: ${cfg.colors.mark3_background};
+                --mark3_foreground: ${cfg.colors.mark3_foreground};
+                --color0: ${cfg.colors.color0};
+                --color1: ${cfg.colors.color1};
+                --color2: ${cfg.colors.color2};
+                --color3: ${cfg.colors.color3};
+                --color4: ${cfg.colors.color4};
+                --color5: ${cfg.colors.color5};
+                --color6: ${cfg.colors.color6};
+                --color7: ${cfg.colors.color7};
+                --color8: ${cfg.colors.color8};
+                --color9: ${cfg.colors.color9};
+                --color10: ${cfg.colors.color10};
+                --color11: ${cfg.colors.color11};
+                --color12: ${cfg.colors.color12};
+                --color13: ${cfg.colors.color13};
+                --color14: ${cfg.colors.color14};
+                --color15: ${cfg.colors.color15};
+              }
 
-              table {
-                table-layout: fixed;
+              * {
+                background-color: var(--background);
+                border-color: var(--active_border_color);
+                box-sizing: border-box;
+                color: var(--foreground);
+                font-family: ${cfg.format.interface-font}, sans-serif;
+              }
+
+              .border {
+                border: 1px solid;
+              }
+
+              .fg-default {
+                color: var(--background);
+              }
+
+              .bg-default {
+                background-color: var(--foreground);
+              }
+
+              .border-default {
+                border: 1px solid var(--active_border_color);
+              }
+
+              .fg-black {
+                color: var(--black);
+              }
+
+              .bg-black {
+                background-color: var(--black);
+              }
+
+              .border-black {
+                border: 1px solid var(--black);
+              }
+
+              .border-black {
+                border-color: var(--black);
+              }
+
+              .shadow-black {
+                box-shadow: .5em .5em .25em var(--black);
+              }
+
+              .fg-red {
+                color: var(--red);
+              }
+
+              .bg-red {
+                background-color: var(--red);
+              }
+
+              .border-red {
+                border: 1px solid var(--red);
+              }
+
+              .border-red {
+                border-color: var(--red);
+              }
+
+              .shadow-red {
+                box-shadow: .5em .5em .25em var(--red);
+              }
+
+              .fg-green {
+                color: var(--green);
+              }
+
+              .bg-green {
+                background-color: var(--green);
+              }
+
+              .border-green {
+                border: 1px solid var(--green);
+              }
+
+              .border-green {
+                border-color: var(--green);
+              }
+
+              .shadow-green {
+                box-shadow: .5em .5em .25em var(--green);
+              }
+
+              .fg-yellow {
+                color: var(--yellow);
+              }
+
+              .bg-yellow {
+                background-color: var(--yellow);
+              }
+
+              .border-yellow {
+                border: 1px solid var(--yellow);
+              }
+
+              .border-yellow {
+                border-color: var(--yellow);
+              }
+
+              .shadow-yellow {
+                box-shadow: .5em .5em .25em var(--yellow);
+              }
+
+              .fg-blue {
+                color: var(--blue);
+              }
+
+              .bg-blue {
+                background-color: var(--blue);
+              }
+
+              .border-blue {
+                border: 1px solid var(--blue);
+              }
+
+              .border-blue {
+                border-color: var(--blue);
+              }
+
+              .shadow-blue {
+                box-shadow: .5em .5em .25em var(--blue);
+              }
+
+              .fg-magenta {
+                color: var(--magenta);
+              }
+
+              .bg-magenta {
+                background-color: var(--magenta);
+              }
+
+              .border-magenta {
+                border: 1px solid var(--magenta);
+              }
+
+              .border-magenta {
+                border-color: var(--magenta);
+              }
+
+              .shadow-magenta {
+                box-shadow: .5em .5em .25em var(--magenta);
+              }
+
+              .fg-cyan {
+                color: var(--cyan);
+              }
+
+              .bg-cyan {
+                background-color: var(--cyan);
+              }
+
+              .border-cyan {
+                border: 1px solid var(--cyan);
+              }
+
+              .border-cyan {
+                border-color: var(--cyan);
+              }
+
+              .shadow-cyan {
+                box-shadow: .5em .5em .25em var(--cyan);
+              }
+
+              .fg-white {
+                color: var(--white);
+              }
+
+              .bg-white {
+                background-color: var(--white);
+              }
+
+              .border-white {
+                border: 1px solid var(--white);
+              }
+
+              .border-white {
+                border-color: var(--white);
+              }
+
+              .shadow-white {
+                box-shadow: .5em .5em .25em var(--white);
+              }
+
+              .fg-black_dull {
+                color: var(--black_dull);
+              }
+
+              .bg-black_dull {
+                background-color: var(--black_dull);
+              }
+
+              .border-black_dull {
+                border: 1px solid var(--black_dull);
+              }
+
+              .border-black_dull {
+                border-color: var(--black_dull);
+              }
+
+              .shadow-black_dull {
+                box-shadow: .5em .5em .25em var(--black_dull);
+              }
+
+              .fg-black_bright {
+                color: var(--black_bright);
+              }
+
+              .bg-black_bright {
+                background-color: var(--black_bright);
+              }
+
+              .border-black_bright {
+                border: 1px solid var(--black_bright);
+              }
+
+              .border-black_bright {
+                border-color: var(--black_bright);
+              }
+
+              .shadow-black_bright {
+                box-shadow: .5em .5em .25em var(--black_bright);
+              }
+
+              .fg-red_dull {
+                color: var(--red_dull);
+              }
+
+              .bg-red_dull {
+                background-color: var(--red_dull);
+              }
+
+              .border-red_dull {
+                border: 1px solid var(--red_dull);
+              }
+
+              .border-red_dull {
+                border-color: var(--red_dull);
+              }
+
+              .shadow-red_dull {
+                box-shadow: .5em .5em .25em var(--red_dull);
+              }
+
+              .fg-red_bright {
+                color: var(--red_bright);
+              }
+
+              .bg-red_bright {
+                background-color: var(--red_bright);
+              }
+
+              .border-red_bright {
+                border: 1px solid var(--red_bright);
+              }
+
+              .border-red_bright {
+                border-color: var(--red_bright);
+              }
+
+              .shadow-red_bright {
+                box-shadow: .5em .5em .25em var(--red_bright);
+              }
+
+              .fg-green_dull {
+                color: var(--green_dull);
+              }
+
+              .bg-green_dull {
+                background-color: var(--green_dull);
+              }
+
+              .border-green_dull {
+                border: 1px solid var(--green_dull);
+              }
+
+              .border-green_dull {
+                border-color: var(--green_dull);
+              }
+
+              .shadow-green_dull {
+                box-shadow: .5em .5em .25em var(--green_dull);
+              }
+
+              .fg-green_bright {
+                color: var(--green_bright);
+              }
+
+              .bg-green_bright {
+                background-color: var(--green_bright);
+              }
+
+              .border-green_bright {
+                border: 1px solid var(--green_bright);
+              }
+
+              .border-green_bright {
+                border-color: var(--green_bright);
+              }
+
+              .shadow-green_bright {
+                box-shadow: .5em .5em .25em var(--green_bright);
+              }
+
+              .fg-yellow_dull {
+                color: var(--yellow_dull);
+              }
+
+              .bg-yellow_dull {
+                background-color: var(--yellow_dull);
+              }
+
+              .border-yellow_dull {
+                border: 1px solid var(--yellow_dull);
+              }
+
+              .border-yellow_dull {
+                border-color: var(--yellow_dull);
+              }
+
+              .shadow-yellow_dull {
+                box-shadow: .5em .5em .25em var(--yellow_dull);
+              }
+
+              .fg-yellow_bright {
+                color: var(--yellow_bright);
+              }
+
+              .bg-yellow_bright {
+                background-color: var(--yellow_bright);
+              }
+
+              .border-yellow_bright {
+                border: 1px solid var(--yellow_bright);
+              }
+
+              .border-yellow_bright {
+                border-color: var(--yellow_bright);
+              }
+
+              .shadow-yellow_bright {
+                box-shadow: .5em .5em .25em var(--yellow_bright);
+              }
+
+              .fg-blue_dull {
+                color: var(--blue_dull);
+              }
+
+              .bg-blue_dull {
+                background-color: var(--blue_dull);
+              }
+
+              .border-blue_dull {
+                border: 1px solid var(--blue_dull);
+              }
+
+              .border-blue_dull {
+                border-color: var(--blue_dull);
+              }
+
+              .shadow-blue_dull {
+                box-shadow: .5em .5em .25em var(--blue_dull);
+              }
+
+              .fg-blue_bright {
+                color: var(--blue_bright);
+              }
+
+              .bg-blue_bright {
+                background-color: var(--blue_bright);
+              }
+
+              .border-blue_bright {
+                border: 1px solid var(--blue_bright);
+              }
+
+              .border-blue_bright {
+                border-color: var(--blue_bright);
+              }
+
+              .shadow-blue_bright {
+                box-shadow: .5em .5em .25em var(--blue_bright);
+              }
+
+              .fg-magenta_dull {
+                color: var(--magenta_dull);
+              }
+
+              .bg-magenta_dull {
+                background-color: var(--magenta_dull);
+              }
+
+              .border-magenta_dull {
+                border: 1px solid var(--magenta_dull);
+              }
+
+              .border-magenta_dull {
+                border-color: var(--magenta_dull);
+              }
+
+              .shadow-magenta_dull {
+                box-shadow: .5em .5em .25em var(--magenta_dull);
+              }
+
+              .fg-magenta_bright {
+                color: var(--magenta_bright);
+              }
+
+              .bg-magenta_bright {
+                background-color: var(--magenta_bright);
+              }
+
+              .border-magenta_bright {
+                border: 1px solid var(--magenta_bright);
+              }
+
+              .border-magenta_bright {
+                border-color: var(--magenta_bright);
+              }
+
+              .shadow-magenta_bright {
+                box-shadow: .5em .5em .25em var(--magenta_bright);
+              }
+
+              .fg-cyan_dull {
+                color: var(--cyan_dull);
+              }
+
+              .bg-cyan_dull {
+                background-color: var(--cyan_dull);
+              }
+
+              .border-cyan_dull {
+                border: 1px solid var(--cyan_dull);
+              }
+
+              .border-cyan_dull {
+                border-color: var(--cyan_dull);
+              }
+
+              .shadow-cyan_dull {
+                box-shadow: .5em .5em .25em var(--cyan_dull);
+              }
+
+              .fg-cyan_bright {
+                color: var(--cyan_bright);
+              }
+
+              .bg-cyan_bright {
+                background-color: var(--cyan_bright);
+              }
+
+              .border-cyan_bright {
+                border: 1px solid var(--cyan_bright);
+              }
+
+              .border-cyan_bright {
+                border-color: var(--cyan_bright);
+              }
+
+              .shadow-cyan_bright {
+                box-shadow: .5em .5em .25em var(--cyan_bright);
+              }
+
+              .fg-white_dull {
+                color: var(--white_dull);
+              }
+
+              .bg-white_dull {
+                background-color: var(--white_dull);
+              }
+
+              .border-white_dull {
+                border: 1px solid var(--white_dull);
+              }
+
+              .border-white_dull {
+                border-color: var(--white_dull);
+              }
+
+              .shadow-white_dull {
+                box-shadow: .5em .5em .25em var(--white_dull);
+              }
+
+              .fg-white_bright {
+                color: var(--white_bright);
+              }
+
+              .bg-white_bright {
+                background-color: var(--white_bright);
+              }
+
+              .border-white_bright {
+                border: 1px solid var(--white_bright);
+              }
+
+              .border-white_bright {
+                border-color: var(--white_bright);
+              }
+
+              .shadow-white_bright {
+                box-shadow: .5em .5em .25em var(--white_bright);
               }
             </style>
           </head>
-          <body class="bg-white fg-black">
-            <table class="w-75 center bg-white fg-black">
+          <body>
+            <table>
               <thead>
                 <tr>
-                  <th></th>
                   <th>
                     Default
                   </th>
@@ -676,110 +680,8 @@ in {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th>Black</th>
-                  <td class="border bg-black"></td>
-                  <td class="border bg-black-dull"></td>
-                  <td class="border bg-black-bright"></td>
-                </tr>
-                <tr>
-                  <th>Red</th>
-                  <td class="border bg-red"></td>
-                  <td class="border bg-red-dull"></td>
-                  <td class="border bg-red-bright"></td>
-                </tr>
-                <tr>
-                  <th>Green</th>
-                  <td class="border bg-green"></td>
-                  <td class="border bg-green-dull"></td>
-                  <td class="border bg-green-bright"></td>
-                </tr>
-                <tr>
-                  <th>Yellow</th>
-                  <td class="border bg-yellow"></td>
-                  <td class="border bg-yellow-dull"></td>
-                  <td class="border bg-yellow-bright"></td>
-                </tr>
-                <tr>
-                  <th>Blue</th>
-                  <td class="border bg-blue"></td>
-                  <td class="border bg-blue-dull"></td>
-                  <td class="border bg-blue-bright"></td>
-                </tr>
-                <tr>
-                  <th>Magenta</th>
-                  <td class="border bg-magenta"></td>
-                  <td class="border bg-magenta-dull"></td>
-                  <td class="border bg-magenta-bright"></td>
-                </tr>
-                <tr>
-                  <th>Cyan</th>
-                  <td class="border bg-cyan"></td>
-                  <td class="border bg-cyan-dull"></td>
-                  <td class="border bg-cyan-bright"></td>
-                </tr>
-                <tr>
-                  <th>White</th>
-                  <td class="border bg-white"></td>
-                  <td class="border bg-white-dull"></td>
-                  <td class="border bg-white-bright"></td>
-                </tr>
-              </tbody>
             </table>
-            <table class="w-75 center bg-white fg-black">
-              <tr>
-                <th>color0</th>
-                <td class="border bg-color0"></td>
-                <th>color8</th>
-                <td class="border bg-color8"></td>
-              </tr>
-              <tr>
-                <th>color1</th>
-                <td class="border bg-color1"></td>
-                <th>color9</th>
-                <td class="border bg-color9"></td>
-              </tr>
-              <tr>
-                <th>color2</th>
-                <td class="border bg-color2"></td>
-                <th>color10</th>
-                <td class="border bg-color10"></td>
-              </tr>
-              <tr>
-                <th>color3</th>
-                <td class="border bg-color3"></td>
-                <th>color11</th>
-                <td class="border bg-color11"></td>
-              </tr>
-              <tr>
-                <th>color4</th>
-                <td class="border bg-color4"></td>
-                <th>color12</th>
-                <td class="border bg-color12"></td>
-              </tr>
-              <tr>
-                <th>color5</th>
-                <td class="border bg-color5"></td>
-                <th>color13</th>
-                <td class="border bg-color13"></td>
-              </tr>
-              <tr>
-                <th>color6</th>
-                <td class="border bg-color6"></td>
-                <th>color14</th>
-                <td class="border bg-color14"></td>
-              </tr>
-              <tr>
-                <th>color7</th>
-                <td class="border bg-color7"></td>
-                <th>color15</th>
-                <td class="border bg-color15"></td>
-              </tr>
-            </table>
-            <div class="container border w-75 h-50 center bg-white-dull fg-black border-black">
-            </div>
-          </body>
+          </body
         </html>
       '';
     };

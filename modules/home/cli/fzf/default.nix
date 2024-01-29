@@ -10,11 +10,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = with pkgs; [
+      (mkIf config.united.zsh.enable zsh-fzf-tab)
+    ];
     programs = {
       fzf = {
         enable = true;
-        enableBashIntegration = true;
-        enableZshIntegration = true;
+        enableZshIntegration = config.united.zsh.enable;
         colors = with config.united.style.colors; {
           fg = mkDefault foreground;
           bg = mkDefault background;
@@ -25,6 +27,16 @@ in {
           preview-bg = mkDefault background;
         };
         tmux.enableShellIntegration = true;
+      };
+      zsh = mkIf config.united.zsh.enable {
+        oh-my-zsh = {
+          plugins = [
+            "fzf"
+          ];
+        };
+        initExtra = ''
+          source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
+        '';
       };
     };
   };
