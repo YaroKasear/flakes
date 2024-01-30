@@ -61,7 +61,6 @@ in {
       user.enable = true;
       style = with config.united.style; {
         enable = true;
-        catppuccin.latte.enable = false;
         catppuccin.frappe.enable = true;
       };
     };
