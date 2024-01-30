@@ -147,7 +147,7 @@ in {
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 2;
+          border_size = config.united.style.windows.border-size;
           "col.inactive_border" = mkDefault "$inactive_border_color";
           "col.active_border" = mkDefault "$active_border_color";
           layout = "dwindle";
@@ -161,7 +161,7 @@ in {
           groupbar = {
             "col.active" = mkDefault "$active_tab_background";
             "col.inactive" = mkDefault "$inactive_tab_background";
-            font_family = "FiraCode Nerd Font";
+            font_family = config.united.style.fonts.interface;
             font_size = 10;
             gradients = true;
             render_titles = true;

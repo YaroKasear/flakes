@@ -62,6 +62,7 @@ in {
       style = with config.united.style; {
         enable = true;
         catppuccin.frappe.enable = true;
+        # fonts.interface = "Unifont";
       };
     };
 

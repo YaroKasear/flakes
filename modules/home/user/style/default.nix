@@ -13,6 +13,17 @@ in {
       interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
       terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
     };
+    windows = {
+      border-size = mkOpt types.number 2 "Border size of window.";
+    };
+    effects = {
+      shadow = {
+        offsetX = mkOpt types.number 5 "Horizontal offset of drop shadow in pixels.";
+        offsetY = mkOpt types.number 5 "Vertical offset of drop shadow in pixels.";
+        blur = mkOpt types.number 5 "Blur of drop shadow in pixels.";
+        color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
+      };
+    };
     colors = {
       black = mkOpt types.str "${cfg.colors.black_dull}" "My black color!";
       red = mkOpt types.str "${cfg.colors.red_bright}" "My red color!";
@@ -175,7 +186,7 @@ in {
                   height: 50%;
                   border-top-right-radius: .5em;
                   border-top-left-radius: .5em;
-                  box-shadow: 5px 5px 5px var(--black);
+                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetY}px ${toString cfg.effects.shadow.blur}px ${cfg.effects.shadow.color};
                 }
 
                 .titlebar {
@@ -193,7 +204,7 @@ in {
                 }
 
                 .window.active {
-                  border: 1px solid var(--active_border_color);
+                  border: ${toString cfg.windows.border-size}px solid var(--active_border_color);
                   top: 50;
                   left: 50;
                   z-index: 1;
@@ -206,7 +217,7 @@ in {
                 }
 
                 .window.inactive {
-                  border: 1px solid var(--inactive_border_color);
+                  border: ${toString cfg.windows.border-size}px solid var(--inactive_border_color);
                   bottom: 50;
                   left: 500;
                   z-index: 0;
