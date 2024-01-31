@@ -17,7 +17,6 @@ in {
         cowsay = inputs.cowsay.packages.${system}.cowsay;
       in [
         age
-        asciiquarium-transparent
         chroma
         cowsay
         file

@@ -42,7 +42,6 @@ in {
       enable = true;
       plugins = [
         inputs.hy3.packages.${pkgs.system}.hy3
-        inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
       sourceFirst = true;
       settings = with config.united.style.colors; {
@@ -117,7 +116,6 @@ in {
           "hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
-          "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
           "sleep 30s; systemctl --user restart nextcloud-client"
           "systemctl --user start random-wallpaper.service"
           "systemctl --user start random-wallpaper.timer"
@@ -294,14 +292,6 @@ in {
           disable_logs = false;
         };
       };
-      extraConfig = mkDefault ''
-        plugin {
-          hyprwinwrap {
-            class = kitty-bg
-            size: 100%;
-          }
-        }
-      '';
     };
 
     systemd.user = {
@@ -330,12 +320,6 @@ in {
         wallpaper = DP-3,${config.united.style.wallpaper}
         splash = false
       '';
-      "kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
-        text = ''
-          background #000000
-          background_opacity 0.0
-        '';
-      };
       "hypr/random-wallpaper.sh" = {
         text = with pkgs; ''
           #!${bash}/bin/bash
