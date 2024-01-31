@@ -10,9 +10,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      asciiquarium-transparent
-    ];
+    home = {
+      file."Pictures/Wallpaper" = {
+        source = ./files;
+        recursive = true;
+      };
+      packages = with pkgs; [
+        asciiquarium-transparent
+      ];
+    };
 
     wayland.windowManager.hyprland = mkIf config.united.wayland.enable {
       plugins = [
