@@ -62,6 +62,13 @@ in {
       style = with config.united.style; {
         enable = true;
         catppuccin.frappe.enable = true;
+        effects.shadow = {
+          active-color = config.united.style.colors.active_border_color;
+          inactive-color = config.united.style.colors.inactive_border_color;
+          offsetX = 0;
+          offsetY = 0;
+          spread = 20;
+        };
       };
     };
 

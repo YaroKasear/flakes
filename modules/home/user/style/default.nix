@@ -20,10 +20,12 @@ in {
     };
     effects = {
       shadow = {
+        spread = mkOpt types.number 5 "Spread of the shadow in pixels.";
         offsetX = mkOpt types.number 5 "Horizontal offset of drop shadow in pixels.";
         offsetY = mkOpt types.number 5 "Vertical offset of drop shadow in pixels.";
         blur = mkOpt types.number 5 "Blur of drop shadow in pixels.";
-        color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
+        active-color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
+        inactive-color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
       };
     };
     colors = {
@@ -186,7 +188,6 @@ in {
                   outline: 1px solid var(--black);
                   border-top-right-radius: ${toString cfg.windows.radius}px;
                   border-top-left-radius: ${toString cfg.windows.radius}px;
-                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.blur}px ${cfg.colors.black};
                 }
 
                 .titlebar {
@@ -205,6 +206,7 @@ in {
 
                 .window.active {
                   border: ${toString cfg.windows.border-size}px solid var(--active_border_color);
+                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.blur}px ${toString cfg.effects.shadow.spread}px ${cfg.effects.shadow.active-color};
                 }
 
                 .titlebar.active {
@@ -214,6 +216,7 @@ in {
 
                 .window.inactive {
                   border: ${toString cfg.windows.border-size}px solid var(--inactive_border_color);
+                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.blur}px ${toString cfg.effects.shadow.spread}px ${cfg.effects.shadow.inactive-color};
                 }
 
                 .titlebar.inactive {
