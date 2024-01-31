@@ -177,18 +177,16 @@ in {
                 }
 
                 .desktop {
-                  font-family: ${cfg.fonts.interface}, sans-serif;
-                  background-color: var(--white);
+                  font-family: FiraCode Nerd Font, sans-serif;
+                  background-color: var(--background);
+                  background-image: url("${cfg.wallpaper}");
                 }
 
                 .window {
                   outline: 1px solid var(--black);
-                  position: relative;
-                  width: 50%;
-                  height: 50%;
                   border-top-right-radius: ${toString cfg.windows.radius}px;
                   border-top-left-radius: ${toString cfg.windows.radius}px;
-                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetY}px ${toString cfg.effects.shadow.blur}px ${cfg.effects.shadow.color};
+                  box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.blur}px ${cfg.colors.black};
                 }
 
                 .titlebar {
@@ -207,41 +205,39 @@ in {
 
                 .window.active {
                   border: ${toString cfg.windows.border-size}px solid var(--active_border_color);
-                  top: 50;
-                  left: 50;
-                  z-index: 1;
                 }
 
                 .titlebar.active {
                   background-color: var(--active_tab_background);
                   color: var(--active_tab_foreground);
-                  z-index: 1;
                 }
 
                 .window.inactive {
                   border: ${toString cfg.windows.border-size}px solid var(--inactive_border_color);
-                  bottom: 50;
-                  left: 500;
-                  z-index: 0;
                 }
 
                 .titlebar.inactive {
                   background-color: var(--inactive_tab_background);
                   color: var(--inactive_tab_foreground);
-                  z-index: 0;
                 }
               </style>
             </head>
             <body>
               <div class="container">
                 <div class="container border w-100 h-75 mt-5 desktop">
-                  <div class="window active">
-                    <div class="titlebar active">Active Window</div>
-                    <div class="window-body"></div>
-                  </div>
-                  <div class="window inactive">
-                    <div class="titlebar inactive">Inactive Window</div>
-                    <div class="window-body"></div>
+                  <div class="row h-100">
+                    <div class="col my-2">
+                      <div class="window active h-100">
+                        <div class="titlebar active">Active Window</div>
+                        <div class="window-body"></div>
+                      </div>
+                    </div>
+                    <div class="col my-2">
+                      <div class="window inactive h-100">
+                        <div class="titlebar inactive">Inactive Window</div>
+                        <div class="window-body"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <table class="table table-bordered my-5">
