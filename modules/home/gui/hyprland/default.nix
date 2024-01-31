@@ -324,17 +324,20 @@ in {
         text = with pkgs; ''
           #!${bash}/bin/bash
 
-            directory=${pictures-directory}/Wallpaper
-            monitor=`${hyprland}/bin/hyprctl monitors | ${gnugrep}/bin/grep Monitor | ${gawk}/bin/awk '{print $2}'`
+          alias awk=${gawk}/bin/awk
+          alias find=${findutils}/bin/find
+          alias grep=${gnugrep}/bin/grep
+          alias hyprctl=${hyprland}/bin/hyprctl
+          alias shuf=${coreutils-full}/bin/shuf
 
-            if [ -d "$directory" ]; then
-                random_background=$(${coreutils-full}/bin/ls $directory/*.png | ${coreutils-full}/bin/shuf -n 1)
-
-                ${hyprland}/bin/hyprctl hyprpaper unload all
-                ${hyprland}/bin/hyprctl hyprpaper preload $random_background
-                ${hyprland}/bin/hyprctl hyprpaper wallpaper "$monitor, $random_background"
-
-            fi
+          directory=${pictures-directory}/Wallpaper
+          monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
+          if [ -d "$directory" ]; then
+              random_background=$(find $directory \( -name "*.jpg" -o -name "*.png" -o -name "*.gif" \) | shuf -n 1)
+              hyprctl hyprpaper unload all
+              hyprctl hyprpaper preload $random_background
+              hyprctl hyprpaper wallpaper "$monitor, $random_background"
+          fi
         '';
         executable = true;
       };

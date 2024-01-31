@@ -1,8 +1,11 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
 let
+  home-directory = config.united.user.home-directory;
+  smart-wallpaper = (config.united.wayland.enable && config.united.kitty.enable);
+
   cfg = config.united.asciiquarium;
 in {
   options.united.asciiquarium = {
@@ -11,7 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      file."Pictures/Wallpaper" = {
+      file."Pictures/Wallpaper/asciiquarium" = mkIf smart-wallpaper {
         source = ./files;
         recursive = true;
       };
@@ -20,7 +23,7 @@ in {
       ];
     };
 
-    wayland.windowManager.hyprland = mkIf config.united.wayland.enable {
+    wayland.windowManager.hyprland = mkIf smart-wallpaper {
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
@@ -28,19 +31,18 @@ in {
         exec-once = [
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
         ];
-
-        extraConfig = mkDefault ''
-          plugin {
-            hyprwinwrap {
-              class = kitty-bg
-              size: 100%;
-            }
-          }
-        '';
       };
+      extraConfig = mkDefault ''
+        plugin {
+          hyprwinwrap {
+            class = kitty-bg
+            size: 100%;
+          }
+        }
+      '';
     };
 
-    xdg.configFile."kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
+    xdg.configFile."kitty/asciiquarium.conf" = mkIf smart-wallpaper {
       text = ''
         background #000000
         background_opacity 0.0

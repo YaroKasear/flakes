@@ -47,6 +47,7 @@ in {
     };
 
     united = {
+      asciiquarium.enable = true;
       btop.enable = true;
       fzf.enable = true;
       git.enable = true;
