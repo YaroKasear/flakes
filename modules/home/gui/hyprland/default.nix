@@ -18,6 +18,7 @@ in {
         libva
         hyprpaper
         inputs.hyprpicker.packages.x86_64-linux.hyprpicker
+        mpvpaper
         slurp
         swaynotificationcenter
         wl-clipboard
@@ -26,7 +27,6 @@ in {
       ];
     };
 
-    xdg.configFile."hypr/hyprpaper.conf".source = ./files/hyprpaper.conf;
 
     programs.wofi.enable = true;
 
@@ -169,8 +169,9 @@ in {
         };
 
         decoration = {
-          rounding = 10;
+          rounding = config.united.style.windows.radius;
           drop_shadow = true;
+          shadow_offset = "[${toString config.united.style.effects.shadow.offsetX}, ${toString config.united.style.effects.shadow.offsetY}]";
           shadow_range = 4;
           shadow_render_power = 3;
         };
@@ -208,7 +209,7 @@ in {
         windowrulev2 = [
           "nomaximizerequest, class:.*"
           "float, title:^(Picture-in-Picture)$"
-          # "float, class:.*"
+          "float, class:.*"
           "size 800 450, title:(Picture-in-Picture)"
           "pin, title:^(Picture-in-Picture)$"
           "float, title:^(Firefox)$"
@@ -321,6 +322,11 @@ in {
     };
 
     xdg.configFile = {
+      "hypr/hyprpaper.conf".text = ''
+        preload = ${config.united.style.wallpaper}
+        wallpaper = DP-3,${config.united.style.wallpaper}
+        splash = false
+      '';
       "kitty/asciiquarium.conf" = mkIf config.united.kitty.enable {
         text = ''
           background #000000
@@ -328,13 +334,20 @@ in {
         '';
       };
       "hypr/random-wallpaper.sh" = {
-        text = ''
-          #!${pkgs.bash}/bin/bash
+        text = with pkgs; ''
+          #!${bash}/bin/bash
 
-          wallpaper_directory="${pictures-directory}/Wallpaper/"
-          wallpaper="$wallpaper_directory$(${pkgs.coreutils-full}/bin/ls $wallpaper_directory | ${pkgs.coreutils-full}/bin/shuf -n 1)"
+            directory=${pictures-directory}/Wallpaper
+            monitor=`${hyprland}/bin/hyprctl monitors | ${gnugrep}/bin/grep Monitor | ${gawk}/bin/awk '{print $2}'`
 
-          ${pkgs.hyprland}/bin/hyprctl hyprpaper wallpaper "DP-3,$wallpaper"
+            if [ -d "$directory" ]; then
+                random_background=$(${coreutils-full}/bin/ls $directory/*.png | ${coreutils-full}/bin/shuf -n 1)
+
+                ${hyprland}/bin/hyprctl hyprpaper unload all
+                ${hyprland}/bin/hyprctl hyprpaper preload $random_background
+                ${hyprland}/bin/hyprctl hyprpaper wallpaper "$monitor, $random_background"
+
+            fi
         '';
         executable = true;
       };

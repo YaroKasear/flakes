@@ -13,8 +13,10 @@ in {
       interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
       terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
     };
+    wallpaper = mkOpt types.str "${config.united.user.home-directory}/Pictures/Wallpaper/maze.png" "Wallpaper!";
     windows = {
-      border-size = mkOpt types.number 2 "Border size of window.";
+      border-size = mkOpt types.number 2 "Border size of window in pixels.";
+      radius = mkOpt types.number 10 "Radius of rounded window edges in pixels.";
     };
     effects = {
       shadow = {
@@ -175,7 +177,7 @@ in {
                 }
 
                 .desktop {
-                  font-family: FiraCode Nerd Font, sans-serif;
+                  font-family: ${cfg.fonts.interface}, sans-serif;
                   background-color: var(--white);
                 }
 
@@ -184,14 +186,14 @@ in {
                   position: relative;
                   width: 50%;
                   height: 50%;
-                  border-top-right-radius: .5em;
-                  border-top-left-radius: .5em;
+                  border-top-right-radius: ${toString cfg.windows.radius}px;
+                  border-top-left-radius: ${toString cfg.windows.radius}px;
                   box-shadow: ${toString cfg.effects.shadow.offsetX}px ${toString cfg.effects.shadow.offsetY}px ${toString cfg.effects.shadow.blur}px ${cfg.effects.shadow.color};
                 }
 
                 .titlebar {
-                  border-top-right-radius: .5em;
-                  border-top-left-radius: .5em;
+                  border-top-right-radius: ${toString cfg.windows.radius}px;
+                  border-top-left-radius: ${toString cfg.windows.radius}px;
                   border-bottom: 1px solid var(--black);
                   padding-left: .5em;
                   padding-right: .5em;
