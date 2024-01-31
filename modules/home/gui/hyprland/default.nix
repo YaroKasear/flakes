@@ -18,7 +18,6 @@ in {
         libva
         hyprpaper
         inputs.hyprpicker.packages.x86_64-linux.hyprpicker
-        mpvpaper
         slurp
         swaynotificationcenter
         wl-clipboard
@@ -120,6 +119,8 @@ in {
           "wl-paste --type image --watch cliphist store"
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${home-directory}/.config/kitty/asciiquarium.conf asciiquarium"
           "sleep 30s; systemctl --user restart nextcloud-client"
+          "systemctl --user start random-wallpaper.service"
+          "systemctl --user start random-wallpaper.timer"
         ];
 
         monitor = ",highrr,auto,auto";

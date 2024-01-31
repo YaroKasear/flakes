@@ -68,7 +68,7 @@ in {
     services = {
       xserver = {
         enable = !config.united.wayland.enable;
-        layout = "us";
+        xkb.layout = "us";
         displayManager.lightdm.enable = !config.united.wayland.enable;
         windowManager.i3 = {
           enable = true;
