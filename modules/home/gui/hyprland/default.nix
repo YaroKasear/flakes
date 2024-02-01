@@ -321,22 +321,24 @@ in {
         splash = false
       '';
       "hypr/random-wallpaper.sh" = {
-        text = with pkgs; ''
-          #!${bash}/bin/bash
+        text = let
+          awk = "${pkgs.gawk}/bin/awk";
+          bin_bash = "#!${pkgs.bash}/bin/bash";
+          find = "${pkgs.findutils}/bin/find";
+          grep = "${pkgs.gnugrep}/bin/grep";
+          hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+          shuf = "${pkgs.coreutils-full}/bin/shuf";
 
-          alias awk=${gawk}/bin/awk
-          alias find=${findutils}/bin/find
-          alias grep=${gnugrep}/bin/grep
-          alias hyprctl=${hyprland}/bin/hyprctl
-          alias shuf=${coreutils-full}/bin/shuf
+        in ''
+          ${bin_bash}
 
           directory=${pictures-directory}/Wallpaper
-          monitor=`hyprctl monitors | grep Monitor | awk '{print $2}'`
+          monitor=`${hyprctl} monitors | ${grep} Monitor | ${awk} '{print $2}'`
           if [ -d "$directory" ]; then
-              random_background=$(find $directory \( -name "*.jpg" -o -name "*.png" -o -name "*.gif" \) | shuf -n 1)
-              hyprctl hyprpaper unload all
-              hyprctl hyprpaper preload $random_background
-              hyprctl hyprpaper wallpaper "$monitor, $random_background"
+              random_background=$(${find} $directory \( -name "*.jpg" -o -name "*.png" -o -name "*.gif" \) | ${shuf} -n 1)
+              ${hyprctl} hyprpaper unload all
+              ${hyprctl} hyprpaper preload $random_background
+              ${hyprctl} hyprpaper wallpaper "$monitor, $random_background"
           fi
         '';
         executable = true;
