@@ -3,7 +3,7 @@
 with lib;
 with lib.united;
 let
-  home-directory = config.united.user.home-directory;
+  home-directory = config.united.user.directories.home;
   smart-wallpaper = (config.united.wayland.enable && config.united.kitty.enable);
 
   cfg = config.united.asciiquarium;

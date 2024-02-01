@@ -4,7 +4,7 @@ with lib;
 with lib.united;
 let
   cfg = config.united.hyprland;
-  home-directory = config.united.user.home-directory;
+  home-directory = config.united.user.directories.home;
   pictures-directory = "${home-directory}/Pictures";
 in {
   options.united.hyprland = {

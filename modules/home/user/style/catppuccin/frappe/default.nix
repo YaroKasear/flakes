@@ -5,7 +5,7 @@ with lib.united;
 let
   is-linux = pkgs.stdenv.isLinux;
 
-  home-directory = config.united.user.home-directory;
+  home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin.frappe;
 in {

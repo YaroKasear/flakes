@@ -20,7 +20,9 @@ in {
     enable = mkEnableOption "User";
 
     name = mkOpt types.str "yaro" "My user name!";
-    home-directory = mkOpt types.str home-directory "My home directory!";
+    directories = {
+      home = mkOpt types.str home-directory "My home directory!";
+    };
     icon = mkOpt types.path "${home-directory}/.face" "My profile pic!";
     bell = mkOpt types.path "${home-directory}/.local/share/sound/bell.oga" "My bell sound!";
   };

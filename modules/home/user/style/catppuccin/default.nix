@@ -5,7 +5,7 @@ with lib.united;
 let
   inherit (lib.united) mkOpt enabled;
 
-  home-directory = config.united.user.home-directory;
+  home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin;
 in {
