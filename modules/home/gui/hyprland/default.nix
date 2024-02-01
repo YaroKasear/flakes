@@ -115,6 +115,7 @@ in {
           "swaync"
           "waybar"
           "hyprpaper"
+          "kitty --class=\"kitty-console\" -T _HIDE_ME_"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "sleep 30s; systemctl --user restart nextcloud-client"
@@ -227,7 +228,7 @@ in {
         ];
 
         workspace = [
-          "special:console,gapsin:0,gapsout:0,border:0,shadow:0,rounding:0,decorate:0,on-created-empty:kitty --class=\"kitty-console\""
+          "special:console,gapsin:0,gapsout:0,border:0,shadow:0,rounding:0,decorate:0,on-created-empty:kitty --class=\"kitty-console\" -T _HIDE_ME_"
         ];
 
         "$mainMod" = "SUPER";
