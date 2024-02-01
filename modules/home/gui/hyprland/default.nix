@@ -222,6 +222,12 @@ in {
           "noanim,class:^(xwaylandvideobridge)$"
           "nofocus,class:^(xwaylandvideobridge)$"
           "noinitialfocus,class:^(xwaylandvideobridge)$"
+          "workspace special:console silent, class:^(kitty-console)$"
+          "tile, class:^(kitty-console)$"
+        ];
+
+        workspace = [
+          "special:console,gapsin:0,gapsout:0,border:0,shadow:0,rounding:0,decorate:0,on-created-empty:kitty --class=\"kitty-console\""
         ];
 
         "$mainMod" = "SUPER";
@@ -268,6 +274,7 @@ in {
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
           "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod, code:49, togglespecialworkspace, console"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
