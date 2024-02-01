@@ -65,6 +65,8 @@ in {
           games = "/mnt/games";
           music = "/mnt/music";
           pictures = "/mnt/pictures";
+          screenshots = "${config.united.user.directories.home}/Pictures/Screenshots";
+          wallpapers = "${config.united.user.directories.home}/Pictures/Wallpapers";
           videos = "/mnt/videos";
         };
       };
