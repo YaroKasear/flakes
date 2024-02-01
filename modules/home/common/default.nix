@@ -58,7 +58,16 @@ in {
       nixvim.enable = true;
       yubikey.enable = true;
       zsh.enable = true;
-      user.enable = true;
+      user = {
+        enable = true;
+        directories = {
+          documents = "${config.united.user.directories.home}/Personal Cloud/Documents";
+          games = "/mnt/games";
+          music = "/mnt/music";
+          pictures = "/mnt/pictures";
+          videos = "/mnt/videos";
+        };
+      };
       style = with config.united.style; {
         enable = true;
         catppuccin.frappe.enable = true;

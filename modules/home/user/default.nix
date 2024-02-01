@@ -99,7 +99,7 @@ in {
       stateHome = cfg.directories.state;
       userDirs = mkIf config.united.desktop.enable {
         enable = true;
-        createDirectories = true;
+        createDirectories = false;
         desktop = cfg.directories.desktop;
         documents = cfg.directories.documents;
         download = cfg.directories.downloads;
