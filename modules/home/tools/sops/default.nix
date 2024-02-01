@@ -15,7 +15,7 @@ in {
     sops = {
       defaultSopsFile = ../../../secrets/secrets.yaml;
       gnupg = mkIf config.united.gnupg.enable {
-        home = "/home/yaro/.gnupg";
+        home = "${config.united.user.directories.home}/.gnupg";
         sshKeyPaths = [];
       };
     };

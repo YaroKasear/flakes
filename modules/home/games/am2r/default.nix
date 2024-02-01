@@ -18,10 +18,10 @@ in
       name = "Another Metroid 2 Remake";
       genericName = "Metroid Fan Remake of Metroid 2: Return of Samus";
       type = "Application";
-      exec = "steam-run gamemoderun /mnt/games/Another\\ Metroid\\ 2\\ Remake/runner";
+      exec = "steam-run gamemoderun ${config.united.user.directories.games}/Another\\ Metroid\\ 2\\ Remake/runner";
       terminal = false;
       categories = [ "Game" ];
-      icon = "/mnt/games/Another\\ Metroid\\ 2\\ Remake/icon.png";
+      icon = "${config.united.user.directories.games}/Another\\ Metroid\\ 2\\ Remake/icon.png";
     };
   };
 }

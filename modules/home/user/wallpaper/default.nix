@@ -10,7 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.file."Pictures/Wallpaper" = {
+    home.file."${config.united.user.directories.wallpapers}" = {
       source = ./files;
       recursive = true;
     };

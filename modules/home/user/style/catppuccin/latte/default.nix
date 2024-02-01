@@ -195,7 +195,7 @@ in {
         @import url("catppuccin.css");
       '');
       zsh = mkIf config.united.zsh.enable {
-        initExtra = "source ~/.config/zsh/catppuccin_latte-zsh-syntax-highlighting.zsh";
+        initExtra = "source ${config.united.user.directories.config}/zsh/catppuccin_latte-zsh-syntax-highlighting.zsh";
       };
     };
 
@@ -203,7 +203,7 @@ in {
 
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {
-        source = [ "${home-directory}/.config/hypr/latte.conf" ];
+        source = [ "${config.united.user.directories.config}/hypr/latte.conf" ];
 
         general = {
           "col.inactive_border" = "$overlay0";

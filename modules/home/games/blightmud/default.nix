@@ -20,7 +20,7 @@ in
     };
 
     sops.secrets.servers = mkIf config.united.sops.enable {
-      path = "$XDG_CONFIG_HOME/blightmud/servers.ron";
+      path = "${config.united.user.directories.config}/blightmud/servers.ron";
       sopsFile = ./secrets.yaml;
     };
   };

@@ -16,10 +16,10 @@ in {
           name = "Sonic 3: Angel Island Revisited";
           genericName = "Sonic Fan Remaster of Sonic 3 & Knuckles";
           type = "Application";
-          exec = "steam-run gamemoderun /mnt/games/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux";
+          exec = "steam-run gamemoderun ${config.united.user.directories.games}/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux";
           terminal = false;
           categories = [ "Game" ];
-          icon = "/mnt/games/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux/data/icon.png";
+          icon = "${config.united.user.directories.games}/Sonic\\ 3:\\ Angel\\ Island\\ Revisited/sonic3air_linux/data/icon.png";
         };
       };
       configFile."Sonic3AIR/settings.json".source = ./files/settings.json;

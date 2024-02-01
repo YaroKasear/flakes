@@ -25,7 +25,7 @@ in {
         tmuxinator.enable = true;
         extraConfig = with config.united.style.colors; mkDefault
         ''
-          bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+          bind r source-file ${config.united.user.directories.config}/tmux/tmux.conf \; display "Reloaded!"
           set -g default-terminal "''${TERM}"
           set -ga terminal-overrides ",xterm-*:Tc"
           bind-key -n Home send Escape "OH"

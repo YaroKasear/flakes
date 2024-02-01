@@ -17,7 +17,7 @@ in {
         enable = true;
       };
       zsh.shellAliases = {
-        "twitchChat" = "kitty -c $XDG_CONFIG_HOME/kitty/twitch.conf --class twitchChat irssi -c irc.chat.twitch.tv -p 6667 -n yarokasear -w $(cat /run/user/1000/secrets/twitchPassword)";
+        "twitchChat" = "kitty -c ${config.united.user.directories.config}/kitty/twitch.conf --class twitchChat irssi -c irc.chat.twitch.tv -p 6667 -n yarokasear -w $(cat /run/user/1000/secrets/twitchPassword)";
       };
     };
 

@@ -10,10 +10,11 @@ in {
   options.united.style = {
     enable = mkEnableOption "Style module!";
     fonts = {
+      emoji = mkOpt types.str "Noto Color Emoji" "Emoji font!";
       interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
       terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
     };
-    wallpaper = mkOpt types.str "${config.united.user.directories.home}/Pictures/Wallpaper/maze.png" "Wallpaper!";
+    wallpaper = mkOpt types.str "${config.united.user.directories.wallpapers}/maze.png" "Wallpaper!";
     windows = {
       border-size = mkOpt types.number 2 "Border size of window in pixels.";
       radius = mkOpt types.number 10 "Radius of rounded window edges in pixels.";

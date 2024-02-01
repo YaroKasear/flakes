@@ -17,8 +17,26 @@ in {
     };
 
     xdg.configFile = {
-      "nitrogen/bg-saved.cfg".source = ./files/bg-saved.cfg;
-      "nitrogen/nitrogen.cfg".source = ./files/nitrogen.cfg;
+      "nitrogen/bg-saved.cfg".text = ''
+        [xin_-1]
+        file=${config.united.user.directories.wallpapers}/background.png
+        mode=4
+        bgcolor=#000000
+      '';
+      "nitrogen/nitrogen.cfg".text = ''
+        [geometry]
+        posx=0
+        posy=30
+        sizex=2554
+        sizey=1355
+
+        [nitrogen]
+        view=icon
+        recurse=true
+        sort=alpha
+        icon_caps=false
+        dirs=${config.united.user.directories.wallpapers};
+      '';
     };
   };
 }

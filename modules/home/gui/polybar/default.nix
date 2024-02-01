@@ -20,8 +20,8 @@ in {
       script = "echo 'I refuse to start as a systemd service since I launch before i3 is ready this way.'";
       settings = let
         fonts = [
-          "FiraCode Nerd Font:style=Regular:size=10;2"
-          "Noto Color Emoji:scale=10;2:style=Regular"
+          "${config.united.user.style.fonts.interface}:style=Regular:size=10;2"
+          "${config.united.user.style.fonts.emoji}:scale=10;2:style=Regular"
         ];
       in {
         "colors" = config.united.style;
@@ -115,7 +115,7 @@ in {
         };
         "module/player-mpris-tail" = {
           type = "custom/script";
-          exec = "~/.config/polybar/player-mpris-tail.py -f '{artist} - {title}'";
+          exec = "${config.united.user.directories.config}/polybar/player-mpris-tail.py -f '{artist} - {title}'";
           tail = true;
         };
         "module/xwindow" = {

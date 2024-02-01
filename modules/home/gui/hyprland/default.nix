@@ -5,7 +5,8 @@ with lib.united;
 let
   cfg = config.united.hyprland;
   home-directory = config.united.user.directories.home;
-  pictures-directory = "${home-directory}/Pictures";
+  screenshots-directory = config.united.user.directories.screenshots;
+  wallpapers-directory = config.united.user.directories.wallpapers;
 in {
   options.united.hyprland = {
     enable = mkEnableOption "Hyprland";
@@ -244,8 +245,8 @@ in {
           "$mainMod, down, movefocus, d"
           "$mainMod SHIFT, left, swapnext, prev"
           "$mainMod SHIFT, right, swapnext,"
-          ",Print,exec,grim ${pictures-directory}/Screenshots/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
-          "SHIFT,Print,exec,slurp | grim -g - ${pictures-directory}/Screenshots/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
+          ",Print,exec,grim ${screenshots-directory}/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
+          "SHIFT,Print,exec,slurp | grim -g - ${screenshots-directory}/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
@@ -332,7 +333,7 @@ in {
         in ''
           ${bin_bash}
 
-          directory=${pictures-directory}/Wallpaper
+          directory=${wallpapers-directory}
           monitor=`${hyprctl} monitors | ${grep} Monitor | ${awk} '{print $2}'`
           if [ -d "$directory" ]; then
               random_background=$(${find} $directory \( -name "*.jpg" -o -name "*.png" -o -name "*.gif" \) | ${shuf} -n 1)

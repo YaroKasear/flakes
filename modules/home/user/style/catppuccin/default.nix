@@ -79,7 +79,7 @@ in {
           }
         ];
         extraConfig = ''
-          bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+          bind r source-file ${config.united.user.directories.config}/tmux/tmux.conf \; display "Reloaded!"
           set -g default-terminal "''${TERM}"
           set -ga terminal-overrides ",xterm-*:Tc"
           bind-key -n Home send Escape "OH"
@@ -97,7 +97,7 @@ in {
         enable_audio_bell yes
         window_alert_on_bell yes
         bell_on_tab "🔔 "
-        bell_path ${home-directory}/.local/share/sound/bell.oga
+        bell_path ${config.united.user.directories.data}/sound/bell.oga
         background_opacity 0.8
         background_blur 32
         tab_bar_min_tabs 2

@@ -108,8 +108,8 @@ in {
           startup = [
             { command = "polybar top"; notification = false; }
             { command = "polybar bottom"; notification = false; }
-            { command = "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o /tmp/background.png --width 2560 --height 1440 && nitrogen --restore"; notification = false; }
-            { command = "i3-msg 'workspace 1; append_layout /home/yaro/.config/i3/layout.json'"; notification = false; }
+            { command = "wallpaper-generator `ls ${inputs.wallpaper-generator.packages.x86_64-linux.wp-gen}/bin/generators | grep .lua | shuf -n 1 | cut -d . -f 1` -o ${config.united.user.directories.wallpapers}/background.png --width 2560 --height 1440 && nitrogen --restore"; notification = false; }
+            { command = "i3-msg 'workspace 1; append_layout ${config.united.user.directories.config}/i3/layout.json'"; notification = false; }
             { command = "firefox"; notification = false; }
             { command = "thunderbird"; notification = false; }
             { command = "hexchat"; notification = false; }

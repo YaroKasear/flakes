@@ -23,6 +23,7 @@ in {
       mpv.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
+      asciiquarium.smart-wallpaper = config.united.wayland.enable;
     };
 
     home = {

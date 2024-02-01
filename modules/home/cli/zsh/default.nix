@@ -3,8 +3,6 @@
 with lib;
 with lib.united;
 let
-  home-directory = config.united.user.home-directory;
-
   cfg = config.united.zsh;
 in {
   options.united.zsh = {
@@ -53,11 +51,11 @@ in {
         };
         shellAliases = {
           icat = "kitten icat";
-          tmux = "tmux -f ~/.config/tmux/tmux.conf";
-          update-config = "pushd ~/flakes && flake switch; popd";
-          save-config = "pushd ~/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
-          load-config = "pushd ~/flakes; git pull; popd";
-          upgrade-system = "pushd ~/flakes && nix flake update && flake switch; popd";
+          tmux = "tmux -f ${config.united.user.directories.config}/tmux/tmux.conf";
+          update-config = "pushd ${config.united.user.directories.home}/flakes && flake switch; popd";
+          save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
+          load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
+          upgrade-system = "pushd ${config.united.user.directories.home}/flakes && nix flake update && flake switch; popd";
           update-diff = "ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
           update-log = "ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
         };
@@ -71,7 +69,7 @@ in {
           }
 
           if ! { [ -n "$TMUX" ]; } then
-            neofetch --kitty ${../../user/files/techkat.png}
+            neofetch
             fortune -a | cowsay -n
           fi
         '';

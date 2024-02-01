@@ -3,7 +3,6 @@
 with lib;
 with lib.united;
 let
-  home-directory = config.united.user.home-directory;
 
   cfg = config.united.kitty;
 in {
@@ -16,7 +15,7 @@ in {
       kitty = {
         enable = true;
         font = {
-          name = "FiraCode Nerd Font";
+          name = config.united.style.fonts.terminal;
           package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
         };
         shellIntegration = {
@@ -32,7 +31,7 @@ in {
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "
-          bell_path ${home-directory}/.local/share/sound/bell.oga
+          bell_path ${config.united.user.directories.data}/sound/bell.oga
           foreground ${foreground}
           background ${background}
           selection_foreground ${selection_foreground}
