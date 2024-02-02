@@ -16,6 +16,8 @@
     kernelModules = [
       "nvidia-uvm"
       "usb-storage"
+      "k10temp"
+      "nct6775"
     ];
     kernelParams = ["quiet"];
     loader = {

@@ -22,6 +22,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
+      lm_sensors
       nfs-utils
       nix-diff
       pavucontrol
