@@ -63,7 +63,7 @@
   };
 
   networking = {
-    hostName = "loki";
+    hostName = "loki-game";
     networkmanager.enable = true;
     wireless.enable = false;
   };

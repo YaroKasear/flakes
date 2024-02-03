@@ -164,7 +164,7 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
-        hosts.loki-gaming.modules = with inputs; [
+        hosts.loki-game.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
@@ -180,6 +180,14 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
+          ags.homeManagerModules.default
+          hyprland.homeManagerModules.default
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          sops-nix.homeManagerModules.sops
+        ];
+        "yaro@loki-game".modules = with inputs; [
           ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           nix-index-database.hmModules.nix-index
