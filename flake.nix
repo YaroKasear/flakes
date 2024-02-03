@@ -164,6 +164,12 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
+        hosts.loki-gaming.modules = with inputs; [
+          nixos-hardware.nixosModules.common-pc-ssd
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-cpu-amd-pstate
+          nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
+        ];
         hosts.experimental.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc-ssd
           nixos-hardware.nixosModules.common-cpu-amd

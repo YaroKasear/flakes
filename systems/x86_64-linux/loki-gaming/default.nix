@@ -43,6 +43,8 @@
     # united.hitman-woa
   ];
 
+  united.common.enable = true;
+
   fileSystems."/mnt/containers" = {
     device = "storage.kasear.net:/mnt/data/containers";
     fsType = "nfs";
@@ -140,10 +142,6 @@
   time.timeZone = "America/Chicago";
 
   united = {
-    common = {
-      enable = true;
-      use-wayland = true;
-    };
     desktop-mounts.enable = true;
     steam.enable = true;
   };

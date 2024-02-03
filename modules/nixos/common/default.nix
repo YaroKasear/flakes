@@ -7,6 +7,7 @@ let
 in {
   options.united.common = {
     enable = mkEnableOption "Common";
+    use-wayland = mkEnableOption "Make use of Wayland instead of Xorg.";
   };
 
   config = mkIf cfg.enable {
@@ -120,7 +121,7 @@ in {
 
     united = {
       kmscon.enable = true;
-      wayland.enable = true;
+      wayland.enable = cfg.use-wayland;
     };
 
     users.users.root.hashedPassword = "!";
