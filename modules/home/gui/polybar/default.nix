@@ -20,11 +20,10 @@ in {
       script = "echo 'I refuse to start as a systemd service since I launch before i3 is ready this way.'";
       settings = let
         fonts = [
-          "${config.united.user.style.fonts.interface}:style=Regular:size=10;2"
-          "${config.united.user.style.fonts.emoji}:scale=10;2:style=Regular"
+          "${config.united.style.fonts.interface}:style=Regular:size=10;2"
+          "${config.united.style.fonts.emoji}:scale=10;2:style=Regular"
         ];
-      in {
-        "colors" = config.united.style;
+      in with config.united.style; {
         "global/wm" = {
           margin-top = 5;
           margin-bottom = 5;
@@ -39,12 +38,8 @@ in {
           modules-left = "space xwindow";
           modules-right = "player-mpris-tail space";
           pseudo-transparency = true;
-          background = [
-            "\${colors.tertiary}"
-            "\${colors.secondary}"
-            "\${colors.tertiary}"
-          ];
-          foreground = "\${colors.primary}";
+          background = colors.background;
+          foreground = colors.foreground;
         };
         "bar/bottom" = {
           bottom = true;
@@ -56,12 +51,8 @@ in {
           modules-left = "i3";
           modules-right = "pulseaudio tray date";
           pseudo-transparency = true;
-          background = [
-            "\${colors.tertiary}"
-            "\${colors.secondary}"
-            "\${colors.tertiary}"
-          ];
-          foreground = "\${colors.primary}";
+          background = colors.background;
+          foreground = colors.foreground;
           margin-bottom = 5;
         };
         "module/i3" = {
@@ -70,19 +61,19 @@ in {
           label-unfocused = "%index%";
           label-urgent = "%index%";
           label-visible = "%index%";
-          label-focused-overline = "\${colors.primary}";
-          label-focused-background = "\${colors.primary}";
-          label-focused-foreground = "\${colors.secondary}";
+          label-focused-overline = colors.active_border_color;
+          label-focused-background = colors.active_tab_background;
+          label-focused-foreground = colors.active_tab_foreground;
           label-focused-padding = 2;
           label-unfocused-padding = 2;
-          label-urgent-background = "\${colors.alert}";
+          label-urgent-background = colors.red;
           label-urgent-padding = 2;
           label-visible-padding = 2;
         };
         "module/tray" = {
           type = "internal/tray";
-          tray-background = "\${colors.secondary}";
-          tray-foreground = "\${colors.primary}";
+          tray-background = colors.background;
+          tray-foreground = colors.foreground;
         };
         "module/date" = {
           type = "internal/date";
@@ -102,10 +93,10 @@ in {
           format-muted-prefix = "🔇 ";
           bar-volume-width = 10;
           bar-volume-indicator = "|";
-          bar-volume-indicator-foreground = "\${colors.alert}";
+          bar-volume-indicator-foreground = colors.foreground;
           bar-volume-fill = "─";
           bar-volume-empty = "─";
-          bar-volume-empty-foreground = "\${colors.tertiary}";
+          bar-volume-empty-foreground = colors.inactive_border_color;
           ramp-volume = [
             "🔈"
             "🔉"

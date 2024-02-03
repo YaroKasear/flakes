@@ -58,8 +58,9 @@ in {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     programs = {
-      zsh.enable = true;
+      dconf.enable = true;
       ssh.startAgent = false;
+      zsh.enable = true;
     };
 
     security = {

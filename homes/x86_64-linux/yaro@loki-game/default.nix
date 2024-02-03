@@ -3,14 +3,14 @@
 with lib.united;
 {
   united = {
+    am2r.enable = true;
     common.enable = true;
     desktop.enable = true;
-    wayland.enable = true;
+    sonic3air.enable = true;
+    wayland.enable = false;
   };
 
   programs = {
     firefox.enable = true;
   };
-
-  services.nextcloud-client.enable = true;
 }

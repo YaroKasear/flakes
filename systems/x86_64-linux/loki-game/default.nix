@@ -142,7 +142,7 @@
   united = {
     common = {
       enable = true;
-      use-wayland = true;
+      use-wayland = false;
     };
     desktop-mounts.enable = true;
     steam.enable = true;

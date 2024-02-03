@@ -7,7 +7,7 @@ with lib.united;
     common.enable = true;
     desktop.enable = true;
     sonic3air.enable = true;
-    wayland.enable = false;
+    wayland.enable = true;
   };
 
   programs = {
