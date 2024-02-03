@@ -45,7 +45,7 @@ in {
           menu = "${pkgs.rofi}/bin/rofi -show drun";
           fonts = {
             names = [
-              "FiraCode Nerd Font"
+              config.united.style.fonts.interface
             ];
           };
           floating = {
@@ -56,42 +56,42 @@ in {
             inner = 5;
             smartGaps = true;
           };
-          colors = with config.united.style; {
-            background = window;
+          colors = with config.united.style.colors; {
+            background = background;
             focused = {
-              border = tertiary;
-              background = primary;
-              text = tertiary;
-              indicator = tertiary;
-              childBorder = tertiary;
+              border = active_border_color;
+              background = active_tab_background;
+              text = active_tab_foreground;
+              indicator = active_tab_foreground;
+              childBorder = active_border_color;
             };
             focusedInactive = {
-              border = tertiary;
-              background = secondary;
-              text = primary;
-              indicator = tertiary;
-              childBorder = tertiary;
+              border = active_border_color;
+              background = active_tab_background;
+              text = active_tab_foreground;
+              indicator = active_tab_foreground;
+              childBorder = active_border_color;
             };
             unfocused = {
-              border = tertiary;
-              background = tertiary;
-              text = window;
-              indicator = tertiary;
-              childBorder = tertiary;
+              border = inactive_border_color;
+              background = inactive_tab_background;
+              text = inactive_tab_foreground;
+              indicator = inactive_tab_foreground;
+              childBorder = inactive_border_color;
             };
             urgent = {
-              border = tertiary;
-              background = alert;
-              text = tertiary;
-              indicator = tertiary;
-              childBorder = tertiary;
+              border = active_border_color;
+              background = red;
+              text = active_tab_foreground;
+              indicator = active_tab_foreground;
+              childBorder = active_border_color;
             };
             placeholder = {
-              border = tertiary;
-              background = tertiary;
-              text = primary;
-              indicator = tertiary;
-              childBorder = tertiary;
+              border = inactive_border_color;
+              background = inactive_tab_background;
+              text = inactive_tab_foreground;
+              indicator = inactive_tab_foreground;
+              childBorder = inactive_border_color;
             };
           };
           keybindings = let
