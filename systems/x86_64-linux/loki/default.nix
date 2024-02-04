@@ -95,7 +95,7 @@
   };
 
   sops = {
-    defaultSopsFile = ../../../secrets/secrets.yaml;
+    defaultSopsFile = ./secrets.yaml;
     age = {
       keyFile = /etc/syskey;
       sshKeyPaths = [];

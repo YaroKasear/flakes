@@ -69,6 +69,7 @@ in {
     };
 
     services = {
+      dbus.implementation = "broker";
       xserver = {
         enable = !config.united.wayland.enable;
         xkb.layout = "us";

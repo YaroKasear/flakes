@@ -63,7 +63,7 @@
   };
 
   networking = {
-    hostName = "loki-game";
+    hostName = lib.mkForce "loki";
     networkmanager.enable = true;
     wireless.enable = false;
   };
@@ -95,7 +95,7 @@
   };
 
   sops = {
-    defaultSopsFile = ../../../secrets/secrets.yaml;
+    defaultSopsFile = ./secrets.yaml;
     age = {
       keyFile = /etc/syskey;
       sshKeyPaths = [];
