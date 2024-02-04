@@ -72,7 +72,7 @@ in {
     };
 
     networking = {
-      hostName = "loki";
+      hostName = mkForce "loki";
       networkmanager.enable = true;
       wireless.enable = false;
     };
