@@ -92,7 +92,7 @@ in {
       signature.sopsFile = ./secrets.yaml;
     };
 
-    xdg = {
+    xdg = mkIf is-linux {
       cacheHome = cfg.directories.cache;
       configHome = cfg.directories.config;
       dataHome = cfg.directories.data;

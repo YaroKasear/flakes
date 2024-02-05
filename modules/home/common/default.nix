@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  is-linux = pkgs.stdenv.isLinux;
+
   cfg = config.united.common;
 in {
   options.united.common = {
@@ -53,7 +55,7 @@ in {
       git.enable = true;
       gnupg.enable = true;
       net-utils.enable = true;
-      sops.enable = true;
+      sops.enable = is-linux;
       tmux.enable = true;
       nixvim.enable = true;
       yubikey.enable = true;
