@@ -5,7 +5,7 @@
     loki.enable = true;
     desktop = {
       enable = true;
-      use-waylacnd = true;
+      use-wayland = true;
     };
   };
 }

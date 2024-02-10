@@ -54,7 +54,7 @@ in {
         pulse.enable = true;
       };
       gnome.gnome-keyring.enable = true;
-    }
+    };
 
     sound = {
       enable = true;
