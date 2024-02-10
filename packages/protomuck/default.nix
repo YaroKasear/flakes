@@ -28,7 +28,10 @@ stdenv.mkDerivation {
       cd ../game/data
       cp minimal.proto proto.db
       cd ../..
-      cp -r game $out
+      mkdir -p $out/bin
+      cp -r game $out/game
+      ln -s $out/game/protomuck $out/bin/protomuck
+      ln -s $out/game/restart $out/bin/restart
     '';
 
     meta = with lib; {
