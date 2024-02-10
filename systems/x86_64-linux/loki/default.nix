@@ -8,4 +8,6 @@
       use-wayland = true;
     };
   };
+
+  environment.systemPackages = [ pkgs.united.protomuck ];
 }

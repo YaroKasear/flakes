@@ -1,14 +1,14 @@
 { lib, inputs, pkgs, stdenv, ... }:
 
 stdenv.mkDerivation {
-    name = "ProtoMUCK";
+    name = "protomuck";
     pname = "protomuck";
 
-    src = lib.fetchFromGitHub {
+    src = pkgs.fetchFromGitHub {
       owner = "protomuck";
       repo = "protomuck";
       rev = "2c9204c31cdf9dea8cab2d45cc54fbbfd71f8f91";
-      sha256 = "";
+      sha256 = "AjEzzvqIWGO1oIV7ljJfBxxAHjxHpE+5X7Ee3CxhrOk=";
     };
 
     buildInputs = with pkgs; [
@@ -30,4 +30,9 @@ stdenv.mkDerivation {
       cd ../..
       cp -r game $out
     '';
+
+    meta = with lib; {
+      description = "ProtoMUCK 2.0 MUCK Server";
+      homepage = "https://github.com/protomuck/protomuck";
+    };
 }
