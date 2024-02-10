@@ -4,9 +4,9 @@ stdenv.mkDerivation {
     name = "ProtoMUCK";
     pname = "protomuck";
 
-    src = fetchFromGitHub {
+    src = lib.fetchFromGitHub {
       owner = "protomuck";
-      repo = pname;
+      repo = "protomuck";
       rev = "2c9204c31cdf9dea8cab2d45cc54fbbfd71f8f91";
       sha256 = "";
     };

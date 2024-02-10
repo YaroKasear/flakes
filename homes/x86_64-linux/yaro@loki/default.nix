@@ -13,4 +13,6 @@ with lib.united;
   programs = {
     firefox.enable = true;
   };
+
+  home.packages = with pkgs; [ united.protomuck ];
 }
