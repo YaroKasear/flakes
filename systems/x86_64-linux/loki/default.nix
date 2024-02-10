@@ -3,6 +3,9 @@
 {
   united = {
     loki.enable = true;
-    common.use-wayland = true;
+    desktop = {
+      enable = true;
+      use-waylacnd = true;
+    };
   };
 }
