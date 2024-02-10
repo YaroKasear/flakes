@@ -194,6 +194,13 @@
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
+        "yaro@europa".modules = with inputs; [
+          ags.homeManagerModules.default
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          sops-nix.homeManagerModules.sops
+        ];
         "yaro@loki-xorg".modules = with inputs; [
           ags.homeManagerModules.default
           hyprland.homeManagerModules.default
