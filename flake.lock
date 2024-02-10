@@ -875,16 +875,20 @@
         "type": "github"
       }
     },
-    "player-mpris-tail": {
+    "polybar-scripts": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-QP4D7Dd28i5JcjEKdsj09Lc+wBagu255NMarGlydB64=",
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py"
+        "lastModified": 1707130000,
+        "narHash": "sha256-hQtcrBKB4pD93WMbCCdZcv8fDXZ+CkYseaR0L2W30n8=",
+        "owner": "polybar",
+        "repo": "polybar-scripts",
+        "rev": "4eaef74f4c2c3f78ab0d23e52934c897c29f75ea",
+        "type": "github"
       },
       "original": {
-        "type": "file",
-        "url": "https://raw.githubusercontent.com/polybar/polybar-scripts/master/polybar-scripts/player-mpris-tail/player-mpris-tail.py"
+        "owner": "polybar",
+        "repo": "polybar-scripts",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {
@@ -954,7 +958,7 @@
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
         "nur": "nur",
-        "player-mpris-tail": "player-mpris-tail",
+        "polybar-scripts": "polybar-scripts",
         "ranger-devicons": "ranger-devicons",
         "snowfall-flake": "snowfall-flake",
         "snowfall-lib": "snowfall-lib_4",

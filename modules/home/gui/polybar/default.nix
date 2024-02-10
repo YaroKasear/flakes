@@ -116,14 +116,12 @@ in {
       };
     };
 
-    # home.file = {
-    #   player-mpris-tail = {
-    #     executable = true;
-    #     source = ../../../files/polybar/player-mpris-tail.py;
-    #     target = ".config/polybar/player-mpris-tail.py";
-    #   };
-    # };
-
-    xdg.configFile."polybar/player-mpris-tail.py".source = inputs.player-mpris-tail;
+    xdg.configFile = {
+      player-mpris-tail = {
+        executable = true;
+        source = "${inputs.polybar-scripts}/polybar-scripts/player-mpris-tail/player-mpris-tail.py";
+        target = "polybar/player-mpris-tail.py";
+      };
+    };
   };
 }
