@@ -10,7 +10,8 @@ with lib.united;
     wayland.enable = true;
   };
 
-  programs = {
-    firefox.enable = true;
+  programs.neomutt = {
+    enable = true;
+    checkStatsInterval = 60;
   };
 }

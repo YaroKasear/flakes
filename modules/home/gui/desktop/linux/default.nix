@@ -49,6 +49,8 @@ in {
       ];
     };
 
+    programs.firefox.enable = true;
+
     xdg = {
       mimeApps = {
         enable = true;

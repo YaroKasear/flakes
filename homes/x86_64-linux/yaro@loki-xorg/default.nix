@@ -9,8 +9,4 @@ with lib.united;
     sonic3air.enable = true;
     wayland.enable = false;
   };
-
-  programs = {
-    firefox.enable = true;
-  };
 }
