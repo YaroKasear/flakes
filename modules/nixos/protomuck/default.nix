@@ -9,7 +9,7 @@ in {
     enable = mkEnableOption "Media-mounts";
     game-name = mkOpt types.string "ProtoMUCK" "Name of the MUCK server.";
     game-directory = mkOpt types.path "/srv/${game-name}" "Location of the MUCK files.";
-    main-port = mkOpt
+    main-port = mkOpt types.port 8881 "Main port of the MUCK.";
   };
 
   config = mkIf cfg.enable {
