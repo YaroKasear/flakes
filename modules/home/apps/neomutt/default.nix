@@ -22,7 +22,7 @@ in {
           mailboxType = "imap";
         };
         smtp.tls.enable = true;
-        passwordCommand = "echo 'Not now, thanks.'";
+        passwordCommand = "cat /run/user/1000/secrets/personal";
       };
       Heartbeat = {
         neomutt = {
@@ -30,7 +30,7 @@ in {
           mailboxType = "imap";
         };
         smtp.tls.enable = true;
-        passwordCommand = "echo 'Not now, thanks.'";
+        passwordCommand = "cat /run/user/1000/secrets/heartbeat";
       };
       Wanachi = {
         neomutt = {
@@ -38,7 +38,7 @@ in {
           mailboxType = "imap";
         };
         smtp.tls.enable = true;
-        passwordCommand = "echo 'Not now, thanks.'";
+        passwordCommand = "cat /run/user/1000/secrets/wanachi";
       };
       Work = {
         neomutt = {
@@ -46,8 +46,15 @@ in {
           mailboxType = "imap";
         };
         smtp.tls.enable = true;
-        passwordCommand = "echo 'Not now, thanks.'";
+        passwordCommand = "cat /run/user/1000/secrets/work";
       };
+    };
+
+    sops.secrets = mkIf config.united.sops.enable {
+      personal.sopsFile = ./secrets.yaml;
+      heartbeat.sopsFile = ./secrets.yaml;
+      wanachi.sopsFile = ./secrets.yaml;
+      work.sopsFile = ./secrets.yaml;
     };
   };
 }
