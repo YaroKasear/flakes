@@ -10,19 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # fileSystems."/" = {
-    #   device = "/dev/disk/by-label/nixos";
-    #   fsType = "ext4";
-    #   neededForBoot = true;
-    # };
-
-    # fileSystems."/boot" = {
-    #   device = "/dev/disk/by-label/boot";
-    #   fsType = "vfat";
-    # };
-
     disko.devices = ./config.nix;
-
-    swapDevices = [ ];
   };
 }
