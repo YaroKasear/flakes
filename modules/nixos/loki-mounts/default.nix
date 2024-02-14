@@ -3,10 +3,10 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.base-mounts;
+  cfg = config.united.loki-mounts;
 in {
-  options.united.base-mounts = {
-    enable = mkEnableOption "Base-mounts";
+  options.united.loki-mounts = {
+    enable = mkEnableOption "loki-mounts";
   };
 
   config = mkIf cfg.enable {

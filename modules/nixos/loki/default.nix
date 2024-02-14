@@ -153,6 +153,7 @@ in {
         enable = true;
       };
       desktop-mounts.enable = true;
+      loki-mounts.enable = true;
       steam.enable = true;
     };
 

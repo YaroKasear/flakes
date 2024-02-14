@@ -11,7 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      base-mounts.enable = true;
       game-mounts.enable = true;
       media-mounts.enable = true;
     };
