@@ -92,5 +92,5 @@
 
   system.stateVersion = "unstable";
 
-  united.base-mounts.enable = true;
+  united.loki-mounts.enable = true;
 }

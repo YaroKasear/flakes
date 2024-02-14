@@ -157,6 +157,7 @@
 
       systems = {
         modules.nixos = with inputs; [
+          disko.nixosModules.disko
           nix-gaming.nixosModules.pipewireLowLatency
           nix-gaming.nixosModules.steamCompat
           nixos-hardware.nixosModules.common-pc
