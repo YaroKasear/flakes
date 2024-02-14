@@ -10,4 +10,6 @@ with lib.united;
     sonic3air.enable = true;
     wayland.enable = true;
   };
+
+  # home.packages = [ pkgs.united.protomuck ];
 }

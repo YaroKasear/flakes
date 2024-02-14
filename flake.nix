@@ -61,7 +61,7 @@
     };
 
     hy3 = {
-      url = "github:outfoxxed/hy3";
+      url = "github:outfoxxed/hy3/6bbb8071786d84afed9406864bbc0598d4a4ea00";
       inputs.hyprland.follows = "hyprland";
     };
 
@@ -149,6 +149,7 @@
 
       channels-config = {
         allowUnfree = true;
+        home-manager.useGlobalPkgs = true;
       };
 
       overlays = with inputs; [
