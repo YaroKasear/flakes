@@ -210,7 +210,7 @@ in {
         };
 
         windowrulev2 = [
-          "nomaximizerequest, class:.*"
+          "suppressevent maximize, class:.*"
           "float, title:^(Picture-in-Picture)$"
           "float, class:.*"
           "size 800 450, title:(Picture-in-Picture)"
