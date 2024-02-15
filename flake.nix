@@ -61,12 +61,13 @@
     };
 
     hy3 = {
-      url = "github:outfoxxed/hy3/6bbb8071786d84afed9406864bbc0598d4a4ea00";
+      url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/e4bb5fa4af1a6c36aab1c28651b5403dc4952f93";
+      url = "github:hyprwm/Hyprland";
+      # May need to use rev e4bb5fa4af1a6c36aab1c28651b5403dc4952f93
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
