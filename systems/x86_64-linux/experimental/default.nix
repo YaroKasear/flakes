@@ -36,6 +36,7 @@
 
   networking = {
     hostName = "experimental";
+    hostId = "1d84728f";
     networkmanager.enable = true;
     wireless.enable = false;
     useDHCP = lib.mkDefault true;

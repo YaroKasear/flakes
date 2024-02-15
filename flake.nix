@@ -81,6 +81,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    impermanence.url = "github:nix-community/impermanence";
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -160,6 +162,7 @@
       systems = {
         modules.nixos = with inputs; [
           disko.nixosModules.disko
+          impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nix-gaming.nixosModules.steamCompat
           nixos-hardware.nixosModules.common-pc
@@ -190,6 +193,7 @@
         "yaro@loki".modules = with inputs; [
           ags.homeManagerModules.default
           hyprland.homeManagerModules.default
+          impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
@@ -219,6 +223,7 @@
         "yaro@loki-xorg".modules = with inputs; [
           ags.homeManagerModules.default
           hyprland.homeManagerModules.default
+          impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur

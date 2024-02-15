@@ -11,5 +11,18 @@ in {
 
   config = mkIf cfg.enable {
     disko.devices = ./config.nix;
+
+    environment.persistence."/persistent/root" = {
+      hideMounts = true;
+      directories = [
+        "/var/lib/nixos"
+      ];
+      files = [
+        "/etc/syskey"
+      ];
+    };
+
+    fileSystems."/persistent/root".neededForBoot = true;
+    fileSystems."/persistent/yaro".neededForBoot = true;
   };
 }

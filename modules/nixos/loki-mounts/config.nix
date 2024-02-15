@@ -39,6 +39,18 @@
       mountpoint = "/";
       postCreateHook = "zfs snapshot system@blank";
       datasets = {
+        persistent = {
+          type = "zfs_fs";
+          mountpoint = "/persistent";
+        };
+        "persistent/root" = {
+          type = "zfs_fs";
+          mountpoint = "/persistent/root";
+        };
+        "persistent/yaro" = {
+          type = "zfs_fs";
+          mountpoint = "/persistent/yaro";
+        };
         swap = {
           type = "zfs_volume";
           size = "48G";
