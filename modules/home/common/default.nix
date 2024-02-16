@@ -23,6 +23,7 @@ in {
         cowsay
         file
         fortune
+        killall
         mosquitto
         neofetch
         nvd

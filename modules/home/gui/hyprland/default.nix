@@ -22,7 +22,7 @@ in {
         slurp
         swaynotificationcenter
         wl-clipboard
-        xdg-desktop-portal-hyprland
+        inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
         xwaylandvideobridge
       ];
     };
@@ -323,22 +323,23 @@ in {
       };
     };
 
-    xdg.configFile = {
+    xdg.configFile = let
+      awk = "${pkgs.gawk}/bin/awk";
+      bin_bash = "#!${pkgs.bash}/bin/bash";
+      find = "${pkgs.findutils}/bin/find";
+      grep = "${pkgs.gnugrep}/bin/grep";
+      hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+      killall = "${pkgs.killall}/bin/killall";
+      shuf = "${pkgs.coreutils-full}/bin/shuf";
+      sleep = "${pkgs.coreutils-full}/bin/sleep";
+    in {
       "hypr/hyprpaper.conf".text = ''
         preload = ${config.united.style.wallpaper}
         wallpaper = DP-3,${config.united.style.wallpaper}
         splash = false
       '';
       "hypr/random-wallpaper.sh" = {
-        text = let
-          awk = "${pkgs.gawk}/bin/awk";
-          bin_bash = "#!${pkgs.bash}/bin/bash";
-          find = "${pkgs.findutils}/bin/find";
-          grep = "${pkgs.gnugrep}/bin/grep";
-          hyprctl = "${pkgs.hyprland}/bin/hyprctl";
-          shuf = "${pkgs.coreutils-full}/bin/shuf";
-
-        in ''
+        text = ''
           ${bin_bash}
 
           directory=${wallpapers-directory}
@@ -349,6 +350,20 @@ in {
               ${hyprctl} hyprpaper preload $random_background
               ${hyprctl} hyprpaper wallpaper "$monitor, $random_background"
           fi
+        '';
+        executable = true;
+      };
+      "hypr/start-portal.sh" = {
+        text = ''
+          ${bin_bash}
+
+          ${sleep} 1
+          ${killall} -e xdg-desktop-portal-hyprland
+          ${killall} -e xdg-desktop-portal-wlr
+          ${killall} xdg-desktop-portal
+          ${inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland &
+          ${sleep} 2
+          ${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal &
         '';
         executable = true;
       };

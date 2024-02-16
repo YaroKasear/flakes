@@ -33,14 +33,22 @@ in {
 
     disko.devices = ./config.nix;
 
-    environment.persistence."/persistent" = {
-      hideMounts = true;
-      directories = [
-        "/var/lib/nixos"
-      ];
-      files = [
-        "/etc/syskey"
-      ];
+    environment = {
+      etc = {
+        "ssh/ssh_host_ed25519_key".source = "/persistent/etc/ssh/ssh_host_ed25519_key";
+        "ssh/ssh_host_ed25519_key.pub".source = "/persistent/etc/ssh/ssh_host_ed25519_key.pub";
+      };
+      persistence."/persistent" = {
+        hideMounts = true;
+        directories = [
+          "/var/lib/nixos"
+        ];
+        files = [
+          "/etc/syskey"
+          "/var/db/sudo/lectured/1000"
+          "/var/cache/regreet/cache.toml"
+        ];
+      };
     };
 
     fileSystems."/persistent".neededForBoot = true;
