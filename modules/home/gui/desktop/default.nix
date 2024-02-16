@@ -36,6 +36,7 @@ in {
         nerdfonts
         noto-fonts-color-emoji
         powerline-fonts
+        protonmail-bridge
         telegram-desktop
         unifont
         unifont_upper
