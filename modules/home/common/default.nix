@@ -60,6 +60,7 @@ in {
       tmux.enable = true;
       nixvim.enable = true;
       yubikey.enable = true;
+      zoxide.enable = true;
       zsh.enable = true;
       user = {
         enable = true;
