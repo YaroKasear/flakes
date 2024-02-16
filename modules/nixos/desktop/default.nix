@@ -79,5 +79,10 @@ in {
       kmscon.enable = true;
       wayland.enable = cfg.use-wayland;
     };
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
   };
 }
