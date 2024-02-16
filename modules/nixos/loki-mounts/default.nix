@@ -10,9 +10,30 @@ in {
   };
 
   config = mkIf cfg.enable {
+    boot.initrd.systemd.services.rollback = {
+      description = "Clear root filesystem.";
+      wantedBy = [
+        "initrd.target"
+      ];
+      after = [
+        "zfs-import-system.service"
+      ];
+      before = [
+        "sysroot.mount"
+      ];
+      path = with pkgs; [
+        zfs
+      ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+        zfs rollback -r system@blank && echo "!!! ROOT FILESYSTEM WIPED !!!"
+      '';
+    };
+
     disko.devices = ./config.nix;
 
-    environment.persistence."/persistent/root" = {
+    environment.persistence."/persistent" = {
       hideMounts = true;
       directories = [
         "/var/lib/nixos"
@@ -22,7 +43,6 @@ in {
       ];
     };
 
-    fileSystems."/persistent/root".neededForBoot = true;
-    fileSystems."/persistent/yaro".neededForBoot = true;
+    fileSystems."/persistent".neededForBoot = true;
   };
 }

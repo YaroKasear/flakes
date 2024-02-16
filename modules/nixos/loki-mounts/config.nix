@@ -43,13 +43,9 @@
           type = "zfs_fs";
           mountpoint = "/persistent";
         };
-        "persistent/root" = {
+        "nix" = {
           type = "zfs_fs";
-          mountpoint = "/persistent/root";
-        };
-        "persistent/yaro" = {
-          type = "zfs_fs";
-          mountpoint = "/persistent/yaro";
+          mountpoint = "/nix";
         };
         swap = {
           type = "zfs_volume";
