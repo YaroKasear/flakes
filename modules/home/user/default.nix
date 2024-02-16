@@ -69,9 +69,26 @@ in {
       };
       Heartbeat = {
         address = "yaro@kasear.net";
-        flavor = "gmail.com";
+        flavor = "plain";
         realName = "Yaro Kasear";
+        userName = "yaro@kasear.net";
         thunderbird.enable = true;
+        imap = {
+          host = "127.0.0.1";
+          port = 1143;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
+        };
+        smtp = {
+          host = "127.0.0.1";
+          port = 1025;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
+        };
       };
       Wanachi = {
         address = "wanachi@tlkmuck.org";
