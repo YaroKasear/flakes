@@ -58,8 +58,8 @@ in {
       net-utils.enable = true;
       sops.enable = is-linux;
       tmux.enable = true;
-      nixvim.enable = true;
-      vim.enable = false;
+      nixvim.enable = false;
+      vim.enable = true;
       yubikey.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
