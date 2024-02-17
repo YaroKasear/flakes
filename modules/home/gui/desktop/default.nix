@@ -21,6 +21,7 @@ in {
       discord.enable = true;
       irssi.enable = true;
       mpv.enable = true;
+      protonmail-bridge.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
       asciiquarium.smart-wallpaper = config.united.wayland.enable;
@@ -36,7 +37,6 @@ in {
         nerdfonts
         noto-fonts-color-emoji
         powerline-fonts
-        protonmail-bridge
         telegram-desktop
         unifont
         unifont_upper
