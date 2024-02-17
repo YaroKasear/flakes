@@ -59,6 +59,7 @@ in {
       sops.enable = is-linux;
       tmux.enable = true;
       nixvim.enable = true;
+      vim.enable = false;
       yubikey.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
