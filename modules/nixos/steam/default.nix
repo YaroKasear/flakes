@@ -21,6 +21,7 @@ in {
         extraCompatPackages = [
           inputs.nix-gaming.packages.${pkgs.system}.proton-ge
         ];
+        gamescopeSession.enable = true;
       };
       gamemode = {
         enable = true;
