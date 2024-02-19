@@ -174,7 +174,7 @@ in {
           drop_shadow = true;
           "col.shadow" = "rgb(${lib.replaceStrings ["#"] [""] config.united.style.effects.shadow.active-color})";
           "col.shadow_inactive" = "rgb(${lib.replaceStrings ["#"] [""] config.united.style.effects.shadow.inactive-color})";
-          shadow_offset = "[${toString config.united.style.effects.shadow.offsetX}, ${toString config.united.style.effects.shadow.offsetY}]";
+          shadow_offset = "${toString config.united.style.effects.shadow.offsetX} ${toString config.united.style.effects.shadow.offsetY}";
           shadow_range = config.united.style.effects.shadow.spread;
           shadow_render_power = 3;
         };
