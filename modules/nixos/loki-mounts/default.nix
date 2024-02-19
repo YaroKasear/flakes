@@ -42,11 +42,13 @@ in {
         hideMounts = true;
         directories = [
           "/var/lib/nixos"
+          "/var/log"
         ];
         files = [
           "/etc/syskey"
           "/var/db/sudo/lectured/1000"
           "/var/cache/regreet/cache.toml"
+          "/var/cache/lightdm/dmrc/yaro.dmrc"
         ];
       };
     };
