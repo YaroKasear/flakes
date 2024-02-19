@@ -223,15 +223,6 @@ in {
           background_color = "$base";
         };
       };
-
-      extraConfig = mkForce ''
-        plugin {
-          hyprwinwrap {
-            class = kitty-bg
-            size: 100%;
-          }
-        }
-      '';
     };
 
     xdg.configFile = let
