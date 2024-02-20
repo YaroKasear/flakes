@@ -13,6 +13,9 @@ in {
     programs = {
       atuin = {
         enable = true;
+        flags = [
+          "--disable-up-arrow"
+        ];
         settings = {
           sync_address = "http://private.kasear.net:8888";
           sync_frequency = "5m";
