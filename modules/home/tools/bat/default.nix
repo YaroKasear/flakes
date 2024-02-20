@@ -14,6 +14,9 @@ in {
       bat = {
         enable = true;
       };
+      zsh.shellAliases = mkIf config.united.zsh.enable {
+        cat = "bat";
+      };
     };
   };
 }
