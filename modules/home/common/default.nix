@@ -51,6 +51,7 @@ in {
 
     united = {
       asciiquarium.enable = true;
+      bat.enable = true;
       btop.enable = true;
       eza.enable = true;
       fzf.enable = true;
