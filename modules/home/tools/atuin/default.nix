@@ -13,8 +13,8 @@ in {
     programs = {
       atuin = {
         enable = true;
-        config = {
-          sync_address = "https://private.kasear.net";
+        settings = {
+          sync_address = "http://private.kasear.net:8888";
           sync_frequency = "5m";
         };
       };
