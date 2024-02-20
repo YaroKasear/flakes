@@ -25,7 +25,7 @@ in {
       zsh.shellAliases = mkIf config.united.zsh.enable {
         cat = "bat";
         man = "batman";
-        watch = "batwatch";
+        watch = "batwatch -x";
       };
     };
   };
