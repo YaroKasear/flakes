@@ -13,9 +13,13 @@ in {
     programs = {
       bat = {
         enable = true;
+        extraPackages = with pkgs.bat-extras; [
+          batman
+        ];
       };
       zsh.shellAliases = mkIf config.united.zsh.enable {
         cat = "bat";
+        man = "batman";
       };
     };
   };
