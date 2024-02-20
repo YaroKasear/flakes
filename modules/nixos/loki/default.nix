@@ -162,7 +162,7 @@ in {
       mutableUsers = false;
       users.yaro = {
         isNormalUser = true;
-        extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode"];
+        extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
         shell = pkgs.zsh;
         hashedPasswordFile = config.sops.secrets.hashedpw.path;
       };
