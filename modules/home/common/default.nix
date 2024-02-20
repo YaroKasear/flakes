@@ -52,6 +52,7 @@ in {
     united = {
       asciiquarium.enable = true;
       btop.enable = true;
+      eza.enable = true;
       fzf.enable = true;
       git.enable = true;
       gnupg.enable = true;
