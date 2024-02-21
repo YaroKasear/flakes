@@ -30,6 +30,7 @@ in {
       ];
       kernelParams = ["quiet"];
       loader = {
+        timeout = 0;
         systemd-boot = {
           enable = true;
           configurationLimit = 5;
@@ -39,18 +40,8 @@ in {
           efiSysMountPoint = "/boot";
         };
       };
-      plymouth = {
-        enable = true;
-        theme = "catppuccin-frappe";
-        themePackages = [
-          (pkgs.catppuccin-plymouth.override { variant = "frappe"; })
-        ];
-      };
+      plymouth.enable = true;
     };
-
-    environment.systemPackages = with pkgs; [
-      # united.hitman-woa
-    ];
 
     fileSystems."/mnt/containers" = {
       device = "storage.kasear.net:/mnt/data/containers";
