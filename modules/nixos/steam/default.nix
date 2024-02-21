@@ -21,7 +21,7 @@ in {
         extraCompatPackages = [
           inputs.nix-gaming.packages.${pkgs.system}.proton-ge
         ];
-        gamescopeSession.enable = true;
+        gamescopeSession.enable = config.united.wayland.enable;
       };
       gamemode = {
         enable = true;
@@ -36,6 +36,10 @@ in {
             softrealtime = "auto";
           };
         };
+      };
+      gamescope = mkIf config.united.wayland.enable {
+        enable = true;
+        capSysNice = true;
       };
     };
   };

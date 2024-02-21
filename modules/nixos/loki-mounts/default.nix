@@ -54,5 +54,10 @@ in {
     };
 
     fileSystems."/persistent".neededForBoot = true;
+
+    services.zfs = {
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
   };
 }
