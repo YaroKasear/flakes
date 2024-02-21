@@ -48,7 +48,7 @@ in {
           "/etc/syskey"
           "/var/db/sudo/lectured/1000"
           "/var/cache/regreet/cache.toml"
-          "/var/cache/lightdm/dmrc/yaro.dmrc"
+          "/var/lib/lightdm/.cache/lightdm-gtk-greeter/state"
         ];
       };
     };
