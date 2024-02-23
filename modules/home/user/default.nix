@@ -59,48 +59,65 @@ in {
       };
     };
 
-    accounts.email.accounts = {
-      Personal = {
-        address = "yarokasear@gmail.com";
-        flavor = "gmail.com";
-        primary = true;
-        realName = "Yaro Kasear";
-        thunderbird.enable = true;
-      };
-      Heartbeat = {
-        address = "yaro@kasear.net";
-        flavor = "plain";
-        realName = "Yaro Kasear";
-        userName = "yaro@kasear.net";
-        thunderbird.enable = true;
-        imap = {
-          host = "127.0.0.1";
-          port = 1143;
-          tls = {
-            enable = true;
-            useStartTls = true;
+    accounts = {
+      email.accounts = {
+        Personal = {
+          address = "yarokasear@gmail.com";
+          flavor = "gmail.com";
+          primary = true;
+          realName = "Yaro Kasear";
+          thunderbird.enable = true;
+        };
+        Heartbeat = {
+          address = "yaro@kasear.net";
+          flavor = "plain";
+          realName = "Yaro Kasear";
+          userName = "yaro@kasear.net";
+          thunderbird.enable = true;
+          imap = {
+            host = "127.0.0.1";
+            port = 1143;
+            tls = {
+              enable = true;
+              useStartTls = true;
+            };
+          };
+          smtp = {
+            host = "127.0.0.1";
+            port = 1025;
+            tls = {
+              enable = true;
+              useStartTls = true;
+            };
           };
         };
-        smtp = {
-          host = "127.0.0.1";
-          port = 1025;
-          tls = {
-            enable = true;
-            useStartTls = true;
-          };
+        Wanachi = {
+          address = "wanachi@tlkmuck.org";
+          flavor = "gmail.com";
+          realName = "Wanachi";
+          thunderbird.enable = true;
+        };
+        Work = {
+          address = "cnelson@braunresearch.com";
+          flavor = "gmail.com";
+          realName = "Conrad Nelson";
+          thunderbird.enable = true;
         };
       };
-      Wanachi = {
-        address = "wanachi@tlkmuck.org";
-        flavor = "gmail.com";
-        realName = "Wanachi";
-        thunderbird.enable = true;
-      };
-      Work = {
-        address = "cnelson@braunresearch.com";
-        flavor = "gmail.com";
-        realName = "Conrad Nelson";
-        thunderbird.enable = true;
+      calendar.accounts = {
+        Personal = {
+          primary = true;
+          remote = {
+            type = "google_calendar";
+            userName = "yarokasear@gmail.com";
+          };
+        };
+        Work = {
+          remote = {
+            type = "google_calendar";
+            userName = "cnelson@braunresearch.com";
+          };
+        };
       };
     };
 
