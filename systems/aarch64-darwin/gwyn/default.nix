@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./apple-silicon-support
-    ];
-
-
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
@@ -25,6 +18,5 @@
     settings.General.EnableNetworkConfiguration = true;
   };
 
-  system.stateVersion = "unstable"; # Did you read the comment?
-
+  system.stateVersion = "unstable";
 }
