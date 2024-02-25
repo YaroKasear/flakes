@@ -6,7 +6,7 @@
     efi.canTouchEfiVariables = true;
   };
 
-  hardware.asahi.peripheralFirmwareDirectory = ./firmware;
+  hardware.asahi.extractPeripheralFirmware = false;
 
   services.xserver = {
     enable = true;
