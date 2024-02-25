@@ -18,8 +18,8 @@ in {
     programs = {
       steam = {
         enable = true;
-        extraCompatPackages = mkIf cfg.enable [
-          inputs.nix-gaming.packages.${pkgs.system}.proton-ge
+        extraCompatPackages = [
+          # inputs.nix-gaming.packages.${pkgs.system}.proton-ge
         ];
         gamescopeSession.enable = config.united.wayland.enable;
       };
