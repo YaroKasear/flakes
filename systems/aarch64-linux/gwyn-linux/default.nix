@@ -17,7 +17,10 @@
     };
   };
 
-  hardware.asahi.extractPeripheralFirmware = false;
+  hardware.asahi = {
+    extractPeripheralFirmware = false;
+    useExperimentalGPUDriver = true;
+  };
 
   nixpkgs.overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
 
