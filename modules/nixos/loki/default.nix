@@ -53,8 +53,6 @@ in {
       wireless.enable = false;
     };
 
-    time.timeZone = "America/Chicago";
-
     united = {
       common = {
         enable = true;

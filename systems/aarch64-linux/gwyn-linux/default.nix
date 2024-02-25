@@ -1,11 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
-  };
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/nixos";
@@ -22,7 +17,10 @@
     useExperimentalGPUDriver = true;
   };
 
-  nixpkgs.overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
+  nixpkgs = {
+    hostPlatform = "aarch64-linux";
+    overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
+  };
 
   united = {
     common.enable = true;
@@ -33,6 +31,4 @@
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
   };
-
-  system.stateVersion = "23.05";
 }

@@ -111,6 +111,8 @@ in {
 
     systemd.enableEmergencyMode = false;
 
+    time.timeZone = "America/Chicago";
+
     users = {
       mutableUsers = false;
       users.root.hashedPassword = "!";
