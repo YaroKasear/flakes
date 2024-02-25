@@ -195,7 +195,7 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
           nix-gaming.nixosModules.steamCompat
         ];
-        hosts.gwyn.modules = with inputs; [
+        hosts.gwyn-linux.modules = with inputs; [
           nixos-apple-silicon.nixosModules.apple-silicon-support
         ];
       };
