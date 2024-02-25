@@ -24,9 +24,9 @@
 
   nixpkgs.overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
 
-  services.xserver = {
-    enable = true;
-    desktopManager.xfce.enable = true;
+  united = {
+    common.enable = true;
+    yaro.enable = true;
   };
 
   networking.wireless.iwd = {
