@@ -19,6 +19,8 @@
 
   hardware.asahi.extractPeripheralFirmware = false;
 
+  nixpkgs.overlays = [ apple-silicon.overlays.apple-silicon-overlay ];
+
   services.xserver = {
     enable = true;
     desktopManager.xfce.enable = true;
