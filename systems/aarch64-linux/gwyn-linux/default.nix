@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   boot.loader = {
@@ -19,7 +19,7 @@
 
   hardware.asahi.extractPeripheralFirmware = false;
 
-  nixpkgs.overlays = [ nixos-apple-silicon.overlays.apple-silicon-overlay ];
+  nixpkgs.overlays = [ inputs.nixos-apple-silicon.overlays.apple-silicon-overlay ];
 
   services.xserver = {
     enable = true;
