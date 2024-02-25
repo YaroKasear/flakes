@@ -168,6 +168,7 @@
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
+          nix-gaming.nixosModules.steamCompat
           nur.nixosModules.nur
           sops-nix.nixosModules.sops
         ];
@@ -177,7 +178,6 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nix-gaming.nixosModules.steamCompat
         ];
         hosts.loki-xorg.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
@@ -185,7 +185,6 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nix-gaming.nixosModules.steamCompat
         ];
         hosts.experimental.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
@@ -193,7 +192,6 @@
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-          nix-gaming.nixosModules.steamCompat
         ];
         hosts.gwyn-linux.modules = with inputs; [
           nixos-apple-silicon.nixosModules.apple-silicon-support
