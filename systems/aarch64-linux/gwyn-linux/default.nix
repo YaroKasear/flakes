@@ -19,7 +19,7 @@
 
   hardware.asahi.extractPeripheralFirmware = false;
 
-  nixpkgs.overlays = [ apple-silicon.overlays.apple-silicon-overlay ];
+  nixpkgs.overlays = [ nixos=apple-silicon.overlays.apple-silicon-overlay ];
 
   services.xserver = {
     enable = true;
