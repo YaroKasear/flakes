@@ -82,7 +82,7 @@ in {
         };
         u2f = {
           cue = true;
-          control = lib.mkDefault "required";
+          control = lib.mkDefault "sufficient";
         };
       };
     };
