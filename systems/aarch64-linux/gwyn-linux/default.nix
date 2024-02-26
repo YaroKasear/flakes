@@ -15,7 +15,7 @@
   hardware.asahi = {
     extractPeripheralFirmware = false;
     useExperimentalGPUDriver = true;
-    peripheralFirmwareDirectory = /boot/asahi
+    peripheralFirmwareDirectory = /boot/asahi;
   };
 
   nixpkgs = {
