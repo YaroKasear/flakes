@@ -82,7 +82,7 @@ in {
         };
         u2f = {
           cue = true;
-          control = lib.mkDefault "sufficient";
+          control = lib.mkDefault "required";
         };
       };
     };
@@ -115,7 +115,7 @@ in {
 
     users = {
       mutableUsers = false;
-      users.root.hashedPassword = lib.mkDefault "$y$j9T$ouQS3ujnTHatA2Lkqd8j01$zyNRt75sbPqx2rORodNL/swMfUGnVFsy.Zl3XR0olR.";
+      users.root.hashedPassword = lib.mkDefault "!";
     };
   };
 }
