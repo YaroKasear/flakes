@@ -1,7 +1,6 @@
 keys:
   - &yaro 8a676fdcaad929184299d020151a8f0401fb2e85
   - &loki age1ffxn4wts02f42xrqrn0lq087fe5mwpkd08w9lsj8sqspmvxam9vqjettz9
-  - &gwyn-linux age1wf0ezu2h73ckmz5gpv3f49fw9g4kzm37c2hhtmcmmtpas07ymuxs5wzps7
 creation_rules:
   - path_regex: ./[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -9,4 +8,3 @@ creation_rules:
       - *yaro
       age:
       - *loki
-      - *gwyn-linux
