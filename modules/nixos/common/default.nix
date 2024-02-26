@@ -85,6 +85,12 @@ in {
           control = lib.mkDefault "required";
         };
       };
+      sudo = {
+        package = pkgs.sudo.override { withInsults = true; };
+        extraConfig = ''
+          Defaults insults
+        '';
+      };
     };
 
     services = {
