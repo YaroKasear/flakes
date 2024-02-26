@@ -15,6 +15,7 @@
   hardware.asahi = {
     extractPeripheralFirmware = false;
     useExperimentalGPUDriver = true;
+    peripheralFirmwareDirectory = /boot/asahi
   };
 
   nixpkgs = {
@@ -31,4 +32,8 @@
     enable = true;
     settings.General.EnableNetworkConfiguration = true;
   };
+
+  security.u2f.control = "sufficient";
+
+  users.users.root.hashedPassword = "$y$j9T$ouQS3ujnTHatA2Lkqd8j01$zyNRt75sbPqx2rORodNL/swMfUGnVFsy.Zl3XR0olR.";
 }
