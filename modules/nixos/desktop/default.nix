@@ -50,7 +50,7 @@ in {
           enable = true;
           support32Bit = true;
         };
-        lowLatency.enable = true;
+        # lowLatency.enable = true; https://github.com/fufexan/nix-gaming/issues/161
         pulse.enable = true;
       };
       gnome.gnome-keyring.enable = true;

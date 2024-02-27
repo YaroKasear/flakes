@@ -162,7 +162,7 @@
         modules.nixos = with inputs; [
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
-          nix-gaming.nixosModules.pipewireLowLatency
+          # nix-gaming.nixosModules.pipewireLowLatency https://github.com/fufexan/nix-gaming/issues/161
           nix-gaming.nixosModules.steamCompat
           nur.nixosModules.nur
           sops-nix.nixosModules.sops

@@ -47,7 +47,7 @@ in {
           };
           cava = {
             bars = 2;
-            methos = "pipewire";
+            method = "pipewire";
             format-icons = [
               "🞗"
               "🞘"
