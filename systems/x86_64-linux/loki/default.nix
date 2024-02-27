@@ -2,7 +2,6 @@
 
 {
   united = {
-    cnelson.enable = true;
     loki.enable = true;
     desktop = {
       enable = true;
