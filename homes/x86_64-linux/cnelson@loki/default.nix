@@ -3,5 +3,8 @@
 with lib.united;
 {
   united = {
+    user = {
+      name = "cnelson";
+    };
   };
 }

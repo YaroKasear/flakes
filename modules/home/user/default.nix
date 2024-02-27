@@ -44,8 +44,8 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      username = "yaro";
-      homeDirectory = cfg.directories.home;
+      username = mkDefault "yaro";
+      homeDirectory = mkDefault cfg.directories.home;
       file = {
         pfp = {
           source = ./files/techkat.png;
