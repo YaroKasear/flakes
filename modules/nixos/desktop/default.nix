@@ -76,7 +76,7 @@ in {
     };
 
     united = {
-      kmscon.enable = true;
+      kmscon.enable = false; # Unless we can get this working nicely with Wayland...
       wayland.enable = cfg.use-wayland;
     };
 
