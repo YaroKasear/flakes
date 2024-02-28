@@ -76,7 +76,7 @@ in {
     };
 
     united = {
-      kmscon.enable = true;
+      kmscon.enable = false; # Until I can either find a way to launch compositors from KMSCON or have it run on only specific TTYs.
       wayland.enable = cfg.use-wayland;
     };
 
