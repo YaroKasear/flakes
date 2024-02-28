@@ -11,7 +11,11 @@ with lib.united;
   };
 
   home = {
-    packages = with pkgs; [
+    packages = with pkgs;
+    let
+      wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
+    in [
+      wp-gen
       (python3.withPackages(ps: with ps; [
         dbus-python
         pillow

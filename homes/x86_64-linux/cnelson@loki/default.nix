@@ -5,12 +5,14 @@ with lib.united;
   united = {
     common.enable = true;
     desktop.enable = true;
+    mattermost-desktop.enable = true;
     wayland.enable = true;
     user.name = "cnelson";
   };
 
   home = {
     packages = with pkgs; [
+      diffuse
       (python3.withPackages(ps: with ps; [
         jinja2
         jupyter

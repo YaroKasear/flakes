@@ -18,26 +18,17 @@ in {
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
-      discord.enable = true;
-      irssi.enable = true;
-      mpv.enable = true;
-      protonmail-bridge.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
-      asciiquarium.smart-wallpaper = config.united.wayland.enable;
     };
 
     home = {
       packages = with pkgs;
       [
-        audacity
-        dotnet-runtime
         font-awesome
-        gimp
         nerdfonts
         noto-fonts-color-emoji
         powerline-fonts
-        telegram-desktop
         unifont
         unifont_upper
         symbola

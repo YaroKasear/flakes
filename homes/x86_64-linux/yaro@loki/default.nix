@@ -4,15 +4,26 @@ with lib.united;
 {
   united = {
     am2r.enable = true;
-    asciiquarium.enable = true;
+    asciiquarium = {
+      enable = true;
+      smart-wallpaper = config.united.wayland.enable;
+    };
     common.enable = true;
     desktop.enable = true;
+    discord.enable = true;
     git.enable = true;
     gnupg.enable = true;
+    irssi.enable = true;
+    lutris.enable = true;
+    mpv.enable = true;
     net-utils.enable = true;
+    obs-studio.enable = true;
+    protonmail-bridge.enable = true;
     sops.enable = true;
     sonic3air.enable = true;
+    tinyfugue.enable = true;
     wayland.enable = true;
+    wine.enable = true;
     yubikey.enable = true;
     user = {
       directories = {
@@ -41,10 +52,26 @@ with lib.united;
   home = {
     packages = with pkgs; [
       age
+      audacity
+      dotnet-runtime
+      gimp
       mosquitto
       nvd
       snowfallorg.flake
+      skypeforlinux
       sops
-   ];
+      telegram-desktop
+      traceroute
+      virt-manager
+    ];
+  };
+
+  xdg = {
+    mimeApps = {
+      defaultApplications = {
+        "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-8GRXI2.desktop" ];
+      };
+      associations.added."x-scheme-handler/tg" = [ "org.telegram.desktop.desktop;userapp-Telegram Desktop-ZSJDH2.desktop;userapp-Telegram Desktop-8GRXI2.desktop;" ];
+    };
   };
 }

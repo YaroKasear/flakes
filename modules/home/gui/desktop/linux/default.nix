@@ -17,34 +17,21 @@ in {
     united = {
       i3.enable = !is-wayland;
       hyprland.enable = is-wayland;
-      lutris.enable = true;
-      mattermost-desktop.enable = true;
       nextcloud.enable = true;
-      obs-studio.enable = true;
       qt.enable = true;
       ranger.enable = true;
       thunderbird.enable = true;
-      tinyfugue.enable = true;
-      wine.enable = true;
     };
 
     fonts.fontconfig.enable = true;
 
     home = {
       packages = with pkgs;
-      let
-        wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
-      in [
+      [
         bitwarden
-        diffuse
         libreoffice-fresh
         playerctl
-        scrot
-        skypeforlinux
-        traceroute
-        virt-manager
         yubioath-flutter
-        wp-gen
         xdg-utils
       ];
     };
@@ -55,14 +42,12 @@ in {
       mimeApps = {
         enable = true;
         defaultApplications = {
-          "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-8GRXI2.desktop" ];
           "text/html" = [ "firefox.desktop" ];
           "x-scheme-handler/http" = [ "firefox.desktop" ];
           "x-scheme-handler/https" = [ "firefox.desktop" ];
           "x-scheme-handler/about" = [ "firefox.desktop" ];
           "x-scheme-handler/unknown" = [ "firefox.desktop" ];
         };
-        associations.added."x-scheme-handler/tg" = [ "org.telegram.desktop.desktop;userapp-Telegram Desktop-ZSJDH2.desktop;userapp-Telegram Desktop-8GRXI2.desktop;" ];
       };
       configFile."mimeapps.list".force = true;
     };
