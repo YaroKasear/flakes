@@ -20,10 +20,10 @@
 
   sops = {
     secrets = {
-      authfile.sopsFile = ../loki/secrets.yaml;
+      authfile.sopsFile = ./secrets.yaml;
       hashedpw = {
         neededForUsers = true;
-        sopsFile = ../loki/secrets.yaml;
+        sopsFile = ./secrets.yaml;
       };
     };
   };
