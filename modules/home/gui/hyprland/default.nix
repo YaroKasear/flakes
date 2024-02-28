@@ -33,7 +33,6 @@ in {
     services.cliphist.enable = true;
 
     united = {
-      ags.enable = true;
       gammastep.enable = true;
       kitty.enable = true;
       waybar.enable = true;

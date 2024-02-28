@@ -66,29 +66,7 @@ in {
       yubikey.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
-      user = {
-        enable = true;
-        directories = {
-          documents = "${config.united.user.directories.home}/Personal Cloud/Documents";
-          games = "/mnt/games";
-          music = "/mnt/music";
-          pictures = "/mnt/pictures";
-          screenshots = "${config.united.user.directories.home}/Pictures/Screenshots";
-          wallpapers = "${config.united.user.directories.home}/Pictures/Wallpapers";
-          videos = "/mnt/videos";
-        };
-      };
-      style = with config.united.style; {
-        enable = true;
-        catppuccin.frappe.enable = true;
-        effects.shadow = {
-          active-color = config.united.style.colors.active_border_color;
-          inactive-color = config.united.style.colors.inactive_border_color;
-          offsetX = 0;
-          offsetY = 0;
-          spread = 20;
-        };
-      };
+      user.enable = true;
     };
 
     xdg.enable = true;
