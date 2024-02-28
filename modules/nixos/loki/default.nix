@@ -60,7 +60,6 @@ in {
       desktop-mounts.enable = true;
       loki-mounts.enable = true;
       steam.enable = true;
-      yaro.enable = true;
     };
   };
 }

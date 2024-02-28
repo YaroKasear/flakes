@@ -81,6 +81,7 @@ in {
           sudo.u2fAuth = true;
         };
         u2f = {
+          authFile = "/run/secrets/authfile";
           cue = true;
           control = lib.mkDefault "required";
         };
