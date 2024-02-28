@@ -64,6 +64,8 @@ with lib.united;
       traceroute
       virt-manager
     ];
+    file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
+    };
   };
 
   xdg = {
