@@ -4,5 +4,8 @@ with lib.united;
 {
   united = {
     common.enable = false;
+    user.name = "cnelson";
   };
+
+  home.stateVersion = "23.11";
 }

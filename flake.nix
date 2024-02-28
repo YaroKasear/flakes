@@ -116,7 +116,7 @@
     };
 
     snowfall-lib = {
-      url = "github:snowfallorg/lib";
+      url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -183,6 +183,15 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
+          ags.homeManagerModules.default
+          hyprland.homeManagerModules.default
+          impermanence.nixosModules.home-manager.impermanence
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          sops-nix.homeManagerModules.sops
+        ];
+        "cnelson@loki".modules = with inputs; [
           ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
