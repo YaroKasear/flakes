@@ -43,6 +43,7 @@ in {
         directories = [
           "/var/lib/nixos"
           "/var/log"
+          "/run/log/journal"
         ];
         files = [
           "/etc/syskey"
