@@ -35,6 +35,7 @@ with lib.united;
         wallpapers = "${config.united.user.directories.home}/Pictures/Wallpapers";
         videos = "/mnt/videos";
       };
+      icon = ./files/techkat.png;
     };
     style = with config.united.style; {
       enable = true;
@@ -65,7 +66,6 @@ with lib.united;
       virt-manager
     ];
     file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
-    };
   };
 
   xdg = {
@@ -74,6 +74,56 @@ with lib.united;
         "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-8GRXI2.desktop" ];
       };
       associations.added."x-scheme-handler/tg" = [ "org.telegram.desktop.desktop;userapp-Telegram Desktop-ZSJDH2.desktop;userapp-Telegram Desktop-8GRXI2.desktop;" ];
+    };
+  };
+
+  accounts = {
+    email.accounts = {
+      Personal = {
+        address = "yarokasear@gmail.com";
+        flavor = "gmail.com";
+        primary = true;
+        realName = "Yaro Kasear";
+        thunderbird.enable = true;
+      };
+      Heartbeat = {
+        address = "yaro@kasear.net";
+        flavor = "plain";
+        realName = "Yaro Kasear";
+        userName = "yaro@kasear.net";
+        thunderbird.enable = true;
+        imap = {
+          host = "127.0.0.1";
+          port = 1143;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
+        };
+        smtp = {
+          host = "127.0.0.1";
+          port = 1025;
+          tls = {
+            enable = true;
+            useStartTls = true;
+          };
+        };
+      };
+      Wanachi = {
+        address = "wanachi@tlkmuck.org";
+        flavor = "gmail.com";
+        realName = "Wanachi";
+        thunderbird.enable = true;
+      };
+    };
+    calendar.accounts = {
+      Personal = {
+        primary = true;
+        remote = {
+          type = "google_calendar";
+          userName = "yarokasear@gmail.com";
+        };
+      };
     };
   };
 }

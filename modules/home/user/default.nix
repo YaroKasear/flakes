@@ -38,8 +38,8 @@ in {
       videos = mkOpt types.str "${cfg.directories.home}/Videos" "Videos directory.";
       wallpapers = mkOpt types.str "${cfg.directories.pictures}/Wallpapers" "Location of images for graphical backdrops.";
     };
-    icon = mkOpt types.path "${cfg.directories.home}/.face" "My profile pic!";
-    bell = mkOpt types.path "${cfg.directories.data}/sound/bell.oga" "My bell sound!";
+    icon = mkOpt (types.nullOr types.path) null "My profile pic!";
+    bell = mkOpt (types.nullOr types.path) ./files/bell.oga "My bell sound!";
   };
 
   config = mkIf cfg.enable {
@@ -47,76 +47,13 @@ in {
       username = mkDefault "yaro";
       homeDirectory = mkDefault cfg.directories.home;
       file = {
-        pfp = {
-          source = ./files/techkat.png;
-          target = cfg.icon;
+        pfp = mkIf (cfg.icon != null) {
+          source = cfg.icon;
+          target = "${cfg.directories.home}/.face";
         };
-        bell = {
-          source = ./files/bell.oga;
-          target = cfg.bell;
-        };
-        "${cfg.directories.pictures}/techkat.png".source = ./files/techkat.png;
-      };
-    };
-
-    accounts = {
-      email.accounts = {
-        Personal = {
-          address = "yarokasear@gmail.com";
-          flavor = "gmail.com";
-          primary = true;
-          realName = "Yaro Kasear";
-          thunderbird.enable = true;
-        };
-        Heartbeat = {
-          address = "yaro@kasear.net";
-          flavor = "plain";
-          realName = "Yaro Kasear";
-          userName = "yaro@kasear.net";
-          thunderbird.enable = true;
-          imap = {
-            host = "127.0.0.1";
-            port = 1143;
-            tls = {
-              enable = true;
-              useStartTls = true;
-            };
-          };
-          smtp = {
-            host = "127.0.0.1";
-            port = 1025;
-            tls = {
-              enable = true;
-              useStartTls = true;
-            };
-          };
-        };
-        Wanachi = {
-          address = "wanachi@tlkmuck.org";
-          flavor = "gmail.com";
-          realName = "Wanachi";
-          thunderbird.enable = true;
-        };
-        Work = {
-          address = "cnelson@braunresearch.com";
-          flavor = "gmail.com";
-          realName = "Conrad Nelson";
-          thunderbird.enable = true;
-        };
-      };
-      calendar.accounts = {
-        Personal = {
-          primary = true;
-          remote = {
-            type = "google_calendar";
-            userName = "yarokasear@gmail.com";
-          };
-        };
-        Work = {
-          remote = {
-            type = "google_calendar";
-            userName = "cnelson@braunresearch.com";
-          };
+        bell = mkIf (cfg.icon != null) {
+          source = cfg.bell;
+          target = "${cfg.directories.data}/sound/bell.oga";
         };
       };
     };

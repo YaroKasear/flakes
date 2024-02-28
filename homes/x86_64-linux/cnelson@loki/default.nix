@@ -21,4 +21,21 @@ with lib.united;
       ]))
     ];
   };
+
+  accounts = {
+    email.accounts.Work = {
+      primary = true;
+      address = "cnelson@braunresearch.com";
+      flavor = "gmail.com";
+      realName = "Conrad Nelson";
+      thunderbird.enable = true;
+    };
+    calendar.accounts.Work = {
+      primary = true;
+      remote = {
+        type = "google_calendar";
+        userName = "cnelson@braunresearch.com";
+      };
+    };
+  };
 }
