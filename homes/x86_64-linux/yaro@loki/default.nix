@@ -4,8 +4,10 @@ with lib.united;
 {
   united = {
     am2r.enable = true;
+    asciiquarium.enable = true;
     common.enable = true;
     desktop.enable = true;
+    git.enable = true;
     sonic3air.enable = true;
     wayland.enable = true;
     user = {
@@ -30,5 +32,15 @@ with lib.united;
         spread = 20;
       };
     };
+  };
+
+  home = {
+    packages = with pkgs; [
+      age
+      mosquitto
+      nvd
+      snowfallorg.flake
+      sops
+   ];
   };
 }

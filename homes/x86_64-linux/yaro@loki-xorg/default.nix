@@ -9,4 +9,14 @@ with lib.united;
     sonic3air.enable = true;
     wayland.enable = false;
   };
+
+  home = {
+    packages = with pkgs; [
+      (python3.withPackages(ps: with ps; [
+        dbus-python
+        pillow
+        pygobject3
+      ]))
+    ];
+  };
 }

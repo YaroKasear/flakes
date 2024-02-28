@@ -18,29 +18,15 @@ in {
       let
         cowsay = inputs.cowsay.packages.${system}.cowsay;
       in [
-        age
         chroma
         cowsay
         file
         fortune
         killall
-        mosquitto
         neofetch
-        nvd
         p7zip
-        snowfallorg.flake
-        sops
         thefuck
         unzip
-        (python3.withPackages(ps: with ps; [
-          dbus-python
-          jinja2
-          jupyter
-          lxml
-          pandas
-          pillow
-          pygobject3
-        ]))
       ];
     };
 
@@ -50,13 +36,11 @@ in {
     };
 
     united = {
-      asciiquarium.enable = true;
       atuin.enable = true;
       bat.enable = true;
       btop.enable = true;
       eza.enable = true;
       fzf.enable = true;
-      git.enable = true;
       gnupg.enable = true;
       net-utils.enable = true;
       sops.enable = is-linux;

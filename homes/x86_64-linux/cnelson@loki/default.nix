@@ -8,4 +8,15 @@ with lib.united;
     wayland.enable = true;
     user.name = "cnelson";
   };
+
+  home = {
+    packages = with pkgs; [
+      (python3.withPackages(ps: with ps; [
+        jinja2
+        jupyter
+        lxml
+        pandas
+      ]))
+    ];
+  };
 }
