@@ -8,11 +8,6 @@
 
     nur.url = github:nix-community/NUR;
 
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -183,7 +178,14 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
-          ags.homeManagerModules.default
+          hyprland.homeManagerModules.default
+          impermanence.nixosModules.home-manager.impermanence
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          sops-nix.homeManagerModules.sops
+        ];
+        "cnelson@loki".modules = with inputs; [
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
@@ -192,28 +194,24 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@titan".modules = with inputs; [
-          ags.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@europa".modules = with inputs; [
-          ags.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@io".modules = with inputs; [
-          ags.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@loki-xorg".modules = with inputs; [
-          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
@@ -222,7 +220,6 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
-          ags.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
