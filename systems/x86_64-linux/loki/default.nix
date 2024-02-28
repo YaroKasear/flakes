@@ -8,4 +8,13 @@
       use-wayland = true;
     };
   };
+
+  users = {
+    users.cnelson = {
+      isNormalUser = true;
+      extraGroups = ["video" "audio" "lp"];
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.sops.secrets.hashedpw.path;
+    };
+  };
 }
