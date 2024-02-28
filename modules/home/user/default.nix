@@ -10,9 +10,9 @@ let
 
   home-directory =
     if is-darwin then
-      "/Users/yaro"
+      "/Users"
     else
-      "/home/yaro";
+      "/home";
 
   cfg = config.united.user;
 in {
@@ -28,7 +28,7 @@ in {
       documents = mkOpt types.str "${cfg.directories.home}/Documents" "Documents directory.";
       downloads = mkOpt types.str "${cfg.directories.home}/Downloads" "Downloads directory.";
       games = mkOpt types.str "${cfg.directories.home}/Games" "Games! :D";
-      home = mkOpt types.str home-directory "My home directory!";
+      home = mkOpt types.str "${home-directory}/${cfg.name}" "My home directory!";
       pictures = mkOpt types.str "${cfg.directories.home}/Pictures" "Pictures directory.";
       music = mkOpt types.str "${cfg.directories.home}/Music" "Music directory.";
       screenshots = mkOpt types.str "${cfg.directories.pictures}/Screenshots" "Screenshots directory.";
