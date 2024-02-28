@@ -8,8 +8,12 @@ with lib.united;
     common.enable = true;
     desktop.enable = true;
     git.enable = true;
+    gnupg.enable = true;
+    net-utils.enable = true;
+    sops.enable = true;
     sonic3air.enable = true;
     wayland.enable = true;
+    yubikey.enable = true;
     user = {
       directories = {
         documents = "${config.united.user.directories.home}/Personal Cloud/Documents";

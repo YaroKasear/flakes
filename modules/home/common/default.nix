@@ -41,13 +41,9 @@ in {
       btop.enable = true;
       eza.enable = true;
       fzf.enable = true;
-      gnupg.enable = true;
-      net-utils.enable = true;
-      sops.enable = is-linux;
       tmux.enable = true;
-      nixvim.enable = false;
-      vim.enable = true;
-      yubikey.enable = true;
+      nixvim.enable = true;
+      vim.enable = false;
       zoxide.enable = true;
       zsh.enable = true;
       user.enable = true;
