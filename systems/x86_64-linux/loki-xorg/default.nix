@@ -8,4 +8,23 @@
       use-wayland = false;
     };
   };
+
+  users.users = {
+    yaro = {
+      isNormalUser = true;
+      extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
+      shell = pkgs.zsh;
+      hashedPasswordFile = config.sops.secrets.hashedpw.path;
+    };
+  };
+
+  sops = {
+    secrets = {
+      authfile.sopsFile = ../loki/secrets.yaml;
+      hashedpw = {
+        neededForUsers = true;
+        sopsFile = ../loki/secrets.yaml;
+      };
+    };
+  };
 }
