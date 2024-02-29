@@ -57,7 +57,6 @@ in {
       gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 7d";
       };
       extraOptions = ''
         min-free = ${toString (1024 * 1024 * 1024)}
