@@ -56,6 +56,7 @@ with lib.united;
       audacity
       dotnet-runtime
       gimp
+      git-crypt
       mosquitto
       nvd
       snowfallorg.flake
