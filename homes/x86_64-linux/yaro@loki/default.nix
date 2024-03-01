@@ -7,6 +7,7 @@ with lib.united;
     asciiquarium = {
       enable = true;
       smart-wallpaper = config.united.wayland.enable;
+      # smart-wallpaper = false;
     };
     common.enable = true;
     desktop.enable = true;
