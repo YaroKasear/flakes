@@ -41,7 +41,7 @@ in {
           enable = false;
           finegrained = false;
         };
-        open = true; # https://github.com/NixOS/nixpkgs/issues/280427
+        open = true;
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.stable;
       };
