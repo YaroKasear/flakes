@@ -11,11 +11,10 @@ with lib.united;
   };
 
   home = {
-    packages = with pkgs;
-    let
-      wp-gen = inputs.wallpaper-generator.packages.${system}.wp-gen;
-    in [
-      wp-gen
+    packages = with pkgs; [
+      git
+      git-crypt
+      snowfallorg.flake
       (python3.withPackages(ps: with ps; [
         dbus-python
         pillow
