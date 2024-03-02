@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     united = {
       git.enable = true;
+      gnupg.enable = true;
       net-utils.enable = true;
       sops.enable = true;
     };

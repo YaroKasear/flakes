@@ -10,6 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs .gpg.enable = true;
+    programs.gpg.enable = true;
   };
 }
