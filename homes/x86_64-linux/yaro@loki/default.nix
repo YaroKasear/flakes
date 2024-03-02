@@ -3,6 +3,7 @@
 with lib.united;
 {
   united = {
+    admin.enable = true;
     am2r.enable = true;
     asciiquarium = {
       enable = true;
@@ -12,15 +13,12 @@ with lib.united;
     common.enable = true;
     desktop.enable = true;
     discord.enable = true;
-    git.enable = true;
     gnupg.enable = true;
     irssi.enable = true;
     lutris.enable = true;
     mpv.enable = true;
-    net-utils.enable = true;
     obs-studio.enable = true;
     protonmail-bridge.enable = true;
-    sops.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
     wayland.enable = true;
@@ -53,19 +51,12 @@ with lib.united;
 
   home = {
     packages = with pkgs; [
-      age
       audacity
       dotnet-runtime
       gimp
-      git-crypt
       mosquitto
-      nvd
-      snowfallorg.flake
       skypeforlinux
-      sops
       telegram-desktop
-      traceroute
-      virt-manager
     ];
     file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
   };

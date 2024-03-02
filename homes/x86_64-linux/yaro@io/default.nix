@@ -3,6 +3,7 @@
 with lib.united;
 {
   united = {
+    admin.enable = true;
     common.enable = true;
   };
 }

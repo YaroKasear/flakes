@@ -15,11 +15,11 @@ in {
       media-mounts.enable = true;
     };
 
-    # fileSystems."/home/yaro" = {
-    #   device = "storage.kasear.net:/mnt/data/user/yaro/nixos";
-    #   fsType = "nfs";
-    #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
-    # };
+    fileSystems."/home/yaro" = {
+      device = "storage.kasear.net:/mnt/data/user/yaro/nixos";
+      fsType = "nfs";
+      options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    };
 
     swapDevices = [ ];
   };

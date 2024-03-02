@@ -3,6 +3,7 @@
 with lib.united;
 {
   united = {
+    admin.enable = true;
     am2r.enable = true;
     common.enable = true;
     desktop.enable = true;
@@ -12,9 +13,6 @@ with lib.united;
 
   home = {
     packages = with pkgs; [
-      git
-      git-crypt
-      snowfallorg.flake
       (python3.withPackages(ps: with ps; [
         dbus-python
         pillow
