@@ -25,7 +25,5 @@ in {
       traceroute
       virt-manager
     ];
-
-    services.openssh.enable = true;
   };
 }
