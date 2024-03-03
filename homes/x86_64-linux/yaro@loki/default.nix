@@ -59,6 +59,29 @@ with lib.united;
       telegram-desktop
     ];
     file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
+    persistence."/persistence/home/yaro" = {
+      directories = [
+        ".cache/cliphist"
+        ".config/Code"
+        ".config/protonmail"
+        ".config/pulse"
+        ".config/skypeforlinux"
+        ".config/WebCord"
+        ".local/share/keyrings"
+        ".local/share/protonmail"
+        ".local/share/TelegramDesktop"
+        ".local/share/zoxide"
+        ".mozilla"
+        ".thunderbird"
+        "flakes"
+      ];
+      files = [
+        ".zsh_history"
+        ".cache/wofi-dmenu"
+        ".cache/wofi-drun"
+        ".cache/wofi-run"
+      ];
+    };
   };
 
   xdg = {
