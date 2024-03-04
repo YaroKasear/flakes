@@ -104,6 +104,10 @@ with lib.united;
         primary = true;
         realName = "Yaro Kasear";
         thunderbird.enable = true;
+        gpg = {
+          key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
+          signByDefault = true;
+        };
       };
       Heartbeat = {
         address = "yaro@kasear.net";
@@ -133,6 +137,10 @@ with lib.united;
         flavor = "gmail.com";
         realName = "Wanachi";
         thunderbird.enable = true;
+        gpg = {
+            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
+            signByDefault = true;
+        };
       };
     };
     calendar.accounts = {

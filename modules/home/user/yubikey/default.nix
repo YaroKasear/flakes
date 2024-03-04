@@ -12,35 +12,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-
-    accounts.email.accounts = mkIf config.united.gnupg.enable {
-      Personal = {
-        primary = true;
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = true;
-        };
-      };
-      Heartbeat = {
-        gpg = {
-          key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-          signByDefault = false;
-        };
-      };
-      Wanachi = {
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = true;
-        };
-      };
-      Work = {
-        gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = false;
-        };
-      };
-    };
-
     home.packages = with pkgs; [
       age-plugin-yubikey
       yubikey-agent # Currently can't actually use this in place of GNUPG Agent since sops does not yet support age plugins, which will be needed before I use age for home-manager sops-nix. This is why I'm just installing the package instead of enabling the service. So I can just play with the config.

@@ -40,12 +40,15 @@ in {
       btop.enable = true;
       eza.enable = true;
       fzf.enable = true;
+      gnupg.enable = true;
       tmux.enable = true;
       nixvim.enable = true;
+      sops.enable = true;
+      user.enable = true;
       vim.enable = false;
+      yubikey.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
-      user.enable = true;
     };
 
     xdg.enable = true;
