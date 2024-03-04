@@ -15,6 +15,7 @@ in {
       gnupg.enable = true;
       net-utils.enable = true;
       sops.enable = true;
+      yubikey.enable = true;
     };
 
     home.packages = with pkgs; [

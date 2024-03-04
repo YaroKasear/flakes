@@ -13,7 +13,6 @@ with lib.united;
     common.enable = true;
     desktop.enable = true;
     discord.enable = true;
-    gnupg.enable = true;
     irssi.enable = true;
     lutris.enable = true;
     mpv.enable = true;
@@ -23,7 +22,6 @@ with lib.united;
     tinyfugue.enable = true;
     wayland.enable = true;
     wine.enable = true;
-    yubikey.enable = true;
     user = {
       directories = {
         documents = "${config.united.user.directories.home}/Personal Cloud/Documents";
@@ -70,9 +68,11 @@ with lib.united;
         ".local/share/keyrings"
         ".local/share/protonmail"
         ".local/share/TelegramDesktop"
+        ".local/share/Steam"
         ".local/share/zoxide"
         ".local/state/wireplumber"
         ".mozilla"
+        ".steam"
         ".thunderbird"
         "flakes"
       ];

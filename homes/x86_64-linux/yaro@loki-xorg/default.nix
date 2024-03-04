@@ -7,6 +7,7 @@ with lib.united;
     am2r.enable = true;
     common.enable = true;
     desktop.enable = true;
+    gnupg.enable = true;
     sonic3air.enable = true;
     wayland.enable = false;
   };
@@ -19,5 +20,13 @@ with lib.united;
         pygobject3
       ]))
     ];
+    persistence."/persistent/home/yaro" = {
+      allowOther = true;
+      directories = [
+        ".local/share/Steam"
+        ".steam"
+        "flakes"
+      ];
+    };
   };
 }
