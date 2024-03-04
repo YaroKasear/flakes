@@ -59,19 +59,19 @@ with lib.united;
       telegram-desktop
     ];
     file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
-    persistence."/persistence/home/yaro" = {
+    persistence."/persistent/home/yaro" = {
       allowOther = true;
       directories = [
         ".cache/cliphist"
         ".config/Code"
         ".config/protonmail"
-        ".config/pulse"
         ".config/skypeforlinux"
         ".config/WebCord"
         ".local/share/keyrings"
         ".local/share/protonmail"
         ".local/share/TelegramDesktop"
         ".local/share/zoxide"
+        ".local/state/wireplumber"
         ".mozilla"
         ".thunderbird"
         "flakes"
