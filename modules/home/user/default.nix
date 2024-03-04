@@ -60,7 +60,6 @@ in {
 
     sops.secrets = mkIf config.united.sops.enable {
       mosquitto-password.sopsFile = ./secrets.yaml;
-      signature.sopsFile = ./secrets.yaml;
     };
 
     xdg = mkIf is-linux {
