@@ -68,11 +68,13 @@ with lib.united;
         ".local/share/keyrings"
         ".local/share/protonmail"
         ".local/share/TelegramDesktop"
-        ".local/share/Steam"
+        {
+          directory = ".local/share/Steam";
+          method = "symlink";
+        }
         ".local/share/zoxide"
         ".local/state/wireplumber"
         ".mozilla"
-        ".steam"
         ".thunderbird"
         "flakes"
       ];

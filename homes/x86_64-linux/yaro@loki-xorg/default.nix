@@ -23,8 +23,10 @@ with lib.united;
     persistence."/persistent/home/yaro" = {
       allowOther = true;
       directories = [
-        ".local/share/Steam"
-        ".steam"
+        {
+          directory = ".local/share/Steam";
+          method = "symlink";
+        }
         "flakes"
       ];
     };
