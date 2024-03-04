@@ -41,9 +41,10 @@ in {
       persistence."/persistent" = {
         hideMounts = true;
         directories = [
+          "/etc/NetworkManager/system-connections/"
+          "/run/log/journal"
           "/var/lib/nixos"
           "/var/log"
-          "/run/log/journal"
         ];
         files = [
           "/etc/syskey"

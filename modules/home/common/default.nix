@@ -36,7 +36,6 @@ in {
     };
 
     united = {
-      atuin.enable = true;
       bat.enable = true;
       btop.enable = true;
       eza.enable = true;

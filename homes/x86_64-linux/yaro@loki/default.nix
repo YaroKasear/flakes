@@ -60,6 +60,7 @@ with lib.united;
     ];
     file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
     persistence."/persistence/home/yaro" = {
+      allowOther = true;
       directories = [
         ".cache/cliphist"
         ".config/Code"
