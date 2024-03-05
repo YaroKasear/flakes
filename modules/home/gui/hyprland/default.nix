@@ -150,7 +150,7 @@ in {
           border_size = config.united.style.windows.border-size;
           "col.inactive_border" = mkDefault "$inactive_border_color";
           "col.active_border" = mkDefault "$active_border_color";
-          layout = "dwindle";
+          layout = "hy3";
           resize_on_border = true;
           allow_tearing = true;
         };
@@ -237,20 +237,25 @@ in {
           "$mainMod SHIFT, Q, killactive,"
           "$mainMod SHIFT, E, exit,"
           "$mainMod, E, togglegroup,"
+          "$mainMod, V, hy3:makegroup, v"
+          "$mainMod, H, hy3:makegroup, h"
+          "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod, code:65, togglefloating,"
           "$mainMod SHIFT, code:65, pin,"
           "$mainMod SHIFT, N, exec, swaync-client -t sw"
           "ALT, F2, exec, wofi --show run"
           "$mainMod, D, exec, $menu"
           "$mainMod, F, fullscreen,"
-          "$mainMod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+          "$mainMod SHIFT, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
           "$mainMod SHIFT, P, exec, hyprpicker | wl-copy"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod SHIFT, left, swapnext, prev"
-          "$mainMod SHIFT, right, swapnext,"
+          "$mainMod, left, hy3:movefocus, l"
+          "$mainMod, right, hy3:movefocus, r"
+          "$mainMod, up, hy3:movefocus, u"
+          "$mainMod, down, hy3:movefocus, d"
+          "$mainMod SHIFT, left, hy3:movewindow, l"
+          "$mainMod SHIFT, right, hy3:movewindow, r"
+          "$mainMod SHIFT, up, hy3:movewindow, u"
+          "$mainMod SHIFT, down, hy3:movewindow, d"
           ",Print,exec,grim ${screenshots-directory}/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
           "SHIFT,Print,exec,slurp | grim -g - ${screenshots-directory}/$(whoami)-$(hostname)-$(date +'%Y-%m-%d-%H%M%S.png')"
           "$mainMod, 1, workspace, 1"
@@ -273,7 +278,6 @@ in {
           "$mainMod SHIFT, 8, movetoworkspace, 8"
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
-          "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod, code:49, togglespecialworkspace, console"
           "$mainMod SHIFT, S, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"
@@ -291,7 +295,7 @@ in {
         ];
 
         bindm = [
-          "$mainMod, mouse:272, movewindow"
+          "$mainMod, mouse:272, hy3:movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
 
