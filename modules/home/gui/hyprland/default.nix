@@ -237,8 +237,8 @@ in {
           "$mainMod SHIFT, Q, killactive,"
           "$mainMod SHIFT, E, exit,"
           "$mainMod, E, togglegroup,"
-          "$mainMod, V, hy3:makegroup, v"
-          "$mainMod, H, hy3:makegroup, h"
+          "$mainMod, V, hy3:makegroup, v, ephemeral"
+          "$mainMod, H, hy3:makegroup, h, ephemeral"
           "$mainMod, S, togglespecialworkspace, magic"
           "$mainMod, code:65, togglefloating,"
           "$mainMod SHIFT, code:65, pin,"
@@ -295,7 +295,7 @@ in {
         ];
 
         bindm = [
-          "$mainMod, mouse:272, hy3:movewindow"
+          "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
 
@@ -303,7 +303,23 @@ in {
           enable_stdout_logs = true;
           disable_logs = false;
         };
+
+        plugin = {
+          hy3 = {
+            tabs = {
+              "col.text.active" = mkDefault "$active_tab_foreground";
+              "col.text.inactive" = mkDefault "$inactive_tab_foreground";
+            };
+          };
+        };
       };
+      # extraConfig = mkDefault ''
+      #   plugin {
+      #     tabs {
+      #
+      #     }
+      #   }
+      # '';
     };
 
     systemd.user = {

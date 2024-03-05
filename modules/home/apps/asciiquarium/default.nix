@@ -32,15 +32,21 @@ in {
         exec-once = [
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${config-directory}/kitty/asciiquarium.conf asciiquarium"
         ];
+        plugin = {
+          hyprwinwrap = {
+            class = "kitty-bg";
+            size = "100%";
+          };
+        };
       };
-      extraConfig = mkDefault ''
-        plugin {
-          hyprwinwrap {
-            class = kitty-bg
-            size = 100%
-          }
-        }
-      '';
+      # extraConfig = mkDefault ''
+      #   plugin {
+      #     hyprwinwrap {
+      #       class = kitty-bg
+      #       size = 100%
+      #     }
+      #   }
+      # '';
     };
 
     xdg.configFile."kitty/asciiquarium.conf" = mkIf (cfg.smart-wallpaper && config.united.wayland.enable) {
