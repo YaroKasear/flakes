@@ -39,14 +39,6 @@ in {
           };
         };
       };
-      # extraConfig = mkDefault ''
-      #   plugin {
-      #     hyprwinwrap {
-      #       class = kitty-bg
-      #       size = 100%
-      #     }
-      #   }
-      # '';
     };
 
     xdg.configFile."kitty/asciiquarium.conf" = mkIf (cfg.smart-wallpaper && config.united.wayland.enable) {
