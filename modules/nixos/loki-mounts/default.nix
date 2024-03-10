@@ -55,7 +55,25 @@ in {
       };
     };
 
-    fileSystems."/persistent".neededForBoot = true;
+    fileSystems = {
+      "/persistent".neededForBoot = true;
+      "/home/yaro/Nextcloud" = {
+        device = "storage.kasear.net:/mnt/data/user/yaro/cloud";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+      };
+      "/mnt/containers" = {
+        device = "storage.kasear.net:/mnt/data/containers";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+      };
+    };
+
+    systemd.tmpfiles.settings."10-nextcloud-yaro"."/home/yaro/Nextcloud".d = {
+      user = "yaro";
+      group = "users";
+      mode = "0755";
+    };
 
     services.zfs = {
       autoScrub.enable = true;

@@ -62,6 +62,7 @@ with lib.united;
       directories = [
         ".cache/cliphist"
         ".config/Code"
+        ".config/Nextcloud"
         ".config/protonmail"
         ".config/skypeforlinux"
         ".config/WebCord"
