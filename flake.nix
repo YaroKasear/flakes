@@ -152,7 +152,6 @@
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
-          nix-gaming.nixosModules.steamCompat
           nur.nixosModules.nur
           sops-nix.nixosModules.sops
         ];
