@@ -52,6 +52,8 @@ with lib.united;
       audacity
       dotnet-runtime
       gimp
+      handbrake
+      makemkv
       mosquitto
       skypeforlinux
       telegram-desktop
