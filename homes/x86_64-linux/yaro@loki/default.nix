@@ -8,7 +8,7 @@ with lib.united;
     asciiquarium = {
       enable = true;
       # smart-wallpaper = config.united.wayland.enable;
-      smart-wallpaper = false;
+      smart-wallpaper = false; # https://github.com/hyprwm/hyprland-plugins/issues/93
     };
     common.enable = true;
     desktop = {
