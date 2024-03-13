@@ -11,7 +11,10 @@ with lib.united;
       smart-wallpaper = false;
     };
     common.enable = true;
-    desktop.enable = true;
+    desktop = {
+      enable = true;
+      linux.waylandSupport = true;
+    };
     discord.enable = true;
     irssi.enable = true;
     lutris.enable = true;
@@ -20,7 +23,6 @@ with lib.united;
     protonmail-bridge.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
-    wayland.enable = true;
     wine.enable = true;
     user = {
       directories = {
@@ -63,6 +65,7 @@ with lib.united;
       allowOther = true;
       directories = [
         ".cache/cliphist"
+        ".cache/oh-my-posh"
         ".config/Code"
         ".config/Nextcloud"
         ".config/protonmail"

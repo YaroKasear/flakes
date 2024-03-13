@@ -6,10 +6,12 @@ with lib.united;
     admin.enable = true;
     am2r.enable = true;
     common.enable = true;
-    desktop.enable = true;
+    desktop = {
+      enable = true;
+      linux.waylandSupport = false;
+    };
     gnupg.enable = true;
     sonic3air.enable = true;
-    wayland.enable = false;
   };
 
   home = {

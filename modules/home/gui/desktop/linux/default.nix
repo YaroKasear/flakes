@@ -3,8 +3,6 @@
 with lib;
 with lib.united;
 let
-  is-wayland = config.united.wayland.enable;
-
   cfg = config.united.desktop.linux;
 in {
   options.united.desktop.linux = {
@@ -15,8 +13,8 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      i3.enable = !is-wayland;
-      hyprland.enable = is-wayland;
+      i3.enable = !cfg.waylandSupport;
+      wayland.enable = cfg.waylandSupport;
       nextcloud.enable = true;
       qt.enable = true;
       ranger.enable = true;
