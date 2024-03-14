@@ -52,7 +52,8 @@ in {
         defaultCacheTtl = 60;
         maxCacheTtl = 120;
         # pinentryFlavor = "gnome3"; https://github.com/NixOS/nixpkgs/issues/294698
-        # pinentryFlavor = "qt";
+        pinentryFlavor = "qt";
+        # pinentryPackage = pkgs.pinentry.gnome3;
         extraConfig = ''
           ttyname $GPG_TTY
         '';
