@@ -304,7 +304,12 @@ in {
       general = {};
       images = [
         {
-          path = "${home-directory}/.face";
+          path = "${config.united.user.icon}";
+        }
+      ];
+      backgrounds = [
+        {
+          path = "${config.united.user.wallpaper.defaultWallpaper}";
         }
       ];
     };

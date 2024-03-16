@@ -86,6 +86,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-rice .url = "github:bertof/nix-rice";
+
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
