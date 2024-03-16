@@ -307,10 +307,10 @@ in {
           path = "${config.united.user.icon}";
         }
       ];
-      backgrounds = [
+      backgrounds = with config.united.style.colors; [
         {
           path = "${config.united.user.wallpaper.defaultWallpaper}";
-          # color = inputs.nix-rice.lib.hexToRgba config.united.style.colors.backgound;
+          color = "rgb(${lib.replaceStrings ["#"] [""] background})";
         }
       ];
     };

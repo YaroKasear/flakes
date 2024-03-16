@@ -38,6 +38,7 @@ in {
           "editor.tabSize"= 2;
           "editor.fontFamily"= "'FiraCode Nerd Font Mono','Droid Sans Mono', 'monospace', monospace";
           "update.mode"= "none";
+          "files.enableTrash" = false;
         };
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
