@@ -38,8 +38,8 @@ in {
       videos = mkOpt types.str "${cfg.directories.home}/Videos" "Videos directory.";
       wallpapers = mkOpt types.str "${cfg.directories.pictures}/Wallpapers" "Location of images for graphical backdrops.";
     };
-    icon = mkOpt (types.nullOr types.path) null "My profile pic!";
-    bell = mkOpt (types.nullOr types.path) ./files/bell.oga "My bell sound!";
+    icon = mkOpt types.path ./files/pfp.png "My profile pic!";
+    bell = mkOpt types.path ./files/bell.oga "My bell sound!";
   };
 
   config = mkIf cfg.enable {
