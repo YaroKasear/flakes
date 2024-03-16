@@ -7,7 +7,6 @@ let
 in {
   options.united.user.wallpaper = {
     enable = mkEnableOption "User wallpapers!";
-    defaultWallpaper = mkOpt types.path ./files/maze.png "Set the default wallpaper!";
   };
 
   config = mkIf cfg.enable {

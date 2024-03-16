@@ -309,7 +309,7 @@ in {
       ];
       backgrounds = with config.united.style.colors; [
         {
-          path = mkDefault "${config.united.user.wallpaper.defaultWallpaper}";
+          path = mkDefault "${config.united.style.wallpaper}";
           color = mkDefault "rgb(${lib.replaceStrings ["#"] [""] background})";
         }
       ];
