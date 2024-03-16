@@ -35,6 +35,8 @@ in {
 
     programs.dconf.enable = true;
 
+    security.pam.services.hyprlock = mkIf config.united.wayland.enable {};
+
     services = {
       xserver = {
         enable = !config.united.wayland.enable;

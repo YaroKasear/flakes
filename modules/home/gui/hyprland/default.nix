@@ -299,6 +299,16 @@ in {
       };
     };
 
+    programs.hyprlock = {
+      enable = true;
+      general = {};
+      images = [
+        {
+          path = "${home-directory}/.face";
+        }
+      ];
+    };
+
     systemd.user = {
       services.random-wallpaper = {
         Unit = {
