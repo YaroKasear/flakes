@@ -304,13 +304,13 @@ in {
       general = {};
       images = [
         {
-          path = "${config.united.user.icon}";
+          path = mkDefault "${config.united.user.icon}";
         }
       ];
       backgrounds = with config.united.style.colors; [
         {
-          path = "${config.united.user.wallpaper.defaultWallpaper}";
-          color = "rgb(${lib.replaceStrings ["#"] [""] background})";
+          path = mkDefault "${config.united.user.wallpaper.defaultWallpaper}";
+          color = mkDefault "rgb(${lib.replaceStrings ["#"] [""] background})";
         }
       ];
     };
