@@ -302,9 +302,9 @@ in {
     programs.hyprlock = {
       enable = true;
       general = {};
-      images = [
+      images = mkDefault [
         {
-          path = mkDefault "${config.united.user.icon}";
+          path = "${config.united.user.icon}";
         }
       ];
       backgrounds = with config.united.style.colors; mkDefault [

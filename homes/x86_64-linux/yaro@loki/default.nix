@@ -50,7 +50,7 @@ with lib.united;
 
   programs.hyprlock.backgrounds = with config.united.style.colors; [
     {
-      path = "";
+      path = "screenshot";
       color = "rgb(${lib.replaceStrings ["#"] [""] background})";
     }
   ];
