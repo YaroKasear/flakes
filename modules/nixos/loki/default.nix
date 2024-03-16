@@ -53,12 +53,54 @@ in {
     };
 
     networking = {
+      networkmanager.enable = false;
       hostName = mkForce "loki";
       hostId = "1d84728f";
+      useDHCP = false;
       wireless.enable = false;
     };
 
     programs.fuse.userAllowOther = true;
+
+    services = {
+      dnsmasq = {
+        enable = true;
+        settings = {
+          "server" = ["10.10.10.1"];
+        };
+      };
+      resolved.enable = false; # systemd-resolved is cancer
+    };
+
+    systemd.network = {
+      enable = true;
+      networks = {
+        "10-main" = {
+          matchConfig.Name = "enp9s0";
+          networkConfig = {
+            DHCP = "ipv4";
+            LinkLocalAddressing = false;
+            IPv6AcceptRA = false;
+          };
+          linkConfig.RequiredForOnline = "routable";
+        };
+        "20-storage" = {
+          matchConfig.Name = "enp4s0f4";
+          networkConfig = {
+            DHCP = "ipv4";
+            LinkLocalAddressing = false;
+            IPv6AcceptRA = false;
+          };
+          dhcpV4Config = {
+            UseRoutes = false;
+          };
+          linkConfig = {
+            MTUBytes = "9000";
+            RequiredForOnline = "routable";
+          };
+        };
+      };
+    };
 
     united = {
       common = {

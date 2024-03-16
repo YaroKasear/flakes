@@ -47,7 +47,7 @@ in {
     i18n.defaultLocale = "en_US.UTF-8";
 
     networking = {
-      networkmanager.enable = true;
+      networkmanager.enable = mkDefault true;
       useDHCP = lib.mkDefault true;
     };
 
