@@ -307,10 +307,10 @@ in {
           path = mkDefault "${config.united.user.icon}";
         }
       ];
-      backgrounds = with config.united.style.colors; [
+      backgrounds = with config.united.style.colors; mkDefault [
         {
-          path = mkDefault "${config.united.style.wallpaper}";
-          color = mkDefault "rgb(${lib.replaceStrings ["#"] [""] background})";
+          path = "${config.united.style.wallpaper}";
+          color = "rgb(${lib.replaceStrings ["#"] [""] background})";
         }
       ];
     };
