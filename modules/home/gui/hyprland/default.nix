@@ -310,6 +310,7 @@ in {
       backgrounds = [
         {
           path = "${config.united.user.wallpaper.defaultWallpaper}";
+          # color = inputs.nix-rice.lib.hexToRgba config.united.style.colors.backgound;
         }
       ];
     };
