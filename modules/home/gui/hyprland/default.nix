@@ -208,7 +208,6 @@ in {
         windowrulev2 = [
           "suppressevent maximize, class:.*"
           "float, title:^(Picture-in-Picture)$"
-          "float, class:.*"
           "size 800 450, title:(Picture-in-Picture)"
           "pin, title:^(Picture-in-Picture)$"
           "float, title:^(Firefox)$"
