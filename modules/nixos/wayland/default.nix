@@ -12,6 +12,7 @@ in {
       type = types.enum [
         "hyprland"
         "plasma"
+        "wayfire"
       ];
       default = "hyprland";
       description = "Select compositor!";
@@ -21,10 +22,20 @@ in {
   config = mkIf cfg.enable {
     united.greetd.enable = cfg.greeter;
 
-    programs.hyprland = {
-      enable = cfg.compositor == "hyprland";
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+    programs = {
+      hyprland = mkIf (cfg.compositor == "hyprland") {
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+      };
+      wayfire = mkIf (cfg.compositor == "wayfire") {
+        enable = true;
+        plugins = with pkgs.wayfirePlugins; [
+          wcm
+          wf-shell
+          wayfire-plugins-extra
+        ];
+      };
     };
 
     services = mkIf (cfg.compositor == "plasma") {

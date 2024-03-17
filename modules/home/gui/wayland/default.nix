@@ -11,6 +11,7 @@ in {
       type = types.enum [
         "hyprland"
         "plasma"
+        "wayfire"
       ];
       default = "hyprland";
       description = "Select compositor!";
@@ -20,6 +21,7 @@ in {
   config = mkIf cfg.enable {
     united = {
       hyprland.enable = cfg.compositor == "hyprland";
+      wayfire.enable = cfg.compositor == "wayfire";
     };
   };
 }
