@@ -717,6 +717,32 @@
         "type": "github"
       }
     },
+    "hyprcatppuccin-frappe-dark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710631952,
+        "narHash": "sha256-mYtYttpjqmB9WKXIb+HT3AUiptzyjLDGlKAiKm4GAfM=",
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz"
+      }
+    },
+    "hyprcatppuccin-latte-blue": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710632090,
+        "narHash": "sha256-1JL7XTssmILu/8v3Yaal9+u8ue4UlZP0GcbIIeXmlik=",
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": "hyprlang",
@@ -1438,6 +1464,8 @@
         "darwin": "darwin",
         "disko": "disko",
         "home-manager": "home-manager",
+        "hyprcatppuccin-frappe-dark": "hyprcatppuccin-frappe-dark",
+        "hyprcatppuccin-latte-blue": "hyprcatppuccin-latte-blue",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprlock": "hyprlock",

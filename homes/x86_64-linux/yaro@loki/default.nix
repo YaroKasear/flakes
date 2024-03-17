@@ -25,7 +25,7 @@ with lib.united;
     wine.enable = true;
     user = {
       directories = {
-        documents = "${config.united.user.directories.home}/Personal Cloud/Documents";
+        documents = "${config.united.user.directories.home}/Nextcloud/Documents";
         games = "/mnt/games";
         music = "/mnt/music";
         pictures = "/mnt/pictures";
@@ -66,7 +66,6 @@ with lib.united;
       skypeforlinux
       telegram-desktop
     ];
-    file."${config.united.user.directories.pictures}/techkat.png".source = ./files/techkat.png;
     persistence."/persistent/home/yaro" = {
       allowOther = true;
       directories = [

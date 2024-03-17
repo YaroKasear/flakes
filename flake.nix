@@ -54,6 +54,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprcatppuccin-frappe-dark = {
+      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz";
+      flake = false;
+    };
+
+    hyprcatppuccin-latte-blue = {
+      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz";
+      flake = false;
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";

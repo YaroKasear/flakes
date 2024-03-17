@@ -124,8 +124,10 @@ in {
         (pkgs.catppuccin.override { variant = "frappe"; })
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
       ];
-      file = mkIf config.united.vim.enable {
-        ".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
+      file = {
+        # mkIf config.united.vim.enable (".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";);
+        # ".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
+        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Frappe-Dark-Cursors".source = "${inputs.hyprcatppuccin-frappe-dark}/theme_Extracted Theme";
       };
     };
 
@@ -204,6 +206,10 @@ in {
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {
         source = [ "${config.united.user.directories.config}/hypr/frappe.conf" ];
+
+        env = [
+          "HYPRCURSOR_THEME,Hyprcatppuccin-Frappe-Dark-Cursors"
+        ];
 
         general = {
           "col.inactive_border" = "$overlay0";
