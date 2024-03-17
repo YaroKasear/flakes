@@ -7,6 +7,7 @@ let
 in {
   options.united.common = {
     enable = mkEnableOption "Common";
+    splash = mkEnableOption "Boot splash";
   };
 
   config = mkIf cfg.enable {
@@ -15,7 +16,9 @@ in {
       kernelModules = [
         "usb-storage"
       ];
-      kernelParams = ["quiet"];
+      kernelParams = [
+        (mkIf cfg.splash "quiet")
+      ];
       loader = {
         timeout = 0;
         systemd-boot = {
@@ -27,7 +30,7 @@ in {
           efiSysMountPoint = "/boot";
         };
       };
-      plymouth.enable = true;
+      plymouth.enable = cfg.splash;
     };
 
     console = {

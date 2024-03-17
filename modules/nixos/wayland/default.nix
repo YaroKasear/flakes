@@ -7,10 +7,11 @@ let
 in {
   options.united.wayland = {
     enable = mkEnableOption "Wayland";
+    greeter = mkEnableOption "Use greeter";
   };
 
   config = mkIf cfg.enable {
-    united.greetd.enable = true;
+    united.greetd.enable = cfg.greeter;
 
     programs.hyprland = {
       enable = true;

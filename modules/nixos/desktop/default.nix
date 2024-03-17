@@ -77,10 +77,7 @@ in {
       };
     };
 
-    united = {
-      kmscon.enable = false; # Unless we can get this working nicely with Wayland...
-      wayland.enable = cfg.use-wayland;
-    };
+    united.wayland.enable = cfg.use-wayland;
 
     xdg.portal = {
       enable = true;
