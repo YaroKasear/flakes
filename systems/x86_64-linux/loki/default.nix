@@ -7,6 +7,7 @@
       enable = true;
       use-wayland = true;
     };
+    wayland.compositor = "hyprland";
   };
 
   users.users = {

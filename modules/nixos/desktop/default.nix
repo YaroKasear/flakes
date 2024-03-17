@@ -39,7 +39,7 @@ in {
 
     services = {
       xserver = {
-        enable = !config.united.wayland.enable;
+        enable = mkDefault (!config.united.wayland.enable);
         xkb.layout = "us";
         displayManager.lightdm.enable = !config.united.wayland.enable;
         windowManager.i3 = {
