@@ -21,6 +21,7 @@ in {
           {
             criteria = "DP-3";
             mode = "2560x1440@144Hz";
+            adaptiveSync = true;
           }
         ];
       };
