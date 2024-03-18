@@ -69,11 +69,15 @@ in {
         };
         autostart = {
           autostart_wf_shell = true;
-          outputs = "${pkgs.kanshi}/bin/kanshi";
+          outputs = "kanshi";
           notifications = "mako";
           gamma = "wlunset";
           idle = "swayidle before-sleep swaylock";
           portal = "${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal";
+        };
+        command = {
+          binding_terminal = "<super> KEY_ENTER";
+          command_terminal = "kitty";
         };
       };
     };
