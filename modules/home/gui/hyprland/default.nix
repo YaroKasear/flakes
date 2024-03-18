@@ -34,7 +34,6 @@ in {
 
     united = {
       gammastep.enable = true;
-      kitty.enable = true;
       waybar.enable = true;
     };
 

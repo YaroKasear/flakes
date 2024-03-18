@@ -18,6 +18,7 @@ in {
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
+      kitty.enable = true;
       user.wallpaper.enable = true;
       vscode.enable = true;
     };
