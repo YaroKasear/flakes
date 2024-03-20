@@ -67,34 +67,44 @@ with lib.united;
       skypeforlinux
       telegram-desktop
     ];
-    persistence."/persistent/home/yaro" = {
+    persistence."/persistent${config.united.user.directories.home}" =
+    let
+      mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
+
+      cache-directory = mkHomeCanon config.united.user.directories.cache;
+      config-directory = mkHomeCanon config.united.user.directories.config;
+      data-directory = mkHomeCanon config.united.user.directories.data;
+      state-directory = mkHomeCanon config.united.user.directories.state;
+    in
+    {
       allowOther = true;
       directories = [
-        ".cache/cliphist"
-        ".cache/oh-my-posh"
-        ".config/Code"
-        ".config/Nextcloud"
-        ".config/protonmail"
-        ".config/skypeforlinux"
-        ".config/WebCord"
-        ".local/share/keyrings"
-        ".local/share/protonmail"
-        ".local/share/TelegramDesktop"
+        "${cache-directory}/cliphist"
+        "${cache-directory}/oh-my-posh"
+        "${config-directory}/Code"
+        "${config-directory}/Nextcloud"
+        "${config-directory}/protonmail"
+        "${config-directory}/skypeforlinux"
+        "${config-directory}/StardewValley/Saves"
+        "${config-directory}/WebCord"
+        "${data-directory}/keyrings"
+        "${data-directory}/protonmail"
+        "${data-directory}/TelegramDesktop"
         {
-          directory = ".local/share/Steam";
+          directory = "${data-directory}/Steam";
           method = "symlink";
         }
-        ".local/share/zoxide"
-        ".local/state/wireplumber"
+        "${data-directory}/zoxide"
+        "${state-directory}/wireplumber"
         ".mozilla"
         ".thunderbird"
         "flakes"
       ];
       files = [
         ".zsh_history"
-        ".cache/wofi-dmenu"
-        ".cache/wofi-drun"
-        ".cache/wofi-run"
+        "${cache-directory}/wofi-dmenu"
+        "${cache-directory}/wofi-drun"
+        "${cache-directory}/wofi-run"
       ];
     };
   };
