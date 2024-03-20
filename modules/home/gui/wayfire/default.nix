@@ -89,7 +89,7 @@ in {
           notifications = "mako";
           gamma = "wlunset";
           idle = "swayidle before-sleep swaylock";
-          portal = "${pkgs.xdg-desktop-portal}/libexec/xdg-desktop-portal";
+          portal = "${pkgs.xdg-desktop-portal-gtk}/libexec/xdg-desktop-portal-gtk";
         };
         command = {
           binding_terminal = "<super> KEY_ENTER";
@@ -146,9 +146,11 @@ in {
         };
         cube = {
           activate = "<ctrl> <alt> BTN_LEFT";
+          background = "${to-rgba-normal background}";
+          background_mode = "skydome";
+          deform = 2;
           rotate_left = "<ctrl> <alt> KEY_LEFT";
           rotate_right = "<ctrl> <alt> KEY_RIGHT";
-          background = "${to-rgba-normal background}";
         };
         expo = {
           toggle = "<super> KEY_E";
@@ -169,7 +171,19 @@ in {
     };
 
     home = {
-      sessionVariables.WLR_NO_HARDWARE_CURSORS = 1;
+      sessionVariables = {
+        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+        GBM_BACKEND = "nvidia-drm";
+        LIBVA_DRIVER_NAME = "nvidia";
+        QT_QPA_PLATFORMTHEME = mkForce "qt5ct";
+        WLR_NO_HARDWARE_CURSORS = 1;
+        WLR_DRM_NO_ATOMIC = 1;
+        XCURSOR_SIZE = 24;
+        XDG_CURRENT_DESKTOP = "wayfire";
+        XDG_SESSION_DESKTOP = "wayfire";
+        XDG_SESSION_TYPE = "wayland";
+        __GL_GSYNC_ALLOWED = 1;
+      };
 
       packages = with pkgs; [
         grim

@@ -22,7 +22,7 @@ with lib.united;
     protonmail-bridge.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
-    wayland.compositor = "wayfire";
+    wayland.compositor = "hyprland";
     wine.enable = true;
     user = {
       directories = {

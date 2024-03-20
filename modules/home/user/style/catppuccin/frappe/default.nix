@@ -170,6 +170,9 @@ in {
         prompt = "#ca9ee6";
         "hl+" = "#e78284";
       };
+      oh-my-posh = mkIf config.united.style.catppuccin.frappe.enable {
+        useTheme = "catppuccin_frappe";
+      };
       kitty.extraConfig = mkIf config.united.kitty.enable ''
         include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Frappe.conf
       '';

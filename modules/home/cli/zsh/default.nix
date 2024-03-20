@@ -13,7 +13,7 @@ in {
     programs = {
       oh-my-posh = {
         enable = true;
-        useTheme = "atomic";
+        useTheme = mkDefault "agnosterplus";
         enableZshIntegration = true;
       };
       zsh = {
