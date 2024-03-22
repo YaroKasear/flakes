@@ -75,8 +75,7 @@ with lib.united;
       config-directory = mkHomeCanon config.united.user.directories.config;
       data-directory = mkHomeCanon config.united.user.directories.data;
       state-directory = mkHomeCanon config.united.user.directories.state;
-    in
-    {
+    in {
       allowOther = true;
       directories = [
         "${cache-directory}/cliphist"

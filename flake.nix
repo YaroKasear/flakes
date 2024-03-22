@@ -228,6 +228,7 @@
         ];
         "yaro@loki-xorg".modules = with inputs; [
           hyprland.homeManagerModules.default
+          hyprlock.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim

@@ -22,14 +22,22 @@ with lib.united;
         pygobject3
       ]))
     ];
-    persistence."/persistent/home/yaro" = {
+    persistence."/persistent${config.united.user.directories.home}" = let
+      mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
+
+      cache-directory = mkHomeCanon config.united.user.directories.cache;
+      config-directory = mkHomeCanon config.united.user.directories.config;
+      data-directory = mkHomeCanon config.united.user.directories.data;
+      state-directory = mkHomeCanon config.united.user.directories.state;
+    in {
       allowOther = true;
       directories = [
         {
-          directory = ".local/share/Steam";
+          directory = "${data-directory}/Steam";
           method = "symlink";
         }
         "flakes"
+        "${config-directory}/StardewValley/Saves"
       ];
     };
   };

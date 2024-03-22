@@ -65,6 +65,7 @@ in {
         min-free = ${toString (1024 * 1024 * 1024)}
         max-free = ${toString (5 * 1024 * 1024 * 1024)}
       '';
+      settings.auto-optimise-store = true;
     };
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
