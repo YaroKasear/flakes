@@ -78,32 +78,17 @@ with lib.united;
     in {
       allowOther = true;
       directories = [
-        "${cache-directory}/cliphist"
-        "${cache-directory}/oh-my-posh"
-        "${config-directory}/Code"
-        "${config-directory}/Nextcloud"
         "${config-directory}/protonmail"
         "${config-directory}/skypeforlinux"
         "${config-directory}/StardewValley/Saves"
         "${config-directory}/WebCord"
-        "${data-directory}/keyrings"
         "${data-directory}/protonmail"
         "${data-directory}/TelegramDesktop"
         {
           directory = "${data-directory}/Steam";
           method = "symlink";
         }
-        "${data-directory}/zoxide"
-        "${state-directory}/wireplumber"
-        ".mozilla"
-        ".thunderbird"
         "flakes"
-      ];
-      files = [
-        ".zsh_history"
-        "${cache-directory}/wofi-dmenu"
-        "${cache-directory}/wofi-drun"
-        "${cache-directory}/wofi-run"
       ];
     };
   };

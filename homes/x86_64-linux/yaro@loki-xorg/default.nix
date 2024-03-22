@@ -11,6 +11,7 @@ with lib.united;
       linux.waylandSupport = false;
     };
     gnupg.enable = true;
+    persistent.enable = true;
     sonic3air.enable = true;
   };
 
