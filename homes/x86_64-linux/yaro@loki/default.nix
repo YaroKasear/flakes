@@ -1,6 +1,7 @@
 { lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
 
 with lib.united;
+# let pkgs = inputs.nixpkgs-stable.legacyPackages."x86_64-linux"; in
 {
   united = {
     admin.enable = true;
@@ -19,6 +20,7 @@ with lib.united;
     lutris.enable = true;
     mpv.enable = true;
     obs-studio.enable = true;
+    persistent.enable = true;
     protonmail-bridge.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
