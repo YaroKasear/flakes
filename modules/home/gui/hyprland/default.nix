@@ -297,21 +297,21 @@ in {
       };
     };
 
-    programs.hyprlock = {
-      enable = true;
-      general = {};
-      images = mkDefault [
-        {
-          path = "${config.united.user.icon}";
-        }
-      ];
-      backgrounds = with config.united.style.colors; mkDefault [
-        {
-          path = "${config.united.style.wallpaper}";
-          color = "rgb(${lib.replaceStrings ["#"] [""] background})";
-        }
-      ];
-    };
+    # programs.hyprlock = {
+    #   enable = true;
+    #   general = {};
+    #   images = mkDefault [
+    #     {
+    #       path = "${config.united.user.icon}";
+    #     }
+    #   ];
+    #   backgrounds = with config.united.style.colors; mkDefault [
+    #     {
+    #       path = "${config.united.style.wallpaper}";
+    #       color = "rgb(${lib.replaceStrings ["#"] [""] background})";
+    #     }
+    #   ];
+    # };
 
     systemd.user = {
       services.random-wallpaper = {
