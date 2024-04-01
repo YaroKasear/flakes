@@ -51,13 +51,6 @@ with lib.united;
     };
   };
 
-  # programs.hyprlock.backgrounds = with config.united.style.colors; [
-  #   {
-  #     path = "screenshot";
-  #     color = "rgb(${lib.replaceStrings ["#"] [""] background})";
-  #   }
-  # ];
-
   home = {
     packages = with pkgs; [
       audacity

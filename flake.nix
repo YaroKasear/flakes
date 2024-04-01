@@ -74,11 +74,6 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprpicker = {
       url = "github:hyprwm/hyprpicker";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -167,7 +162,6 @@
       systems = {
         modules.nixos = with inputs; [
           disko.nixosModules.disko
-          # hyprlock.nixosModules.hyprlock
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
@@ -193,7 +187,6 @@
         "yaro@loki".modules = with inputs; [
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
-          hyprlock.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
@@ -202,7 +195,6 @@
         "cnelson@loki".modules = with inputs; [
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
-          hyprlock.homeManagerModules.default
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
@@ -228,7 +220,6 @@
         ];
         "yaro@loki-xorg".modules = with inputs; [
           hyprland.homeManagerModules.default
-          hyprlock.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
@@ -236,7 +227,6 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
-          # hyprlock.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
