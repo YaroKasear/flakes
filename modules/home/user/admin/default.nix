@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  is-linux = pkgs.stdenv.isLinux;
+
   cfg = config.united.admin;
 in {
   options.united.admin = {
@@ -21,7 +23,7 @@ in {
       nvd
       snowfallorg.flake
       sops
-      traceroute
+      mkIf is-linux (traceroute)
       virt-manager
     ];
   };
