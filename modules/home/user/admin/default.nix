@@ -23,7 +23,7 @@ in {
       nvd
       snowfallorg.flake
       sops
-      mkIf is-linux (traceroute)
+      (mkIf is-linux traceroute)
       virt-manager
     ];
   };
