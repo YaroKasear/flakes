@@ -20,7 +20,8 @@
     yaro = {
       isNormalUser = true;
       extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
-      shell = pkgs.zsh;
+      # shell = pkgs.zsh;
+      shell = pkgs.nushell;
       hashedPasswordFile = config.sops.secrets.hashedpw.path;
     };
   };

@@ -83,6 +83,12 @@ in {
             version = "0.4.13";
             sha256 = "WOx5kmy7etu/am665jAyryYNWTONK5Zx9klo9k/Iog4=";
           }
+          {
+            name = "pomodoro";
+            publisher = "cosminalco";
+            version = "1.1.0";
+            sha256 = "CnUmp+KKOqwctOMK4KNhjn74zDlxBdT2jYffzKneHWs=";
+          }
         ];
       };
     };

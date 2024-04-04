@@ -22,6 +22,7 @@ with lib.united;
     obs-studio.enable = true;
     persistent.enable = true;
     protonmail-bridge.enable = true;
+    rust.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
     wayland.compositor = "hyprland";

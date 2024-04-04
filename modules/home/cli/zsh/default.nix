@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     programs = {
       oh-my-posh = {
-        enable = true;
+        enable = mkDefault true;
         useTheme = mkDefault "agnosterplus";
         enableZshIntegration = true;
       };
