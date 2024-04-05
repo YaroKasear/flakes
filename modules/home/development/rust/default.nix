@@ -36,6 +36,8 @@ in {
           $env.config = {
             show_banner: false,
           }
+
+          neofetch
         '';
         shellAliases = {
           cat = "bat";
