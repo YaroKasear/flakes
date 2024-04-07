@@ -201,6 +201,7 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@titan".modules = with inputs; [
+          impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
