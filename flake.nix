@@ -208,13 +208,13 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@europa".modules = with inputs; [
+          impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
         "yaro@io".modules = with inputs; [
-          hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
