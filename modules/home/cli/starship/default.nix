@@ -10,7 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    starship = {
+    programs.starship = {
       enable = true;
       settings = with config.united.style.colors; {
         format = ''
