@@ -42,6 +42,7 @@ in {
         shellAliases = {
           cat = "bat";
           grep = "rg";
+          ssh = "kitty ssh";
         };
       };
       oh-my-posh.enableNushellIntegration = false;
