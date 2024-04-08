@@ -38,18 +38,16 @@ in {
           }
 
           neofetch
+          fortune -a | cowsay -n
         '';
         shellAliases = {
           cat = "bat";
           grep = "rg";
-          ssh = "kitty ssh";
+          ssh = "kitten ssh";
         };
       };
       oh-my-posh.enableNushellIntegration = false;
       ripgrep.enable = true;
-      starship = {
-        enable = true;
-      };
       zellij = {
         enable = true;
       };

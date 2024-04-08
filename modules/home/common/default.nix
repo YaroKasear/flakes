@@ -43,6 +43,7 @@ in {
       gnupg.enable = true;
       tmux.enable = true;
       nixvim.enable = true;
+      starship.enable = true;
       sops.enable = true;
       user.enable = true;
       vim.enable = false;

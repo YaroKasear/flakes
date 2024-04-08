@@ -11,11 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      oh-my-posh = {
-        enable = mkDefault true;
-        useTheme = mkDefault "agnosterplus";
-        enableZshIntegration = true;
-      };
       zsh = {
         enable = true;
         autosuggestion.enable = true;
