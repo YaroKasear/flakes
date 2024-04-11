@@ -13,12 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-      (lutris.override {
-        extraLibraries = pkgs: [
-        ];
-        extraPkgs = pkgs: [
-        ];
-      })
+      lutris
       heroic
     ];
   };

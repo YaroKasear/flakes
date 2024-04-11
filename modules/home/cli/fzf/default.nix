@@ -12,6 +12,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       (mkIf config.united.zsh.enable zsh-fzf-tab)
+      (mkIf config.united.zsh.enable fzf-zsh)
     ];
     programs = {
       fzf = {

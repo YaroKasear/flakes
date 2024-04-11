@@ -25,28 +25,6 @@ in {
 
     programs = {
       bacon.enable = true;
-      eza.enableNushellIntegration = config.united.eza.enable;
-      gitui.enable = true;
-      nushell = {
-        enable = true;
-        environmentVariables = {
-          EDITOR = "nvim";
-        };
-        extraConfig = ''
-          $env.config = {
-            show_banner: false,
-          }
-
-          neofetch
-          fortune -a | cowsay -n
-        '';
-        shellAliases = {
-          cat = "bat";
-          grep = "rg";
-          ssh = "kitten ssh";
-        };
-      };
-      oh-my-posh.enableNushellIntegration = false;
       ripgrep.enable = true;
       zellij = {
         enable = true;
