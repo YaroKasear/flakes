@@ -105,7 +105,13 @@ with lib.united;
         flavor = "gmail.com";
         primary = true;
         realName = "Yaro Kasear";
-        thunderbird.enable = true;
+        thunderbird = {
+          enable = true;
+          settings = id: {
+            "mail.smtpserver.smtp_${id}.authMethod" = 10;
+            "mail.server.server_${id}.authMethod" = 10;
+          };
+        };
         gpg = {
           key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
           signByDefault = true;
@@ -138,7 +144,13 @@ with lib.united;
         address = "wanachi@tlkmuck.org";
         flavor = "gmail.com";
         realName = "Wanachi";
-        thunderbird.enable = true;
+        thunderbird = {
+          enable = true;
+          settings = id: {
+            "mail.smtpserver.smtp_${id}.authMethod" = 10;
+            "mail.server.server_${id}.authMethod" = 10;
+          };
+        };
         gpg = {
             key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
             signByDefault = true;

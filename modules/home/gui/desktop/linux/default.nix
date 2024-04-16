@@ -26,7 +26,7 @@ in {
     home = {
       packages = with pkgs;
       [
-        bitwarden
+        # bitwarden
         libreoffice-fresh
         playerctl
         yubioath-flutter
