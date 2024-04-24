@@ -25,7 +25,7 @@ with lib.united;
     rust.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
-    wayland.compositor = "sway";
+    wayland.compositor = "hyprland";
     wine.enable = true;
     user = {
       directories = {

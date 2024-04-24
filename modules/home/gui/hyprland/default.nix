@@ -118,7 +118,10 @@ in {
           "systemctl --user start random-wallpaper.timer"
         ];
 
-        monitor = ",highrr,auto,auto";
+        monitor = [
+          "DP-3,2560x1440@144,0x0,1"
+          "Unknown-1,disable"
+        ];
         "$terminal" = "kitty";
         "$menu" = "wofi --show drun";
 
