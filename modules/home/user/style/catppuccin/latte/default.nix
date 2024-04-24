@@ -177,7 +177,7 @@ in {
         '';
       };
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
-        flavour = "latte";
+        settings.flavour = "latte";
       };
       vim = mkIf config.united.vim.enable {
         extraConfig = ''

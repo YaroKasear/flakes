@@ -31,13 +31,13 @@ in {
     };
     colors = with inputs.nix-rice.lib.color; {
       black = mkOpt types.str "${cfg.colors.black_dull}" "My black color!";
-      red = mkOpt types.str "${cfg.colors.red_bright}" "My red color!";
-      green = mkOpt types.str "${cfg.colors.green_bright}" "My green color!";
-      yellow = mkOpt types.str "${cfg.colors.yellow_bright}" "My yellow color!";
-      blue = mkOpt types.str "${cfg.colors.blue_bright}" "My blue color!";
-      magenta = mkOpt types.str "${cfg.colors.magenta_bright}" "My magenta color!";
-      cyan = mkOpt types.str "${cfg.colors.cyan_bright}" "My cyan color!";
-      white = mkOpt types.str "${cfg.colors.white_bright}" "My white color!";
+      red = mkOpt types.str "${cfg.colors.red_dull}" "My red color!";
+      green = mkOpt types.str "${cfg.colors.green_dull}" "My green color!";
+      yellow = mkOpt types.str "${cfg.colors.yellow_dull}" "My yellow color!";
+      blue = mkOpt types.str "${cfg.colors.blue_dull}" "My blue color!";
+      magenta = mkOpt types.str "${cfg.colors.magenta_dull}" "My magenta color!";
+      cyan = mkOpt types.str "${cfg.colors.cyan_dull}" "My cyan color!";
+      white = mkOpt types.str "${cfg.colors.white_dull}" "My white color!";
 
       black_dull = mkOpt types.str "${cfg.colors.color0}" "My black color!";
       black_bright = mkOpt types.str "${cfg.colors.color8}" "My black color!";
