@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -29,7 +29,7 @@ in {
         inactive-color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
       };
     };
-    colors = {
+    colors = with inputs.nix-rice.lib.color; {
       black = mkOpt types.str "${cfg.colors.black_dull}" "My black color!";
       red = mkOpt types.str "${cfg.colors.red_bright}" "My red color!";
       green = mkOpt types.str "${cfg.colors.green_bright}" "My green color!";
@@ -82,22 +82,22 @@ in {
       mark3_background = mkOpt types.str "${cfg.colors.black}" "Mark 1 background color!";
       mark3_foreground = mkOpt types.str "#f274bc" "Mark 1 foreground color!";
 
-      color0 = mkOpt types.str "#000000" "Color 0";
-      color1 = mkOpt types.str "#cc0403" "Color 1";
-      color2 = mkOpt types.str "#19cb00" "Color 2";
-      color3 = mkOpt types.str "#cecb00" "Color 3";
-      color4 = mkOpt types.str "#0d73cc" "Color 4";
-      color5 = mkOpt types.str "#cb1ed1" "Color 5";
-      color6 = mkOpt types.str "#0dcdcd" "Color 6";
-      color7 = mkOpt types.str "#dddddd" "Color 7";
-      color8 = mkOpt types.str "#767676" "Color 8";
-      color9 = mkOpt types.str "#f2201f" "Color 9";
-      color10 = mkOpt types.str "#23fd00" "Color 10";
-      color11 = mkOpt types.str "#fffd00" "Color 11";
-      color12 = mkOpt types.str "#1a8fff" "Color 12";
-      color13 = mkOpt types.str "#fd28ff" "Color 13";
-      color14 = mkOpt types.str "#14ffff" "Color 14";
-      color15 = mkOpt types.str "#ffffff" "Color 15";
+      color0 = mkOpt types.str  "${toRgbHex {r = 0;   g = 0;   b = 0;   a = 255;}}" "Color 0";
+      color1 = mkOpt types.str  "${toRgbHex {r = 170; g = 0;   b = 0;   a = 255;}}" "Color 1";
+      color2 = mkOpt types.str  "${toRgbHex {r = 0;   g = 170; b = 0;   a = 255;}}" "Color 2";
+      color3 = mkOpt types.str  "${toRgbHex {r = 170; g = 85;  b = 0;   a = 255;}}" "Color 3";
+      color4 = mkOpt types.str  "${toRgbHex {r = 0;   g = 0;   b = 170; a = 255;}}" "Color 4";
+      color5 = mkOpt types.str  "${toRgbHex {r = 170; g = 0;   b = 170; a = 255;}}" "Color 5";
+      color6 = mkOpt types.str  "${toRgbHex {r = 0;   g = 170; b = 170; a = 255;}}" "Color 6";
+      color7 = mkOpt types.str  "${toRgbHex {r = 170; g = 170; b = 170; a = 255;}}" "Color 7";
+      color8 = mkOpt types.str  "${toRgbHex {r = 85;  g = 85;  b = 85;  a = 255;}}" "Color 8";
+      color9 = mkOpt types.str  "${toRgbHex {r = 255; g = 85;  b = 85;  a = 255;}}" "Color 9";
+      color10 = mkOpt types.str "${toRgbHex {r = 85;  g = 255; b = 85;  a = 255;}}" "Color 10";
+      color11 = mkOpt types.str "${toRgbHex {r = 255; g = 255; b = 85;  a = 255;}}" "Color 11";
+      color12 = mkOpt types.str "${toRgbHex {r = 85;  g = 85;  b = 255; a = 255;}}" "Color 12";
+      color13 = mkOpt types.str "${toRgbHex {r = 255; g = 85;  b = 255; a = 255;}}" "Color 13";
+      color14 = mkOpt types.str "${toRgbHex {r = 85;  g = 255; b = 255; a = 255;}}" "Color 14";
+      color15 = mkOpt types.str "${toRgbHex {r = 255; g = 255; b = 255; a = 255;}}" "Color 15";
       extraColors = mkOpt types.attrsOf types.str "Additional colors without any explicit role!";
     };
   };
