@@ -74,6 +74,7 @@ with lib.united;
     in {
       allowOther = true;
       directories = [
+        "${config-directory}/heroic"
         "${config-directory}/protonmail"
         "${config-directory}/skypeforlinux"
         "${config-directory}/StardewValley/Saves"
