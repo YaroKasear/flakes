@@ -15,11 +15,11 @@ in {
     home.packages = if is-wayland
     then
       [
-        pkgs.wine-wayland
+        pkgs.wineWowPackages.waylandFull
       ]
     else
       [
-        pkgs.wine
+        pkgs.wineWowPackages
       ];
   };
 }
