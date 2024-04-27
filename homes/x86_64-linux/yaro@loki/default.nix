@@ -61,7 +61,6 @@ with lib.united;
       makemkv
       mosquitto
       skypeforlinux
-      telegram-desktop
     ];
     persistence."/persistent${config.united.user.directories.home}" =
     let
@@ -80,22 +79,12 @@ with lib.united;
         "${config-directory}/StardewValley/Saves"
         "${config-directory}/WebCord"
         "${data-directory}/protonmail"
-        "${data-directory}/TelegramDesktop"
         {
           directory = "${data-directory}/Steam";
           method = "symlink";
         }
         "flakes"
       ];
-    };
-  };
-
-  xdg = {
-    mimeApps = {
-      defaultApplications = {
-        "x-scheme-handler/tg" = [ "userapp-Telegram Desktop-8GRXI2.desktop" ];
-      };
-      associations.added."x-scheme-handler/tg" = [ "org.telegram.desktop.desktop;userapp-Telegram Desktop-ZSJDH2.desktop;userapp-Telegram Desktop-8GRXI2.desktop;" ];
     };
   };
 
