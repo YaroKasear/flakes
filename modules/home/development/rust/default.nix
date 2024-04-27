@@ -26,9 +26,6 @@ in {
     programs = {
       bacon.enable = true;
       ripgrep.enable = true;
-      zellij = {
-        enable = true;
-      };
     };
   };
 }
