@@ -13,24 +13,23 @@ in {
 
   config = mkIf cfg.enable {
     programs.zellij = {
-      zellij = {
-        enable = true;
-        enableZshIntegration = true;
-        settings = {
-          themes.default = with config.united.style.colors; {
-            fg = "${foreground}";
-            bg = "${background}";
-            black = "${black}";
-            red = "${red}";
-            green = "${green}";
-            yellow = "${yellow}";
-            blue = "${blue}";
-            magenta = "${magenta}";
-            cyan = "${cyan}";
-            white = "${white}";
-            orange = "${orange}";
-          };
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        themes.default = with config.united.style.colors; {
+          fg = "${foreground}";
+          bg = "${background}";
+          black = "${black}";
+          red = "${red}";
+          green = "${green}";
+          yellow = "${yellow}";
+          blue = "${blue}";
+          magenta = "${magenta}";
+          cyan = "${cyan}";
+          white = "${white}";
+          orange = "${yellow}";
         };
+        ui.pane_frames.rounded_corners = true;
       };
     };
   };

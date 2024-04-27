@@ -48,6 +48,7 @@ in {
       user.enable = true;
       vim.enable = false;
       yubikey.enable = true;
+      zellij.enable = true;
       zoxide.enable = true;
       zsh.enable = true;
     };
