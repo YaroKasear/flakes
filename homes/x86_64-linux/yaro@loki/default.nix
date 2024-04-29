@@ -42,6 +42,7 @@ with lib.united;
     style = with config.united.style; {
       enable = true;
       catppuccin.frappe.enable = true;
+      catppuccin.latte.enable = false;
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;

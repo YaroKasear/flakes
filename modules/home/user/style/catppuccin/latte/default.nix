@@ -5,12 +5,12 @@ with lib.united;
 let
   is-linux = pkgs.stdenv.isLinux;
 
-  home-directory = config.united.user.home-directory;
+  home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin.latte;
 in {
   options.united.style.catppuccin.latte = {
-    enable = mkEnableOption "Catppuccin Latte theme!";
+    enable = mkEnableOption "catppuccin Latte theme!";
   };
 
   config = mkIf cfg.enable {
@@ -28,7 +28,7 @@ in {
         selection_foreground = extraColors.text;
 
         cursor = extraColors.rosewater;
-        cursor_text_color = extraColors.base;
+        cursor_text_color = extraColors.crust;
         url_color = blue;
         active_tab_foreground = extraColors.surface0;
         active_tab_background = active_border_color;
@@ -41,29 +41,29 @@ in {
         tab_bar_background = background;
         tab_bar_margin_color = background;
 
-        color0 = extraColors.subtext1;
+        color0 = extraColors.surface1;
         color1 = red;
         color2 = green;
         color3 = yellow;
         color4 = blue;
         color5 = extraColors.pink;
         color6 = extraColors.teal;
-        color7 = extraColors.surface2;
-        color8 = extraColors.subtext0;
+        color7 = extraColors.subtext1;
+        color8 = extraColors.surface2;
         color9 = red;
         color10 = green;
         color11 = yellow;
         color12 = blue;
         color13 = extraColors.pink;
         color14 = extraColors.teal;
-        color15 = extraColors.surface1;
+        color15 = extraColors.subtext0;
 
         mark1_background = extraColors.lavender;
-        mark1_foreground = extraColors.base;
+        mark1_foreground = extraColors.crust;
         mark2_background = extraColors.mauve;
-        mark2_foreground = extraColors.base;
+        mark2_foreground = extraColors.crust;
         mark3_background = extraColors.sapphire;
-        mark3_foreground = extraColors.base;
+        mark3_foreground = extraColors.crust;
 
         extraColors = rec {
           base = "#eff1f5";
@@ -116,27 +116,29 @@ in {
 
     home = {
       pointerCursor = mkIf is-linux {
-        package = pkgs.catppuccin-cursors.latteLight;
-        name = "Catppuccin-Latte-Light-Cursors";
+        package = pkgs.catppuccin-cursors.latteBlue;
+        name = "Catppuccin-Latte-Dark-Cursors";
         size = 24;
       };
       packages = [
         (pkgs.catppuccin.override { variant = "latte"; })
-        (mkIf is-linux pkgs.catppuccin-cursors.latteLight)
+        (mkIf is-linux pkgs.catppuccin-cursors.latteBlue)
       ];
-      file = mkIf config.united.vim.enable {
-        ".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";
+      file = {
+        # mkIf config.united.vim.enable (".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";);
+        # ".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";
+        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Latte-Blue-Cursors".source = "${inputs.hyprcatppuccin-latte-blue}/theme_Extracted Theme";
       };
     };
 
     gtk = {
       cursorTheme = mkIf is-linux {
-        package = pkgs.catppuccin-cursors.latteLight;
-        name = "Catppuccin-Latte-Light";
+        package = pkgs.catppuccin-cursors.latteBlue;
+        name = "Catppuccin-Latte-Blue";
         size = 24;
       };
       theme = {
-        name = "Catppuccin-Latte-Standard-Blue-Light";
+        name = "Catppuccin-Latte-Standard-Blue";
         package = mkIf is-linux (pkgs.catppuccin-gtk.override { variant = "latte"; });
       };
     };
@@ -168,6 +170,9 @@ in {
         prompt = "#8839ef";
         "hl+" = "#d20f39";
       };
+      oh-my-posh = mkIf config.united.style.catppuccin.latte.enable {
+        useTheme = "catppuccin_latte";
+      };
       kitty.extraConfig = mkIf config.united.kitty.enable ''
         include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Latte.conf
       '';
@@ -186,7 +191,7 @@ in {
       };
       vscode = mkIf config.united.vscode.enable {
         userSettings = {
-          "workbench.colorTheme" = "Catppuccin Latte";
+          "workbench.colorTheme" = "Catppuccin Frappé";
           "workbench.iconTheme" = "catppuccin-latte";
         };
       };
@@ -204,6 +209,10 @@ in {
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {
         source = [ "${config.united.user.directories.config}/hypr/latte.conf" ];
+
+        env = [
+          "HYPRCURSOR_THEME,Hyprcatppuccin-Latte-Dark-Cursors"
+        ];
 
         general = {
           "col.inactive_border" = "$overlay0";
