@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -14,6 +14,7 @@ in {
 
     programs.waybar = with config.united.style.colors; {
       enable = true;
+      package = inputs.waybar.packages.x86_64-linux.waybar;
       settings = {
         bar = {
           layer = "top";
