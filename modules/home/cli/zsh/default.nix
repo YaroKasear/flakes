@@ -65,7 +65,7 @@ in {
           }
 
           if ! { [ -n "$TMUX" ]; } then
-            neofetch
+            fastfetch
             fortune -a | cowsay -n
           fi
         '';

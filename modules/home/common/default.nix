@@ -23,7 +23,7 @@ in {
         file
         fortune
         killall
-        neofetch
+        fastfetch
         p7zip
         thefuck
         unzip
