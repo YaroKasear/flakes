@@ -56,7 +56,7 @@ in {
 
     nix = {
       optimise.automatic = true;
-      package = pkgs.nixFlakes;
+      # package = pkgs.nixFlakes;
       gc = {
         automatic = true;
         dates = "weekly";

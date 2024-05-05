@@ -8,5 +8,5 @@ with lib.united;
     sops.enable = false;
   };
 
-  nix.package = pkgs.nixVersions.latest; # Fixes an update in upstread nixpkgs that breaks home-manager standalone configurations in this flake.
+  # nix.package = pkgs.nixVersions.latest; # Fixes an update in upstread nixpkgs that breaks home-manager standalone configurations in this flake.
 }
