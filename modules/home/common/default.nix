@@ -30,8 +30,6 @@ in {
       ];
     };
 
-    nix.package = mkDefault pkgs.nixVersions.latest; # Fixes an update in upstread nixpkgs that breaks home-manager standalone configurations in this flake.
-
     programs = {
       home-manager.enable = true;
       nix-index.enable = true;
