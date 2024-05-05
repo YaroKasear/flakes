@@ -2,6 +2,7 @@
 
 with lib.united;
 {
+  nix.package = pkgs.nixVersions.latest
   united = {
     admin.enable = true;
     common.enable = true;
