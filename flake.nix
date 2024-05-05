@@ -121,12 +121,12 @@
     snowfall-flake = {
       url = "github:snowfallorg/flake";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.url = "github:fl42v/flake-utils-plus";
     };
 
     snowfall-lib = {
       url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils-plus.url = "github:fl42v/flake-utils-plus";
     };
 
     sops-nix = {
