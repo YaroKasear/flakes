@@ -30,6 +30,8 @@ in {
       ];
     };
 
+    nix.package = mkDefault pkgs.nixVersions.latest; # Fixes an update in upstread nixpkgs that breaks home-manager standalone configurations in this flake.
+
     programs = {
       home-manager.enable = true;
       nix-index.enable = true;
@@ -44,7 +46,7 @@ in {
       tmux.enable = true;
       nixvim.enable = true;
       starship.enable = true;
-      sops.enable = true;
+      sops.enable = mkDefault true;
       user.enable = true;
       vim.enable = false;
       yubikey.enable = true;
