@@ -192,7 +192,7 @@ in {
       };
       vscode = mkIf config.united.vscode.enable {
         userSettings = {
-          "workbench.colorTheme" = "Catppuccin Frappé";
+          "workbench.colorTheme" = "Catppuccin Macchiato";
           "workbench.iconTheme" = "catppuccin-macchiato";
         };
       };
