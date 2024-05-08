@@ -774,6 +774,19 @@
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz"
       }
     },
+    "hyprcatppuccin-macchiato-dark": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715173179,
+        "narHash": "sha256-jsFu+BMUseTqhL+39xsmgCferQwd3CGdb28OX66/u98=",
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Macchiato-Dark-Cursors.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Macchiato-Dark-Cursors.tar.gz"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -1458,6 +1471,7 @@
         "home-manager": "home-manager",
         "hyprcatppuccin-frappe-dark": "hyprcatppuccin-frappe-dark",
         "hyprcatppuccin-latte-blue": "hyprcatppuccin-latte-blue",
+        "hyprcatppuccin-macchiato-dark": "hyprcatppuccin-macchiato-dark",
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "hyprpicker": "hyprpicker",
