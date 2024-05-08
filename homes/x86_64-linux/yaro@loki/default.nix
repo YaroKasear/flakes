@@ -16,6 +16,7 @@ with lib.united;
       linux.waylandSupport = true;
     };
     discord.enable = true;
+    hyprland.floating = true;
     irssi.enable = true;
     lutris.enable = true;
     mpv.enable = true;

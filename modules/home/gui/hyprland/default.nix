@@ -10,6 +10,7 @@ let
 in {
   options.united.hyprland = {
     enable = mkEnableOption "Hyprland";
+    floating = mkBoolOpt false "Make Hyprland behave as a floating WM instead.";
   };
 
   config = mkIf cfg.enable {
@@ -40,6 +41,9 @@ in {
     wayland.windowManager.hyprland = {
       enable = true;
       sourceFirst = true;
+      plugins = mkIf cfg.floating [
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+      ];
       settings = with config.united.style.colors; {
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
         "$red" = "rgb(${lib.replaceStrings ["#"] [""] red})";
@@ -208,6 +212,9 @@ in {
         };
 
         windowrulev2 = [
+          (mkIf cfg.floating "float, class:.*")
+          (mkIf cfg.floating "plugin:hyprbars:nobar, title:(Picture-in-Picture)")
+          (mkIf cfg.floating "plugin:hyprbars:nobar, class:^(kitty-console)$")
           "suppressevent maximize, class:.*"
           "float, title:^(Picture-in-Picture)$"
           "size 800 450, title:(Picture-in-Picture)"
@@ -292,6 +299,16 @@ in {
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
+
+        plugin = mkIf cfg.floating {
+          hyprbars = {
+            bar_height = 20;
+            hyprbars-button = [
+              "rgb(${lib.replaceStrings ["#"] [""] red}), 15, 󰖭, hyprctl dispatch killactive"
+              "rgb(${lib.replaceStrings ["#"] [""] green}), 15, 󰖯, hyprctl dispatch fullscreen 1"
+            ];
+          };
+        };
 
         debug = {
           enable_stdout_logs = true;
