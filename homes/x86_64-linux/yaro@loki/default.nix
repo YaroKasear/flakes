@@ -43,7 +43,8 @@ with lib.united;
       enable = true;
       catppuccin.frappe.enable = false;
       catppuccin.latte.enable = false;
-      catppuccin.macchiato.enable = true;
+      catppuccin.macchiato.enable = false;
+      catppuccin.mocha.enable = true;
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;
