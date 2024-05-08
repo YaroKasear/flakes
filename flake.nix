@@ -69,6 +69,11 @@
       flake = false;
     };
 
+    hyprcatppuccin-mocha-dark = {
+      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Mocha-Dark-Cursors.tar.gz";
+      flake = false;
+    };
+
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
