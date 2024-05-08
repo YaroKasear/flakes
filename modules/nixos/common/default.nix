@@ -47,6 +47,8 @@ in {
 
     hardware.enableRedistributableFirmware = lib.mkDefault true;
 
+    home-manager.backupFileExtension = "bak";
+
     i18n.defaultLocale = "en_US.UTF-8";
 
     networking = {

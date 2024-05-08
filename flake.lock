@@ -751,7 +751,7 @@
     "hyprcatppuccin-frappe-dark": {
       "flake": false,
       "locked": {
-        "lastModified": 1715171067,
+        "lastModified": 1715174064,
         "narHash": "sha256-mYtYttpjqmB9WKXIb+HT3AUiptzyjLDGlKAiKm4GAfM=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz"
@@ -764,7 +764,7 @@
     "hyprcatppuccin-latte-blue": {
       "flake": false,
       "locked": {
-        "lastModified": 1715171067,
+        "lastModified": 1715174064,
         "narHash": "sha256-1JL7XTssmILu/8v3Yaal9+u8ue4UlZP0GcbIIeXmlik=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz"
@@ -828,11 +828,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1715148714,
-        "narHash": "sha256-hbNb9iO7W809WLmTa6i7OqtVSR/0B2L4L/Ra860GUO0=",
+        "lastModified": 1715171420,
+        "narHash": "sha256-eMkwxLtoVHrIAJlb+xjA0jlFGqEweKwpzqY5uGhc2xA=",
         "ref": "refs/heads/main",
-        "rev": "70b5e6df70a7eac180e2c8e9c2bce70ff43b45ad",
-        "revCount": 4634,
+        "rev": "36d32973ddc1bd1d4096ec36f3b8cb507009eba4",
+        "revCount": 4635,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
@@ -855,11 +855,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714916173,
-        "narHash": "sha256-XP9v42PdSBkP/JlllfZR/0FDD1PMAVqw+LhOi79g0MA=",
+        "lastModified": 1715172513,
+        "narHash": "sha256-TjQ74AGpEgNx/+sM0VKnPAOlYEG22FUJ9+RwDDP/hoA=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "d716d1221348b5bef9d13161876caa91a3e33705",
+        "rev": "dcbdc9a08d1df753d6799bab823486f1fff5b8e6",
         "type": "github"
       },
       "original": {
@@ -1308,11 +1308,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1715169050,
-        "narHash": "sha256-ejOQOIb12hkdpg0XbGngtpiFNoEcvVOpu2skSjtW4bw=",
+        "lastModified": 1715172813,
+        "narHash": "sha256-FdhLzDPLB8DoOpKsoRI7cAHsTm/k4Slqa2FKvhJJUwQ=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "6d84a289eb21f7f8b4dad11202d662e4af8b8e49",
+        "rev": "89e5b0c44cbcd0a0b99662e68e905ee017562fac",
         "type": "github"
       },
       "original": {

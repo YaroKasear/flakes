@@ -163,7 +163,9 @@
 
       channels-config = {
         allowUnfree = true;
-        home-manager.useGlobalPkgs = true;
+        home-manager = {
+          useGlobalPkgs = true;
+        };
       };
 
       overlays = with inputs; [
