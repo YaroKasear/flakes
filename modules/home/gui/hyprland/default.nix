@@ -17,7 +17,7 @@ in {
       packages = with pkgs; [
         grim
         libva
-        hyprpaper
+        inputs.hyprpaper.packages.x86_64-linux.hyprpaper
         inputs.hyprpicker.packages.x86_64-linux.hyprpicker
         slurp
         swaynotificationcenter
@@ -325,7 +325,7 @@ in {
       bin_bash = "#!${pkgs.bash}/bin/bash";
       find = "${pkgs.findutils}/bin/find";
       grep = "${pkgs.gnugrep}/bin/grep";
-      hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+      hyprctl = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl";
       killall = "${pkgs.killall}/bin/killall";
       shuf = "${pkgs.coreutils-full}/bin/shuf";
       sleep = "${pkgs.coreutils-full}/bin/sleep";
