@@ -5,6 +5,7 @@ with lib.united;
 {
   united = {
     admin.enable = true;
+    ags.enable = true;
     am2r.enable = true;
     asciiquarium = {
       enable = true;
