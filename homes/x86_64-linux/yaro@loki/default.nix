@@ -26,7 +26,7 @@ with lib.united;
     rust.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
-    wayland.compositor = "hyprland"; # TODO: Some day nVidia will be good wnough for Sway.
+    wayland.compositor = "hyprland"; # TODO: Some day nVidia will be good wnough for Sway.`
     wine.enable = true;
     user = {
       directories = {

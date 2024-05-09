@@ -130,16 +130,18 @@ in {
         "$menu" = "wofi --show drun";
 
         env = [
+          "__GL_GSYNC_ALLOWED,1"
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "ELECTRON_OZONE_PLATFORM_HINT,auto"
           "GBM_BACKEND,nvidia-drm"
           "LIBVA_DRIVER_NAME,nvidia"
+          "NVD_BACKEND,direct"
           "QT_QPA_PLATFORMTHEME,qt5ct"
           "WLR_DRM_NO_ATOMIC,1"
           "XCURSOR_SIZE,24"
           "XDG_CURRENT_DESKTOP=Hyprland"
           "XDG_SESSION_DESKTOP=Hyprland"
           "XDG_SESSION_TYPE,wayland"
-          "__GL_GSYNC_ALLOWED,1"
         ];
 
         input = {
