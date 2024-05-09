@@ -10,6 +10,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    programs.ags.enable = true;
+    programs.ags = {
+      enable = true;
+      configDir = ./files;
+    };
   };
 }

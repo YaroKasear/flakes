@@ -222,6 +222,7 @@
           sops-nix.homeManagerModules.sops
         ];
         "cnelson@loki".modules = with inputs; [
+          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
