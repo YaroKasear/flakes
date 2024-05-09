@@ -101,6 +101,7 @@ in {
 
     services = {
       dbus.implementation = "broker";
+      gpm.enable = true;
       openssh = {
         enable = true;
       };
