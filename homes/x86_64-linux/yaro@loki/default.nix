@@ -56,11 +56,6 @@ with lib.united;
     };
   };
 
-  systemd.user.services.gpg-agent.Service.Environment = lib.mkForce [
-    "GNUPGHOME=/home/yaro/.gnupg"
-    "LD_LIBRARY_PATH=${pkgs.pcscliteWithPolkit.lib}/lib"
-  ];
-
   home = {
     packages = with pkgs; [
       audacity
