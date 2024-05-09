@@ -9,6 +9,11 @@
 
     nur.url = github:nix-community/NUR;
 
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -208,6 +213,7 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
+          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index

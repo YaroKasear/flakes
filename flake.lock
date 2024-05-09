@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "ags": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1714991158,
+        "narHash": "sha256-QRtQD3YqbambczxavUUkRv7iGxoJ1J6e6mD20mZv3a4=",
+        "owner": "Aylur",
+        "repo": "ags",
+        "rev": "05e0f23534fa30c1db2a142664ee8f71e38db260",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Aylur",
+        "repo": "ags",
+        "type": "github"
+      }
+    },
     "beautysh": {
       "inputs": {
         "nixpkgs": [
@@ -1530,6 +1550,7 @@
     },
     "root": {
       "inputs": {
+        "ags": "ags",
         "catppuccin-swaync-frappe": "catppuccin-swaync-frappe",
         "catppuccin-swaync-latte": "catppuccin-swaync-latte",
         "catppuccin-swaync-macchiato": "catppuccin-swaync-macchiato",
