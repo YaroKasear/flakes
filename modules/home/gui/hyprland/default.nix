@@ -134,7 +134,6 @@ in {
           "GBM_BACKEND,nvidia-drm"
           "LIBVA_DRIVER_NAME,nvidia"
           "QT_QPA_PLATFORMTHEME,qt5ct"
-          "WLR_NO_HARDWARE_CURSORS,1"
           "WLR_DRM_NO_ATOMIC,1"
           "XCURSOR_SIZE,24"
           "XDG_CURRENT_DESKTOP=Hyprland"

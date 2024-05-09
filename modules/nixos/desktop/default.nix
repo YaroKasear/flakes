@@ -26,6 +26,7 @@ in {
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages = [pkgs.vulkan-validation-layers];
     };
 
     nix.settings = {

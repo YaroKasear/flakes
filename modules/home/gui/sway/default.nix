@@ -44,7 +44,8 @@ in {
         QT_QPA_PLATFORMTHEME = mkForce "qt5ct";
         WLR_NO_HARDWARE_CURSORS = 1;
         WLR_DRM_NO_ATOMIC = 1;
-        WLR_RENDERER = "gles2";
+        # WLR_RENDERER = "gles2";
+        WLR_RENDERER = "vulkan";
         XCURSOR_SIZE = 24;
         XDG_CURRENT_DESKTOP = "sway";
         XDG_SESSION_DESKTOP = "sway";
