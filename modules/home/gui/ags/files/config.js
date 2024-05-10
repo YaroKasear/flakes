@@ -5,6 +5,11 @@ const slider = Widget.Slider({
     onChange: ({ value }) => speaker.volume = value,
 })
 
+const MyButton = () => Widget.Button()
+    .on("clicked", self => {
+        print(self, "is clicked")
+    })
+
 const Bar = () => Widget.Window({
   name: 'bar',
   anchor: ['top', 'left', 'right'],
@@ -16,4 +21,5 @@ App.config({
   windows: [
     Bar(0)
   ],
+  style: './style.css',
 })

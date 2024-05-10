@@ -12,7 +12,16 @@ in {
   config = mkIf cfg.enable {
     programs.ags = {
       enable = true;
-      configDir = ./files;
+      # configDir = ./files;
+    };
+
+    xdg.configFile = {
+      "ags/style.css".text = with config.united.style.colors; ''
+        window {
+          background-color: ${background};
+        }
+      '';
+      "ags/config.js".source = ./files/config.js;
     };
   };
 }
