@@ -69,6 +69,9 @@ in {
           "server" = ["10.10.10.1"];
         };
       };
+      openvpn.servers.work = {
+        config = "config /run/secrets/users_conrad_server";
+      };
       resolved.enable = false; # systemd-resolved is cancer
     };
 

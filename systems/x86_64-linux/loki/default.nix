@@ -32,6 +32,7 @@
         neededForUsers = true;
         sopsFile = ./secrets.yaml;
       };
+      "users_conrad_server".sopsFile = ./secrets.yaml;
     };
   };
 }
