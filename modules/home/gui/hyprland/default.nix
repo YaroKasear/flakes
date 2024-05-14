@@ -42,7 +42,7 @@ in {
       enable = true;
       sourceFirst = true;
       plugins = mkIf cfg.floating [
-        # inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
+        inputs.hyprland-plugins.packages.${pkgs.system}.hyprbars
       ];
       settings = with config.united.style.colors; {
         "$black" = "rgb(${lib.replaceStrings ["#"] [""] black})";
@@ -300,15 +300,15 @@ in {
           "$mainMod, mouse:273, resizewindow"
         ];
 
-        # plugin = mkIf cfg.floating {
-        #   hyprbars = {
-        #     bar_height = 20;
-        #     hyprbars-button = [
-        #       "rgb(${lib.replaceStrings ["#"] [""] red}), 15, 󰖭, hyprctl dispatch killactive"
-        #       "rgb(${lib.replaceStrings ["#"] [""] green}), 15, 󰖯, hyprctl dispatch fullscreen 1"
-        #     ];
-        #   };
-        # };
+        plugin = mkIf cfg.floating {
+          hyprbars = {
+            bar_height = 20;
+            hyprbars-button = [
+              "rgb(${lib.replaceStrings ["#"] [""] red}), 15, 󰖭, hyprctl dispatch killactive"
+              "rgb(${lib.replaceStrings ["#"] [""] green}), 15, 󰖯, hyprctl dispatch fullscreen 1"
+            ];
+          };
+        };
 
         debug = {
           enable_stdout_logs = true;

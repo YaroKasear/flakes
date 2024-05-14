@@ -195,11 +195,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715563999,
-        "narHash": "sha256-DDXZOKK0C5YeZ/GTUj7HiT+oqYIt8+qTsldaDvhWHFc=",
+        "lastModified": 1715722685,
+        "narHash": "sha256-SaccIpa1ToibLs3iULKUZEIBi8aOWVE2RSsLikjl4Tc=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "e972a78f4a49cd92075d64b6feeef64d26bf2996",
+        "rev": "d62af72c2262ee6b9bd143901e21dbb3503555f7",
         "type": "github"
       },
       "original": {
@@ -771,7 +771,7 @@
     "hyprcatppuccin-frappe-dark": {
       "flake": false,
       "locked": {
-        "lastModified": 1715717020,
+        "lastModified": 1715723289,
         "narHash": "sha256-mYtYttpjqmB9WKXIb+HT3AUiptzyjLDGlKAiKm4GAfM=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz"
@@ -784,7 +784,7 @@
     "hyprcatppuccin-latte-blue": {
       "flake": false,
       "locked": {
-        "lastModified": 1715717020,
+        "lastModified": 1715723289,
         "narHash": "sha256-1JL7XTssmILu/8v3Yaal9+u8ue4UlZP0GcbIIeXmlik=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz"
@@ -797,7 +797,7 @@
     "hyprcatppuccin-macchiato-dark": {
       "flake": false,
       "locked": {
-        "lastModified": 1715717021,
+        "lastModified": 1715723290,
         "narHash": "sha256-jsFu+BMUseTqhL+39xsmgCferQwd3CGdb28OX66/u98=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Macchiato-Dark-Cursors.tar.gz"
@@ -810,7 +810,7 @@
     "hyprcatppuccin-mocha-dark": {
       "flake": false,
       "locked": {
-        "lastModified": 1715717021,
+        "lastModified": 1715723290,
         "narHash": "sha256-tXGug6JMywQch9hAzuE1tRLtIq6aeik8KoTz+6CZb28=",
         "type": "tarball",
         "url": "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Mocha-Dark-Cursors.tar.gz"
@@ -888,11 +888,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1715609979,
-        "narHash": "sha256-3v/P6UyVhQxrQfIv2/0fCO0moCyWv+4QKp6EfD+TPww=",
+        "lastModified": 1715722806,
+        "narHash": "sha256-KrSLG2H3KGELxTFdiBhv8U6D53Q3UsJsQO+KgEabsNA=",
         "owner": "hyprwm",
         "repo": "hyprland-plugins",
-        "rev": "c2c70332a173c93b568ba41a5bb17c66db58d95e",
+        "rev": "c28d1011f4868c1a1ee80b10d9ee79900686df82",
         "type": "github"
       },
       "original": {
@@ -1414,11 +1414,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1715715973,
-        "narHash": "sha256-ofv9RaaFcifuqrapnfuupajgU7TJp4fEfO1FGuCh4p0=",
+        "lastModified": 1715719537,
+        "narHash": "sha256-owPav2+iP7rOiZUzQHsKJ/bwqt7Bz5x7wTHY9ska0Bw=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "695ae40e3e5947d640da59a295b6dc2ef498b4b6",
+        "rev": "2c670e2861a7c0e6405b3b19843a49082b773222",
         "type": "github"
       },
       "original": {
