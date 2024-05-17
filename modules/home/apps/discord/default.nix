@@ -12,31 +12,8 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = if is-wayland
-    then
-      [
-        pkgs.webcord-vencord
-      ]
-    else
-      [
-        pkgs.discord
-      ];
-
-    xdg.desktopEntries = mkIf is-wayland {
-      webcord = {
-        categories = [
-          "Network"
-          "InstantMessaging"
-        ];
-        comment = "A Discord and SpaceBar electron-based client implemented without Discord API";
-        exec = "webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-        icon = "webcord";
-        name = "WebCord";
-        type = "Application";
-        settings = {
-          Version = "1.4";
-        };
-      };
-    };
+    home.packages = [(pkgs.discord.override {
+      withOpenASAR = true;
+    })];
   };
 }
