@@ -83,7 +83,7 @@ with lib.united;
         "${config-directory}/protonmail"
         "${config-directory}/skypeforlinux"
         "${config-directory}/StardewValley/Saves"
-        "${config-directory}/WebCord"
+        "${config-directory}/discord"
         "${data-directory}/protonmail"
         "${data-directory}/TelegramDesktop"
         {
