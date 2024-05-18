@@ -113,7 +113,7 @@ in {
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
           "swaync"
           "waybar"
-          "hyprpaper"
+          "sleep 30s; hyprpaper"
           "wl-paste --type text --watch cliphist store"
           "wl-paste --type image --watch cliphist store"
           "sleep 30s; systemctl --user restart nextcloud-client"
