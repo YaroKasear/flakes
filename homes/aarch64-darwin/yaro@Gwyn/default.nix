@@ -6,6 +6,7 @@
     common.enable = true;
     desktop.enable = true;
     kitty.enable = true;
+    obsidian.enable = true;
     protonmail-bridge.enable = true;
   };
 

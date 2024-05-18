@@ -22,6 +22,7 @@ with lib.united;
     lutris.enable = true;
     mpv.enable = true;
     obs-studio.enable = true;
+    obsidian.enable = true;
     persistent.enable = true;
     protonmail-bridge.enable = true;
     rust.enable = true;
