@@ -261,6 +261,7 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
+          ags.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
