@@ -1,5 +1,10 @@
 { lib, inputs, pkgs, stdenv, ... }:
+with pkgs;
 
-stdenv.mkDerivation {
-
+pkgs.mkShell {
+  packages = [
+    (python3.withPackages(ps: with ps; [
+      united.python-fabric
+    ]))
+  ];
 }
