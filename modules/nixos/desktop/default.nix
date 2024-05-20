@@ -39,10 +39,10 @@ in {
     security.pam.services.hyprlock = mkIf config.united.wayland.enable {};
 
     services = {
-      displayManager.sddm = {
-        enable = config.united.wayland.enable;
-        wayland.enable = config.united.wayland.enable;
-      };
+      # displayManager.sddm = {
+      #   enable = config.united.wayland.enable;
+      #   wayland.enable = config.united.wayland.enable;
+      # };
       xserver = {
         enable = mkDefault (!config.united.wayland.enable);
         xkb.layout = "us";
