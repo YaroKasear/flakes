@@ -68,9 +68,6 @@ with lib.united;
       mosquitto
       skypeforlinux
       telegram-desktop
-      (python3.withPackages(ps: with ps; [
-        united.python-fabric
-      ]))
     ];
     persistence."/persistent${config.united.user.directories.home}" =
     let
