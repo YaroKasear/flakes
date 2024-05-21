@@ -7,6 +7,7 @@ buildPythonPackage rec {
   pyproject = true;
 
   src = ./files/config.py;
+  dontUnpack = true;
 
   propagatedBuildInputs = with pkgs; [
     gobject-introspection
@@ -16,6 +17,13 @@ buildPythonPackage rec {
       pygobject3
       united.python-fabric
     ]))
+    setuptools
     wrapGAppsHook
   ];
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp ${./files/config.py} $out/bin/config.py
+    chmod +x $out/bin/config.py
+  '';
 }
