@@ -14,10 +14,17 @@ buildPythonPackage rec {
   };
 
   propagatedBuildInputs = with pkgs; [
-    setuptools
+    loguru
     python3Packages.click
     pycairo
     pygobject3
-    loguru
+    setuptools
+    wrapGAppsHook
   ];
+
+  installPhase = ''
+    mkdir -p $out/bin
+    cp ${./files/config.py} $out/bin/config.py
+    chmod +x $out/bin/config.py
+  '';
 }
