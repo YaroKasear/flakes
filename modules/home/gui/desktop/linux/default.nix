@@ -16,7 +16,6 @@ in {
       i3.enable = !cfg.waylandSupport;
       wayland.enable = cfg.waylandSupport;
       nextcloud.enable = true;
-      qt.enable = true;
       ranger.enable = true;
       thunderbird.enable = true;
     };

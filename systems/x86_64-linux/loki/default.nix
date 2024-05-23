@@ -7,7 +7,7 @@
       enable = true;
       use-wayland = true;
     };
-    wayland.compositor = "hyprland";
+    wayland.compositor = "plasma";
   };
 
   users.users = {

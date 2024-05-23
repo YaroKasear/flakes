@@ -5,11 +5,11 @@ with lib.united;
 {
   united = {
     admin.enable = true;
-    ags.enable = true;
     am2r.enable = true;
     asciiquarium = {
       enable = true;
-      smart-wallpaper = config.united.wayland.enable;
+      # smart-wallpaper = config.united.wayland.enable;
+      smart-wallpaper = false;
     };
     common.enable = true;
     desktop = {
@@ -17,18 +17,18 @@ with lib.united;
       linux.waylandSupport = true;
     };
     discord.enable = true;
-    hyprland.floating = true;
-    irssi.enable = true;
-    lutris.enable = true;
+    hyprland.floating = false;
+    irssi.enable = false;
+    lutris.enable = false;
     mpv.enable = true;
-    obs-studio.enable = true;
+    obs-studio.enable = false;
     obsidian.enable = true;
     persistent.enable = true;
     protonmail-bridge.enable = true;
     rust.enable = true;
     sonic3air.enable = true;
     tinyfugue.enable = true;
-    wayland.compositor = "hyprland"; # TODO: Some day nVidia will be good wnough for Sway.`
+    wayland.compositor = "plasma"; # TODO: Some day nVidia will be good wnough for Sway.`
     wine.enable = true;
     user = {
       directories = {
@@ -47,7 +47,7 @@ with lib.united;
       catppuccin.frappe.enable = false;
       catppuccin.latte.enable = false;
       catppuccin.macchiato.enable = false;
-      catppuccin.mocha.enable = true;
+      catppuccin.mocha.enable = false;
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;
