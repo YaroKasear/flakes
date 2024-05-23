@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -10,5 +10,15 @@ in {
   };
 
   config = mkIf cfg.enable {
+    home.packages = [
+      inputs.plasma-manager.packages.${pkgs.system}.rc2nix
+    ];
+
+    programs.plasma = {
+      enable = true;
+      overrideConfig = true;
+
+      workspace.wallpaper = "${config.united.style.wallpaper}";
+    };
   };
 }
