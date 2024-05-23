@@ -120,7 +120,7 @@ in {
       gnupg.sshKeyPaths = [];
     };
 
-    system.stateVersion = "unstable";
+    system.stateVersion = "24.05";
 
     systemd.enableEmergencyMode = false;
 
