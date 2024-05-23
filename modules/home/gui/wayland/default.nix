@@ -22,6 +22,7 @@ in {
   config = mkIf cfg.enable {
     united = {
       hyprland.enable = cfg.compositor == "hyprland";
+      plasma.enable = cfg.compositor == "plasma";
       sway.enable = cfg.compositor == "sway";
       wayfire.enable = cfg.compositor == "wayfire";
     };
