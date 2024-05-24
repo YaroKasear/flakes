@@ -61,16 +61,11 @@ in {
       panels = [
         {
           location = "bottom";
+          height = 32;
           widgets = [
             "org.kde.plasma.kickoff"
             "org.kde.plasma.taskmanager"
             "org.kde.plasma.marginsseparator"
-            {
-              digitalClock = {
-                calendar.firstDayOfWeek = "sunday";
-                time.format = "12h";
-              };
-            }
             {
               systemTray.items = {
                 shown = [
@@ -79,8 +74,13 @@ in {
                 hidden = [
                   "org.kde.plasma.bluetooth"
                   "org.kde.plasma.networkmanagement"
-                  "org.kde.plasma.volume"
                 ];
+              };
+            }
+            {
+              digitalClock = {
+                calendar.firstDayOfWeek = "sunday";
+                time.format = "12h";
               };
             }
           ];
