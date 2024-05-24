@@ -31,6 +31,7 @@ in {
           ];
           files = [
             "${config-directory}/kwinoutputconfig.json"
+            "${config-directory}/powerdevilrc"
           ];
         };
       };
