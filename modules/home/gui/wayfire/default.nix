@@ -10,7 +10,7 @@ let
   wallpapers-directory = config.united.user.directories.wallpapers;
 
   stringList = lib.concatMapStrings (x: x + " ");
-in {
+  in {
   options.united.wayfire = {
     enable = mkEnableOption "Wayfire";
   };
@@ -29,7 +29,7 @@ in {
           normalizedA = normalize rgba.a;
         in
           "${normalizedR} ${normalizedG} ${normalizedB} ${normalizedA}";
-    in{
+    in {
       "wayfire.ini".source = (pkgs.formats.ini { }).generate "wayfire.ini" {
         core = {
           plugins = stringList [

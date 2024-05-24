@@ -19,12 +19,16 @@ in {
 
     home.packages = with pkgs; [
       age
+      clinfo
       git-crypt
+      glxinfo
+      pciutils
       nvd
       snowfallorg.flake
       sops
       (mkIf is-linux traceroute)
       virt-manager
+      vulkan-tools
     ];
   };
 }

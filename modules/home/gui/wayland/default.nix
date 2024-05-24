@@ -26,5 +26,7 @@ in {
       sway.enable = cfg.compositor == "sway";
       wayfire.enable = cfg.compositor == "wayfire";
     };
+
+    home.sessionVariables.NIXOS_OZONE_WL = "1";
   };
 }
