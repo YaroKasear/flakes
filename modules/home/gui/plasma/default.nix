@@ -64,7 +64,23 @@ in {
           height = 32;
           widgets = [
             "org.kde.plasma.kickoff"
-            "org.kde.plasma.taskmanager"
+            {
+              name = "org.kde.plasma.taskmanager";
+              config = {
+                General.launchers = [
+                  "applications:systemsettings.desktop"
+                  "applications:org.kde.dolphin.desktop"
+                  "applications:kitty.desktop"
+                  "applications:firefox.desktop"
+                  "applications:thunderbird.desktop"
+                  "applications:discord.desktop"
+                  "applications:skypeforlinux.desktop"
+                  "applications:org.telegram.desktop.desktop"
+                  "applications:steam.desktop"
+                  "applications:code.desktop"
+                ];
+              };
+            }
             "org.kde.plasma.marginsseparator"
             {
               systemTray.items = {
