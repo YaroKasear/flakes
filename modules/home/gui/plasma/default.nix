@@ -16,18 +16,23 @@ in {
         aha
         inputs.plasma-manager.packages.${pkgs.system}.rc2nix
       ];
-      persistence."/persistent${config.united.user.directories.home}" =
-      let
-        mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
+      persistence = mkIf config.united.persistent.enable {
+        "/persistent${config.united.user.directories.home}" =
+        let
+          mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
 
-        cache-directory = mkHomeCanon config.united.user.directories.cache;
-        config-directory = mkHomeCanon config.united.user.directories.config;
-        data-directory = mkHomeCanon config.united.user.directories.data;
-        state-directory = mkHomeCanon config.united.user.directories.state;
-      in {
-        files = mkIf config.united.persistent.enable [
-          "${config-directory}/kwinoutputconfig.json"
-        ];
+          cache-directory = mkHomeCanon config.united.user.directories.cache;
+          config-directory = mkHomeCanon config.united.user.directories.config;
+          data-directory = mkHomeCanon config.united.user.directories.data;
+          state-directory = mkHomeCanon config.united.user.directories.state;
+        in {
+          directories = [
+            "${data-directory}/kwalletd"
+          ];
+          files = [
+            "${config-directory}/kwinoutputconfig.json"
+          ];
+        };
       };
     };
 
@@ -52,6 +57,35 @@ in {
         menu = general;
         windowTitle = general;
       };
+
+      panels = [
+        {
+          location = "bottom";
+          widgets = [
+            "org.kde.plasma.kickoff"
+            "org.kde.plasma.taskmanager"
+            "org.kde.plasma.marginsseparator"
+            {
+              digitalClock = {
+                calendar.firstDayOfWeek = "sunday";
+                time.format = "12h";
+              };
+            }
+            {
+              systemTray.items = {
+                shown = [
+                  "org.kde.plasma.volume"
+                ];
+                hidden = [
+                  "org.kde.plasma.bluetooth"
+                  "org.kde.plasma.networkmanagement"
+                  "org.kde.plasma.volume"
+                ];
+              };
+            }
+          ];
+        }
+      ];
 
       workspace = {
         clickItemTo = "select";
