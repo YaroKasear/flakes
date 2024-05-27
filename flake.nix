@@ -54,7 +54,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -111,6 +111,11 @@
     };
 
     nix-rice.url = "github:bertof/nix-rice";
+
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
@@ -271,6 +276,15 @@
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
+          sops-nix.homeManagerModules.sops
+        ];
+        "yaro@gwynix".modules = with inputs; [
+          ags.homeManagerModules.default
+          impermanence.nixosModules.home-manager.impermanence
+          nix-index-database.hmModules.nix-index
+          nixvim.homeManagerModules.nixvim
+          nur.hmModules.nur
+          plasma-manager.homeManagerModules.plasma-manager
           sops-nix.homeManagerModules.sops
         ];
       };
