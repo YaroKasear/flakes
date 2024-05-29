@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -16,7 +16,6 @@ in {
       git.enable = true;
       net-utils.enable = true;
     };
-
     home.packages = with pkgs; [
       age
       (mkIf is-linux agenix-rekey)
