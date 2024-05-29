@@ -19,6 +19,7 @@ in {
 
     home.packages = with pkgs; [
       age
+      (mkIf is-linux agenix-rekey)
       clinfo
       git-crypt
       glxinfo

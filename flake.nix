@@ -202,6 +202,7 @@
 
       overlays = with inputs; [
         snowfall-flake.overlays."package/flake"
+        agenix-rekey.overlays.default
       ];
 
       agenix-rekey = inputs.agenix-rekey.configure {
