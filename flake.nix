@@ -204,8 +204,15 @@
         snowfall-flake.overlays."package/flake"
       ];
 
+      agenix-rekey = inputs.agenix-rekey.configure {
+        userFlake = inputs.self;
+        nodes = inputs.self.nixosConfigurations;
+      };
+
       systems = {
         modules.nixos = with inputs; [
+          agenix.nixosModules.default
+          agenix-rekey.nixosModules.default
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
