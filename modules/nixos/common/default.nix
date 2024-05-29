@@ -11,6 +11,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    age.rekey = {
+      masterIdentities = [ ./files/yubikey.pub ];
+      storageMode = "local";
+    };
+
     boot = {
       initrd.systemd.enable = true;
       kernelModules = [
