@@ -26,6 +26,7 @@ in {
     home = {
       packages = with pkgs;
       [
+        bitwarden
         font-awesome
         nerdfonts
         noto-fonts-color-emoji
