@@ -8,6 +8,13 @@
 
     nur.url = github:nix-community/NUR;
 
+    agenix.url = "github:ryantm/agenix";
+
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
