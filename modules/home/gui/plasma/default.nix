@@ -59,51 +59,6 @@ in {
         windowTitle = general;
       };
 
-      panels = [
-        {
-          location = "bottom";
-          height = 32;
-          widgets = [
-            "org.kde.plasma.kickoff"
-            {
-              name = "org.kde.plasma.taskmanager";
-              config = {
-                General.launchers = [
-                  "applications:systemsettings.desktop"
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:kitty.desktop"
-                  "applications:firefox.desktop"
-                  "applications:thunderbird.desktop"
-                  "applications:discord.desktop"
-                  "applications:skypeforlinux.desktop"
-                  "applications:org.telegram.desktop.desktop"
-                  "applications:steam.desktop"
-                  "applications:code.desktop"
-                ];
-              };
-            }
-            "org.kde.plasma.marginsseparator"
-            {
-              systemTray.items = {
-                shown = [
-                  "org.kde.plasma.volume"
-                ];
-                hidden = [
-                  "org.kde.plasma.bluetooth"
-                  "org.kde.plasma.networkmanagement"
-                ];
-              };
-            }
-            {
-              digitalClock = {
-                calendar.firstDayOfWeek = "sunday";
-                time.format = "12h";
-              };
-            }
-          ];
-        }
-      ];
-
       workspace = {
         clickItemTo = "select";
         wallpaper = "${config.united.style.wallpaper}";
