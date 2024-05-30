@@ -16,6 +16,7 @@ in {
       git.enable = true;
       net-utils.enable = true;
     };
+
     home.packages = with pkgs; [
       age
       (mkIf is-linux agenix-rekey)
@@ -30,5 +31,18 @@ in {
       virt-manager
       vulkan-tools
     ];
+
+    programs.zsh = mkIf config.united.zsh.enable {
+      oh-my-zsh.plugins = ["sudo"];
+      shellAliases = {
+        update-config = "flake boot path:${config.united.user.directories.home}/flakes/#";
+        save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
+        ssh = "kitten ssh";
+        load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
+        upgrade-system = "nix flake update path:${config.united.user.directories.home}/flakes/# && flake boot path:${config.united.user.directories.home}/flakes/#";
+        update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
+        update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+      };
+    };
   };
 }

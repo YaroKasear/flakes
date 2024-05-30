@@ -34,7 +34,6 @@ in {
             "man"
             "python"
             "safe-paste"
-            "sudo"
             "thefuck"
             "themes"
             "tmux"
@@ -47,13 +46,6 @@ in {
         shellAliases = {
           icat = "kitten icat";
           tmux = "tmux -f ${config.united.user.directories.config}/tmux/tmux.conf";
-          update-config = "flake boot path:${config.united.user.directories.home}/flakes/#";
-          save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
-          ssh = "kitten ssh";
-          load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
-          upgrade-system = "nix flake update path:${config.united.user.directories.home}/flakes/# && flake boot path:${config.united.user.directories.home}/flakes/#";
-          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
-          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
         };
         initExtra = ''
           alexa_tts () {
