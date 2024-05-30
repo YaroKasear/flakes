@@ -6,7 +6,7 @@
   };
 
   age.secrets.test = {
-    rekeyFile = inputs.self + "/systems/${pkgs.system}/${config.networking.hostName}/secrets/test.age";
+    rekeyFile = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/test.age";
     generator.script = "passphrase";
   };
 
