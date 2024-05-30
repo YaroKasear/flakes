@@ -37,14 +37,14 @@ in {
     };
   };
 
-  sops = {
-    secrets = {
-      authfile.sopsFile = ./secrets.yaml;
-      hashedpw = {
-        neededForUsers = true;
-        sopsFile = ./secrets.yaml;
-      };
-      "users_conrad_server".sopsFile = ./secrets.yaml;
-    };
-  };
+  # sops = {
+  #   secrets = {
+  #     authfile.sopsFile = ./secrets.yaml;
+  #     hashedpw = {
+  #       neededForUsers = true;
+  #       sopsFile = ./secrets.yaml;
+  #     };
+  #     "users_conrad_server".sopsFile = ./secrets.yaml;
+  #   };
+  # };
 }

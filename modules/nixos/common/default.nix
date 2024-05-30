@@ -120,14 +120,14 @@ in {
       pcscd.enable = true;
     };
 
-    sops = {
-      defaultSopsFile = ./secrets.yaml;
-      age = {
-        keyFile = /etc/syskey;
-        sshKeyPaths = [];
-      };
-      gnupg.sshKeyPaths = [];
-    };
+    # sops = {
+    #   defaultSopsFile = ./secrets.yaml;
+    #   age = {
+    #     keyFile = /etc/syskey;
+    #     sshKeyPaths = [];
+    #   };
+    #   gnupg.sshKeyPaths = [];
+    # };
 
     system.stateVersion = "24.05";
 
