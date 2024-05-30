@@ -12,6 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     age.rekey = {
+      localStorageDir = ./. + "/systems/${pkgs.system}/${config.networking.hostName}/secrets";
       masterIdentities = [ ./files/yubikey.pub ];
       storageMode = "local";
     };

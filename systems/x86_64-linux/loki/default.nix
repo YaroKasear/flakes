@@ -3,8 +3,9 @@
 {
   age.rekey = {
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
-    localStorageDir = ./secrets;
   };
+
+  age.secrets.test.rekeyFile = ./secret1.age;
 
   united = {
     loki.enable = true;
