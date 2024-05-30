@@ -24,7 +24,8 @@ in {
       isNormalUser = true;
       extraGroups = ["video" "audio" "lp"];
       shell = pkgs.zsh;
-      hashedPasswordFile = config.sops.secrets.hashedpw.path;
+      # hashedPasswordFile = config.sops.secrets.hashedpw.path;
+      hashedPasswordFile = config.age.secrets.hashed-password.path;
     };
     yaro = {
       isNormalUser = true;
