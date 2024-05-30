@@ -39,6 +39,10 @@
       mountpoint = "/";
       postCreateHook = "zfs snapshot system@blank";
       datasets = {
+        "games" = {
+          type = "zfs_fs";
+          mountpoint = "/games";
+        };
         persistent = {
           type = "zfs_fs";
           mountpoint = "/persistent";
