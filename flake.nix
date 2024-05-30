@@ -227,13 +227,6 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
-        # hosts.loki-xorg.modules = with inputs; [
-        #   nixos-hardware.nixosModules.common-pc
-        #   nixos-hardware.nixosModules.common-pc-ssd
-        #   nixos-hardware.nixosModules.common-cpu-amd
-        #   nixos-hardware.nixosModules.common-cpu-amd-pstate
-        #   nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-        # ];
       };
 
       homes.users = {
@@ -278,14 +271,6 @@
           nur.hmModules.nur
           sops-nix.homeManagerModules.sops
         ];
-        # "yaro@loki-xorg".modules = with inputs; [
-        #   hyprland.homeManagerModules.default
-        #   impermanence.nixosModules.home-manager.impermanence
-        #   nix-index-database.hmModules.nix-index
-        #   nixvim.homeManagerModules.nixvim
-        #   nur.hmModules.nur
-        #   sops-nix.homeManagerModules.sops
-        # ];
         "yaro@Gwyn".modules = with inputs; [
           ags.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
