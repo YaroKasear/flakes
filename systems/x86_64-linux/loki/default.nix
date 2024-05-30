@@ -5,7 +5,7 @@
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
   };
 
-  age.secrets.test.rekeyFile = ./secret1.age;
+  age.secrets.test.rekeyFile = ./secrets/secret1.age;
 
   united = {
     loki.enable = true;
