@@ -11,10 +11,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    age.rekey = {
-      localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
-      masterIdentities = [ ./files/yubikey.pub ];
-      storageMode = "local";
+    age = {
+      rekey = {
+        localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
+        masterIdentities = [ ./files/yubikey.pub ];
+        storageMode = "local";
+      };
+      identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     };
 
     boot = {
