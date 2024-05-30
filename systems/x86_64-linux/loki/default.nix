@@ -36,15 +36,4 @@ in {
       hashedPasswordFile = config.age.secrets.cnelson-password.path;
     };
   };
-
-  # sops = {
-  #   secrets = {
-  #     authfile.sopsFile = ./secrets.yaml;
-  #     hashedpw = {
-  #       neededForUsers = true;
-  #       sopsFile = ./secrets.yaml;
-  #     };
-  #     "users_conrad_server".sopsFile = ./secrets.yaml;
-  #   };
-  # };
 }
