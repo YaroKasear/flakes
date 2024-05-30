@@ -4,32 +4,32 @@ with lib.united;
 # let pkgs = inputs.nixpkgs-stable.legacyPackages."x86_64-linux"; in
 {
   united = {
-    admin = enabled;# .enable = true;
-    am2r.enable = true;
+    admin = enabled;#  = enabled;
+    am2r = enabled;
     asciiquarium = {
       enable = true;
       # smart-wallpaper = config.united.wayland.enable;
       smart-wallpaper = false;
     };
-    common.enable = true;
+    common = enabled;
     desktop = {
       enable = true;
       linux.waylandSupport = true;
     };
-    discord.enable = true;
+    discord = enabled;
     hyprland.floating = false;
-    irssi.enable = false;
-    lutris.enable = false;
-    mpv.enable = true;
-    obs-studio.enable = false;
-    obsidian.enable = true;
-    persistent.enable = true;
-    protonmail-bridge.enable = true;
-    rust.enable = true;
-    sonic3air.enable = true;
-    tinyfugue.enable = true;
+    irssi = disabled;
+    lutris = disabled;
+    mpv = enabled;
+    obs-studio = disabled;
+    obsidian = enabled;
+    persistent = enabled;
+    protonmail-bridge = enabled;
+    rust = enabled;
+    sonic3air = enabled;
+    tinyfugue = enabled;
     wayland.compositor = "plasma"; # TODO: Some day nVidia will be good wnough for Sway.`
-    wine.enable = true;
+    wine = enabled;
     user = {
       directories = {
         documents = "${config.united.user.directories.home}/Nextcloud/Documents";
@@ -44,10 +44,10 @@ with lib.united;
     };
     style = with config.united.style; {
       enable = true;
-      catppuccin.frappe.enable = false;
-      catppuccin.latte.enable = false;
-      catppuccin.macchiato.enable = false;
-      catppuccin.mocha.enable = true;
+      catppuccin.frappe = disabled;
+      catppuccin.latte = disabled;
+      catppuccin.macchiato = disabled;
+      catppuccin.mocha = enabled;
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;
@@ -175,7 +175,7 @@ with lib.united;
         flavor = "plain";
         realName = "Yaro Kasear";
         userName = "yaro@kasear.net";
-        thunderbird.enable = true;
+        thunderbird = enabled;
         imap = {
           host = "127.0.0.1";
           port = 1143;

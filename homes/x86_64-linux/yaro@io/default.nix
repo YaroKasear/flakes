@@ -3,8 +3,8 @@
 with lib.united;
 {
   united = {
-    admin.enable = true;
-    common.enable = true;
-    sops.enable = false;
+    admin = enabled;
+    common = enabled;
+    sops = disabled;
   };
 }
