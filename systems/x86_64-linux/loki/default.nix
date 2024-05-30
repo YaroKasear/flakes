@@ -9,6 +9,7 @@ in {
     };
     secrets.yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+    secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
   };
 
   united = {
