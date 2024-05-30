@@ -5,10 +5,10 @@
     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
   };
 
-  # age.secrets.test = {
-  #   rekeyFile = inputs.self + "/systems/${pkgs.system}/${config.networking.hostName}/secrets/test.age";
-  #   generator.script = "passphrase";
-  # };
+  age.secrets.test = {
+    rekeyFile = inputs.self + "/systems/${pkgs.system}/${config.networking.hostName}/secrets/test.age";
+    generator.script = "passphrase";
+  };
 
   united = {
     loki.enable = true;
