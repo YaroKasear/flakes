@@ -4,7 +4,7 @@ with lib.united;
 # let pkgs = inputs.nixpkgs-stable.legacyPackages."x86_64-linux"; in
 {
   united = {
-    admin.enable = true;
+    admin = enabled;# .enable = true;
     am2r.enable = true;
     asciiquarium = {
       enable = true;

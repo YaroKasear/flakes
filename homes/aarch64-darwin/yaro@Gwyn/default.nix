@@ -1,13 +1,14 @@
 { config, pkgs, lib, ... }:
+with lib.united;
 
 {
   united = {
-    admin.enable = true;
-    common.enable = true;
-    desktop.enable = true;
-    kitty.enable = true;
-    obsidian.enable = true;
-    protonmail-bridge.enable = true;
+    admin = enabled;
+    common = enabled;
+    desktop = enabled;
+    kitty = enabled;
+    obsidian = enabled;
+    protonmail-bridge = enabled;
   };
 
 
