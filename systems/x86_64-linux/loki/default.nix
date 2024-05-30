@@ -1,13 +1,13 @@
 { lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
 
-{
-  age.rekey = {
-    hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
-  };
-
-  age.secrets.test = {
-    rekeyFile = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/test.age";
-    generator.script = "passphrase";
+let
+  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
+in {
+  age = {
+    rekey = {
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
+    };
+    secrets.hashed-password.rekeyFile = secrets-directory + "hashed-password.age";
   };
 
   united = {
