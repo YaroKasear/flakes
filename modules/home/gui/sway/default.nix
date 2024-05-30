@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.sway = {
       enable = true;
-      swaynag.enable = true;
+      swaynag = enabled;
       config = {
         menu = "wofi --show drun";
         modifier = "Mod4";
@@ -26,7 +26,7 @@ in {
       };
     };
 
-    programs.wofi.enable = true;
+    programs.wofi = enabled;
 
     home = {
       packages = with pkgs; [

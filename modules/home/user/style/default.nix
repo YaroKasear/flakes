@@ -103,7 +103,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    gtk.enable = true;
+    gtk = enabled;
 
     home = {
       file = {

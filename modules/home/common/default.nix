@@ -34,27 +34,27 @@ in {
       home-manager = {
         enable = true;
       };
-      nix-index.enable = true;
+      nix-index = enabled;
     };
 
     united = {
-      bat.enable = true;
-      btop.enable = true;
-      eza.enable = true;
-      fzf.enable = true;
-      gnupg.enable = true;
-      tmux.enable = true;
-      nixvim.enable = true;
-      starship.enable = true;
+      bat = enabled;
+      btop = enabled;
+      eza = enabled;
+      fzf = enabled;
+      gnupg = enabled;
+      tmux = enabled;
+      nixvim = enabled;
+      starship = enabled;
       sops.enable = mkDefault true;
-      user.enable = true;
-      vim.enable = false;
-      yubikey.enable = true;
-      zellij.enable = true;
-      zoxide.enable = true;
-      zsh.enable = true;
+      user = enabled;
+      vim = disabled;
+      yubikey = enabled;
+      zellij = enabled;
+      zoxide = enabled;
+      zsh = enabled;
     };
 
-    xdg.enable = true;
+    xdg = enabled;
   };
 }

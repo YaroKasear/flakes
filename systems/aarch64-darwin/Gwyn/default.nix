@@ -28,10 +28,10 @@
       enable = true;
       enableSSHSupport = true;
     };
-    zsh.enable = true;
+    zsh = enabled;
   };
 
-  services.nix-daemon.enable = true;
+  services.nix-daemon = enabled;
 
   system.stateVersion = 4;
 

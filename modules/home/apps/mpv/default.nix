@@ -11,9 +11,7 @@ in {
 
   config = mkIf cfg.enable {
     programs = {
-      mpv = {
-        enable = true;
-      };
+      mpv = enabled;
     };
   };
 }

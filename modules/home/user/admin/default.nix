@@ -13,8 +13,8 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      git.enable = true;
-      net-utils.enable = true;
+      git = enabled;
+      net-utils = enabled;
     };
 
     home.packages = with pkgs; [

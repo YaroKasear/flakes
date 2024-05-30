@@ -11,10 +11,10 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      autorandr.enable = true;
-      kitty.enable = true;
-      polybar.enable = true;
-      picom.enable = true;
+      autorandr = enabled;
+      kitty = enabled;
+      polybar = enabled;
+      picom = enabled;
     };
 
     home = {
@@ -26,12 +26,12 @@ in {
     };
 
     programs = {
-      rofi.enable = true;
+      rofi = enabled;
     };
 
     xsession = {
       enable = true;
-      numlock.enable = true;
+      numlock = enabled;
       windowManager.i3 = {
         enable = true;
         config = {

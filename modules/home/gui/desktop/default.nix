@@ -18,15 +18,14 @@ in {
     united = {
       desktop.darwin.enable = is-darwin;
       desktop.linux.enable = is-linux;
-      kitty.enable = true;
-      user.wallpaper.enable = true;
-      vscode.enable = true;
+      kitty = enabled;
+      user.wallpaper = enabled;
+      vscode = enabled;
     };
 
     home = {
       packages = with pkgs;
       [
-        bitwarden
         font-awesome
         nerdfonts
         noto-fonts-color-emoji

@@ -42,11 +42,11 @@ in {
         displayManager = {
           sddm = {
             enable = true;
-            wayland.enable = true;
+            wayland = enabled;
           };
           defaultSession = "plasma";
         };
-      desktopManager.plasma6.enable = true;
+      desktopManager.plasma6 = enabled;
     };
   };
 }

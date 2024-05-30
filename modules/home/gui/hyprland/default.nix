@@ -29,13 +29,13 @@ in {
     };
 
 
-    programs.wofi.enable = true;
+    programs.wofi = enabled;
 
-    services.cliphist.enable = true;
+    services.cliphist = enabled;
 
     united = {
-      gammastep.enable = true;
-      waybar.enable = true;
+      gammastep = enabled;
+      waybar = enabled;
     };
 
     wayland.windowManager.hyprland = {

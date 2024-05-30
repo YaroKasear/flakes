@@ -15,11 +15,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -218,7 +213,6 @@
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
-          # sops-nix.nixosModules.sops
         ];
         hosts.loki.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
@@ -231,7 +225,6 @@
 
       homes.users = {
         "yaro@loki".modules = with inputs; [
-          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
@@ -241,7 +234,6 @@
           sops-nix.homeManagerModules.sops
         ];
         "cnelson@loki".modules = with inputs; [
-          ags.homeManagerModules.default
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
@@ -272,14 +264,12 @@
           sops-nix.homeManagerModules.sops
         ];
         "yaro@Gwyn".modules = with inputs; [
-          ags.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           sops-nix.homeManagerModules.sops
         ];
         "yaro@gwynix".modules = with inputs; [
-          ags.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim

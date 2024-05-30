@@ -18,7 +18,6 @@ with lib.united;
     };
     discord = enabled;
     hyprland.floating = false;
-    irssi = disabled;
     lutris = disabled;
     mpv = enabled;
     obs-studio = disabled;

@@ -191,8 +191,8 @@ let
       ];
     };
 
-    programs.wofi.enable = true;
+    programs.wofi = enabled;
 
-    united.kanshi.enable = true;
+    united.kanshi = enabled;
   };
 }

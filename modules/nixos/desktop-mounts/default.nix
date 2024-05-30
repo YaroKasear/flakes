@@ -11,15 +11,9 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      game-mounts.enable = true;
-      media-mounts.enable = true;
+      game-mounts = enabled;
+      media-mounts = enabled;
     };
-
-    # fileSystems."/home/yaro" = {
-    #   device = "storage.kasear.net:/mnt/data/user/yaro/nixos";
-    #   fsType = "nfs";
-    #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
-    # };
 
     swapDevices = [ ];
   };

@@ -34,7 +34,7 @@ in {
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
 
-    programs.dconf.enable = true;
+    programs.dconf = enabled;
 
     security.pam.services.hyprlock = mkIf config.united.wayland.enable {};
 
@@ -57,15 +57,15 @@ in {
           enable = true;
           support32Bit = true;
         };
-        lowLatency.enable = false; # https://github.com/fufexan/nix-gaming/issues/161
-        pulse.enable = true;
+        lowLatency = disabled; # https://github.com/fufexan/nix-gaming/issues/161
+        pulse = enabled;
       };
-      gnome.gnome-keyring.enable = true;
+      gnome.gnome-keyring = enabled;
     };
 
     sound = {
       enable = true;
-      mediaKeys.enable = true;
+      mediaKeys = enabled;
     };
 
     systemd.user.services.polkit-gnome-authentication-agent-1 = {

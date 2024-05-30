@@ -24,8 +24,8 @@ in {
     ];
 
     programs = {
-      bacon.enable = true;
-      ripgrep.enable = true;
+      bacon = enabled;
+      ripgrep = enabled;
     };
   };
 }

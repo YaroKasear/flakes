@@ -14,7 +14,7 @@ in {
   };
 
   united = {
-    loki.enable = true;
+    loki = enabled;
     desktop = {
       enable = true;
       use-wayland = true;

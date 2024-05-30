@@ -193,6 +193,6 @@ in {
       '';
     };
 
-    united.cava.enable = true;
+    united.cava = enabled;
   };
 }

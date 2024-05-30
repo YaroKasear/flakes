@@ -15,17 +15,17 @@ in {
     united = {
       i3.enable = !cfg.waylandSupport;
       wayland.enable = cfg.waylandSupport;
-      nextcloud.enable = true;
-      ranger.enable = true;
-      thunderbird.enable = true;
+      nextcloud = enabled;
+      ranger = enabled;
+      thunderbird = enabled;
     };
 
-    fonts.fontconfig.enable = true;
+    fonts.fontconfig = enabled;
 
     home = {
       packages = with pkgs;
       [
-        # bitwarden
+        bitwarden
         libreoffice-fresh
         playerctl
         yubioath-flutter
@@ -33,7 +33,7 @@ in {
       ];
     };
 
-    programs.firefox.enable = true;
+    programs.firefox = enabled;
 
     xdg = {
       mimeApps = {

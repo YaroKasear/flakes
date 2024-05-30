@@ -35,8 +35,6 @@ in {
       };
     };
 
-    services = {
-      autorandr.enable = true;
-    };
+    services.autorandr = enabled;
   };
 }

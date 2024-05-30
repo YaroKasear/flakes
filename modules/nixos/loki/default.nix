@@ -26,22 +26,11 @@ in {
         "k10temp"
         "nct6775"
       ];
-      # kernelPatches = [ {
-      #   name = "enable RT_FULL";
-      #   patch = null;
-      #   extraConfig = ''
-      #     PREEMPT y
-      #     PREEMPT_BUILD y
-      #     PREEMPT_VOLUNTARY n
-      #     PREEMPT_COUNT y
-      #     PREEMPTION y
-      #   '';
-      # } ];
     };
 
     hardware = {
       nvidia = {
-        modesetting.enable = true;
+        modesetting = enabled;
         powerManagement = {
           enable = false;
           finegrained = false;
@@ -53,11 +42,11 @@ in {
     };
 
     networking = {
-      networkmanager.enable = false;
+      networkmanager = disabled;
       hostName = mkForce "loki";
       hostId = "1d84728f";
       useDHCP = false;
-      wireless.enable = false;
+      wireless = disabled;
     };
 
     programs.fuse.userAllowOther = true;
@@ -72,7 +61,7 @@ in {
       openvpn.servers.work = {
         config = "config ${config.age.secrets.work-vpn.path}";
       };
-      resolved.enable = false; # systemd-resolved is cancer
+      resolved = disabled; # systemd-resolved is cancer
     };
 
     systemd.network = {
@@ -131,9 +120,9 @@ in {
       common = {
         enable = true;
       };
-      desktop-mounts.enable = true;
-      loki-mounts.enable = true;
-      steam.enable = true;
+      desktop-mounts = enabled;
+      loki-mounts = enabled;
+      steam = enabled;
     };
   };
 }

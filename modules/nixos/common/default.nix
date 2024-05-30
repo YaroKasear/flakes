@@ -21,7 +21,7 @@ in {
     };
 
     boot = {
-      initrd.systemd.enable = true;
+      initrd.systemd = enabled;
       kernelModules = [
         "usb-storage"
       ];
@@ -83,12 +83,12 @@ in {
 
     programs = {
       ssh.startAgent = false;
-      zsh.enable = true;
+      zsh = enabled;
     };
 
     security = {
-      polkit.enable = true;
-      rtkit.enable = true;
+      polkit = enabled;
+      rtkit = enabled;
       pam = {
         services = {
           login.u2fAuth = true;
@@ -110,24 +110,13 @@ in {
 
     services = {
       dbus.implementation = "broker";
-      gpm.enable = true;
-      openssh = {
-        enable = true;
-      };
+      gpm = enabled;
+      openssh = enabled;
       udev.packages = [
         pkgs.yubikey-personalization
       ];
-      pcscd.enable = true;
+      pcscd = enabled;
     };
-
-    # sops = {
-    #   defaultSopsFile = ./secrets.yaml;
-    #   age = {
-    #     keyFile = /etc/syskey;
-    #     sshKeyPaths = [];
-    #   };
-    #   gnupg.sshKeyPaths = [];
-    # };
 
     system.stateVersion = "24.05";
 

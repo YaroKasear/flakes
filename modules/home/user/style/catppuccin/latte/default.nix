@@ -204,7 +204,7 @@ in {
       };
     };
 
-    united.style.catppuccin.enable = true;
+    united.style.catppuccin = enabled;
 
     wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
       settings = {
