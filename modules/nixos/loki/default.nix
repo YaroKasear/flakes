@@ -70,7 +70,7 @@ in {
         };
       };
       openvpn.servers.work = {
-        config = "config /run/secrets/users_conrad_server";
+        config = "config ${config.age.secrets.work-vpn.path}";
       };
       resolved.enable = false; # systemd-resolved is cancer
     };
