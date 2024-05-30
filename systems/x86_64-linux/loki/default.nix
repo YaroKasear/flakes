@@ -7,7 +7,8 @@ in {
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
-    secrets.hashed-password.rekeyFile = secrets-directory + "hashed-password.age";
+    secrets.yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
+    secrets.hashed-cnelson.rekeyFile = secrets-directory + "cnelson-password.age";
   };
 
   united = {
@@ -24,14 +25,13 @@ in {
       isNormalUser = true;
       extraGroups = ["video" "audio" "lp"];
       shell = pkgs.zsh;
-      # hashedPasswordFile = config.sops.secrets.hashedpw.path;
-      hashedPasswordFile = config.age.secrets.hashed-password.path;
+      hashedPasswordFile = config.age.secrets.yaro-password.path;
     };
     yaro = {
       isNormalUser = true;
       extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
       shell = pkgs.zsh;
-      hashedPasswordFile = config.sops.secrets.hashedpw.path;
+      hashedPasswordFile = config.age.secrets.cnelson-password.path;
     };
   };
 
