@@ -8,7 +8,7 @@ in {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
     secrets.yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-    secrets.hashed-cnelson.rekeyFile = secrets-directory + "cnelson-password.age";
+    secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
   };
 
   united = {
