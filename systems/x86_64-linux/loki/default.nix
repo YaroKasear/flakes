@@ -1,4 +1,5 @@
 { lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
+with lib.united;
 
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
