@@ -14,6 +14,8 @@ in {
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
   };
 
+  programs.adb = enabled;
+
   united = {
     loki = enabled;
     desktop = {
