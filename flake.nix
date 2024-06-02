@@ -223,8 +223,8 @@
         ];
       };
 
-      homes.users = {
-        "yaro@loki".modules = with inputs; [
+      homes.users = let
+        home-modules = with inputs; [
           hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
@@ -233,51 +233,14 @@
           plasma-manager.homeManagerModules.plasma-manager
           sops-nix.homeManagerModules.sops
         ];
-        "cnelson@loki".modules = with inputs; [
-          hyprland.homeManagerModules.default
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          plasma-manager.homeManagerModules.plasma-manager
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@titan".modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@europa".modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@io".modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          plasma-manager.homeManagerModules.plasma-manager
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@Gwyn".modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          sops-nix.homeManagerModules.sops
-        ];
-        "yaro@gwynix".modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          plasma-manager.homeManagerModules.plasma-manager
-          sops-nix.homeManagerModules.sops
-        ];
+      in {
+        "yaro@loki".modules = home-modules;
+        "cnelson@loki".modules = home-modules;
+        "yaro@titan".modules = home-modules;
+        "yaro@europa".modules = home-modules;
+        "yaro@io".modules = home-modules;
+        "yaro@Gwyn".modules = home-modules;
+        "yaro@gwynix".modules = home-modules;
       };
     };
 }
