@@ -14,7 +14,6 @@ in {
   config = mkIf cfg.enable {
     programs.zellij = {
       enable = true;
-      enableZshIntegration = true;
       settings = let
         averageColor = color1: color2: (
         let
