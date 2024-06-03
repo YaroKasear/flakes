@@ -93,12 +93,6 @@ in {
             LongitudeFixed = -97.42;
             Mode = "Location";
           };
-          Plugins = {
-            fallapartEnabled = true;
-            magiclampEnabled = true;
-            sheetEnabled = true;
-            slidebackEnabled = true;
-          };
           Xwayland.Scale = 1;
         };
         ksmserverrc.General.loginMode = "emptySession";
