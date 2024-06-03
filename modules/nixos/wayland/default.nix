@@ -43,6 +43,9 @@ in {
           sddm = {
             enable = true;
             wayland = enabled;
+            settings = {
+              General.Numlock = "on";
+            };
           };
           defaultSession = "plasma";
         };

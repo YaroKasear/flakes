@@ -12,6 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     home = {
+      file.".face.icon".source = config.united.user.icon;
       packages = with pkgs; [
         aha
         inputs.plasma-manager.packages.${pkgs.system}.rc2nix
