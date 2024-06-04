@@ -28,6 +28,7 @@ in {
           inactiveForegroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_foreground;
           inactiveBackgroundColor = lib.replaceStrings ["#"] ["_"] inactive_tab_background;
         in mkDefault ''
+          confirm_os_window_close 0
           enable_audio_bell yes
           window_alert_on_bell yes
           bell_on_tab "🔔 "

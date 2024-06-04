@@ -176,6 +176,7 @@ in {
       };
       kitty.extraConfig = mkIf config.united.kitty.enable ''
         include ${pkgs.kitty-themes}/share/kitty-themes/themes/Catppuccin-Macchiato.conf
+        confirm_os_window_close 0
       '';
       tmux = mkIf config.united.tmux.enable {
         extraConfig = ''
