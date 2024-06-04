@@ -3,10 +3,10 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.wayland;
+  cfg = config.united.plasma;
 in {
-  options.united.wayland = {
-    enable = mkEnableOption "Wayland";
+  options.united.plasma = {
+    enable = mkEnableOption "Plasma";
   };
 
   config = mkIf cfg.enable {
