@@ -38,26 +38,6 @@ in {
       };
     };
 
-    environment.systemPackages = with pkgs; [catppuccin-sddm-corners];
-
-    services = mkIf (cfg.compositor == "plasma") {
-        displayManager = {
-          sddm = {
-            enable = true;
-            package = mkForce pkgs.libsForQt5.sddm;
-            wayland = enabled;
-            settings = {
-              General.Numlock = "on";
-            };
-            extraPackages = pkgs.lib.mkForce [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
-            theme = "catppuccin-sddm-corners";
-          };
-          defaultSession = "plasma";
-        };
-      desktopManager.plasma6 = {
-        enable = true;
-        enableQt5Integration = true;
-      };
-    };
+    united.plasma.enable = cfg.compositor == "plasma";
   };
 }
