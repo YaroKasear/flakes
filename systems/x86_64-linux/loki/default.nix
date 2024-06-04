@@ -30,13 +30,13 @@ in {
       isNormalUser = true;
       extraGroups = ["video" "audio" "lp"];
       shell = pkgs.zsh;
-      hashedPasswordFile = config.age.secrets.yaro-password.path;
+      hashedPasswordFile = config.age.secrets.cnelson-password.path;
     };
     yaro = {
       isNormalUser = true;
       extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
       shell = pkgs.zsh;
-      hashedPasswordFile = config.age.secrets.cnelson-password.path;
+      hashedPasswordFile = config.age.secrets.yaro-password.path;
     };
   };
 }
