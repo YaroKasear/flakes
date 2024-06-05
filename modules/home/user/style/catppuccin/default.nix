@@ -94,6 +94,7 @@ in {
         '';
       };
       kitty.extraConfig = ''
+        confirm_os_window_close 0
         enable_audio_bell yes
         window_alert_on_bell yes
         bell_on_tab "🔔 "
