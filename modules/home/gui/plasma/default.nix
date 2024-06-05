@@ -63,6 +63,7 @@ in {
       workspace = {
         clickItemTo = "select";
         wallpaper = "${config.united.style.wallpaper}";
+        colorScheme = "BreezeDark";
       };
 
       configFile =
