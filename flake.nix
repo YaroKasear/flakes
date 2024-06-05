@@ -135,7 +135,7 @@
     };
 
     plasma-manager = {
-      url = "github:pjones/plasma-manager";
+      url = "github:pjones/plasma-manager/82da66c417fc9775675fd6ffd6fffa7dce2e3f28";
       inputs.home-manager.follows = "home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
