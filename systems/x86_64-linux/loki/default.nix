@@ -10,8 +10,14 @@ in {
     };
     secrets.yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+    secrets.cnelson-npm.rekeyFile = secrets-directory + "cnelson-npm.age";
     secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
-    secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
+    secrets.yubikey-auth = {
+      rekeyFile = secrets-directory + "yubikey-auth.age";
+      path = "${config.home-manager.users.cnelson.user.directories.home}/.npmrc";
+      owner = "cnelson:users";
+      mode = 600;
+    };
   };
 
   programs.adb = enabled;
