@@ -12,9 +12,9 @@ in {
     secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
     secrets.work-npm = {
       rekeyFile = secrets-directory + "work-npm.age";
-      path = "${config.home-manager.users.cnelson.user.directories.home}/.npmrc";
+      path = "${config.home-manager.users.cnelson.united.user.directories.home}/.npmrc";
       owner = "cnelson:users";
-      mode = 600;
+      mode = "600";
     };
     secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
