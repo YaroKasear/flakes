@@ -26,6 +26,7 @@ in {
       };
     };
 
+    # Recommendations made by the home-manager module for non-Linux systems.
     home.sessionVariables = mkIf pkgs.stdenv.isDarwin {
       MOZ_LEGACY_PROFILES = 1;
       MOZ_ALLOW_DOWNGRADE = 1;
