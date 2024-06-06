@@ -12,7 +12,7 @@ in {
   config = mkIf cfg.enable {
     programs = {
       thunderbird = {
-        enable = true;
+        enable = pkgs.stdenv.isLinux;;
         profiles.default = {
           isDefault = true;
           withExternalGnupg = true;
