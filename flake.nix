@@ -239,7 +239,7 @@
         "yaro@titan".modules = home-modules;
         "yaro@europa".modules = home-modules;
         "yaro@io".modules = home-modules;
-        "yaro@Gwyn".modules = home-modules;
+        "yaro@gwyn".modules = home-modules;
         "yaro@gwynix".modules = home-modules;
       };
     };
