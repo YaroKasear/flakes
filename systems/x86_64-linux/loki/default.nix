@@ -17,7 +17,12 @@ in {
       owner = "cnelson:users";
       mode = "400";
     };
-    secrets.work-env.rekeyFile = secrets-directory + "work-env.age";
+    secrets.work-env = {
+      rekeyFile = secrets-directory + "work-env.age";
+      path = "${cnelson.united.user.directories.home}/.alysson-env";
+      owner = "cnelson:users";
+      mode = "400";
+    };
     secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
   };
