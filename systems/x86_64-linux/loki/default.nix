@@ -1,5 +1,6 @@
 { lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
 with lib.united;
+with config.home-manager.users;
 
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
@@ -12,7 +13,7 @@ in {
     secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
     secrets.work-npm = {
       rekeyFile = secrets-directory + "work-npm.age";
-      path = "${config.home-manager.users.cnelson.united.user.directories.home}/.npmrc";
+      path = "${cnelson.united.user.directories.home}/.npmrc";
       owner = "cnelson:users";
       mode = "600";
     };
