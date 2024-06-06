@@ -9,6 +9,7 @@ with lib.united;
     kitty = enabled;
     obsidian = enabled;
     protonmail-bridge = enabled;
+    thunderbird = enabled;
   };
 
 
