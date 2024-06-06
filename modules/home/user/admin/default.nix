@@ -22,7 +22,7 @@ in {
       (mkIf is-linux agenix-rekey)
       clinfo
       git-crypt
-      glxinfo
+      (mkIf is-linux glxinfo)
       pciutils
       nvd
       snowfallorg.flake
