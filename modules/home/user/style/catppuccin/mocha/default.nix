@@ -123,6 +123,7 @@ in {
       packages = [
         (pkgs.catppuccin.override { variant = "mocha"; })
         (mkIf is-linux pkgs.catppuccin-cursors.mochaDark)
+        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["mocha"]; }))
       ];
       file = {
         # mkIf config.united.vim.enable (".vim/colors/mocha.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-mocha.vim";);

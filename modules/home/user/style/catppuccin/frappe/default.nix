@@ -123,6 +123,7 @@ in {
       packages = [
         (pkgs.catppuccin.override { variant = "frappe"; })
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
+        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["frappe"]; }))
       ];
       file = {
         # mkIf config.united.vim.enable (".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";);

@@ -15,7 +15,10 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      packages = with pkgs; [ kitty-themes ];
+      packages = with pkgs; [
+        (mkIf config.united.kitty.enable kitty-themes)
+        (mkIf config.united.plasma.enable catppuccin-kde)
+      ];
       file = mkIf config.united.vim.enable {
         ".vim/colors/catppuccin.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin.vim";
       };

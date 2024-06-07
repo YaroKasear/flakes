@@ -27,7 +27,18 @@ in {
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
   };
 
-  programs.adb = enabled;
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+    ensureUsers = [
+      {
+        name = "cnelson";
+        ensurePermissions = {
+          "*.*" = "ALL PRIVILEGES";
+        };
+      }
+    ];
+  };
 
   united = {
     loki = enabled;
