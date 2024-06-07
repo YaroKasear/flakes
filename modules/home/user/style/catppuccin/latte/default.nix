@@ -186,7 +186,17 @@ in {
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
         settings.flavour = "latte";
       };
-      plasma.workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinLatteBlue");
+      plasma = {
+        configFile = {
+          kwinrc."org.kde.kdecoration2"= {
+            library = "org.kde.kwin.aurorae";
+            NoPlugin = false;
+            theme = "__aurorae__svg__CatppuccinLatte-Modern";
+          };
+          kcminputrc.Mouse.cursorTheme = "Catppuccin-Latte-Blue-Cursors";
+        };
+        workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinLatteBlue");
+      };
       vim = mkIf config.united.vim.enable {
         extraConfig = ''
           colorscheme catppuccin_latte

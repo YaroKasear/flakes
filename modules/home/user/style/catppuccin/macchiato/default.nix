@@ -187,7 +187,17 @@ in {
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
         settings.flavour = "macchiato";
       };
-      plasma.workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinMacchiatoBlue");
+      plasma = {
+        configFile = {
+          kwinrc."org.kde.kdecoration2"= {
+            library = "org.kde.kwin.aurorae";
+            NoPlugin = false;
+            theme = "__aurorae__svg__CatppuccinMacchiato-Modern";
+          };
+          kcminputrc.Mouse.cursorTheme = "Catppuccin-Macchiato-Dark-Cursors";
+        };
+        workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinMacchiatoBlue");
+      };
       vim = mkIf config.united.vim.enable {
         extraConfig = ''
           colorscheme catppuccin_macchiato

@@ -14,14 +14,16 @@ in {
     secrets.work-npm = {
       rekeyFile = secrets-directory + "work-npm.age";
       path = "${cnelson.united.user.directories.home}/.npmrc";
-      owner = "cnelson:users";
+      owner = "cnelson";
       mode = "400";
+      symlink = false;
     };
     secrets.work-env = {
       rekeyFile = secrets-directory + "work-env.age";
       path = "${cnelson.united.user.directories.home}/.alysson-env";
-      owner = "cnelson:users";
+      owner = "cnelson";
       mode = "400";
+      symlink = false;
     };
     secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";

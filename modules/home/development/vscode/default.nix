@@ -37,6 +37,7 @@ in {
           "security.workspace.trust.untrustedFiles"= "open";
           "editor.tabSize"= 2;
           "editor.fontFamily"= "'FiraCode Nerd Font Mono','Droid Sans Mono', 'monospace', monospace";
+          "editor.fontLigatures" = true;
           "update.mode"= "none";
           "files.enableTrash" = false;
         };
