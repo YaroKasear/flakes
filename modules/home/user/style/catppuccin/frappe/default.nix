@@ -186,6 +186,7 @@ in {
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
         settings.flavour = "frappe";
       };
+      plasma.workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinFrappeBlue");
       vim = mkIf config.united.vim.enable {
         extraConfig = ''
           colorscheme catppuccin_frappe

@@ -187,6 +187,7 @@ in {
       nixvim.colorschemes.catppuccin = mkIf config.united.nixvim.enable {
         settings.flavour = "macchiato";
       };
+      plasma.workspace.colorScheme = (mkIf config.united.plasma.enable "CatppuccinMacchiatoBlue");
       vim = mkIf config.united.vim.enable {
         extraConfig = ''
           colorscheme catppuccin_macchiato
