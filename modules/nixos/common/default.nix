@@ -39,7 +39,11 @@ in {
           efiSysMountPoint = "/boot";
         };
       };
-      plymouth.enable = cfg.splash;
+      plymouth = {
+        enable = cfg.splash;
+        themePackages = with pkgs; [(catppuccin-plymouth.override{ variant = "mocha"; })];
+        theme = "catppuccin-mocha";
+      };
     };
 
     console = {

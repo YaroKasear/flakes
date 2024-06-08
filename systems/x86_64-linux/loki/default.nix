@@ -44,6 +44,7 @@ in {
 
   united = {
     loki = enabled;
+    common.splash = true;
     desktop = {
       enable = true;
       use-wayland = true;
