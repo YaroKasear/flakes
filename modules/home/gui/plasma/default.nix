@@ -98,6 +98,22 @@ in {
           Xwayland.Scale = 1;
         };
         ksmserverrc.General.loginMode = "emptySession";
+        kwinrulesrc = {
+          "25c18ec1-2987-44aa-8303-f50ccca0d237" = {
+            Description = "Window settings for firefox";
+            above = true;
+            aboverule = 3;
+            title = "Picture-in-Picture";
+            titlematch = 1;
+            types = 1;
+            wmclass = "firefox";
+            wmclassmatch = 1;
+          };
+          General = {
+            count = 1;
+            rules = "25c18ec1-2987-44aa-8303-f50ccca0d237";
+          };
+        };
       };
     };
   };
