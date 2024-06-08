@@ -25,6 +25,7 @@ in {
       mode = "400";
       symlink = false;
     };
+    secrets.work-mysql-init.rekeyFile = secrets-directory + "work-mysql-init.age";
     secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
     secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
   };
@@ -40,6 +41,7 @@ in {
         };
       }
     ];
+    initialScript = config.age.secrets.work-mysql-init.path;
   };
 
   united = {
