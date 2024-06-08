@@ -59,27 +59,14 @@ with lib.united;
 
   programs.plasma.panels = [
     {
-      location = "bottom";
+      location = "top";
       height = 32;
       widgets = [
-        "org.kde.plasma.kickoff"
-        {
-          name = "org.kde.plasma.taskmanager";
-          config = {
-            General.launchers = [
-              "applications:systemsettings.desktop"
-              "applications:org.kde.dolphin.desktop"
-              "applications:kitty.desktop"
-              "applications:firefox.desktop"
-              "applications:thunderbird.desktop"
-              "applications:discord.desktop"
-              "applications:skypeforlinux.desktop"
-              "applications:org.telegram.desktop.desktop"
-              "applications:steam.desktop"
-              "applications:code.desktop"
-            ];
-          };
-        }
+        "org.kde.plasma.appmenu"
+        "org.kde.plasma.userswitcher"
+        "org.kde.plasma.pager"
+        "org.kde.plasma.marginsseparator"
+        "org.kde.plasma.panelspacer"
         "org.kde.plasma.marginsseparator"
         {
           systemTray.items = {
@@ -96,6 +83,38 @@ with lib.united;
           digitalClock = {
             calendar.firstDayOfWeek = "sunday";
             time.format = "12h";
+          };
+        }
+      ];
+    }
+    {
+      location = "bottom";
+      height = 64;
+      hiding = "dodgewindows";
+      lengthMode = "fit";
+      widgets = [
+        "org.kde.plasma.kickoff"
+        "org.kde.plasma.folder"
+        "org.kde.plasma.marginsseparator"
+        {
+          name = "org.kde.plasma.icontasks";
+          config = {
+            General = {
+              launchers = [
+                "applications:systemsettings.desktop"
+                "applications:org.kde.dolphin.desktop"
+                "applications:kitty.desktop"
+                "applications:firefox.desktop"
+                "applications:thunderbird.desktop"
+                "applications:discord.desktop"
+                "applications:skypeforlinux.desktop"
+                "applications:org.telegram.desktop.desktop"
+                "applications:steam.desktop"
+                "applications:code.desktop"
+              ];
+              groupingStrategy = "0";
+              separateLaunchers = "false";
+            };
           };
         }
       ];
