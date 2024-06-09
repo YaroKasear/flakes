@@ -62,7 +62,8 @@ with lib.united;
       location = "top";
       height = 32;
       widgets = [
-        "org.kde.plasma.appmenu"
+        "org.kde.plasma.kickoff"
+        "org.kde.plasma.folder"
         "org.kde.plasma.userswitcher"
         "org.kde.plasma.pager"
         "org.kde.plasma.marginsseparator"
@@ -89,15 +90,10 @@ with lib.united;
     }
     {
       location = "bottom";
-      height = 64;
-      hiding = "dodgewindows";
-      lengthMode = "fit";
+      height = 32;
       widgets = [
-        "org.kde.plasma.kickoff"
-        "org.kde.plasma.folder"
-        "org.kde.plasma.marginsseparator"
         {
-          name = "org.kde.plasma.icontasks";
+          name = "org.kde.plasma.taskmanager";
           config = {
             General = {
               launchers = [
@@ -113,7 +109,6 @@ with lib.united;
                 "applications:code.desktop"
               ];
               groupingStrategy = "0";
-              separateLaunchers = "false";
             };
           };
         }
@@ -132,6 +127,7 @@ with lib.united;
       skypeforlinux
       telegram-desktop
       united.python-fabric
+      # united.sonic3air
     ];
     persistence."/persistent${config.united.user.directories.home}" =
     let
