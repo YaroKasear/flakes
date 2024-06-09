@@ -11,10 +11,6 @@ in {
     };
     secrets = {
       cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
-      # davfs-secrets = {
-      #   rekeyFile = secrets-directory + "davfs-secrets.age";
-      #   mode = "600";
-      # };
       work-env = {
         rekeyFile = secrets-directory + "work-env.age";
         path = "${cnelson.united.user.directories.home}/.alysson-env";
@@ -22,7 +18,13 @@ in {
         mode = "400";
         symlink = false;
       };
-      work-mysql-init.rekeyFile = secrets-directory + "work-mysql-init.age";
+      work-mysql-init = {
+        rekeyFile = secrets-directory + "work-mysql-init.age";
+        path = "/run/mysql-init";
+        owner = "mysql";
+        mode = "400";
+        symlink = false;
+      };
       work-npm = {
         rekeyFile = secrets-directory + "work-npm.age";
         path = "${cnelson.united.user.directories.home}/.npmrc";
