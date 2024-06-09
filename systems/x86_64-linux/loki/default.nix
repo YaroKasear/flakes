@@ -9,25 +9,31 @@ in {
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
-    secrets.yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-    secrets.cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
-    secrets.work-npm = {
-      rekeyFile = secrets-directory + "work-npm.age";
-      path = "${cnelson.united.user.directories.home}/.npmrc";
-      owner = "cnelson";
-      mode = "400";
-      symlink = false;
+    secrets = {
+      cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+      # davfs-secrets = {
+      #   rekeyFile = secrets-directory + "davfs-secrets.age";
+      #   mode = "600";
+      # };
+      work-env = {
+        rekeyFile = secrets-directory + "work-env.age";
+        path = "${cnelson.united.user.directories.home}/.alysson-env";
+        owner = "cnelson";
+        mode = "400";
+        symlink = false;
+      };
+      work-mysql-init.rekeyFile = secrets-directory + "work-mysql-init.age";
+      work-npm = {
+        rekeyFile = secrets-directory + "work-npm.age";
+        path = "${cnelson.united.user.directories.home}/.npmrc";
+        owner = "cnelson";
+        mode = "400";
+        symlink = false;
+      };
+      work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
+      yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
+      yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
     };
-    secrets.work-env = {
-      rekeyFile = secrets-directory + "work-env.age";
-      path = "${cnelson.united.user.directories.home}/.alysson-env";
-      owner = "cnelson";
-      mode = "400";
-      symlink = false;
-    };
-    secrets.work-mysql-init.rekeyFile = secrets-directory + "work-mysql-init.age";
-    secrets.work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
-    secrets.yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
   };
 
   services.mysql = {

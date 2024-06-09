@@ -1,15 +1,22 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 
 with lib;
 with lib.united;
 let
   cfg = config.united.loki-mounts;
+  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
+
 in {
   options.united.loki-mounts = {
     enable = mkEnableOption "loki-mounts";
   };
 
   config = mkIf cfg.enable {
+    age.secrets.davfs-secrets = {
+      rekeyFile = secrets-directory + "davfs-secrets.age";
+      mode = "600";
+    };
+
     boot.initrd.systemd.services.rollback = {
       description = "Clear root filesystem.";
       wantedBy = [
@@ -37,6 +44,7 @@ in {
       etc = {
         "ssh/ssh_host_ed25519_key".source = "/persistent/etc/ssh/ssh_host_ed25519_key";
         "ssh/ssh_host_ed25519_key.pub".source = "/persistent/etc/ssh/ssh_host_ed25519_key.pub";
+        "davfs2/secrets".source = config.age.secrets.davfs-secrets.path;
       };
       persistence."/persistent" = {
         hideMounts = true;
@@ -57,15 +65,20 @@ in {
 
     fileSystems = {
       "/persistent".neededForBoot = true;
+      # "/home/yaro/Nextcloud" = {
+      #   device = "storage.kasear.net:/mnt/data/user/yaro/cloud";
+      #   fsType = "nfs";
+      #   options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+      # };
       "/home/yaro/Nextcloud" = {
-        device = "storage.kasear.net:/mnt/data/user/yaro/cloud";
-        fsType = "nfs";
-        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+        device = "https://cloud.kasear.net/remote.php/dav/files/Yaro";
+        fsType = "davfs";
+        options = [ "rw" "user" "uid=yaro" "noauto" "x-systemd.automount" "_netdev" ];
       };
       "/mnt/containers" = {
         device = "storage.kasear.net:/mnt/data/containers";
         fsType = "nfs";
-        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600"  "_netdev" ];
       };
     };
 
@@ -75,9 +88,22 @@ in {
       mode = "0755";
     };
 
-    services.zfs = {
-      autoScrub = enabled;
-      trim = enabled;
+    services = {
+      davfs2 = {
+        enable = true;
+        settings = {
+          globalSection.use_locks = false;
+          sections = {
+            "/home/yaro/Nextcloud" = {
+              gui_optimize = true;
+            };
+          };
+        };
+      };
+      zfs = {
+        autoScrub = enabled;
+        trim = enabled;
+      };
     };
   };
 }
