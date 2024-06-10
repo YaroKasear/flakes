@@ -112,6 +112,7 @@ in {
             Description = "Window settings for firefox";
             above = true;
             aboverule = 3;
+            desktopsrule = 3;
             skippager = true;
             skippagerrule = 3;
             skipswitcher = true;
@@ -126,7 +127,7 @@ in {
           };
           General = {
             count = 1;
-            rules = "25c18ec1-2987-44aa-8303-f50ccca0d237";
+            rules = "1";
           };
         };
       };
