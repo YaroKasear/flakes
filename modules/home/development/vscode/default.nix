@@ -15,7 +15,7 @@ in {
     programs = {
       vscode = {
         enable = true;
-        package = mkIf config.united.wayland.enable (pkgs.vscode.overrideAttrs (e: rec {
+        package = mkIf config.united.wayland.enable (pkgs.vscode.overrideAttrs (e: {
           desktopItem = e.desktopItem.override (d: {
             exec = "${d.exec} --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
             actions.new-empty-window = {
