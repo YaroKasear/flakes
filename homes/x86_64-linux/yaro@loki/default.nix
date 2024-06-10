@@ -62,21 +62,6 @@ with lib.united;
       height = 32;
       widgets = [
         {
-          name = "org.kde.plasma.kickoff";
-          config.General = {
-            compactMode = "true";
-            icon = "nix-snowflake-white";
-          };
-        }
-        {
-          name = "org.kde.plasma.folder";
-          config.General.url = "file://${config.united.user.directories.home}";
-        }
-        {
-          name = "org.kde.plasma.pager";
-          config.General.currentDesktopSelected = "ShowDesktop";
-        }
-        {
           name = "org.kde.plasma.userswitcher";
           config.General = {
             showFace = "true";
@@ -113,6 +98,18 @@ with lib.united;
       floating = true;
       widgets = [
         {
+          name = "org.kde.plasma.kickoff";
+          config.General = {
+            compactMode = "true";
+            icon = "nix-snowflake-white";
+          };
+        }
+        {
+          name = "org.kde.plasma.folder";
+          config.General.url = "file://${config.united.user.directories.home}";
+        }
+        "org.kde.plasma.marginsseparator"
+        {
           name = "org.kde.plasma.icontasks";
           config.General = {
             launchers = [
@@ -131,6 +128,11 @@ with lib.united;
             separateLaunchers = "false";
             showOnlyCurrentDesktop = "false";
           };
+        }
+        "org.kde.plasma.marginsseparator"
+        {
+          name = "org.kde.plasma.pager";
+          config.General.currentDesktopSelected = "ShowDesktop";
         }
       ];
     }

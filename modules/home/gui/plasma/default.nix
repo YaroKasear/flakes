@@ -108,10 +108,16 @@ in {
         };
         ksmserverrc.General.loginMode = "emptySession";
         kwinrulesrc = {
-          "25c18ec1-2987-44aa-8303-f50ccca0d237" = {
+          "1" = {
             Description = "Window settings for firefox";
             above = true;
             aboverule = 3;
+            skippager = true;
+            skippagerrule = 3;
+            skipswitcher = true;
+            skipswitcherrule = 3;
+            skiptaskbar = true;
+            skiptaskbarrule = 3;
             title = "Picture-in-Picture";
             titlematch = 1;
             types = 1;
