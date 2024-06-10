@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
+{ lib, ... }:
 
 with lib.united;
 {
