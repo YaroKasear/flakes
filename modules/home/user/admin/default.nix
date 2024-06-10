@@ -24,6 +24,7 @@ in {
       git-crypt
       (mkIf is-linux glxinfo)
       pciutils
+      nil
       nvd
       snowfallorg.flake
       sops
@@ -32,16 +33,32 @@ in {
       vulkan-tools
     ];
 
-    programs.zsh = mkIf config.united.zsh.enable {
-      oh-my-zsh.plugins = ["sudo"];
-      shellAliases = {
-        update-config = "flake boot ${config.united.user.directories.home}/flakes/#";
-        save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
-        ssh = "kitten ssh";
-        load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
-        upgrade-system = "nix flake update ${config.united.user.directories.home}/flakes/# && flake boot ${config.united.user.directories.home}/flakes/#";
-        update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
-        update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+    programs = {
+      zsh = mkIf config.united.zsh.enable {
+        oh-my-zsh.plugins = ["sudo"];
+        shellAliases = {
+          update-config = "flake boot ${config.united.user.directories.home}/flakes/#";
+          save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
+          ssh = "kitten ssh";
+          load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
+          upgrade-system = "nix flake update ${config.united.user.directories.home}/flakes/# && flake boot ${config.united.user.directories.home}/flakes/#";
+          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
+          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+        };
+      };
+      vscode = mkIf config.united.vscode.enable {
+        userSettings = {
+          "nix.enableLanguageServer" = true;
+          "nix.serverPath" = "nil";
+        };
+        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
+            name = "nix-ide";
+            publisher = "jnoortheen";
+            version = "0.3.1";
+            sha256 = "05oMDHvFM/dTXB6T3rcDK3EiNG2T0tBN9Au9b+Bk7rI=";
+          }
+        ];
       };
     };
   };
