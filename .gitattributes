@@ -1,1 +1,1 @@
-homes/x86_64-linux/cnelson@loki/default.nix filter=git-crypt diff=git-crypt
+homes/x86_64-linux/cnelson@loki/* filter=git-crypt diff=git-crypt
