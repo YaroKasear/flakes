@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, stdenv, ... }:
+{ pkgs, ... }:
 with pkgs;
 
 pkgs.mkShell {

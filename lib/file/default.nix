@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ ... }:
 
-rec {
+{
   ## Append text to the contents of a file
   ##
   ## ```nix

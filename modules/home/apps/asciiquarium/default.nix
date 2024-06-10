@@ -3,7 +3,6 @@
 with lib;
 with lib.united;
 let
-  home-directory = config.united.user.directories.home;
   config-directory = config.united.user.directories.config;
 
   cfg = config.united.asciiquarium;
@@ -28,7 +27,7 @@ in {
       plugins = [
         inputs.hyprland-plugins.packages.${pkgs.system}.hyprwinwrap
       ];
-      settings = with config.united.style.colors; {
+      settings = {
         exec-once = [
           "kitty --class=\"kitty-bg\" -T _HIDE_ME_ -c ${config-directory}/kitty/asciiquarium.conf asciiquarium"
         ];

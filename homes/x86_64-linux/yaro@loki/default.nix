@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
+{ lib, pkgs, config, ... }:
 with lib.united;
 
 {
@@ -155,10 +155,8 @@ with lib.united;
     let
       mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
 
-      cache-directory = mkHomeCanon config.united.user.directories.cache;
       config-directory = mkHomeCanon config.united.user.directories.config;
       data-directory = mkHomeCanon config.united.user.directories.data;
-      state-directory = mkHomeCanon config.united.user.directories.state;
     in {
       allowOther = true;
       directories = [

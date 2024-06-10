@@ -1,4 +1,4 @@
-{ lib, inputs, namespace, pkgs, stdenv, fetchurl, ... }:
+{ pkgs, stdenv, fetchurl, ... }:
 
 stdenv.mkDerivation rec {
     pname = "sonic3air";

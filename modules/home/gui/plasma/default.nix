@@ -22,10 +22,8 @@ in {
         let
           mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
 
-          cache-directory = mkHomeCanon config.united.user.directories.cache;
           config-directory = mkHomeCanon config.united.user.directories.config;
           data-directory = mkHomeCanon config.united.user.directories.data;
-          state-directory = mkHomeCanon config.united.user.directories.state;
         in {
           directories = [
             "${data-directory}/kwalletd"
@@ -66,15 +64,7 @@ in {
         colorScheme = mkDefault "BreezeDark";
       };
 
-      configFile =
-      with config.united.style.colors;
-      let
-        to-rgb-kde = color:
-        let
-          rgba = hexToRgba color;
-        in
-          "${toString (builtins.floor rgba.r)},${toString (builtins.floor rgba.g)},${toString (builtins.floor rgba.b)}";
-      in {
+      configFile = {
         kdeglobals = {
           KDE.widgetStyle = "Fusion";
           General = {

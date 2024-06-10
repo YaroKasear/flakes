@@ -1,11 +1,10 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, inputs, ... }:
 
 with lib;
 with lib.united;
 let
-  is-wayland = config.united.wayland.enable;
-
   cfg = config.united.zellij;
+
 in {
   options.united.zellij = {
     enable = mkEnableOption "Zellij";

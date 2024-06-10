@@ -3,11 +3,8 @@
 with lib;
 with lib.united;
 let
-  inherit (lib.united) mkOpt enabled;
-
-  home-directory = config.united.user.directories.home;
-
   cfg = config.united.style.catppuccin;
+
 in {
   options.united.style.catppuccin = {
     enable = mkEnableOption "Default settings not to be overridden by Catppuccin themes.";

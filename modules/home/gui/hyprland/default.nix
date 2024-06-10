@@ -343,9 +343,7 @@ in {
       find = "${pkgs.findutils}/bin/find";
       grep = "${pkgs.gnugrep}/bin/grep";
       hyprctl = "${inputs.hyprland.packages.x86_64-linux.hyprland}/bin/hyprctl";
-      killall = "${pkgs.killall}/bin/killall";
       shuf = "${pkgs.coreutils-full}/bin/shuf";
-      sleep = "${pkgs.coreutils-full}/bin/sleep";
     in {
       "hypr/hyprpaper.conf".text = ''
         preload = ${config.united.style.wallpaper}

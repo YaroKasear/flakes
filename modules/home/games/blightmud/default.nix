@@ -3,8 +3,8 @@
 with lib;
 with lib.united;
 let
-  inherit (config.united) user;
   cfg = config.united.blightmud;
+
 in
   {
   options.united.blightmud = {

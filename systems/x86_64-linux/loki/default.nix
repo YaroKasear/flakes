@@ -1,4 +1,4 @@
-{ lib, pkgs, inputs, system, target, format, virtual, systems, config, ... }:
+{ lib, pkgs, inputs, config, ... }:
 with lib.united;
 with config.home-manager.users;
 

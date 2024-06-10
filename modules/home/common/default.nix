@@ -3,9 +3,8 @@
 with lib;
 with lib.united;
 let
-  is-linux = pkgs.stdenv.isLinux;
-
   cfg = config.united.common;
+
 in {
   options.united.common = {
     enable = mkEnableOption "Common";

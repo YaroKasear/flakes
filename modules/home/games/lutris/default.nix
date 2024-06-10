@@ -1,11 +1,10 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 with lib.united;
 let
-  is-wayland = config.united.wayland.enable;
-
   cfg = config.united.lutris;
+
 in {
   options.united.lutris = {
     enable = mkEnableOption "Lutris";

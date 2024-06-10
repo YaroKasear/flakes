@@ -1,4 +1,4 @@
-{ lib, inputs, pkgs, stdenv, ... }:
+{ pkgs, stdenv, ... }:
 
 stdenv.mkDerivation {
     name = "protomuck";
@@ -34,7 +34,7 @@ stdenv.mkDerivation {
       ln -s $out/game/restart $out/bin/restart
     '';
 
-    meta = with lib; {
+    meta = {
       description = "ProtoMUCK 2.0 MUCK Server";
       homepage = "https://github.com/protomuck/protomuck";
     };

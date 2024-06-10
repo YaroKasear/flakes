@@ -3,8 +3,6 @@
 with lib;
 with lib.united;
 let
-  inherit (lib.united) mkOpt enabled;
-
   is-linux = pkgs.stdenv.isLinux;
   is-darwin = pkgs.stdenv.isDarwin;
 

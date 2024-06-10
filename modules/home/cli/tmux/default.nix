@@ -4,7 +4,6 @@ with lib;
 with lib.united;
 let
   is-linux = pkgs.stdenv.isLinux;
-  is-darwin = pkgs.stdenv.isDarwin;
 
   cfg = config.united.tmux;
 in {

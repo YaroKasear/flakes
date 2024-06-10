@@ -1,7 +1,7 @@
-{ lib, inputs, pkgs, stdenv, ... }:
+{ pkgs, ... }:
 with pkgs.python3Packages;
 
-buildPythonPackage rec {
+buildPythonPackage {
   pname = "python-fabric";
   version = "git";
   pyproject = true;

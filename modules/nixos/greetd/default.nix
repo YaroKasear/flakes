@@ -5,26 +5,6 @@ with lib.united;
 let
   cfg = config.united.greetd;
 
-  hyprConfig = pkgs.writeText "greetd-hypr-config" ''
-    env=__GLX_VENDOR_LIBRARY_NAME,nvidia
-    env=GBM_BACKEND,nvidia-drm
-    env=LIBVA_DRIVER_NAME,nvidia
-    env=QT_QPA_PLATFORMTHEME,qt5ct
-    env=WLR_NO_HARDWARE_CURSORS,1
-    env=WLR_DRM_NO_ATOMIC,1
-    env=XCURSOR_SIZE,24
-    env=XDG_CURRENT_DESKTOP=Hyprland
-    env=XDG_SESSION_DESKTOP=Hyprland
-    env=XDG_SESSION_TYPE,wayland
-    env=__GL_GSYNC_ALLOWED,1
-
-    misc {
-      disable_hyprland_logo=true
-    }
-
-    exec-once = regreet; hyprctl dispatch exit
-  '';
-
   kanshiConfig = pkgs.writeText "greetd-kanshi-config" ''
     profile {
       output "Dell Inc. Dell S2417DG #ASPupbpmjZPd" mode 2560x1440

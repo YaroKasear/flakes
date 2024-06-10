@@ -5,9 +5,7 @@ with lib.united;
 let
   cfg = config.united.wayfire;
 
-  home-directory = config.united.user.directories.home;
   screenshots-directory = config.united.user.directories.screenshots;
-  wallpapers-directory = config.united.user.directories.wallpapers;
 
   stringList = lib.concatMapStrings (x: x + " ");
   in {

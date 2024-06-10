@@ -1,10 +1,10 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 with lib;
 with lib.united;
 let
-  inherit (config.united) user;
   cfg = config.united.am2r;
+
 in
   {
   options.united.am2r = {

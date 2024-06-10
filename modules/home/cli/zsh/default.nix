@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, ... }:
 
 with lib;
 with lib.united;
