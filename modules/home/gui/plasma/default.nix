@@ -86,6 +86,14 @@ in {
           };
         };
         kwinrc = {
+          Desktops = {
+            Id_1 = "c698a291-b9e2-4d58-804f-7939e0b0d748";
+            Id_2 = "19f5a1ed-4506-4f91-9d50-8117011b1d43";
+            Id_3 = "88ea78bd-94d7-4898-82f5-39310744f518";
+            Id_4 = "682dae2d-0911-44e6-8e80-ad6580b91323";
+            Number = 4;
+            Rows = 2;
+          };
           Effect-blur.BlurStrength = 3;
           Effect-overview.BorderActivate = 9;
           MouseBindings.CommandTitlebarWheel = "Shade/Unshade";
@@ -96,6 +104,7 @@ in {
             Mode = "Location";
           };
           Xwayland.Scale = 1;
+
         };
         ksmserverrc.General.loginMode = "emptySession";
         kwinrulesrc = {

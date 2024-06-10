@@ -1,7 +1,6 @@
 { lib, pkgs, inputs, home, target, format, virtual, host, config, ... }:
-
 with lib.united;
-# let pkgs = inputs.nixpkgs-stable.legacyPackages."x86_64-linux"; in
+
 {
   united = {
     admin = enabled;#  = enabled;
@@ -62,10 +61,28 @@ with lib.united;
       location = "top";
       height = 32;
       widgets = [
-        "org.kde.plasma.kickoff"
-        "org.kde.plasma.folder"
-        "org.kde.plasma.userswitcher"
-        "org.kde.plasma.pager"
+        {
+          name = "org.kde.plasma.kickoff";
+          config.General = {
+            compactMode = "true";
+            icon = "nix-snowflake-white";
+          };
+        }
+        {
+          name = "org.kde.plasma.folder";
+          config.General.url = "file://${config.united.user.directories.home}";
+        }
+        {
+          name = "org.kde.plasma.pager";
+          config.General.currentDesktopSelected = "ShowDesktop";
+        }
+        {
+          name = "org.kde.plasma.userswitcher";
+          config.General = {
+            showFace = "true";
+            showTechnicalInfo = "true";
+          };
+        }
         "org.kde.plasma.marginsseparator"
         "org.kde.plasma.panelspacer"
         "org.kde.plasma.marginsseparator"
@@ -90,26 +107,29 @@ with lib.united;
     }
     {
       location = "bottom";
-      height = 32;
+      height = 64;
+      lengthMode = "fit";
+      hiding = "dodgewindows";
+      floating = true;
       widgets = [
         {
-          name = "org.kde.plasma.taskmanager";
-          config = {
-            General = {
-              launchers = [
-                "applications:systemsettings.desktop"
-                "applications:org.kde.dolphin.desktop"
-                "applications:kitty.desktop"
-                "applications:firefox.desktop"
-                "applications:thunderbird.desktop"
-                "applications:discord.desktop"
-                "applications:skypeforlinux.desktop"
-                "applications:org.telegram.desktop.desktop"
-                "applications:steam.desktop"
-                "applications:code.desktop"
-              ];
-              groupingStrategy = "0";
-            };
+          name = "org.kde.plasma.icontasks";
+          config.General = {
+            launchers = [
+              "applications:systemsettings.desktop"
+              "applications:org.kde.dolphin.desktop"
+              "applications:kitty.desktop"
+              "applications:firefox.desktop"
+              "applications:thunderbird.desktop"
+              "applications:discord.desktop"
+              "applications:skypeforlinux.desktop"
+              "applications:org.telegram.desktop.desktop"
+              "applications:steam.desktop"
+              "applications:code.desktop"
+            ];
+            groupingStrategy = "3";
+            separateLaunchers = "false";
+            showOnlyCurrentDesktop = "false";
           };
         }
       ];

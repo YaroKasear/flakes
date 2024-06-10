@@ -64,12 +64,14 @@ in {
 
   users.users = {
     yaro = {
+      description = yaro.united.user.fullName;
       isNormalUser = true;
       extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
       shell = pkgs.zsh;
       hashedPasswordFile = config.age.secrets.yaro-password.path;
     };
     cnelson = {
+      description = cnelson.united.user.fullName;
       isNormalUser = true;
       extraGroups = ["video" "audio" "lp"];
       shell = pkgs.zsh;

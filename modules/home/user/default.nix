@@ -20,6 +20,7 @@ in {
     enable = mkEnableOption "User";
 
     name = mkOpt types.str "yaro" "My user name!";
+    fullName = mkOpt types.str "Yaro Kasear" "My full name!";
     directories = {
       cache = mkOpt types.str "${cfg.directories.home}/.cache" "Cache directory.";
       config = mkOpt types.str "${cfg.directories.home}/.config" "Application configurations.";
