@@ -45,6 +45,12 @@ in {
         };
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
+            name = "gitlens";
+            publisher = "eamodio";
+            version = "2024.6.1005";
+            sha256 = "edbdMFtzPy0SmAAdJkHbeSwKuEGbztJ8OOKLBmAMhZc=";
+          }
+          {
             name = "increment-selection";
             publisher = "albymor";
             version = "0.2.0";
