@@ -6,7 +6,7 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nur.url = github:nix-community/NUR;
+    nur.url = "github:nix-community/NUR";
 
     agenix.url = "github:ryantm/agenix";
 
@@ -125,7 +125,7 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
