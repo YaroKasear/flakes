@@ -19,7 +19,7 @@ with lib.united;
     hyprland.floating = false;
     lutris = disabled;
     mpv = enabled;
-    obs-studio = disabled;
+    obs-studio = enabled;
     obsidian = enabled;
     persistent = enabled;
     protonmail-bridge = enabled;
