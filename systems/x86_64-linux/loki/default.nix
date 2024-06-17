@@ -52,6 +52,8 @@ in {
     initialScript = config.age.secrets.work-mysql-init.path;
   };
 
+  snowfallorg.users.cnelson.admin = false;
+
   united = {
     loki = enabled;
     common.splash = true;
@@ -61,8 +63,6 @@ in {
     };
     wayland.compositor = "plasma";
   };
-
-  snowfallorg.users.cnelson.admin = false;
 
   users = {
     users = {
