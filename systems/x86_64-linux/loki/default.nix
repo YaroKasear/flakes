@@ -62,22 +62,26 @@ in {
     wayland.compositor = "plasma";
   };
 
-  users.users = {
-    yaro = {
-      description = yaro.united.user.fullName;
-      home = yaro.united.user.directories.home;
-      isNormalUser = true;
-      extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
-      shell = pkgs.zsh;
-      hashedPasswordFile = config.age.secrets.yaro-password.path;
-    };
-    cnelson = {
-      description = cnelson.united.user.fullName;
-      home = cnelson.united.user.directories.home;
-      isNormalUser = true;
-      extraGroups = ["video" "audio" "lp"];
-      shell = pkgs.zsh;
-      hashedPasswordFile = config.age.secrets.cnelson-password.path;
+  snowfallorg.users.cnelson.admin = false;
+
+  users = {
+    users = {
+      yaro = {
+        description = yaro.united.user.fullName;
+        home = yaro.united.user.directories.home;
+        isNormalUser = true;
+        extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
+        shell = pkgs.zsh;
+        hashedPasswordFile = config.age.secrets.yaro-password.path;
+      };
+      cnelson = {
+        description = cnelson.united.user.fullName;
+        home = cnelson.united.user.directories.home;
+        isNormalUser = true;
+        extraGroups = ["video" "audio" "lp"];
+        shell = pkgs.zsh;
+        hashedPasswordFile = config.age.secrets.cnelson-password.path;
+      };
     };
   };
 }
