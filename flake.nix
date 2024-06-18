@@ -129,11 +129,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim-stable = {
-      url = "github:nix-community/nixvim/nixos-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     plasma-manager = {
       url = "github:pjones/plasma-manager";
       inputs.home-manager.follows = "home-manager";
