@@ -34,15 +34,15 @@ in {
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "catppuccin-vsc";
-            publisher = "Catppuccin";
-            version = "3.10.1";
-            sha256 = "er1ugqZDrw4vLc9luAZ6kkehQ27fSMFQDBjQwmD4D8Q=";
+            publisher = "catppuccin";
+            version = "3.14.0";
+            sha256 = "066wsdjck2aq7gznl772ymkw5rd52mc0imkjw52m4x11b13hbm4h";
           }
           {
             name = "catppuccin-vsc-icons";
-            publisher = "Catppuccin";
-            version = "0.33.0";
-            sha256 = "UcwaISy0lkBzlrRBZFH/sw2D8EDtKltBWD7xgfAw3U8=";
+            publisher = "catppuccin";
+            version = "1.13.0";
+            sha256 = "0baygqdjxca7igk5paqi45ls4szvvhc9890aaaxvcdqw8fain2z2";
           }
         ];
         userSettings = {

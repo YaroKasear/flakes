@@ -47,20 +47,20 @@ in {
           {
             name = "gitlens";
             publisher = "eamodio";
-            version = "2024.6.1005";
-            sha256 = "edbdMFtzPy0SmAAdJkHbeSwKuEGbztJ8OOKLBmAMhZc=";
+            version = "2024.7.405";
+            sha256 = "0ficyzgkz3qqndvzcld169v97980znbd17a0f4m62wjf2z7cg1qg";
           }
           {
             name = "increment-selection";
             publisher = "albymor";
             version = "0.2.0";
-            sha256 = "iP4c0xLPiTsgD8Q8Kq9jP54HpdnBveKRY31Ro97ROJ8=";
+            sha256 = "17rqs7ga6lbxcf8y5gf1v6jhg7izcfpjlg641wh3p2fg2b9irzl8";
           }
           {
             name = "live-server";
             publisher = "ms-vscode";
-            version = "0.4.13";
-            sha256 = "WOx5kmy7etu/am665jAyryYNWTONK5Zx9klo9k/Iog4=";
+            version = "0.5.2024062701";
+            sha256 = "0apk60zc5hrf2hjxiffp6q49yckma4k2gid2lm03mv0nm8yifxfk";
           }
         ];
       };
