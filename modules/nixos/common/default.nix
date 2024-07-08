@@ -3,6 +3,8 @@
 with lib;
 with lib.united;
 let
+  common-secrets = inputs.self + "/secrets/common/";
+
   cfg = config.united.common;
 in {
   options.united.common = {
@@ -16,6 +18,9 @@ in {
         localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
         masterIdentities = [ ./files/yubikey.pub ];
         storageMode = "local";
+      };
+      secrets = {
+        yubikey-auth.rekeyFile = common-secrets + "yubikey-auth.age";
       };
     };
 
@@ -85,6 +90,7 @@ in {
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
     programs = {
+      fuse.userAllowOther = true;
       ssh.startAgent = false;
       zsh = enabled;
     };
@@ -97,6 +103,41 @@ in {
         extraConfig = ''
           Defaults insults
         '';
+      };
+      pam = {
+        u2f = {
+          enable = true;
+          authFile = "${config.age.secrets.yubikey-auth.path}";
+          cue = true;
+          control = "sufficient";
+        };
+        yubico = {
+          enable = true;
+          id = "65698";
+          control = "sufficient";
+        };
+        services = {
+          login = with config.security.pam.services.login.rules.auth; {
+            rules.auth = {
+              unix = {
+                control = mkForce "required";
+                order = u2f.order - 1;
+              };
+              yubico.order = u2f.order + 1;
+            };
+            u2fAuth = true;
+          };
+          sudo = with config.security.pam.services.sudo.rules.auth; {
+            rules.auth = {
+              unix = {
+                control = mkForce "required";
+                order = u2f.order - 1;
+              };
+              yubico.order = u2f.order + 1;
+            };
+            u2fAuth = true;
+          };
+        };
       };
     };
 

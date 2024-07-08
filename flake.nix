@@ -22,26 +22,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin-swaync-latte = {
-      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/latte.css";
-      flake = false;
-    };
-
-    catppuccin-swaync-frappe = {
-      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/frappe.css";
-      flake = false;
-    };
-
-    catppuccin-swaync-mocha = {
-      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/mocha.css";
-      flake = false;
-    };
-
-    catppuccin-swaync-macchiato = {
-      url = "https://github.com/catppuccin/swaync/releases/download/v0.1.2.1/macchiato.css";
-      flake = false;
-    };
-
     catppuccin-zsh-highlighing = {
       url = "github:catppuccin/zsh-syntax-highlighting";
       flake = false;
@@ -218,6 +198,10 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
+
+        hosts.phobos.modules = with inputs; [
+          nixos-hardware.nixosModules.common-pc
+        ];
       };
 
       homes.users = let
@@ -238,6 +222,7 @@
         "yaro@io".modules = home-modules;
         "yaro@gwyn".modules = home-modules;
         "yaro@gwynix".modules = home-modules;
+        "yaro@phobos".modules = home-modules;
       };
     };
 }

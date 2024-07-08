@@ -52,20 +52,6 @@ in {
 
     programs.fuse.userAllowOther = true;
 
-    security = {
-      pam = {
-        services = {
-          login.u2fAuth = true;
-          sudo.u2fAuth = true;
-        };
-        u2f = {
-          authFile = "${config.age.secrets.yubikey-auth.path}";
-          cue = true;
-          control = lib.mkDefault "required";
-        };
-      };
-    };
-
     services = {
       dnsmasq = {
         enable = true;

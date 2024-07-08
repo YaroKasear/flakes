@@ -5,25 +5,25 @@ with config.home-manager.users;
 # PUBLIC SERVER
 
 let
-  common-secrets = inputs.self + "/secrets/common/";
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 in {
   age = {
     rekey = {};
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-      yubikey-auth.rekeyFile = common-secrets + "yubikey-auth.age";
     };
   };
 
   networking = {
-    hostName = "phobos";
+    networkmanager = disabled;
     hostId = "59d99151";
+    useDHCP = false;
+    wireless = disabled;
   };
 
   united = {
-    common = enabled;
     phobos-mounts = enabled;
+    server = enabled;
   };
 
   users = {
