@@ -127,6 +127,16 @@ in {
             };
             u2fAuth = true;
           };
+          su = with config.security.pam.services.su.rules.auth; {
+            rules.auth = {
+              unix = {
+                control = mkForce "required";
+                order = u2f.order - 1;
+              };
+              yubico.order = u2f.order + 1;
+            };
+            u2fAuth = true;
+          };
           sudo = with config.security.pam.services.sudo.rules.auth; {
             rules.auth = {
               unix = {
