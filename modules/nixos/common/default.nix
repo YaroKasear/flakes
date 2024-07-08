@@ -130,7 +130,6 @@ in {
               };
               yubico.order = u2f.order + 1;
             };
-            u2fAuth = true;
           };
           su = with config.security.pam.services.su.rules.auth; {
             rules.auth = {
@@ -140,7 +139,6 @@ in {
               };
               yubico.order = u2f.order + 1;
             };
-            u2fAuth = true;
           };
           sudo = with config.security.pam.services.sudo.rules.auth; {
             rules.auth = {
