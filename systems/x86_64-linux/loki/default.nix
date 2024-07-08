@@ -3,6 +3,7 @@ with lib.united;
 with config.home-manager.users;
 
 let
+  common-secrets = inputs.self + "/secrets/common/";
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 in {
   age = {
@@ -34,7 +35,7 @@ in {
       };
       work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-      yubikey-auth.rekeyFile = secrets-directory + "yubikey-auth.age";
+      yubikey-auth.rekeyFile = common-secrets + "yubikey-auth.age";
     };
   };
 

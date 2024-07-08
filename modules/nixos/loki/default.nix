@@ -10,6 +10,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    age.identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     boot = {
       kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd = {
@@ -51,6 +52,20 @@ in {
 
     programs.fuse.userAllowOther = true;
 
+    security = {
+      pam = {
+        services = {
+          login.u2fAuth = true;
+          sudo.u2fAuth = true;
+        };
+        u2f = {
+          authFile = "${config.age.secrets.yubikey-auth.path}";
+          cue = true;
+          control = lib.mkDefault "required";
+        };
+      };
+    };
+
     services = {
       dnsmasq = {
         enable = true;
@@ -58,9 +73,11 @@ in {
           "server" = ["10.10.10.1"];
         };
       };
+      gpm = enabled;
       openvpn.servers.work = {
         config = "config ${config.age.secrets.work-vpn.path}";
       };
+      pcscd = enabled;
       resolved = disabled; # systemd-resolved is cancer
     };
 

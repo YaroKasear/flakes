@@ -3,11 +3,11 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.loki-mounts;
+  cfg = config.united.phobos-mounts;
 
 in {
-  options.united.loki-mounts = {
-    enable = mkEnableOption "loki-mounts";
+  options.united.phobos-mounts = {
+    enable = mkEnableOption "phobos-mounts";
   };
 
   config = mkIf cfg.enable {
@@ -42,6 +42,7 @@ in {
       persistence."/persistent" = {
         hideMounts = true;
         directories = [
+          "/etc/NetworkManager/system-connections/"
           "/run/log/journal"
           "/var/lib/nixos"
           "/var/log"
@@ -54,27 +55,8 @@ in {
 
     fileSystems = {
       "/persistent".neededForBoot = true;
-      "/home/yaro/Nextcloud" = {
-        device = "storage.kasear.net:/mnt/data/user/yaro/cloud";
-        fsType = "nfs";
-        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
-      };
-      "/mnt/containers" = {
-        device = "storage.kasear.net:/mnt/data/containers";
-        fsType = "nfs";
-        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
-      };
     };
 
-    systemd.tmpfiles.settings."10-nextcloud-yaro"."/home/yaro/Nextcloud".d = {
-      user = "yaro";
-      group = "users";
-      mode = "0755";
-    };
-
-    services.zfs = {
-      autoScrub = enabled;
-      trim = enabled;
-    };
+    services.zfs.autoScrub = enabled;
   };
 }

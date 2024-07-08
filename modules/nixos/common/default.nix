@@ -17,7 +17,6 @@ in {
         masterIdentities = [ ./files/yubikey.pub ];
         storageMode = "local";
       };
-      identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     };
 
     boot = {
@@ -93,17 +92,6 @@ in {
     security = {
       polkit = enabled;
       rtkit = enabled;
-      pam = {
-        services = {
-          login.u2fAuth = true;
-          sudo.u2fAuth = true;
-        };
-        u2f = {
-          authFile = "${config.age.secrets.yubikey-auth.path}";
-          cue = true;
-          control = lib.mkDefault "required";
-        };
-      };
       sudo = {
         package = pkgs.sudo.override { withInsults = true; };
         extraConfig = ''
@@ -114,12 +102,10 @@ in {
 
     services = {
       dbus.implementation = "broker";
-      gpm = enabled;
       openssh = enabled;
       udev.packages = [
         pkgs.yubikey-personalization
       ];
-      pcscd = enabled;
     };
 
     system.stateVersion = "24.05";
