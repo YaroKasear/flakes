@@ -69,8 +69,9 @@ in {
     i18n.defaultLocale = "en_US.UTF-8";
 
     networking = {
-      networkmanager.enable = mkDefault true;
-      useDHCP = lib.mkDefault true;
+      networkmanager = disabled;
+      useDHCP = false;
+      wireless = disabled;
     };
 
     nix = {
@@ -117,6 +118,10 @@ in {
           control = "sufficient";
         };
         services = {
+          kde = { # Taking off multifactor as Plasma's screensaver lock thing doesn't seem to play nice with it.
+            u2fAuth = false;
+            yubicoAuth = false;
+          };
           login = with config.security.pam.services.login.rules.auth; {
             rules.auth = {
               unix = {
