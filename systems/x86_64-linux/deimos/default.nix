@@ -24,16 +24,25 @@ in {
   systemd.network = {
     enable = true;
 
-    netdevs."10-iot" = {
-      netdevConfig = {
-        Kind = "vlan";
-        Name = "vlan30";
+    netdevs = {
+      "10-iot" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan30";
+        };
+        vlanConfig.Id = 30;
       };
-      vlanConfig.Id = 30;
+      "20-storage" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan40";
+        };
+        vlanConfig.Id = 40;
+      };
     };
 
     networks = {
-      "20-main" = {
+      "30-main" = {
         matchConfig.Name = "enp9s0";
         vlan = ["vlan30"];
         networkConfig = {
@@ -43,8 +52,20 @@ in {
         };
         linkConfig.RequiredForOnline = "routable";
       };
-      "30-iot" = {
+      "40-iot" = {
         matchConfig.Name = "vlan30";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        dhcpV4Config = {
+          UseRoutes = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "50-storage" = {
+        matchConfig.Name = "vlan40";
         networkConfig = {
           DHCP = "ipv4";
           LinkLocalAddressing = false;

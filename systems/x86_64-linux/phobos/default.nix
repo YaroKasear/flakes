@@ -31,7 +31,7 @@ in {
 
   systemd.network = {
     enable = true;
-    # netdevs = {
+    netdevs = {
     #   "10-wg0" = {
     #     netdevConfig = {
     #       Kind = "wireguard";
@@ -42,21 +42,28 @@ in {
     #       PrivateKeyFile = config.age.secrets.wireguard-key.path;
     #     };
     #     wireguardPeers = [
-    #       {
-    #         wireguardPeerConfig = {
-    #           AllowedIPs = [
-    #             "0.0.0.0/0"
-    #           ];
-    #           Endpoint = "45.79.35.167:2001";
-    #           PersistentKeepalive = 25;
-    #           PublicKey = "ycvzU34e3KpPadkwkNYFpq2R1n2IkqWbs8ZDBo8NA3c=";
-    #         };
-    #       }
+    #      {
+    #        wireguardPeerConfig = {
+    #          AllowedIPs = [
+    #            "0.0.0.0/0"
+    #          ];
+    #          Endpoint = "45.79.35.167:2001";
+    #          PersistentKeepalive = 25;
+    #          PublicKey = "ycvzU34e3KpPadkwkNYFpq2R1n2IkqWbs8ZDBo8NA3c=";
+    #          };
+    #        }
     #     ];
     #   };
-    # };
+      "20-storage" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan40";
+        };
+        vlanConfig.Id = 40;
+      };
+    };
     networks = {
-      "10-dmz" = {
+      "30-dmz" = {
         matchConfig.Name = "enp9s0";
         networkConfig = {
           DHCP = "ipv4";
@@ -65,7 +72,7 @@ in {
         };
         linkConfig.RequiredForOnline = "routable";
       };
-      # "20-wg0" = {
+      # "40-wg0" = {
       #   matchConfig.Name = "wg0";
       #   address = ["10.60.10.1/32"];
       #   DHCP = "no";
@@ -78,6 +85,18 @@ in {
       #   };
       #   linkConfig.RequiredForOnline = "yes";
       # };
+      "50-storage" = {
+        matchConfig.Name = "vlan40";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        dhcpV4Config = {
+          UseRoutes = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
     };
   };
 
