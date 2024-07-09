@@ -3,11 +3,11 @@
 with lib;
 with lib.united;
 let
-  cfg = config.united.phobos-mounts;
+  cfg = config.united.deimos-mounts;
 
 in {
-  options.united.phobos-mounts = {
-    enable = mkEnableOption "phobos-mounts";
+  options.united.deimos-mounts = {
+    enable = mkEnableOption "deimos-mounts";
   };
 
   config = mkIf cfg.enable {
