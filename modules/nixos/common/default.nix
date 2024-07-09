@@ -129,7 +129,6 @@ in {
                 control = mkForce "required";
                 order = u2f.order - 30;
               };
-              # kwallet.order = u2f.order - 20;
               yubico.order = u2f.order + 1;
             };
 	          u2fAuth = true;
