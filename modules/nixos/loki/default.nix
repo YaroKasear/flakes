@@ -53,18 +53,11 @@ in {
     programs.fuse.userAllowOther = true;
 
     services = {
-      dnsmasq = {
-        enable = true;
-        settings = {
-          "server" = ["10.10.10.1"];
-        };
-      };
       gpm = enabled;
       openvpn.servers.work = {
         config = "config ${config.age.secrets.work-vpn.path}";
       };
       pcscd = enabled;
-      resolved = disabled; # systemd-resolved is cancer
     };
 
     systemd.network = {
@@ -75,6 +68,7 @@ in {
           Kind = "vlan";
           Name = "vlan30";
         };
+        useNetworkd = true;
         vlanConfig.Id = 30;
       };
 

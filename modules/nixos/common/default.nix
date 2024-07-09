@@ -156,7 +156,14 @@ in {
 
     services = {
       dbus.implementation = "broker";
+      dnsmasq = {
+        enable = true;
+        settings = {
+          "server" = ["10.10.10.1"];
+        };
+      };
       openssh = enabled;
+      resolved = disabled; # systemd-resolved is cancer
       udev.packages = [
         pkgs.yubikey-personalization
       ];
