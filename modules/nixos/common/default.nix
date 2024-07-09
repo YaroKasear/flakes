@@ -129,7 +129,7 @@ in {
                 control = mkForce "required";
                 order = u2f.order - 30;
               };
-              yubico.order = u2f.order + 1;
+              yubico.order = u2f.order + 10;
             };
 	          u2fAuth = true;
           };
@@ -137,9 +137,9 @@ in {
             rules.auth = {
               unix = {
                 control = mkForce "required";
-                order = u2f.order - 1;
+                order = u2f.order - 10;
               };
-              yubico.order = u2f.order + 1;
+              yubico.order = u2f.order + 10;
             };
             u2fAuth = true;
           };

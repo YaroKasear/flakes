@@ -63,6 +63,22 @@ in {
         pulse = enabled;
       };
       gnome.gnome-keyring = enabled;
+      udev.extraRules = ''
+        ACTION=="remove",\
+        ENV{ID_BUS}=="usb",\
+        ENV{ID_MODEL_ID}=="0407",\
+        ENV{ID_VENDOR_ID}=="1050",\
+        ENV{ID_VENDOR}=="Yubico",\
+        RUN+="${pkgs.systemd}/bin/loginctl lock-sessions"
+
+        ACTION=="add",\
+        ENV{ID_BUS}=="usb",\
+        ENV{ID_MODEL_ID}=="0407",\
+        ENV{ID_VENDOR_ID}=="1050",\
+        ENV{ID_VENDOR}=="Yubico",\
+        ENV{ID_USB_SERIAL}=="Yubico_YubiKey_OTP+FIDO+CCID_0016751940",\
+        RUN+="${pkgs.systemd}/bin/loginctl unlock-sessions"
+      '';
     };
 
     sound = {
