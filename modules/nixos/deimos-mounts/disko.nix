@@ -1,0 +1,3 @@
+{
+    disko.devices = ./config.nix;
+}
