@@ -35,6 +35,8 @@ in {
 
     environment.systemPackages = with pkgs; [catppuccin-sddm-corners];
 
+    security.pam.services.login.rules.auth.kwallet.order = config.security.pam.services.login.rules.auth.u2f.order - 20;
+
     services = {
         displayManager = {
           sddm = {

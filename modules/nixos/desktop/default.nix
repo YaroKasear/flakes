@@ -36,7 +36,13 @@ in {
 
     programs.dconf = enabled;
 
-    security.pam.services.hyprlock = mkIf config.united.wayland.enable {};
+    security.pam.services = {
+      hyprlock = mkIf config.united.wayland.enable {};
+      login = with config.security.pam.services.login.rules.auth; {
+        rules.auth.gnome_keyring.order = u2f.order - 10;
+	      u2fAuth = true;
+      };
+    };
 
     services = {
       xserver = {

@@ -112,7 +112,6 @@ in {
           authFile = "${config.age.secrets.yubikey-auth.path}";
           cue = true;
           control = "sufficient";
-	        debug = true;
         };
         yubico = {
           enable = true;
@@ -128,18 +127,9 @@ in {
             rules.auth = {
               unix = {
                 control = mkForce "required";
-                order = u2f.order - 1;
+                order = u2f.order - 30;
               };
-              yubico.order = u2f.order + 1;
-            };
-	          u2fAuth = true;
-          };
-          su = with config.security.pam.services.su.rules.auth; {
-            rules.auth = {
-              unix = {
-                control = mkForce "required";
-                order = u2f.order - 1;
-              };
+              # kwallet.order = u2f.order - 20;
               yubico.order = u2f.order + 1;
             };
 	          u2fAuth = true;
