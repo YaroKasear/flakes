@@ -10,7 +10,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    age.identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     boot = {
       kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd = {
@@ -43,14 +42,9 @@ in {
     };
 
     networking = {
-      networkmanager = disabled;
-      hostName = mkForce "loki";
+      hostName = "loki";
       hostId = "1d84728f";
-      useDHCP = false;
-      wireless = disabled;
     };
-
-    programs.fuse.userAllowOther = true;
 
     services = {
       gpm = enabled;
@@ -68,7 +62,6 @@ in {
           Kind = "vlan";
           Name = "vlan30";
         };
-        useNetworkd = true;
         vlanConfig.Id = 30;
       };
 

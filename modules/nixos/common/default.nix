@@ -14,6 +14,7 @@ in {
 
   config = mkIf cfg.enable {
     age = {
+      identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
       rekey = {
         localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
         masterIdentities = [ ./files/yubikey.pub ];
@@ -111,6 +112,7 @@ in {
           authFile = "${config.age.secrets.yubikey-auth.path}";
           cue = true;
           control = "sufficient";
+	        debug = true;
         };
         yubico = {
           enable = true;
@@ -130,6 +132,7 @@ in {
               };
               yubico.order = u2f.order + 1;
             };
+	          u2fAuth = true;
           };
           su = with config.security.pam.services.su.rules.auth; {
             rules.auth = {
@@ -139,6 +142,7 @@ in {
               };
               yubico.order = u2f.order + 1;
             };
+	          u2fAuth = true;
           };
           sudo = with config.security.pam.services.sudo.rules.auth; {
             rules.auth = {
