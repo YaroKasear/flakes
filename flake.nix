@@ -198,8 +198,10 @@
           nixos-hardware.nixosModules.common-cpu-amd-pstate
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
-
         hosts.phobos.modules = with inputs; [
+          nixos-hardware.nixosModules.common-pc
+        ];
+        hosts.deimos.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
         ];
       };
@@ -215,14 +217,15 @@
           sops-nix.homeManagerModules.sops
         ];
       in {
-        "yaro@loki".modules = home-modules;
         "cnelson@loki".modules = home-modules;
-        "yaro@titan".modules = home-modules;
+        "yaro@deimos".modules = home-modules;
         "yaro@europa".modules = home-modules;
         "yaro@io".modules = home-modules;
+        "yaro@loki".modules = home-modules;
         "yaro@gwyn".modules = home-modules;
         "yaro@gwynix".modules = home-modules;
         "yaro@phobos".modules = home-modules;
+        "yaro@titan".modules = home-modules;
       };
     };
 }
