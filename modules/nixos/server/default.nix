@@ -40,6 +40,7 @@ in {
                   "0.0.0.0/0"
                 ];
                 Endpoint = "45.79.35.167:2001";
+                PersistentKeepalive = 25;
                 PublicKey = "ycvzU34e3KpPadkwkNYFpq2R1n2IkqWbs8ZDBo8NA3c=";
               };
             }
