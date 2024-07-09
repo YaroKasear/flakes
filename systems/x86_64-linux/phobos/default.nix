@@ -60,6 +60,7 @@ in {
         matchConfig.Name = "enp9s0";
         networkConfig = {
           DHCP = "ipv4";
+          LinkLocalAddressing = false;
           IPv6AcceptRA = false;
         };
         linkConfig.RequiredForOnline = "routable";
@@ -72,6 +73,7 @@ in {
       #   ntp = ["10.10.10.1"];
       #   gateway = ["10.60.0.1"];
       #   networkConfig = {
+      #     LinkLocalAddressing = false;
       #     IPv6AcceptRA = false;
       #   };
       #   linkConfig.RequiredForOnline = "yes";

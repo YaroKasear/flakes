@@ -23,12 +23,35 @@ in {
 
   systemd.network = {
     enable = true;
+
+    netdevs."10-iot" = {
+      netdevConfig = {
+        Kind = "vlan";
+        Name = "vlan30";
+      };
+      vlanConfig.Id = 30;
+    };
+
     networks = {
-      "10-main" = {
+      "20-main" = {
         matchConfig.Name = "enp9s0";
+        vlan = ["vlan30"];
         networkConfig = {
           DHCP = "ipv4";
+          LinkLocalAddressing = false;
           IPv6AcceptRA = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "30-iot" = {
+        matchConfig.Name = "vlan30";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        dhcpV4Config = {
+          UseRoutes = false;
         };
         linkConfig.RequiredForOnline = "routable";
       };
