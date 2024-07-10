@@ -31,6 +31,7 @@ in {
       (mkIf is-linux traceroute)
       virt-manager
       vulkan-tools
+      (mkIf config.united.wayland.enable wayland-utils)
     ];
 
     programs = {

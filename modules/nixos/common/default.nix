@@ -157,6 +157,7 @@ in {
           "server" = ["10.10.10.1"];
         };
       };
+      fwupd = enabled;
       openssh = enabled;
       resolved = disabled; # systemd-resolved is cancer
       udev.packages = [
