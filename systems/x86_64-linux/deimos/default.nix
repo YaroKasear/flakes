@@ -16,9 +16,25 @@ in {
     };
   };
 
+  containers = {
+    home-assistant = {
+      autoStart = true;
+      privateNetwork = true;
+      # x.x.200.x for Private.
+      hostAddress = "172.16.200.1";
+      localAddress = "172.16.200.2";
+      config = ../../../containers/home-assistant/default.nix;
+    };
+  };
+
   networking = {
     hostId = "44470514";
     hostName = "deimos";
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
+    };
   };
 
   systemd.network = {
@@ -44,7 +60,10 @@ in {
     networks = {
       "30-main" = {
         matchConfig.Name = "enp9s0";
-        vlan = ["vlan30"];
+        vlan = [
+          "vlan30"
+          "vlan40"
+        ];
         networkConfig = {
           DHCP = "ipv4";
           LinkLocalAddressing = false;

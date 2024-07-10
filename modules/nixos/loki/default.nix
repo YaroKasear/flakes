@@ -11,7 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     boot = {
-      kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd = {
         availableKernelModules = [
           "nvme"

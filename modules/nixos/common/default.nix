@@ -26,6 +26,7 @@ in {
     };
 
     boot = {
+      kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd.systemd = enabled;
       kernelModules = [
         "usb-storage"
@@ -70,6 +71,7 @@ in {
     i18n.defaultLocale = "en_US.UTF-8";
 
     networking = {
+      enableIPv6 = false;
       networkmanager = disabled;
       useDHCP = false;
       wireless = disabled;

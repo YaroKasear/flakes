@@ -37,18 +37,26 @@ in {
     };
   };
 
-  services.mysql = {
-    enable = true;
-    package = pkgs.mariadb;
-    ensureUsers = [
-      {
-        name = "cnelson";
-        ensurePermissions = {
-          "*.*" = "ALL PRIVILEGES";
-        };
-      }
-    ];
-    initialScript = config.age.secrets.work-mysql-init.path;
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+      ensureUsers = [
+        {
+          name = "cnelson";
+          ensurePermissions = {
+            "*.*" = "ALL PRIVILEGES";
+          };
+        }
+      ];
+      initialScript = config.age.secrets.work-mysql-init.path;
+    };
+    printing = enabled;
   };
 
   snowfallorg.users.cnelson.admin = false;
