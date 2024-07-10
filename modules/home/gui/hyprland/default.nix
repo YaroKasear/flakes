@@ -28,7 +28,6 @@ in {
       ];
     };
 
-
     programs.wofi = enabled;
 
     services.cliphist = enabled;
@@ -123,7 +122,6 @@ in {
 
         monitor = [
           "DP-3,2560x1440@144,0x0,1"
-          "Unknown-1,disable"
         ];
         "$terminal" = "kitty";
         "$menu" = "wofi --show drun";
