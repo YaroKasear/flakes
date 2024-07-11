@@ -14,7 +14,6 @@ in {
 
   config = mkIf cfg.enable {
     age = {
-      identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
       rekey = {
         localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
         masterIdentities = [ ./files/yubikey.pub ];
