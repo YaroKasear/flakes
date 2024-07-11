@@ -37,6 +37,9 @@ in {
     };
   };
 
+  security.pam.u2f = lib.mkForce disabled;
+  security.pam.yubico = lib.mkForce disabled;
+
   systemd.network = {
     enable = true;
 
