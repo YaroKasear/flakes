@@ -115,7 +115,7 @@ in {
         extraGroups = ["wheel" "networkmanager" "systemd-journal"];
         shell = pkgs.zsh;
         # hashedPasswordFile = config.age.secrets.yaro-password.path;
-        initialPassword = "changeme";
+        hashedPassword = "$y$j9T$UtHgO0DlXyPWH.E/i1FGk/$Ty7WbLhmLbNGF7R9zApwveTt5yaNsmGjq.jhiFX1t81";
       };
     };
   };
