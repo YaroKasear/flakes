@@ -2,7 +2,7 @@
   disk = {
     ssd = {
       type = "disk";
-      device = "/dev/disk/by-id/nvme-Samsung_SSD_960_EVO_500GB_S3X4NB0K140749K";
+      device = "/dev/disk/by-id/ata-WDC_WD40EZRZ-00GXCB0_WD-WCC7K5EV6XH9";
       content = {
         type = "gpt";
         partitions = {
@@ -29,9 +29,6 @@
   zpool = {
     system = {
       type = "zpool";
-      options = {
-        autotrim = "on";
-      };
       rootFsOptions = {
         compression = "zstd";
         "com.sun:auto-snapshot" = "false";
