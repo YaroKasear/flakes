@@ -42,6 +42,7 @@ in {
       persistence."/persistent" = {
         hideMounts = true;
         directories = [
+          "/etc/ssh"
           "/run/log/journal"
           "/var/lib/nixos"
           "/var/log"
