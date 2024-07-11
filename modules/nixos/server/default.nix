@@ -1,18 +1,20 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, ... }:
 
 with lib;
 with lib.united;
 let
-  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
-
   cfg = config.united.server;
+
 in {
   options.united.server = {
     enable = mkEnableOption "server";
   };
 
   config = mkIf cfg.enable {
-
+    boot.kernelParams = [
+      "console=tty1"
+      "console=ttyS0,115200"
+    ];
 
     united.common = enabled;
   };
