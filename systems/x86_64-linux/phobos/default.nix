@@ -20,10 +20,10 @@ in {
   containers = {
     home-assistant = {
       autoStart = true;
-      privateNetwork = true;
+      # privateNetwork = true;
       # x.x.200.x for Private.
-      hostAddress = "172.16.200.1";
-      localAddress = "172.16.200.2";
+      # hostAddress = "172.16.200.1";
+      # localAddress = "172.16.200.2";
       config = ../../../containers/home-assistant/default.nix;
     };
   };
