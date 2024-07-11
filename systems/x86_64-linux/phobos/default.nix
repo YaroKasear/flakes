@@ -29,7 +29,7 @@ in {
 
   networking = {
     hostId = "44470514";
-    hostName = "deimos";
+    hostName = "phobos";
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
@@ -99,7 +99,7 @@ in {
   };
 
   united = {
-    deimos-mounts = enabled;
+    phobos-mounts = enabled;
     server = enabled;
   };
 
