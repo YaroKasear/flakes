@@ -111,7 +111,8 @@ in {
         isNormalUser = true;
         extraGroups = ["wheel" "networkmanager" "systemd-journal"];
         shell = pkgs.zsh;
-        hashedPasswordFile = config.age.secrets.yaro-password.path;
+        # hashedPasswordFile = config.age.secrets.yaro-password.path;
+        initialPassword = "changeme";
       };
     };
   };

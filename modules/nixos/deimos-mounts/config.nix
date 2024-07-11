@@ -47,15 +47,14 @@
           type = "zfs_fs";
           mountpoint = "/nix";
         };
-        # UNCOMMENT WHEN DEPLOYING
-        # swap = {
-        #   type = "zfs_volume";
-        #   size = "12G";
-        #   content = {
-        #     type = "swap";
-        #     randomEncryption = true;
-        #   };
-        # };
+        swap = {
+          type = "zfs_volume";
+          size = "12G";
+          content = {
+            type = "swap";
+            randomEncryption = true;
+          };
+        };
       };
     };
   };
