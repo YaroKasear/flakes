@@ -26,7 +26,7 @@ in {
 
   networking = {
     hostId = "59d99151";
-    hostName = "phobos";
+    hostName = "deimos";
   };
 
   systemd.network = {

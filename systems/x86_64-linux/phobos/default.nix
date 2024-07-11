@@ -9,7 +9,7 @@ let
 in {
   age = {
     rekey = {
-      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDufZoSg+Rv4WD2EJ7RCPRN8v4Db7ypwpd7yKH7a9Tax";
     };
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
