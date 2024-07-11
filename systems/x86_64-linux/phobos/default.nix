@@ -107,6 +107,7 @@ in {
   };
 
   users = {
+    users.root.hashedPassword = "$y$j9T$Yz4jj2jRJtDZBukonDyyx0$d.s5.a0MNo7j7apAFNnxwZudIiX8W1WRooxT2RmAl78";
     users = {
       yaro = {
         description = yaro.united.user.fullName;

@@ -34,12 +34,12 @@
         "com.sun:auto-snapshot" = "false";
       };
       mountpoint = "/";
-      # postCreateHook = "zfs snapshot system@blank";
+      postCreateHook = "zfs snapshot system@blank";
       datasets = {
-        # persistent = {
-        #   type = "zfs_fs";
-        #   mountpoint = "/persistent";
-        # };
+        persistent = {
+          type = "zfs_fs";
+          mountpoint = "/persistent";
+        };
         "nix" = {
           type = "zfs_fs";
           mountpoint = "/nix";
