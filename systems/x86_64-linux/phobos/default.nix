@@ -42,6 +42,21 @@ in {
       # };
     };
 
+    containers = {
+      webtest = {
+        ephemeral = true;
+        autoStart = true;
+        config = { config, pkgs, ... }: {
+          services.httpd = {
+            enable = true;
+            adminAddr = "yaro@kasear.net";
+          };
+
+          networking.firewall.allowedTCPPorts = [ 80 ];
+        };
+      };
+    };
+
     networks = {
       "30-main" = {
         matchConfig.Name = "enp3s0f1";
