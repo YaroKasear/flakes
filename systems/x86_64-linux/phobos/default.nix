@@ -31,7 +31,7 @@ in {
       ephemeral = true;
       privateNetwork = true;
       hostAddress = "192.168.10.1";
-      localAddress = "192.168.10.2/24";
+      localAddress = "192.168.10.2";
     };
   };
 
