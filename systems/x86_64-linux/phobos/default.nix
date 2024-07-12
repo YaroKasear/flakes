@@ -32,6 +32,11 @@ in {
       privateNetwork = true;
       hostAddress = "192.168.10.1";
       localAddress = "192.168.10.2";
+      forwardPorts = [{
+        containerPort = 80;
+        hostPort = 80;
+        protocol = "tcp";
+      }];
     };
   };
 
