@@ -22,8 +22,9 @@ in {
       autoStart = true;
       privateNetwork = true;
       # x.x.200.x for Private.
-      hostAddress = "172.16.200.1";
-      localAddress = "172.16.200.2";
+      # hostAddress = "172.16.200.1";
+      hostBridge = "br0";
+      localAddress = "172.16.210.1/16";
       config = ../../../containers/home-assistant/default.nix;
     };
   };
@@ -49,19 +50,19 @@ in {
         };
         vlanConfig.Id = 30;
       };
-      "20-storage" = {
-        netdevConfig = {
-          Kind = "vlan";
-          Name = "vlan40";
-        };
-        vlanConfig.Id = 40;
-      };
-      "30-br0" = {
-        netdevConfig = {
-          Kind = "bridge";
-          Name = "br0";
-        };
-      };
+      # "20-storage" = {
+      #   netdevConfig = {
+      #     Kind = "vlan";
+      #     Name = "vlan40";
+      #   };
+      #   vlanConfig.Id = 40;
+      # };
+      # "30-br0" = {
+      #   netdevConfig = {
+      #     Kind = "bridge";
+      #     Name = "br0";
+      #   };
+      # };
     };
 
     networks = {
@@ -70,30 +71,30 @@ in {
         networkConfig.Bridge = "br0";
         linkConfig.RequiredForOnline = "enslaved";
       };
-      "50-iot" = {
-        matchConfig.Name = "vlan30";
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        dhcpV4Config = {
-          UseRoutes = false;
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
-      "60-storage" = {
-        matchConfig.Name = "vlan40";
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        dhcpV4Config = {
-          UseRoutes = false;
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
+      # "50-iot" = {
+      #   matchConfig.Name = "vlan30";
+      #   networkConfig = {
+      #     DHCP = "ipv4";
+      #     LinkLocalAddressing = false;
+      #     IPv6AcceptRA = false;
+      #   };
+      #   dhcpV4Config = {
+      #     UseRoutes = false;
+      #   };
+      #   linkConfig.RequiredForOnline = "routable";
+      # };
+      # "60-storage" = {
+      #   matchConfig.Name = "vlan40";
+      #   networkConfig = {
+      #     DHCP = "ipv4";
+      #     LinkLocalAddressing = false;
+      #     IPv6AcceptRA = false;
+      #   };
+      #   dhcpV4Config = {
+      #     UseRoutes = false;
+      #   };
+      #   linkConfig.RequiredForOnline = "routable";
+      # };
       "70-br0" = {
         matchConfig.Name = "br0";
         bridgeConfig = {};
