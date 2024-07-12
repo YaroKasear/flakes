@@ -34,7 +34,7 @@ in {
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
-      externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
+      externalInterface = config.systemd.network.networks."40-main".matchConfig.Name;
     };
   };
 
