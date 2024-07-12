@@ -56,23 +56,21 @@ in {
         };
         vlanConfig.Id = 40;
       };
+      "30-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
     };
 
     networks = {
-      "30-main" = {
+      "40-main" = {
         matchConfig.Name = "enp3s0f1";
-        vlan = [
-          "vlan30"
-          "vlan40"
-        ];
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        linkConfig.RequiredForOnline = "routable";
+        networkConfig.Bridge = "br0";
+        linkConfig.RequiredForOnline = "enslaved";
       };
-      "40-iot" = {
+      "50-iot" = {
         matchConfig.Name = "vlan30";
         networkConfig = {
           DHCP = "ipv4";
@@ -84,7 +82,7 @@ in {
         };
         linkConfig.RequiredForOnline = "routable";
       };
-      "50-storage" = {
+      "60-storage" = {
         matchConfig.Name = "vlan40";
         networkConfig = {
           DHCP = "ipv4";
@@ -95,6 +93,20 @@ in {
           UseRoutes = false;
         };
         linkConfig.RequiredForOnline = "routable";
+      };
+      "70-br0" = {
+        matchConfig.Name = "br0";
+        bridgeConfig = {};
+        linkConfig.RequiredForOnline = "routable";
+        vlan = [
+          "vlan30"
+          "vlan40"
+        ];
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
       };
     };
   };
