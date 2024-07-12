@@ -30,8 +30,8 @@ in {
       };
       ephemeral = true;
       privateNetwork = true;
-      hostAddress = "172.16.200.1";
-      localAddress = "172.16.210.1";
+      hostAddress = "192.168.10.1/24";
+      localAddress = "192.168.10.2/24";
     };
   };
 
