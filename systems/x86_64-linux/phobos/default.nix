@@ -19,7 +19,6 @@ in {
 
   containers = {
     webtest = {
-      ephemeral = true;
       autoStart = true;
       config = { config, pkgs, ... }: {
         services.httpd = {
@@ -29,6 +28,10 @@ in {
 
         networking.firewall.allowedTCPPorts = [ 80 ];
       };
+      ephemeral = true;
+      privateNetwork = true;
+      hostAddress = "172.16.200.1";
+      localAddress = "172.16.210.1";
     };
   };
 
