@@ -40,7 +40,7 @@ in {
     hostName = "phobos";
     nat = {
       enable = true;
-      internalInterfaces = ["ve-*"];
+      internalInterfaces = ["ve-+"];
       externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
     };
   };
