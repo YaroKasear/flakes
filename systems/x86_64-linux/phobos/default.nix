@@ -17,25 +17,9 @@ in {
     };
   };
 
-  containers = {
-    home-assistant = {
-      autoStart = true;
-      privateNetwork = true;
-      # x.x.200.x for Private.
-      # hostAddress = "172.16.200.1";
-      hostBridge = "br0";
-      config = ../../../containers/home-assistant/default.nix;
-    };
-  };
-
   networking = {
     hostId = "44470514";
     hostName = "phobos";
-    # nat = {
-    #   enable = true;
-    #   internalInterfaces = ["ve-+"];
-    #   externalInterface = config.systemd.network.networks."40-main".matchConfig.Name;
-    # };
   };
 
   systemd.network = {
@@ -56,21 +40,23 @@ in {
       #   };
       #   vlanConfig.Id = 40;
       # };
-      "30-br0" = {
-        netdevConfig = {
-          Kind = "bridge";
-          Name = "br0";
-        };
-      };
     };
 
     networks = {
-      "40-main" = {
+      "30-main" = {
         matchConfig.Name = "enp3s0f1";
-        networkConfig.Bridge = "br0";
-        linkConfig.RequiredForOnline = "enslaved";
+        vlan = [
+          "vlan30"
+          "vlan40"
+        ];
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
       };
-      # "50-iot" = {
+      # "40-iot" = {
       #   matchConfig.Name = "vlan30";
       #   networkConfig = {
       #     DHCP = "ipv4";
@@ -82,7 +68,7 @@ in {
       #   };
       #   linkConfig.RequiredForOnline = "routable";
       # };
-      # "60-storage" = {
+      # "50-storage" = {
       #   matchConfig.Name = "vlan40";
       #   networkConfig = {
       #     DHCP = "ipv4";
@@ -94,20 +80,6 @@ in {
       #   };
       #   linkConfig.RequiredForOnline = "routable";
       # };
-      "70-br0" = {
-        matchConfig.Name = "br0";
-        bridgeConfig = {};
-        linkConfig.RequiredForOnline = "routable";
-        # vlan = [
-        #   "vlan30"
-        #   "vlan40"
-        # ];
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-      };
     };
   };
 
