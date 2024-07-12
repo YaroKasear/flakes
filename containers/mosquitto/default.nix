@@ -7,7 +7,7 @@
       {
         users = {
           yaro = {
-            acl = ["topic readwrite #"];
+            acl = ["readwrite #"];
           };
         };
       }
