@@ -17,6 +17,21 @@ in {
     };
   };
 
+  containers = {
+    webtest = {
+      ephemeral = true;
+      autoStart = true;
+      config = { config, pkgs, ... }: {
+        services.httpd = {
+          enable = true;
+          adminAddr = "yaro@kasear.net";
+        };
+
+        networking.firewall.allowedTCPPorts = [ 80 ];
+      };
+    };
+  };
+
   networking = {
     hostId = "44470514";
     hostName = "phobos";
@@ -40,21 +55,6 @@ in {
       #   };
       #   vlanConfig.Id = 40;
       # };
-    };
-
-    containers = {
-      webtest = {
-        ephemeral = true;
-        autoStart = true;
-        config = { config, pkgs, ... }: {
-          services.httpd = {
-            enable = true;
-            adminAddr = "yaro@kasear.net";
-          };
-
-          networking.firewall.allowedTCPPorts = [ 80 ];
-        };
-      };
     };
 
     networks = {
