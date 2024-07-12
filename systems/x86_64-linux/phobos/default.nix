@@ -43,13 +43,13 @@ in {
     enable = true;
 
     netdevs = {
-      "10-iot" = {
-        netdevConfig = {
-          Kind = "vlan";
-          Name = "vlan30";
-        };
-        vlanConfig.Id = 30;
-      };
+      # "10-iot" = {
+      #   netdevConfig = {
+      #     Kind = "vlan";
+      #     Name = "vlan30";
+      #   };
+      #   vlanConfig.Id = 30;
+      # };
       # "20-storage" = {
       #   netdevConfig = {
       #     Kind = "vlan";
@@ -57,12 +57,12 @@ in {
       #   };
       #   vlanConfig.Id = 40;
       # };
-      # "30-br0" = {
-      #   netdevConfig = {
-      #     Kind = "bridge";
-      #     Name = "br0";
-      #   };
-      # };
+      "30-br0" = {
+        netdevConfig = {
+          Kind = "bridge";
+          Name = "br0";
+        };
+      };
     };
 
     networks = {
