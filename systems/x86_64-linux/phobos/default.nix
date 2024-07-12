@@ -30,7 +30,7 @@ in {
       ephemeral = true;
       bindMounts = {
         "/var/yaro-password" = {
-          hostpath = config.age.secrets.mosquitto-yaro-password.path;
+          hostPath = config.age.secrets.mosquitto-yaro-password.path;
           isReadOnly = true;
         };
       };
