@@ -9,6 +9,7 @@
     };
     extraComponents = [
       "esphome"
+      "google_translate"
       "met"
       "radio_browser"
     ];
