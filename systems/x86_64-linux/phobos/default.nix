@@ -18,36 +18,16 @@ in {
   };
 
   containers = {
-    webtest = {
+    hass = {
       autoStart = true;
-      config = { config, pkgs, ... }: {
-        services.httpd = {
-          enable = true;
-          adminAddr = "yaro@kasear.net";
-        };
-
-        networking.firewall.allowedTCPPorts = [ 80 ];
-      };
+      config = { config, pkgs, ... }: { };
       ephemeral = true;
-      privateNetwork = true;
-      hostAddress = "192.168.10.1";
-      localAddress = "192.168.10.2";
-      forwardPorts = [{
-        containerPort = 80;
-        hostPort = 80;
-        protocol = "tcp";
-      }];
     };
   };
 
   networking = {
     hostId = "44470514";
     hostName = "phobos";
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-webtest"];
-      externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
-    };
   };
 
   systemd.network = {
@@ -72,6 +52,7 @@ in {
 
     networks = {
       "30-main" = {
+        # WARNING: Make sure this matches the actual iface name. iptables doesn't understand what an "altname" is.
         matchConfig.Name = "eno2";
         vlan = [
           "vlan30"
