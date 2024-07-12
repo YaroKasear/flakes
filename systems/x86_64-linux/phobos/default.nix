@@ -67,7 +67,7 @@ in {
 
     networks = {
       "30-main" = {
-        matchConfig.Name = "enp3s0f1";
+        matchConfig.Name = "eno2";
         vlan = [
           "vlan30"
           "vlan40"
