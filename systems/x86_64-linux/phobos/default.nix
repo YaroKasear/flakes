@@ -28,6 +28,7 @@ in {
   networking = {
     hostId = "44470514";
     hostName = "phobos";
+    firewall.allowedTCPPorts = [ 8123 ];
   };
 
   systemd.network = {

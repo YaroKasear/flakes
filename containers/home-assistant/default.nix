@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ ... }:
 
 {
   networking.firewall.allowedTCPPorts = [ 8123 ];
@@ -9,4 +9,6 @@
       default_config = {};
     };
   };
+
+  system.stateVersion = "24.05";
 }
