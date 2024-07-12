@@ -8,6 +8,7 @@
         users = {
           yaro = {
             acl = ["readwrite #"];
+            hashedPasswordFile = "/var/yaro-password";
           };
         };
       }
