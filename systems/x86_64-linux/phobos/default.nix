@@ -43,7 +43,7 @@ in {
       internalInterfaces = ["ve-webtest"];
       externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
     };
-    networking.firewall.extraCommands = ''
+    firewall.extraCommands = ''
       iptables -w -t nat -A nixos-nat-post -s ${config.containers.webtest.localAddress} -j MASQUERADE
     '';
   };
