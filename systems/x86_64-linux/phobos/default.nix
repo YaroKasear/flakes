@@ -43,7 +43,6 @@ in {
       internalInterfaces = ["ve-*"];
       externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
     };
-    firewall = disabled;
   };
 
   systemd.network = {
