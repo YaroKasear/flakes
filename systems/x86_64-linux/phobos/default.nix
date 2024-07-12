@@ -32,11 +32,11 @@ in {
   networking = {
     hostId = "44470514";
     hostName = "phobos";
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-+"];
-      externalInterface = config.systemd.network.networks."40-main".matchConfig.Name;
-    };
+    # nat = {
+    #   enable = true;
+    #   internalInterfaces = ["ve-+"];
+    #   externalInterface = config.systemd.network.networks."40-main".matchConfig.Name;
+    # };
   };
 
   systemd.network = {
