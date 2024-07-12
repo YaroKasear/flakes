@@ -5,9 +5,11 @@
     enable = true;
     listeners = [
       {
-        acl = [ "pattern readwrite #" ];
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
+        users = {
+          yaro = {
+            acl = ["topic readwrite #"];
+          };
+        };
       }
     ];
   };
