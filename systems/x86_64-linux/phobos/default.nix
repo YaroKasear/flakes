@@ -30,9 +30,9 @@ in {
   };
 
   networking = {
-    # bridges.br0.interfaces = [
-    #   config.systemd.network.networks."30-main".matchConfig.Name
-    # ];
+    bridges.br0.interfaces = [
+      "enp3s0f1"
+    ];
 
     hostId = "44470514";
     hostName = "phobos";
