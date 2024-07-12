@@ -24,7 +24,6 @@ in {
       # x.x.200.x for Private.
       # hostAddress = "172.16.200.1";
       hostBridge = "br0";
-      localAddress = "172.16.210.1/16";
       config = ../../../containers/home-assistant/default.nix;
     };
   };
