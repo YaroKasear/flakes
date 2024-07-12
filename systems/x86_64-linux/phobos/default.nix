@@ -23,12 +23,20 @@ in {
       config = ../../../containers/home-assistant/default.nix;
       ephemeral = true;
     };
+    mosquitto = {
+      autoStart = true;
+      config = ../../../containers/mosquitto/default.nix;
+      ephemeral = true;
+    };
   };
 
   networking = {
     hostId = "44470514";
     hostName = "phobos";
-    firewall.allowedTCPPorts = [ 8123 ];
+    firewall.allowedTCPPorts = [
+      1883
+      8123
+    ];
   };
 
   systemd.network = {
