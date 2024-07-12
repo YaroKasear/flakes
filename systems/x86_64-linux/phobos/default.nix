@@ -22,13 +22,18 @@ in {
       autoStart = true;
       privateNetwork = true;
       # x.x.200.x for Private.
-      hostAddress = "172.16.200.1";
-      localAddress = "172.16.200.2";
+      # hostAddress = "172.16.200.1";
+      hostBridge  = "br0";
+      localAddress = "172.16.210.1";
       config = ../../../containers/home-assistant/default.nix;
     };
   };
 
   networking = {
+    bridges.br0.interfaces = [
+      config.systemd.network.networks."30-main".matchConfig.Name
+    ];
+
     hostId = "44470514";
     hostName = "phobos";
     nat = {
@@ -36,6 +41,9 @@ in {
       internalInterfaces = ["ve-+"];
       externalInterface = config.systemd.network.networks."30-main".matchConfig.Name;
     };
+
+    useDHCP = false;
+    interfaces.br0.useDHCP = true;
   };
 
   systemd.network = {
