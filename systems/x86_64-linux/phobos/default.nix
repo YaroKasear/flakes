@@ -14,6 +14,7 @@ in {
     };
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
+      mosquitto-yaro-password.rekeyFile = secrets-directory + "mosquitto-yaro-password.age";
     };
   };
 
@@ -27,6 +28,12 @@ in {
       autoStart = true;
       config = ../../../containers/mosquitto/default.nix;
       ephemeral = true;
+      bindMounts = {
+        "/var/yaro-password" = {
+          hostpath = age.secrets.mosquitto-yaro-password.path;
+          isReadOnly = true;
+        };
+      };
     };
   };
 
