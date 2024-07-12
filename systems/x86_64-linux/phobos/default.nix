@@ -73,11 +73,11 @@ in {
           "vlan30"
           "vlan40"
         ];
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
+        # networkConfig = {
+        #   DHCP = "ipv4";
+        #   LinkLocalAddressing = false;
+        #   IPv6AcceptRA = false;
+        # };
         linkConfig.RequiredForOnline = "routable";
       };
       "40-iot" = {
