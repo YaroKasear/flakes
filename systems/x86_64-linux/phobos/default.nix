@@ -20,7 +20,7 @@ in {
   containers = {
     hass = {
       autoStart = true;
-      config = { config, pkgs, ... }: { };
+      config = ../../../containers/home-assistant/default.nix;
       ephemeral = true;
     };
   };
