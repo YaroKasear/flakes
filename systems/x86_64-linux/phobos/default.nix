@@ -99,10 +99,10 @@ in {
         matchConfig.Name = "br0";
         bridgeConfig = {};
         linkConfig.RequiredForOnline = "routable";
-        vlan = [
-          "vlan30"
-          "vlan40"
-        ];
+        # vlan = [
+        #   "vlan30"
+        #   "vlan40"
+        # ];
         networkConfig = {
           DHCP = "ipv4";
           LinkLocalAddressing = false;
