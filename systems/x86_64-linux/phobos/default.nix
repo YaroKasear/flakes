@@ -30,9 +30,9 @@ in {
   };
 
   networking = {
-    bridges.br0.interfaces = [
-      config.systemd.network.networks."30-main".matchConfig.Name
-    ];
+    # bridges.br0.interfaces = [
+    #   config.systemd.network.networks."30-main".matchConfig.Name
+    # ];
 
     hostId = "44470514";
     hostName = "phobos";
@@ -73,11 +73,11 @@ in {
           "vlan30"
           "vlan40"
         ];
-        # networkConfig = {
-        #   DHCP = "ipv4";
-        #   LinkLocalAddressing = false;
-        #   IPv6AcceptRA = false;
-        # };
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
         linkConfig.RequiredForOnline = "routable";
       };
       "40-iot" = {
