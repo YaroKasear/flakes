@@ -23,12 +23,12 @@ in {
     systemd.services."protomuck-${service-name}" = {
       description = "ProtoMUCK server for ${cfg.game-name}.";
       preStart = ''
-        umask 077
-
         if [ ! -d "${cfg.game-directory}" ]; then
           mkdir -p ${cfg.game-directory}
           cp -r ${pkgs.united.protomuck}/game/{backup,data,logs,muf} ${cfg.game-directory}
           cp ${pkgs.united.protomuck}/game/data/minimal.proto ${cfg.game-directory}/data/proto.db
+
+          chmod -r o+x ${pkgs.united.protomuck}
         fi
       '';
       preStop = "kill $(cat ${cfg.game-directory}/protomuck.pid)";
