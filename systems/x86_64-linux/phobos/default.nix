@@ -35,6 +35,11 @@ in {
         };
       };
     };
+    sandbox = {
+      autoStart = true;
+      config = ../../../containers/sandbox/default.nix;
+      ephemeral = true;
+    };
   };
 
   networking = {
