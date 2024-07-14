@@ -23,6 +23,8 @@ in {
     systemd.services."protomuck-${service-name}" = {
       description = "ProtoMUCK server for ${cfg.game-name}.";
       preStart = ''
+        umask 077
+
         if [ ! -d "${cfg.game-directory}" ]; then
           mkdir -p ${cfg.game-directory}
           cp -r ${pkgs.united.protomuck}/game/{backup,data,logs,muf} ${cfg.game-directory}
