@@ -111,6 +111,7 @@ in {
   united = {
     phobos-mounts = enabled;
     server = enabled;
+    # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
       enable = true;
       game-name = "Sandbox";
