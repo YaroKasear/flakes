@@ -28,7 +28,7 @@ in {
           cp -r ${pkgs.united.protomuck}/game/{backup,data,logs,muf} ${cfg.game-directory}
           cp ${pkgs.united.protomuck}/game/data/minimal.proto ${cfg.game-directory}/data/proto.db
 
-          chmod -R o+x ${pkgs.united.protomuck}
+          chmod -R o+x ${cfg.game-directory}
         fi
       '';
       preStop = "kill $(cat ${cfg.game-directory}/protomuck.pid)";
