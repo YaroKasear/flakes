@@ -35,11 +35,6 @@ in {
         };
       };
     };
-    sandbox = {
-      autoStart = true;
-      config = ../../../containers/sandbox/default.nix;
-      ephemeral = true;
-    };
   };
 
   networking = {
@@ -116,6 +111,11 @@ in {
   united = {
     phobos-mounts = enabled;
     server = enabled;
+    protomuck = {
+      enable = true;
+      game-name = "Sandbox";
+      main-port = 2560;
+    };
   };
 
   users = {
