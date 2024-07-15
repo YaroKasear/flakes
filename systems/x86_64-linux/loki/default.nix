@@ -70,7 +70,10 @@ in {
       use-wayland = true;
     };
     wayland.compositor = "plasma";
+    protomuck = enabled;
   };
+
+  systemd.coredump.enable = true;
 
   users = {
     users = {
