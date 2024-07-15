@@ -15,11 +15,13 @@ stdenv.mkDerivation {
       gcc
       flex
       bison
+      pcre
+      openssl.dev
     ];
 
     buildPhase = ''
       cd src
-      ./configure
+      ./configure --with-pcre=${pkgs.pcre} --with-ssl=${pkgs.openssl.dev}
       make
     '';
 
