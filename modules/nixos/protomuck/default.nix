@@ -133,7 +133,7 @@ in {
         echo -n "(${cfg.game-name} on port ${toString cfg.main-port} from ${cfg.game-directory}/data/proto.db): "
         ${pkgs.united.protomuck}/bin/protomuck -verboseload -gamedir ${cfg.game-directory} -dbin ${cfg.game-directory}/data/proto.db -dbout ${cfg.game-directory}/data/proto.new -port "${toString cfg.main-port} ${strings.concatMapStrings (x: toString x + " ") cfg.other-ports}"
 
-        tail -f ${cfg.game-directory}/logs/{protomuck,protomuck.err,restarts,status}
+        tail -f ${cfg.game-directory}/logs/*
       '';
     };
 
