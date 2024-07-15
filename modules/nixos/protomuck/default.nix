@@ -20,6 +20,8 @@ in {
       pkgs.united.protomuck
     ];
 
+    # Be advised you need to lok onto the MUCK fully on its very first run or there will be segfaults on
+    # subsequent starts. No idea why this is happening.
     systemd.services."protomuck-${service-name}" = {
       description = "ProtoMUCK server for ${cfg.game-name}.";
       preStart = ''
