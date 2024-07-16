@@ -34,6 +34,8 @@ in {
       services."protomuck-${service-name}" = {
         enable = true;
         description = "ProtoMUCK server for ${cfg.game-name}.";
+        after = ["network.target"];
+        wantedBy = ["multi-user.target"];
         preStart = ''
           if [ -z "$(find "${cfg.game-directory}" -mindepth 1 -maxdepth 1 -exec echo {} \; | head -n 1)" ]; then
             echo "Creating MUCK files for ${cfg.game-name}."
