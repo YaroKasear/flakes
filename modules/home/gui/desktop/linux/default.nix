@@ -13,10 +13,8 @@ in {
 
   config = mkIf cfg.enable {
     united = {
-      i3.enable = !cfg.waylandSupport;
       wayland.enable = cfg.waylandSupport;
       nextcloud = enabled;
-      ranger = enabled;
       thunderbird = enabled;
     };
 

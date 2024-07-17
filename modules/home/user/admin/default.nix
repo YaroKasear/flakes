@@ -27,7 +27,6 @@ in {
       nil
       nvd
       snowfallorg.flake
-      sops
       (mkIf is-linux traceroute)
       virt-manager
       vulkan-tools

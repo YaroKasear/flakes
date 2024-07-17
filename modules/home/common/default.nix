@@ -45,7 +45,6 @@ in {
       tmux = enabled;
       nixvim = enabled;
       starship = enabled;
-      sops.enable = mkDefault true;
       user = enabled;
       vim = disabled;
       yubikey = enabled;

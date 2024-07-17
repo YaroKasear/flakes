@@ -110,9 +110,5 @@ in {
         tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows > 1 else \'\'}
       '';
     };
-
-    xdg.configFile."waybar/catppuccin.css" = mkIf config.united.waybar.enable {
-      source = ./files/catppuccin.css;
-    };
   };
 }

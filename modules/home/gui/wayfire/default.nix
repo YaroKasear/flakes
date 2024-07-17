@@ -83,7 +83,6 @@ let
         };
         autostart = {
           autostart_wf_shell = true;
-          outputs = "kanshi";
           notifications = "mako";
           gamma = "wlunset";
           idle = "swayidle before-sleep swaylock";
@@ -190,7 +189,5 @@ let
     };
 
     programs.wofi = enabled;
-
-    united.kanshi = enabled;
   };
 }

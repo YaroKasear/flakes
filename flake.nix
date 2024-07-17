@@ -42,46 +42,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprcatppuccin-frappe-dark = {
-      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Frappe-Dark-Cursors.tar.gz";
-      flake = false;
-    };
-
-    hyprcatppuccin-latte-blue = {
-      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Latte-Blue-Cursors.tar.gz";
-      flake = false;
-    };
-
-    hyprcatppuccin-macchiato-dark = {
-      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Macchiato-Dark-Cursors.tar.gz";
-      flake = false;
-    };
-
-    hyprcatppuccin-mocha-dark = {
-      url = "https://github.com/entailz/hyprcatppuccin/raw/master/hyprconverted/extracted_Catppuccin-Mocha-Dark-Cursors.tar.gz";
-      flake = false;
-    };
-
-    hyprland = {
-      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprpicker = {
-      url = "github:hyprwm/hyprpicker";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     impermanence.url = "github:nix-community/impermanence";
 
     nix-gaming = {
@@ -96,16 +56,6 @@
 
     nix-rice.url = "github:bertof/nix-rice";
 
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -117,16 +67,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    polybar-scripts = {
-      url = "github:polybar/polybar-scripts";
-      flake = false;
-    };
-
-    ranger-devicons = {
-      url = "github:alexanderjeurissen/ranger_devicons";
-      flake = false;
-    };
-
     snowfall-flake = {
       url = "github:snowfallorg/flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -136,16 +76,6 @@
       url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils-plus.url = "github:fl42v/flake-utils-plus";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    waybar = {
-      url = "github:Alexays/Waybar";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -208,13 +138,11 @@
 
       homes.users = let
         home-modules = with inputs; [
-          hyprland.homeManagerModules.default
           impermanence.nixosModules.home-manager.impermanence
           nix-index-database.hmModules.nix-index
           nixvim.homeManagerModules.nixvim
           nur.hmModules.nur
           plasma-manager.homeManagerModules.plasma-manager
-          sops-nix.homeManagerModules.sops
         ];
       in {
         "cnelson@loki".modules = home-modules;

@@ -125,11 +125,6 @@ in {
         (mkIf is-linux pkgs.catppuccin-cursors.latteBlue)
         (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["latte"]; }))
       ];
-      file = {
-        # mkIf config.united.vim.enable (".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";);
-        # ".vim/colors/latte.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-latte.vim";
-        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Latte-Blue-Cursors".source = "${inputs.hyprcatppuccin-latte-blue}/theme_Extracted Theme";
-      };
     };
 
     gtk = {
@@ -208,44 +203,12 @@ in {
           "workbench.iconTheme" = "catppuccin-latte";
         };
       };
-      waybar.style = mkIf config.united.waybar.enable(mkForce ''
-        @import url("latte.css");
-        @import url("catppuccin.css");
-      '');
       zsh = mkIf config.united.zsh.enable {
         initExtra = "source ${config.united.user.directories.config}/zsh/catppuccin_latte-zsh-syntax-highlighting.zsh";
       };
     };
 
     united.style.catppuccin = enabled;
-
-    wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
-      settings = {
-        source = [ "${config.united.user.directories.config}/hypr/latte.conf" ];
-
-        env = [
-          "HYPRCURSOR_THEME,Hyprcatppuccin-Latte-Dark-Cursors"
-        ];
-
-        general = {
-          "col.inactive_border" = "$overlay0";
-          "col.active_border" = "$lavender";
-        };
-
-        group = {
-          "col.border_active" = "$lavender";
-          "col.border_inactive" = "$overlay0";
-          groupbar = {
-            "col.active" = "$lavender";
-            "col.inactive" = "$overlay0";
-          };
-        };
-
-        misc = {
-          background_color = "$base";
-        };
-      };
-    };
 
     xdg.configFile = let
       catppuccin = (pkgs.catppuccin.override { variant = "latte"; });
@@ -255,15 +218,6 @@ in {
       };
       "zsh/catppuccin_latte-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
         source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
-      };
-      "hypr/latte.conf" = mkIf config.united.hyprland.enable {
-        source = "${catppuccin}/hyprland/latte.conf";
-      };
-      "swaync/style.css" = mkIf config.united.hyprland.enable {
-        source = "${inputs.catppuccin-swaync-latte}";
-      };
-      "waybar/latte.css" = mkIf config.united.waybar.enable {
-        source = "${catppuccin}/waybar/latte.css";
       };
     };
   };

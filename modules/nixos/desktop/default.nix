@@ -29,15 +29,9 @@ in {
       extraPackages = [pkgs.vulkan-validation-layers];
     };
 
-    nix.settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
-
     programs.dconf = enabled;
 
     security.pam.services = {
-      hyprlock = mkIf config.united.wayland.enable {};
       login = with config.security.pam.services.login.rules.auth; {
         rules.auth.gnome_keyring.order = u2f.order - 10;
 	      u2fAuth = true;
@@ -45,14 +39,6 @@ in {
     };
 
     services = {
-      xserver = {
-        enable = mkDefault (!config.united.wayland.enable);
-        xkb.layout = "us";
-        displayManager.lightdm.enable = !config.united.wayland.enable;
-        windowManager.i3 = {
-          enable = true;
-        };
-      };
       pipewire = {
         enable = true;
         alsa = {

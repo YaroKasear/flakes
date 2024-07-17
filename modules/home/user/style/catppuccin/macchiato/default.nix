@@ -125,11 +125,6 @@ in {
         (mkIf is-linux pkgs.catppuccin-cursors.macchiatoDark)
         (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["macchiato"]; }))
       ];
-      file = {
-        # mkIf config.united.vim.enable (".vim/colors/macchiato.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-macchiato.vim";);
-        # ".vim/colors/macchiato.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-macchiato.vim";
-        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Macchiato-Dark-Cursors".source = "${inputs.hyprcatppuccin-macchiato-dark}/theme_Extracted Theme";
-      };
     };
 
     gtk = {
@@ -209,44 +204,12 @@ in {
           "workbench.iconTheme" = "catppuccin-macchiato";
         };
       };
-      waybar.style = mkIf config.united.waybar.enable(mkForce ''
-        @import url("macchiato.css");
-        @import url("catppuccin.css");
-      '');
       zsh = mkIf config.united.zsh.enable {
         initExtra = "source ${config.united.user.directories.config}/zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh";
       };
     };
 
     united.style.catppuccin = enabled;
-
-    wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
-      settings = {
-        source = [ "${config.united.user.directories.config}/hypr/macchiato.conf" ];
-
-        env = [
-          "HYPRCURSOR_THEME,Hyprcatppuccin-Macchiato-Dark-Cursors"
-        ];
-
-        general = {
-          "col.inactive_border" = "$overlay0";
-          "col.active_border" = "$lavender";
-        };
-
-        group = {
-          "col.border_active" = "$lavender";
-          "col.border_inactive" = "$overlay0";
-          groupbar = {
-            "col.active" = "$lavender";
-            "col.inactive" = "$overlay0";
-          };
-        };
-
-        misc = {
-          background_color = "$base";
-        };
-      };
-    };
 
     xdg.configFile = let
       catppuccin = (pkgs.catppuccin.override { variant = "macchiato"; });
@@ -256,15 +219,6 @@ in {
       };
       "zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
         source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh";
-      };
-      "hypr/macchiato.conf" = mkIf config.united.hyprland.enable {
-        source = "${catppuccin}/hyprland/macchiato.conf";
-      };
-      "swaync/style.css" = mkIf config.united.hyprland.enable {
-        source = "${inputs.catppuccin-swaync-macchiato}";
-      };
-      "waybar/macchiato.css" = mkIf config.united.waybar.enable {
-        source = "${catppuccin}/waybar/macchiato.css";
       };
     };
   };

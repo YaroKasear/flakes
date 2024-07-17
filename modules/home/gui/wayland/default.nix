@@ -9,19 +9,17 @@ in {
     enable = mkEnableOption "Wayland";
     compositor = mkOption {
       type = types.enum [
-        "hyprland"
         "plasma"
         "sway"
         "wayfire"
       ];
-      default = "hyprland";
+      default = "plasma";
       description = "Select compositor!";
     };
   };
 
   config = mkIf cfg.enable {
     united = {
-      hyprland.enable = cfg.compositor == "hyprland";
       plasma.enable = cfg.compositor == "plasma";
       sway.enable = cfg.compositor == "sway";
       wayfire.enable = cfg.compositor == "wayfire";

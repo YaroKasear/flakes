@@ -4,12 +4,6 @@
   min-height: 0;
 }
 
-#waybar {
-  background: alpha(@base, 0.5);
-  color: @text;
-  margin: 5px 5px;
-}
-
 .modules-left,
 .modules-right {
   background-color: @surface0;

@@ -125,11 +125,6 @@ in {
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
         (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["frappe"]; }))
       ];
-      file = {
-        # mkIf config.united.vim.enable (".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";);
-        # ".vim/colors/frappe.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-frappe.vim";
-        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Frappe-Dark-Cursors".source = "${inputs.hyprcatppuccin-frappe-dark}/theme_Extracted Theme";
-      };
     };
 
     gtk = {
@@ -208,44 +203,12 @@ in {
           "workbench.iconTheme" = "catppuccin-frappe";
         };
       };
-      waybar.style = mkIf config.united.waybar.enable(mkForce ''
-        @import url("frappe.css");
-        @import url("catppuccin.css");
-      '');
       zsh = mkIf config.united.zsh.enable {
         initExtra = "source ${config.united.user.directories.config}/zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh";
       };
     };
 
     united.style.catppuccin = enabled;
-
-    wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
-      settings = {
-        source = [ "${config.united.user.directories.config}/hypr/frappe.conf" ];
-
-        env = [
-          "HYPRCURSOR_THEME,Hyprcatppuccin-Frappe-Dark-Cursors"
-        ];
-
-        general = {
-          "col.inactive_border" = "$overlay0";
-          "col.active_border" = "$lavender";
-        };
-
-        group = {
-          "col.border_active" = "$lavender";
-          "col.border_inactive" = "$overlay0";
-          groupbar = {
-            "col.active" = "$lavender";
-            "col.inactive" = "$overlay0";
-          };
-        };
-
-        misc = {
-          background_color = "$base";
-        };
-      };
-    };
 
     xdg.configFile = let
       catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
@@ -255,15 +218,6 @@ in {
       };
       "zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
         source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh";
-      };
-      "hypr/frappe.conf" = mkIf config.united.hyprland.enable {
-        source = "${catppuccin}/hyprland/frappe.conf";
-      };
-      "swaync/style.css" = mkIf config.united.hyprland.enable {
-        source = "${inputs.catppuccin-swaync-frappe}";
-      };
-      "waybar/frappe.css" = mkIf config.united.waybar.enable {
-        source = "${catppuccin}/waybar/frappe.css";
       };
     };
   };

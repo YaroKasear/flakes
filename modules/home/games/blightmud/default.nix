@@ -18,10 +18,5 @@ in
         blightmud
       ];
     };
-
-    sops.secrets.servers = mkIf config.united.sops.enable {
-      path = "${config.united.user.directories.config}/blightmud/servers.ron";
-      sopsFile = ./secrets.yaml;
-    };
   };
 }

@@ -5,19 +5,12 @@ with lib.united;
   united = {
     admin = enabled;#  = enabled;
     am2r = enabled;
-    asciiquarium = {
-      enable = true;
-      # smart-wallpaper = config.united.wayland.enable;
-      smart-wallpaper = false;
-    };
     common = enabled;
     desktop = {
       enable = true;
       linux.waylandSupport = true;
     };
     discord = enabled;
-    hyprland.floating = false;
-    lutris = disabled;
     mpv = enabled;
     obs-studio = enabled;
     obsidian = enabled;

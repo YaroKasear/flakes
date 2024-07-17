@@ -125,11 +125,6 @@ in {
         (mkIf is-linux pkgs.catppuccin-cursors.mochaDark)
         (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["mocha"]; }))
       ];
-      file = {
-        # mkIf config.united.vim.enable (".vim/colors/mocha.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-mocha.vim";);
-        # ".vim/colors/mocha.vim".source = "${pkgs.vimPlugins.catppuccin-vim}/colors/catppuccin-mocha.vim";
-        "${config.united.user.directories.data}/icons/Hyprcatppuccin-Mocha-Dark-Cursors".source = "${inputs.hyprcatppuccin-mocha-dark}/theme_Extracted Theme";
-      };
     };
 
     gtk = {
@@ -209,44 +204,12 @@ in {
           "workbench.iconTheme" = "catppuccin-mocha";
         };
       };
-      waybar.style = mkIf config.united.waybar.enable(mkForce ''
-        @import url("mocha.css");
-        @import url("catppuccin.css");
-      '');
       zsh = mkIf config.united.zsh.enable {
         initExtra = "source ${config.united.user.directories.config}/zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh";
       };
     };
 
     united.style.catppuccin = enabled;
-
-    wayland.windowManager.hyprland = mkIf config.united.hyprland.enable  {
-      settings = {
-        source = [ "${config.united.user.directories.config}/hypr/mocha.conf" ];
-
-        env = [
-          "HYPRCURSOR_THEME,Hyprcatppuccin-Mocha-Dark-Cursors"
-        ];
-
-        general = {
-          "col.inactive_border" = "$overlay0";
-          "col.active_border" = "$lavender";
-        };
-
-        group = {
-          "col.border_active" = "$lavender";
-          "col.border_inactive" = "$overlay0";
-          groupbar = {
-            "col.active" = "$lavender";
-            "col.inactive" = "$overlay0";
-          };
-        };
-
-        misc = {
-          background_color = "$base";
-        };
-      };
-    };
 
     xdg.configFile = let
       catppuccin = (pkgs.catppuccin.override { variant = "mocha"; });
@@ -256,15 +219,6 @@ in {
       };
       "zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
         source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh";
-      };
-      "hypr/mocha.conf" = mkIf config.united.hyprland.enable {
-        source = "${catppuccin}/hyprland/mocha.conf";
-      };
-      "swaync/style.css" = mkIf config.united.hyprland.enable {
-        source = "${inputs.catppuccin-swaync-mocha}";
-      };
-      "waybar/mocha.css" = mkIf config.united.waybar.enable {
-        source = "${catppuccin}/waybar/mocha.css";
       };
     };
   };

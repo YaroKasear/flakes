@@ -135,10 +135,5 @@ in
         '';
       };
     };
-
-    sops.secrets.worlds = mkIf config.united.sops.enable {
-      path = ".worlds.tf";
-      sopsFile = ./secrets.yaml;
-    };
   };
 }
