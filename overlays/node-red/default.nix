@@ -1,4 +1,4 @@
-{ channels, namespace, inputs, ... }:
+{ channels, inputs, ... }:
 
 final: prev: {
  node-red = prev.nodePackages.node-red.overrideAttrs (oldAttrs: {
