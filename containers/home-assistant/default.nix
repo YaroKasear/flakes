@@ -22,7 +22,7 @@
       owner = "zachowj";
       repo = "hass-node-red";
       rev = "v4.0.1";
-      sha256 = "";
+      sha256 = "ePphcSWSWhI51iNJsKryuo52ck7S5LuNREfvndIuVfs=";
     } + "custom_components/nodered";
   };
 
