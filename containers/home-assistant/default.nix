@@ -21,7 +21,7 @@
     source = pkgs.fetchFromGitHub {
       owner = "zachowj";
       repo = "hass-node-red";
-      rev = "v0.65.1";
+      rev = "v4.0.1";
       sha256 = "";
     } + "custom_components/nodered";
   };
