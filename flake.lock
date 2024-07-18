@@ -687,22 +687,6 @@
         "type": "github"
       }
     },
-    "hass-node-red": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1720320631,
-        "narHash": "sha256-ePphcSWSWhI51iNJsKryuo52ck7S5LuNREfvndIuVfs=",
-        "owner": "zachowj",
-        "repo": "hass-node-red",
-        "rev": "1bb18b2d953b0436d340e13f3f7a5e074aeed44d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "zachowj",
-        "repo": "hass-node-red",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -1147,7 +1131,6 @@
         "cowsay": "cowsay",
         "darwin": "darwin_2",
         "disko": "disko",
-        "hass-node-red": "hass-node-red",
         "home-manager": "home-manager_2",
         "impermanence": "impermanence",
         "nix-gaming": "nix-gaming",
