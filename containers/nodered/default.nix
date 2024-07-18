@@ -24,7 +24,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nodejs_20
+    python3
   ];
 
   system.stateVersion = "24.05";
