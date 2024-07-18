@@ -35,6 +35,11 @@ in {
         };
       };
     };
+    nodered = {
+      autoStart = true;
+      config = ../../../containers/nodered/default.nix;
+      ephemeral = true;
+    };
   };
 
   networking = {

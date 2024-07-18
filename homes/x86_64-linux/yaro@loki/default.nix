@@ -97,10 +97,6 @@ with lib.united;
             icon = "nix-snowflake-white";
           };
         }
-        {
-          name = "org.kde.plasma.folder";
-          config.General.url = "file://${config.united.user.directories.home}";
-        }
         "org.kde.plasma.marginsseparator"
         {
           name = "org.kde.plasma.icontasks";
