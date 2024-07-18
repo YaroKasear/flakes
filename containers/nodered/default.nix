@@ -23,7 +23,7 @@
     });
   };
 
-  environmment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     nodejs_22
   ];
 
