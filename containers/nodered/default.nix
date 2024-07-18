@@ -4,7 +4,7 @@
   services.node-red = {
     enable = true;
     openFirewall = true;
-    package = pkgs.nodePackages.node-red.overrideAttrs (oldAttrs: {
+    package = pkgs.nodePackages_latest.node-red.overrideAttrs (oldAttrs: {
       nativeBuildInputs = oldAttrs.nativeBuildInputs or [] ++ [ pkgs.makeWrapper ];
       postInstall = oldAttrs.postInstall or "" + ''
         mkdir -p $out/bin
@@ -22,6 +22,10 @@
       '';
     });
   };
+
+  environmment.systemPackages = with pkgs; [
+    nodejs_22
+  ];
 
   system.stateVersion = "24.05";
 }
