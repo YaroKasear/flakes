@@ -15,6 +15,7 @@
             pkgs.nodePackages.npm
             pkgs.bash
             pkgs.gcc
+            pkgs.python3
             # projects
             pkgs.git
             pkgs.openssl
@@ -22,10 +23,6 @@
       '';
     });
   };
-
-  environment.systemPackages = with pkgs; [
-    python3
-  ];
 
   system.stateVersion = "24.05";
 }
