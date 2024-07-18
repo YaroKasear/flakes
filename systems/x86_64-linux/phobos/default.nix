@@ -48,6 +48,8 @@ in {
     firewall.allowedTCPPorts = [
       1883
       8123
+      1880
+      3456
     ];
   };
 
