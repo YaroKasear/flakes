@@ -24,7 +24,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    nodejs_22
+    nodejs_20
   ];
 
   system.stateVersion = "24.05";
