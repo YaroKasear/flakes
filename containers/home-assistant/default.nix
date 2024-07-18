@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 
 {
   services.home-assistant = {
@@ -18,7 +18,12 @@
   environment.etc."hass/custom_components/nodered" = {
     user = "hass";
     group = "hass";
-    source = "${inputs.hass-node-red}/custom_components/nodered";
+    source = pkgs.fetchFromGitHub {
+      owner = "zachowj";
+      repo = "hass-node-red";
+      rev = "v0.65.1";
+      sha256 = "";
+    } + "custom_components/nodered";
   };
 
   system.stateVersion = "24.05";
