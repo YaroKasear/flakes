@@ -122,6 +122,7 @@ in {
       settings = {
         server.tls-upstream = true;
         forward-zone = {
+          name = "\".\"";
           forward-addr = [
             "1.1.1.1@853#cloudflare-dns.com"
             "1.0.0.1@853#cloudflare-dns.com"
