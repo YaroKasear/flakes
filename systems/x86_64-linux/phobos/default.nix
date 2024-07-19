@@ -45,12 +45,15 @@ in {
   networking = {
     hostId = "44470514";
     hostName = "phobos";
-    firewall.allowedTCPPorts = [
-      1883
-      8123
-      1880
-      3456
-    ];
+    firewall = {
+      allowedTCPPorts = [
+        1883
+        8123
+        1880
+        3456
+      ];
+      allowedUDPPorts = [ 53 ];
+    };
   };
 
   systemd.network = {
