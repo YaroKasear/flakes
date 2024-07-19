@@ -123,7 +123,14 @@ in {
       enable = true;
       blocklist = enabled;
       settings = {
-        server.tls-upstream = true;
+        server = {
+          access-conrol = [
+            "10.0.0.0/8 allow"
+            "127.0.0.1/8 allow"
+          ];
+          interface = "0.0.0.0";
+          tls-upstream = true;
+        };
         forward-zone = {
           name = "\".\"";
           forward-addr = [
