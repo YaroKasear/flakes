@@ -36,7 +36,13 @@ in {
 
     age = {
       secrets = {
-        "forward-zone.conf".rekeyFile = common-secrets + "forward-zone.conf.age";
+        "forward-zone.conf" = {
+          rekeyFile = common-secrets + "forward-zone.conf.age";
+          user = "unbound";
+          group = "unbound";
+          symlink = false;
+          path = "/var/forward-zone.conf";
+        };
       };
     };
 
