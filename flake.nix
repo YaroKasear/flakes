@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    blocklist = {
+      url = "github:mirosval/unbound-blocklist";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     cowsay = {
       url = "github:snowfallorg/cowsay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -129,9 +134,11 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
         hosts.phobos.modules = with inputs; [
+          blocklist.nixosModules.default
           nixos-hardware.nixosModules.common-pc
         ];
         hosts.deimos.modules = with inputs; [
+          blocklist.nixosModules.default
           nixos-hardware.nixosModules.common-pc
         ];
       };

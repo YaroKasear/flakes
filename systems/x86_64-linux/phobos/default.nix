@@ -115,6 +115,11 @@ in {
     };
   };
 
+  services.unbound = {
+    enable = true;
+    blocklist = enabled;
+  };
+
   united = {
     phobos-mounts = enabled;
     server = enabled;
