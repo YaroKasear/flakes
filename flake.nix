@@ -126,6 +126,7 @@
         modules.nixos = with inputs; [
           agenix.nixosModules.default
           agenix-rekey.nixosModules.default
+          blocklist.nixosModules.default
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           lix-module.nixosModules.default
@@ -140,11 +141,9 @@
           nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         ];
         hosts.phobos.modules = with inputs; [
-          blocklist.nixosModules.default
           nixos-hardware.nixosModules.common-pc
         ];
         hosts.deimos.modules = with inputs; [
-          blocklist.nixosModules.default
           nixos-hardware.nixosModules.common-pc
         ];
       };

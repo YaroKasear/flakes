@@ -1,8 +1,10 @@
-{ lib, config, ... }:
+{ lib, config, inputs, ... }:
 
 with lib;
 with lib.united;
 let
+  common-secrets = inputs.self + "/secrets/common/";
+
   cfg = config.united.unbound;
 in {
   options.united.unbound = {
@@ -24,16 +26,19 @@ in {
             tls-upstream = true;
           };
           forward-zone = {
-            name = "\".\"";
-            forward-addr = [
-              "1.1.1.1@853#cloudflare-dns.com"
-              "1.0.0.1@853#cloudflare-dns.com"
-            ];
+            include = "${config.age.secrets."forward-zone.conf".path}";
           };
         };
       };
       resolved = disabled;
       dnsmasq = disabled;
     };
+
+    age = {
+      secrets = {
+        "forward-zone.conf".rekeyFile = common-secrets + "forward-zone.conf.age";
+      };
+    };
+
   };
 }
