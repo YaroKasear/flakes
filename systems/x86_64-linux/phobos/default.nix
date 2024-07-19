@@ -121,6 +121,7 @@ in {
       blocklist = enabled;
     };
     resolved = disabled;
+    dnsmasq = disabled;
   };
 
   united = {
