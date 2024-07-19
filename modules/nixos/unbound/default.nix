@@ -24,6 +24,7 @@ in {
             ];
             interface = "0.0.0.0";
             tls-upstream = true;
+            include = "${config.age.secrets."local-zone.conf".path}";
           };
           include = "${config.age.secrets."forward-zone.conf".path}";
         };
@@ -42,8 +43,15 @@ in {
           mode = "400";
           path = "/var/forward-zone.conf";
         };
+        "local-zone.conf" = {
+          rekeyFile = common-secrets + "local-zone.conf.age";
+          owner = "unbound";
+          group = "unbound";
+          symlink = false;
+          mode = "400";
+          path = "/var/local-zone.conf";
+        };
       };
     };
-
   };
 }
