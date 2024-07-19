@@ -150,7 +150,7 @@ in {
     services = {
       dbus.implementation = "broker";
       dnsmasq = {
-        enable = true;
+        enable = mkDefault true;
         settings = {
           "server" = ["10.10.10.1"];
         };
