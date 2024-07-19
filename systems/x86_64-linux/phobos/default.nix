@@ -118,35 +118,10 @@ in {
     };
   };
 
-  services = {
-    unbound = {
-      enable = true;
-      blocklist = enabled;
-      settings = {
-        server = {
-          access-conrol = [
-            "10.0.0.0/8 allow"
-            "127.0.0.1/8 allow"
-          ];
-          interface = "0.0.0.0";
-          tls-upstream = true;
-        };
-        forward-zone = {
-          name = "\".\"";
-          forward-addr = [
-            "1.1.1.1@853#cloudflare-dns.com"
-            "1.0.0.1@853#cloudflare-dns.com"
-          ];
-        };
-      };
-    };
-    resolved = disabled;
-    dnsmasq = disabled;
-  };
-
   united = {
     phobos-mounts = enabled;
     server = enabled;
+    unbound = enabled;
     # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
       enable = true;
