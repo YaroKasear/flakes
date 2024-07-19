@@ -24,7 +24,10 @@ in {
             ];
             interface = "0.0.0.0";
             tls-upstream = true;
-            include = "${config.age.secrets."local-zone.conf".path}";
+            include = mkForce [
+              "${config.age.secrets."local-zone.conf".path}"
+              "${inputs.blocklist}/blocklist.conf"
+            ];
           };
           include = "${config.age.secrets."forward-zone.conf".path}";
         };
