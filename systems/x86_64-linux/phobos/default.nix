@@ -115,9 +115,12 @@ in {
     };
   };
 
-  services.unbound = {
-    enable = true;
-    blocklist = enabled;
+  services = {
+    unbound = {
+      enable = true;
+      blocklist = enabled;
+    };
+    resolved = disabled;
   };
 
   united = {
