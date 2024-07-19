@@ -76,8 +76,8 @@ in {
     };
 
     nix = {
+      package = inputs.lix-module.packages."${pkgs.system}".default;
       optimise.automatic = true;
-      package = pkgs.nixFlakes;
       gc = {
         automatic = true;
         dates = "weekly";
