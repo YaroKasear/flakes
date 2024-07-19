@@ -25,9 +25,7 @@ in {
             interface = "0.0.0.0";
             tls-upstream = true;
           };
-          forward-zone = {
-            include = "${config.age.secrets."forward-zone.conf".path}";
-          };
+          include = "${config.age.secrets."forward-zone.conf".path}";
         };
       };
       resolved = disabled;
