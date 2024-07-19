@@ -84,6 +84,8 @@ in {
     };
   };
 
+  networking.firewall.allowedUDPPorts = [ 5060 ];
+
   services = {
     avahi = {
       enable = true;

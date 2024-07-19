@@ -15,6 +15,13 @@
       "extensions.conf" = ''
         #include callcentric-did.conf
       '';
+      "logger.conf" = ''
+        [general]
+
+        [logfiles]
+        syslog.local0 => notice,warning,error
+        full => notice,warning,error,verbose,dtmf,fax
+      '';
     };
   };
 
