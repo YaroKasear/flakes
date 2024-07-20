@@ -129,12 +129,6 @@ in {
     };
   };
 
-  security.pam = {
-    u2f = disabled;
-    yubico = disabled;
-    services.sudo.rules.auth.unix.control = lib.mkForce "sufficient";
-  };
-
   users = {
     users = {
       yaro = {
