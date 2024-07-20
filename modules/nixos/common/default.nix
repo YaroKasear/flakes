@@ -108,13 +108,13 @@ in {
       };
       pam = {
         u2f = {
-          enable = true;
+          enable = mkDefault true;
           authFile = "${config.age.secrets.yubikey-auth.path}";
           cue = true;
           control = "sufficient";
         };
         yubico = {
-          enable = true;
+          enable = mkDefault true;
           id = "65698";
           control = "sufficient";
         };
@@ -136,7 +136,7 @@ in {
           sudo = with config.security.pam.services.sudo.rules.auth; {
             rules.auth = {
               unix = {
-                control = mkForce "required";
+                control = mkDefault "required";
                 order = u2f.order - 10;
               };
               yubico.order = u2f.order + 10;

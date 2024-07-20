@@ -133,7 +133,7 @@ in {
   security.pam = {
     u2f = disabled;
     yubico = disabled;
-    services.sudo.rukes.auth.unix.control = mkForce "sufficient";
+    services.sudo.rules.auth.unix.control = lib.mkForce "sufficient";
   };
 
   users = {
