@@ -121,7 +121,6 @@ in {
   united = {
     phobos-mounts = enabled;
     server = enabled;
-    unbound = enabled;
     # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
       enable = true;
