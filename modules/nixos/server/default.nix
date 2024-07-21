@@ -27,6 +27,9 @@ in {
       enable = true;
       useNetworkingTimeServers = false;
       settings = {
+        access_control = {
+          allow = "10.0.0.0/8";
+        };
         source = [
           {
             mode = "pool";
@@ -43,6 +46,7 @@ in {
         ];
         server = [{
           listen = "0.0.0.0:123";
+          mode = "server";
         }];
       };
     };
