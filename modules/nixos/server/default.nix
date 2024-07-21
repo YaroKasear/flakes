@@ -30,10 +30,6 @@ in {
         source = [
           {
             mode = "server";
-            address = "time.nist.gov";
-          }
-          {
-            mode = "server";
             address = "us.pool.ntp.org";
           }
           {
