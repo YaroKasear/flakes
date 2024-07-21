@@ -24,10 +24,16 @@ in {
     services.ntpd-rs = {
       enable = true;
       settings = {
-        source = lib.mkForce [{
-          mode = "pool";
-          address = "time.nist.gov";
-        }];
+        source = lib.mkForce [
+          {
+            mode = "pool";
+            address = "time.nist.gov";
+          }
+          {
+            mode = "pool";
+            address = "us.pool.ntp.org";
+          }
+        ];
         server = [{
           listen = "0.0.0.0:123";
         }];
