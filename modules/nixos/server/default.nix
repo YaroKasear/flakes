@@ -20,7 +20,5 @@ in {
       common = enabled;
       unbound = enabled;
     };
-
-    networking.firewall.allowedUDPPorts = [ 123 ];
   };
 }
