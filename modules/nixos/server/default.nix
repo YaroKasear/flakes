@@ -23,20 +23,28 @@ in {
 
     networking.firewall.allowedUDPPorts = [ 123 ];
 
-    services.ntpd-rs = {
+    services.openntpd = {
       enable = true;
-      useNetworkingTimeServers = false;
-      settings = {
-        source = [
-          {
-            mode = "server";
-            address = "time.cloudflare.com";
-          }
-        ];
-        server = [{
-          listen = "0.0.0.0:123";
-        }];
-      };
     };
+
+    # services.ntpd-rs = {
+    #   enable = true;
+    #   useNetworkingTimeServers = false;
+    #   settings = {
+    #     source = [
+    #       {
+    #         mode = "server";
+    #         address = "us.pool.ntp.org";
+    #       }
+    #       {
+    #         mode = "server";
+    #         address = "time.cloudflare.com";
+    #       }
+    #     ];
+    #     server = [{
+    #       listen = "0.0.0.0:123";
+    #     }];
+    #   };
+    # };
   };
 }
