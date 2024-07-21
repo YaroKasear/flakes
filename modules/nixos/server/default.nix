@@ -30,14 +30,14 @@ in {
       }) ls;
     in {
       enable = true;
-      useNetworkingTimeServers = false;
+      # useNetworkingTimeServers = false;
       settings = {
-        source = server-list [
-          "time1.google.com"
-          "time2.google.com"
-          "time3.google.com"
-          "time4.google.com"
-        ];
+        # source = server-list [
+        #   "time1.google.com"
+        #   "time2.google.com"
+        #   "time3.google.com"
+        #   "time4.google.com"
+        # ];
         server = [{
           listen = "0.0.0.0:123";
         }];
