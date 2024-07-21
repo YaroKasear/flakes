@@ -23,83 +23,20 @@ in {
 
     networking.firewall.allowedUDPPorts = [ 123 ];
 
-    services.ntpd-rs = {
+    services.ntpd-rs = let
+      server-list = ls: map (x: {
+        mode = "server";
+        address = x;
+      }) ls;
+    in {
       enable = true;
       useNetworkingTimeServers = false;
       settings = {
-        source = [
-          {
-            mode = "server";
-            address = "time-a-g.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-b-g.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-c-g.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-d-g.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-a-wwv.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-b-wwv.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-c-wwv.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-d-wwv.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-a-b.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-b-b.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-c-b.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-d-b.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-e-b.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-e-g.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "time-e-wwv.nist.gov";
-          }
-          {
-            mode = "server";
-            address = "utcnist.colorado.edu";
-          }
-          {
-            mode = "server";
-            address = "utcnist2.colorado.edu";
-          }
+        source = server-list [
+          "time1.google.com"
+          "time2.google.com"
+          "time3.google.com"
+          "time4.google.com"
         ];
         server = [{
           listen = "0.0.0.0:123";
