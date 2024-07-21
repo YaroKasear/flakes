@@ -21,11 +21,16 @@ in {
       unbound = enabled;
     };
 
-    containers = {
-      ntpd = {
-        autoStart = true;
-        config = ../../../containers/ntpd/default.nix;
-        ephemeral = true;
+    ervices.ntpd-rs = {
+      enable = true;
+      settings = {
+        source = [] ++ [{
+          mode = "pool";
+          address = "time.nist.gov";
+        }];
+        server = [{
+          listen = "0.0.0.0:123";
+        }];
       };
     };
   };
