@@ -43,7 +43,6 @@ in {
         ];
         server = [{
           listen = "0.0.0.0:123";
-          mode = "server";
         }];
       };
     };
