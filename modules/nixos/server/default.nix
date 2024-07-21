@@ -20,5 +20,13 @@ in {
       common = enabled;
       unbound = enabled;
     };
+
+    containers = {
+      ntpd = {
+        autoStart = true;
+        config = ../../../containers/ntpd/default.nix;
+        ephemeral = true;
+      };
+    };
   };
 }
