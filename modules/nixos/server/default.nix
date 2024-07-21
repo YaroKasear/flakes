@@ -21,7 +21,7 @@ in {
       unbound = enabled;
     };
 
-    ervices.ntpd-rs = {
+    services.ntpd-rs = {
       enable = true;
       settings = {
         source = [] ++ [{
