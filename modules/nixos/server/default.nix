@@ -25,6 +25,11 @@ in {
 
     services.openntpd = {
       enable = true;
+      servers = [
+        "time.nist.gov"
+        "us.pool.ntp.org"
+        "time.cloudflare.com"
+      ];
     };
 
     # services.ntpd-rs = {
