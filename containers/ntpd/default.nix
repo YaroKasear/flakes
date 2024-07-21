@@ -1,14 +1,14 @@
-{ lib, ... }:
+{ ... }:
 
 {
   services.ntpd-rs = {
     enable = true;
     settings = {
-      source = lib.mkForce {
+      "[source]" = {
         mode = "pool";
         address = "time.nist.gov";
       };
-      server = {
+      "[server]" = {
         listen = "0.0.0.0:123";
       };
     };
