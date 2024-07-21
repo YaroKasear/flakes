@@ -29,15 +29,15 @@ in {
       settings = {
         source = [
           {
-            mode = "pool";
+            mode = "server";
             address = "time.nist.gov";
           }
           {
-            mode = "pool";
+            mode = "server";
             address = "us.pool.ntp.org";
           }
           {
-            mode = "pool";
+            mode = "server";
             address = "time.cloudflare.com";
           }
         ];
