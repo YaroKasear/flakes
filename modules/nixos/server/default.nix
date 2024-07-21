@@ -30,10 +30,6 @@ in {
         source = [
           {
             mode = "server";
-            address = "us.pool.ntp.org";
-          }
-          {
-            mode = "server";
             address = "time.cloudflare.com";
           }
         ];
