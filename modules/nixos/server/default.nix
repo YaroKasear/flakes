@@ -22,26 +22,5 @@ in {
     };
 
     networking.firewall.allowedUDPPorts = [ 123 ];
-
-    services.ntpd-rs = let
-      server-list = ls: map (x: {
-        mode = "server";
-        address = x;
-      }) ls;
-    in {
-      enable = true;
-      # useNetworkingTimeServers = false;
-      settings = {
-        # source = server-list [
-        #   "time1.google.com"
-        #   "time2.google.com"
-        #   "time3.google.com"
-        #   "time4.google.com"
-        # ];
-        server = [{
-          listen = "0.0.0.0:123";
-        }];
-      };
-    };
   };
 }
