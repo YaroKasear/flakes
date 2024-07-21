@@ -24,7 +24,7 @@ in {
     services.ntpd-rs = {
       enable = true;
       settings = {
-        source = [] ++ [{
+        source = lib.mkForce [{
           mode = "pool";
           address = "time.nist.gov";
         }];
