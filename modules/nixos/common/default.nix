@@ -136,7 +136,7 @@ in {
           sudo = with config.security.pam.services.sudo.rules.auth; {
             rules.auth = {
               unix = {
-                control = mkDefault "required";
+                control = mkForce "required";
                 order = u2f.order - 10;
               };
               yubico.order = u2f.order + 10;
