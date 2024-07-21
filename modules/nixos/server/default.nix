@@ -33,6 +33,10 @@ in {
             mode = "pool";
             address = "us.pool.ntp.org";
           }
+          {
+            mode = "pool";
+            address = "time.cloudflare.com";
+          }
         ];
         server = [{
           listen = "0.0.0.0:123";
