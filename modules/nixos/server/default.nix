@@ -21,6 +21,8 @@ in {
       unbound = enabled;
     };
 
+    networking.firewall.allowedUDPPorts = [ 123 ];
+
     services.ntpd-rs = {
       enable = true;
       useNetworkingTimeServers = false;
