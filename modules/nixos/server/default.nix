@@ -25,7 +25,6 @@ in {
 
     services.ntpd-rs = {
       enable = true;
-      useNetworkingTimeServers = false;
       settings = {
         server = [{
           listen = "0.0.0.0:123";
