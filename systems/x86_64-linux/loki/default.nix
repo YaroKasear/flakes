@@ -11,22 +11,6 @@ in {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
     secrets = {
-      "callcentric.conf" = {
-        rekeyFile = secrets-directory + "callcentric.conf.age";
-        path = "/run/callcentric.conf";
-        owner = "asterisk";
-        group = "asterisk";
-        mode = "400";
-        symlink = false;
-      };
-      "callcentric-did.conf" = {
-        rekeyFile = secrets-directory + "callcentric-did.conf.age";
-        path = "/run/callcentric-did.conf";
-        owner = "asterisk";
-        group = "asterisk";
-        mode = "400";
-        symlink = false;
-      };
       cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
       mosquitto-password = {
         rekeyFile = secrets-directory + "mosquitto-password.age";
@@ -67,24 +51,6 @@ in {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     };
   };
-
-  containers.asterisk = {
-    autoStart = false;
-    config = ../../../containers/asterisk/default.nix;
-    ephemeral = true;
-    bindMounts = {
-      "/etc/asterisk/callcentric.conf" = {
-        hostPath = config.age.secrets."callcentric.conf".path;
-        isReadOnly = true;
-      };
-      "/etc/asterisk/callcentric-did.conf" = {
-        hostPath = config.age.secrets."callcentric-did.conf".path;
-        isReadOnly = true;
-      };
-    };
-  };
-
-  networking.firewall.allowedUDPPorts = [ 5060 ];
 
   services = {
     avahi = {
@@ -141,13 +107,7 @@ in {
         shell = pkgs.zsh;
         hashedPasswordFile = config.age.secrets.cnelson-password.path;
       };
-      asterisk = {
-        isSystemUser = true;
-        uid = 192;
-        group = "asterisk";
-      };
     };
-    groups.asterisk.gid = 192;
   };
 
 }
