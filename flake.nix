@@ -49,11 +49,6 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.90.0.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -129,7 +124,6 @@
           blocklist.nixosModules.default
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
-          lix-module.nixosModules.default
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
         ];

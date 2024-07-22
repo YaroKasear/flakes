@@ -40,6 +40,9 @@
         from = 10000;
         to = 20000;
       }];
+      extraCommands = ''
+        iptables -A INPUT -p udp -s 10.10.20.3 -j ACCEPT
+      '';
     };
     useHostResolvConf = lib.mkForce false;
   };

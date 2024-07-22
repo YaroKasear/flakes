@@ -52,6 +52,36 @@ in {
     };
   };
 
+  containers.asterisk = {
+    autoStart = false;
+    config = ../../../containers/asterisk/default.nix;
+    ephemeral = true;
+    bindMounts = {
+      "/etc/asterisk/callcentric.conf" = {
+        hostPath = config.age.secrets."callcentric.conf".path;
+        isReadOnly = true;
+      };
+      "/etc/asterisk/callcentric-did.conf" = {
+        hostPath = config.age.secrets."callcentric-did.conf".path;
+        isReadOnly = true;
+      };
+    };
+  };
+
+  networking = {
+    firewall = {
+      enable = true;
+      allowedUDPPorts = [ 5060 ];
+      allowedUDPPortRanges = [{
+        from = 10000;
+        to = 20000;
+      }];
+      extraCommands = ''
+        iptables -A INPUT -p udp -s 10.10.20.3 -j ACCEPT
+      '';
+    };
+  };
+
   services = {
     avahi = {
       enable = true;

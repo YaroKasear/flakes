@@ -76,7 +76,6 @@ in {
     };
 
     nix = {
-      package = inputs.lix-module.packages."${pkgs.system}".default;
       optimise.automatic = true;
       gc = {
         automatic = true;
