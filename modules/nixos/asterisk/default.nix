@@ -52,7 +52,6 @@ in {
     networking = {
       firewall = {
         enable = true;
-        logRefusedPackets = true;
         allowedUDPPorts = [ 5060 ];
         allowedUDPPortRanges = [{
           from = 10000;
