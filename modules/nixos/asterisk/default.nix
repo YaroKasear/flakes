@@ -1,10 +1,10 @@
-{ lib, config, ... }:
+{ lib, config, inputs, ... }:
 
 with lib;
 with lib.united;
 let
   cfg = config.united.asterisk;
-  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
+  secrets-directory = inputs.self + "/secrets/modules/asterisk/";
 
 in {
   options.united.asterisk = {
@@ -34,7 +34,7 @@ in {
     };
 
     containers.asterisk = {
-      autoStart = false;
+      autoStart = true;
       config = ../../../containers/asterisk/default.nix;
       ephemeral = true;
       bindMounts = {
@@ -50,23 +50,26 @@ in {
     };
 
     networking = {
-      nftables = enabled;
       firewall = {
         enable = true;
+        logRefusedPackets = true;
         allowedUDPPorts = [ 5060 ];
         allowedUDPPortRanges = [{
           from = 10000;
           to = 20000;
         }];
+        extraCommands = ''
+          iptables -A INPUT -p udp -s 10.10.20.3 -j ACCEPT
+        '';
       };
     };
 
     users = {
       users.asterisk = {
-          isSystemUser = true;
-          uid = 192;
-          group = "asterisk";
-        };
+        isSystemUser = true;
+        uid = 192;
+        group = "asterisk";
+      };
       groups.asterisk.gid = 192;
     };
   };
