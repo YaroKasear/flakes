@@ -87,6 +87,7 @@ in {
   networking = {
     firewall = {
       enable = true;
+      logRefusedPackets = true;
       allowedUDPPorts = [ 5060 ];
       allowedUDPPortRanges = [{
         from = 10000;
@@ -153,7 +154,13 @@ in {
         shell = pkgs.zsh;
         hashedPasswordFile = config.age.secrets.cnelson-password.path;
       };
+      asterisk = {
+        isSystemUser = true;
+        uid = 192;
+        group = "asterisk";
+      };
     };
+    groups.asterisk.gid = 192;
   };
 
 }
