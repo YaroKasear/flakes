@@ -127,6 +127,7 @@ in {
       game-name = "Sandbox";
       main-port = 2560;
     };
+    asterisk = enabled;
   };
 
   users = {
