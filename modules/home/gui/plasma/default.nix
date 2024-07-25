@@ -33,7 +33,6 @@ in {
           ];
           files = [
             "${config-directory}/kwinoutputconfig.json"
-            "${config-directory}/powerdevilrc"
           ];
         };
       };
@@ -63,6 +62,12 @@ in {
           toolbar = general;
           menu = general;
           windowTitle = general;
+        };
+
+        powerdevil = {
+          powerButtonAction = "shutDown";
+          autoSuspend.action = "nothing";
+          turnOffDisplay.idleTimeout = "never";
         };
 
         workspace = {
