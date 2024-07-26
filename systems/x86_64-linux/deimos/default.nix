@@ -103,17 +103,4 @@ in {
     phobos-mounts = enabled;
     server = enabled;
   };
-
-  users = {
-    users = {
-      yaro = {
-        description = yaro.united.user.fullName;
-        home = yaro.united.user.directories.home;
-        isNormalUser = true;
-        extraGroups = ["wheel" "networkmanager" "systemd-journal"];
-        shell = pkgs.zsh;
-        hashedPasswordFile = config.age.secrets.yaro-password.path;
-      };
-    };
-  };
 }

@@ -1,6 +1,5 @@
 { lib, pkgs, inputs, config, ... }:
 with lib.united;
-with config.home-manager.users;
 
 # PRIVATE SERVER
 

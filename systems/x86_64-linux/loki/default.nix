@@ -92,14 +92,7 @@ in {
 
   users = {
     users = {
-      yaro = {
-        description = yaro.united.user.fullName;
-        home = yaro.united.user.directories.home;
-        isNormalUser = true;
-        extraGroups = ["wheel" "video" "audio" "networkmanager" "lp" "gamemode" "systemd-journal"];
-        shell = pkgs.zsh;
-        hashedPasswordFile = config.age.secrets.yaro-password.path;
-      };
+      yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
       cnelson = {
         description = cnelson.united.user.fullName;
         home = cnelson.united.user.directories.home;
