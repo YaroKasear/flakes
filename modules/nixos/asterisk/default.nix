@@ -16,7 +16,7 @@ in {
       secrets = {
         "callcentric.conf" = {
           rekeyFile = secrets-directory + "callcentric.conf.age";
-          path = "/run/callcentric.conf";
+          path = "/etc/asterisk/callcentric.conf";
           owner = "asterisk";
           group = "asterisk";
           mode = "400";
@@ -24,7 +24,7 @@ in {
         };
         "callcentric-did.conf" = {
           rekeyFile = secrets-directory + "callcentric-did.conf.age";
-          path = "/run/callcentric-did.conf";
+          path = "/etc/asterisk/callcentric-did.conf";
           owner = "asterisk";
           group = "asterisk";
           mode = "400";
@@ -33,19 +33,38 @@ in {
       };
     };
 
-    containers.asterisk = {
-      autoStart = true;
-      config = ../../../containers/asterisk/default.nix;
-      ephemeral = true;
-      bindMounts = {
-        "/etc/asterisk/callcentric.conf" = {
-          hostPath = config.age.secrets."callcentric.conf".path;
-          isReadOnly = true;
-        };
-        "/etc/asterisk/callcentric-did.conf" = {
-          hostPath = config.age.secrets."callcentric-did.conf".path;
-          isReadOnly = true;
-        };
+    services.asterisk = {
+      enable = true;
+      confFiles = {
+        "pjsip.conf" = ''
+          [global]
+          type=global
+          debug=yes
+
+          [transport-udp]
+          type=transport
+          protocol=udp
+          bind=0.0.0.0:5060
+          local_net=10.10.0.0/16
+          external_media_address=140.228.165.7
+          external_signaling_address=140.228.165.7
+
+          #include callcentric.conf
+        '';
+        "extensions.conf" = ''
+          #include callcentric-did.conf
+        '';
+        "logger.conf" = ''
+          [general]
+          verbosity = 10
+          debug = 10
+
+          [logfiles]
+          syslog.local0 => notice,warning,error,pjsip
+          full => notice,warning,error,verbose,dtmf,pjsip
+          console => warning,error,verbose,pjsip
+          pjsip => pjsip
+        '';
       };
     };
 
