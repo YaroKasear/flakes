@@ -58,9 +58,8 @@ in {
           [general]
 
           [logfiles]
-          syslog.local0 => notice,warning,error
-          full => notice,warning,error,verbose,dtmf,fax
-          console => warning,error,verbose
+          syslog.local0 => notice,warning,error,verbose(3)
+          console => warning,error,verbose,verbose(3)
         '';
       };
     };
