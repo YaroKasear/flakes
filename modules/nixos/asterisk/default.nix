@@ -61,9 +61,6 @@ in {
         '';
         "extensions.conf" = ''
           #include callcentric-did.conf
-
-          [vm]
-          exten => *97,1,VoiceMailMain(200@voicemail)
         '';
         "logger.conf" = ''
           [general]
