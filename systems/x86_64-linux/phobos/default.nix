@@ -46,7 +46,6 @@ in {
     hostName = "phobos";
     firewall = {
       enable = true;
-      logRefusedPackets = true;
       allowedTCPPorts = [
         1883
         8123
