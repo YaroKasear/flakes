@@ -30,6 +30,14 @@ in {
           mode = "400";
           symlink = false;
         };
+        "voicemail.conf" = {
+          rekeyFile = secrets-directory + "voicemail.conf.age";
+          path = "/etc/asterisk/voicemail.conf";
+          owner = "asterisk";
+          group = "asterisk";
+          mode = "400";
+          symlink = false;
+        };
       };
     };
 
