@@ -56,8 +56,6 @@ in {
         '';
         "logger.conf" = ''
           [general]
-          verbosity = 10
-          debug = 10
 
           [logfiles]
           syslog.local0 => notice,warning,error,pjsip
