@@ -39,7 +39,7 @@ in {
         "pjsip.conf" = ''
           [global]
           type=global
-          debug=yes
+          debug=no
 
           [transport-udp]
           type=transport
@@ -58,10 +58,9 @@ in {
           [general]
 
           [logfiles]
-          syslog.local0 => notice,warning,error,pjsip
-          full => notice,warning,error,verbose,dtmf,pjsip
-          console => warning,error,verbose,pjsip
-          pjsip => pjsip
+          syslog.local0 => notice,warning,error
+          full => notice,warning,error,verbose,dtmf,fax
+          console => warning,error,verbose
         '';
       };
     };
