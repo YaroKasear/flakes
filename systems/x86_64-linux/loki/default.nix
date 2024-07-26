@@ -85,7 +85,7 @@ in {
     };
     wayland.compositor = "plasma";
     protomuck = enabled;
-    asterisk = enabled;
+    asterisk = disabled;
   };
 
   systemd.coredump.enable = true;

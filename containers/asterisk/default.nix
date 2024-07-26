@@ -5,6 +5,10 @@
     enable = true;
     confFiles = {
       "pjsip.conf" = ''
+        [global]
+        type=global
+        debug=yes
+
         [transport-udp]
         type=transport
         protocol=udp
@@ -20,10 +24,14 @@
       '';
       "logger.conf" = ''
         [general]
+        verbosity = 10
+        debug = 10
 
         [logfiles]
-        syslog.local0 => notice,warning,error
-        full => notice,warning,error,verbose,dtmf,fax
+        syslog.local0 => notice,warning,error,pjsip
+        full => notice,warning,error,verbose,dtmf,pjsip
+        console => warning,error,verbose,pjsip
+        pjsip => pjsip
       '';
       # "dnsmgr.conf" = ''
       #   [general]
