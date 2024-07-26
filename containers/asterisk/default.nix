@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   services.asterisk = {
@@ -43,6 +43,7 @@
   networking = {
     firewall = {
       enable = true;
+      logRefusedPackets = true;
       allowedUDPPorts = [ 5060 ];
       allowedUDPPortRanges = [{
         from = 10000;
@@ -54,6 +55,8 @@
     };
     useHostResolvConf = lib.mkForce false;
   };
+
+  environment.systemPackages = [pkgs.tcpdump];
 
   services.resolved.enable = true;
 
