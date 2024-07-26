@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }:
+{ lib, config, inputs, pkgs, ... }:
 
 with lib;
 with lib.united;
@@ -41,6 +41,26 @@ in {
       };
     };
 
+    environment.etc."asterisk/update-pjsip-ip.sh" = {
+      text = ''
+        #!${pkgs.bash}/bin/sh
+
+        CURRENT_IP=$(curl -s https://api.ipify.org)
+        STORED_IP=$(cat /var/lib/ip-change/current_ip)
+        CONF_FILE="/etc/asterisk/pjsip_dynamic_ip.conf"
+
+        if [ "$CURRENT_IP" != "$STORED_IP" ]; then
+            echo $CURRENT_IP > /var/lib/ip-change/current_ip
+            echo "; Auto-generated file" > $CONF_FILE
+            echo "external_media_address=$${CURRENT_IP}" >> $CONF_FILE
+            echo "external_signaling_address=$${CURRENT_IP}" >> $CONF_FILE
+            asterisk -rx "pjsip reload"
+        fi
+      '';
+      group = "asterisk";
+      user = "asterisk";
+    };
+
     services.asterisk = {
       enable = true;
       confFiles = {
@@ -54,8 +74,9 @@ in {
           protocol=udp
           bind=0.0.0.0:5060
           local_net=10.10.0.0/16
-          external_media_address=140.228.165.7
-          external_signaling_address=140.228.165.7
+          ; external_media_address=140.228.165.7
+          ; external_signaling_address=140.228.165.7
+          #include pjsip_dynamic_ip.conf
 
           #include callcentric.conf
         '';
