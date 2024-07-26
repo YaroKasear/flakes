@@ -2,7 +2,7 @@
 
 {
   services.asterisk = {
-    enable = true;
+    enable = false;
     confFiles = {
       "pjsip.conf" = ''
         [global]
