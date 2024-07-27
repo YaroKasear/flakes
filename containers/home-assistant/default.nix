@@ -41,11 +41,5 @@ with pkgs;
     ];
   };
 
-  fileSystems."/etc/hass" = {
-    device = "10.40.10.1:/mnt/data/server/phobos/home-assistant/config";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "_netdev" ];
-  };
-
   system.stateVersion = "24.05";
 }
