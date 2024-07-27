@@ -29,11 +29,6 @@ in {
         };
       };
     };
-    nodered = {
-      autoStart = true;
-      config = ../../../containers/nodered/default.nix;
-      ephemeral = true;
-    };
   };
 
   networking = {
@@ -42,9 +37,7 @@ in {
     firewall = {
       enable = true;
       allowedTCPPorts = [
-        1883
         1880
-        3456
       ];
       allowedUDPPorts = [ 53 ];
     };
