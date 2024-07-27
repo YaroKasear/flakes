@@ -43,7 +43,10 @@ in {
       services."protomuck-${service-name}" = {
         enable = true;
         description = "ProtoMUCK server for ${cfg.game-name}.";
-        after = ["network.target"];
+        after = [
+          "network.target"
+          "${replaceStrings ["/"] ["-"]}.mount"
+        ];
         wantedBy = ["multi-user.target"];
         preStart = ''
           if [ -z "$(ls -A '${cfg.game-directory}')" ]; then
