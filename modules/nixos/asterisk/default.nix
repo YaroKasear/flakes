@@ -52,8 +52,8 @@ in {
         if [ "$CURRENT_IP" != "$STORED_IP" ]; then
             echo $CURRENT_IP > /var/lib/ip-change/current_ip
             echo "; Auto-generated file" > $CONF_FILE
-            echo "external_media_address=$${CURRENT_IP}" >> $CONF_FILE
-            echo "external_signaling_address=$${CURRENT_IP}" >> $CONF_FILE
+            echo "external_media_address=''${CURRENT_IP}" >> $CONF_FILE
+            echo "external_signaling_address=''${CURRENT_IP}" >> $CONF_FILE
             asterisk -rx "pjsip reload"
         fi
       '';
