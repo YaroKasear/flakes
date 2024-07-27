@@ -18,17 +18,6 @@ in {
   };
 
   containers = {
-    hass = {
-      autoStart = true;
-      config = ../../../containers/home-assistant/default.nix;
-      ephemeral = true;
-      bindMounts = {
-        "/etc/hass" = {
-          hostPath = "/mnt/home-assistant/config";
-          isReadOnly = false;
-        };
-      };
-    };
     mosquitto = {
       autoStart = true;
       config = ../../../containers/mosquitto/default.nix;
@@ -47,12 +36,6 @@ in {
     };
   };
 
-  fileSystems."/mnt/home-assistant/config" = {
-    device = "10.40.10.1:/mnt/data/server/phobos/home-assistant/config";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "_netdev" ];
-  };
-
   networking = {
     hostId = "44470514";
     hostName = "phobos";
@@ -60,7 +43,6 @@ in {
       enable = true;
       allowedTCPPorts = [
         1883
-        8123
         1880
         3456
       ];
