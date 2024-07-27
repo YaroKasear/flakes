@@ -48,7 +48,15 @@ with pkgs;
 
   networking.useHostResolvConf = lib.mkForce false;
 
-  services.resolved.enable = true;
+  services = {
+    dbus.implementation = "broker";
+    dnsmasq = {
+      enable = mkDefault true;
+      settings = {
+        "server" = ["10.10.10.1"];
+      };
+    };
+  };
 
   system.stateVersion = "24.05";
 }
