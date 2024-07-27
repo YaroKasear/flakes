@@ -94,6 +94,12 @@ in {
       };
     };
 
+    system.activationScripts.createIPStorageFile = ''
+      mkdir -p /var/lib/ip-change
+      touch /var/lib/ip-change/current_ip
+      chown -R asterisk:asterisk /var/lib/ip-change
+    '';
+
     systemd = {
       services.ip-change-detect = {
         description = "Detect IP change and update Asterisk PJSIP configuration";
