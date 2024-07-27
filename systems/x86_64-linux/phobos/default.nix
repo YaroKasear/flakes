@@ -118,12 +118,6 @@ in {
     };
   };
 
-  fileSystems."/mnt/home-assistant/config" = {
-    device = "storage.kasear.net:/mnt/data/server/phobos/home-assistant/config";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "_netdev" ];
-  };
-
   united = {
     phobos-mounts = enabled;
     server = enabled;
