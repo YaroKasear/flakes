@@ -112,7 +112,7 @@ in {
     phobos-mounts = enabled;
     # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
-      enable = true;
+      enable = false;
       game-name = "Sandbox";
       main-port = 2560;
     };

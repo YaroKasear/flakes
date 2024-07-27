@@ -24,14 +24,21 @@ in {
       users.protomuck = {
         isSystemUser = true;
         group = "protomuck";
-        uid = 20001;
+        uid = 2001;
       };
       groups.protomuck = {
-        gid = 20001;
+        gid = 2001;
       };
     };
 
-    # Be advised you need to lok onto the MUCK fully on its very first run or there will be segfaults on
+
+    fileSystems."/mnt/nodered/user" = {
+      device = "10.40.10.1:/mnt/data/server/${config.networking.hostName}/nodered/user";
+      fsType = "nfs";
+      options = [ "nfsvers=4.2" "_netdev" ];
+    };
+
+    # Be advised you need to log onto the MUCK fully on its very first run or there will be segfaults on
     # subsequent starts. No idea why this is happening.
     systemd = {
       services."protomuck-${service-name}" = {
