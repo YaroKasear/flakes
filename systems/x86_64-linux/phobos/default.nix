@@ -106,15 +106,16 @@ in {
   };
 
   united = {
+    asterisk = enabled;
+    home-assistant = enabled;
+    nodered = enabled;
     phobos-mounts = enabled;
-    server = enabled;
     # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
       enable = true;
       game-name = "Sandbox";
       main-port = 2560;
     };
-    asterisk = enabled;
-    home-assistant = enabled;
+    server = enabled;
   };
 }
