@@ -6,6 +6,13 @@ with pkgs;
     enable = true;
     config = {
       default_config = {};
+      homeassistant = {
+        name = "Home";
+        latitude = -97.429167;
+        longitude = 42.028056;
+        unit_system = "imperial";
+        temperature_unit = "F";
+      };
     };
     configDir = "/etc/hass";
     configWritable = true;
@@ -15,13 +22,6 @@ with pkgs;
       "met"
       "radio_browser"
     ];
-    homeassistant = {
-      name = "Home";
-      latitude = -97.429167;
-      longitude = 42.028056;
-      unit_system = "imperial";
-      temperature_unit = "F";
-    };
   };
 
   environment = {
