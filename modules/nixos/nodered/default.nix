@@ -23,7 +23,7 @@ in {
     };
 
     fileSystems."/mnt/nodered/user" = {
-      device = "10.40.10.1:/mnt/data/server/${config.networking.hostName}/nodered/user";
+      device = "storage.kasear.net:/mnt/data/server/${config.networking.hostName}/nodered/user";
       fsType = "nfs";
       options = [ "nfsvers=4.2" "_netdev" ];
     };
