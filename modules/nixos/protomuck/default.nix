@@ -46,7 +46,7 @@ in {
         after = ["network.target"];
         wantedBy = ["multi-user.target"];
         preStart = ''
-          if [ -z "$(ls -A \'${cfg.game-directory}\')" ]; then
+          if [ -z "$(ls -A '${cfg.game-directory}')" ]; then
             echo "Creating MUCK files for ${cfg.game-name}."
             cp -r ${pkgs.united.protomuck}/game/{backup,data,logs,muf} ${cfg.game-directory}
             chmod -R u+w ${cfg.game-directory}
