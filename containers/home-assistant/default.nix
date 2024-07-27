@@ -46,5 +46,9 @@ with pkgs;
     options = [ "nfsvers=4.2" "_netdev" ];
   };
 
+  networking.useHostResolvConf = lib.mkForce false;
+
+  services.resolved.enable = true;
+
   system.stateVersion = "24.05";
 }
