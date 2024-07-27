@@ -22,6 +22,12 @@ in {
       autoStart = true;
       config = ../../../containers/home-assistant/default.nix;
       ephemeral = true;
+      bindMounts = {
+        "/etc/hass" = {
+          hostPath = "/mnt/home-assistant/config";
+          isReadOnly = false;
+        };
+      };
     };
     mosquitto = {
       autoStart = true;
@@ -41,7 +47,7 @@ in {
     };
   };
 
-  fileSystems."/etc/hass" = {
+  fileSystems."/mnt/home-assistant/config" = {
     device = "10.40.10.1:/mnt/data/server/phobos/home-assistant/config";
     fsType = "nfs";
     options = [ "nfsvers=4.2" "_netdev" ];
