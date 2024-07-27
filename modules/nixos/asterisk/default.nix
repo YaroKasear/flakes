@@ -109,7 +109,6 @@ in {
           Type = "oneshot";
           ExecStart = "/etc/asterisk/update-pjsip-ip.sh";
           Restart = "on-failure";
-          # User = "asterisk";
         };
         wantedBy = [ "multi-user.target" ];
         before = [ "asterisk.service" ];
