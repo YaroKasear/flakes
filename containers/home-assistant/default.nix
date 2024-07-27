@@ -41,23 +41,5 @@ with pkgs;
     ];
   };
 
-  fileSystems."/etc/hass" = {
-    device = "storage.kasear.net:/mnt/data/server/phobos/home-assistant/config";
-    fsType = "nfs";
-    options = [ "nfsvers=4.2" "_netdev" ];
-  };
-
-  networking.useHostResolvConf = lib.mkForce false;
-
-  services = {
-    dbus.implementation = "broker";
-    dnsmasq = {
-      enable = mkDefault true;
-      settings = {
-        "server" = ["10.10.10.1"];
-      };
-    };
-  };
-
   system.stateVersion = "24.05";
 }
