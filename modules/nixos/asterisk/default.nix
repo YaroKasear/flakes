@@ -97,7 +97,10 @@ in {
     systemd = {
       services.ip-change-detect = {
         description = "Detect IP change and update Asterisk PJSIP configuration";
-        path = [ pkgs.curl ];
+        path = [
+          pkgs.curl
+          config.services.asterisk.package
+        ];
         serviceConfig = {
           Type = "oneshot";
           ExecStart = "/etc/asterisk/update-pjsip-ip.sh";
