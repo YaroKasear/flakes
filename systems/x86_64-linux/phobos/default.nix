@@ -122,5 +122,6 @@ in {
       main-port = 2560;
     };
     asterisk = enabled;
+    home-assistant = enabled;
   };
 }
