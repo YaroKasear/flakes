@@ -75,8 +75,6 @@ in {
           protocol=udp
           bind=0.0.0.0:5060
           local_net=10.10.0.0/16
-          ; external_media_address=140.228.165.7
-          ; external_signaling_address=140.228.165.7
           #include pjsip_dynamic_ip.conf
 
           #include callcentric.conf
