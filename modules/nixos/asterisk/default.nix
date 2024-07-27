@@ -19,7 +19,7 @@ in {
           path = "/etc/asterisk/callcentric.conf";
           owner = "asterisk";
           group = "asterisk";
-          mode = "400";
+          mode = "440";
           symlink = false;
         };
         "callcentric-did.conf" = {
@@ -27,7 +27,7 @@ in {
           path = "/etc/asterisk/callcentric-did.conf";
           owner = "asterisk";
           group = "asterisk";
-          mode = "400";
+          mode = "440";
           symlink = false;
         };
         "voicemail.conf" = {
@@ -35,7 +35,7 @@ in {
           path = "/etc/asterisk/voicemail.conf";
           owner = "asterisk";
           group = "asterisk";
-          mode = "400";
+          mode = "440";
           symlink = false;
         };
       };
@@ -91,6 +91,27 @@ in {
           syslog.local0 => notice,warning,error,verbose(3)
           console => warning,error,verbose,verbose(3)
         '';
+      };
+    };
+
+    systemd = {
+      services.ip-change-detect = {
+        description = "Detect IP change and update Asterisk PJSIP configuration";
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "/etc/asterisk/update-pjsip-ip.sh";
+          Restart = "on-failure";
+          User = "asterisk";
+        };
+        wantedBy = [ "multi-user.target" ];
+        before = [ "asterisk.service" ];
+      };
+      timers.ip-change-detect = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnBootSec = "5min";
+          OnUnitActiveSec = "5min";
+        };
       };
     };
 
