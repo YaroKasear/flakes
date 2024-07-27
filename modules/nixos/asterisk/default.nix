@@ -59,6 +59,7 @@ in {
       '';
       group = "asterisk";
       user = "asterisk";
+      mode = "540";
     };
 
     services.asterisk = {
