@@ -31,9 +31,8 @@ in {
       };
     };
 
-
-    fileSystems."/mnt/nodered/user" = {
-      device = "10.40.10.1:/mnt/data/server/${config.networking.hostName}/nodered/user";
+    fileSystems."/var/lib/${service-name}" = {
+      device = "10.40.10.1:/mnt/data/server/${config.networking.hostName}/protomuck/${service-name}";
       fsType = "nfs";
       options = [ "nfsvers=4.2" "_netdev" ];
     };
