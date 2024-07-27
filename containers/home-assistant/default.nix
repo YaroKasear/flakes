@@ -20,6 +20,7 @@ with pkgs;
       latitude = -97.429167;
       longitude = 42.028056;
       unit_system = "imperial";
+      temperature_unit = "F";
     };
   };
 
@@ -37,6 +38,12 @@ with pkgs;
     systemPackages =  [
       home-assistant-cli
     ];
+  };
+
+  fileSystems."/etc/hass" = {
+    device = "storage.kasear.net:/mnt/data/server/phobos/home-assistant/config";
+    fsType = "nfs";
+    options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
   };
 
   system.stateVersion = "24.05";
