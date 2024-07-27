@@ -62,6 +62,19 @@ in {
       mode = "540";
     };
 
+    fileSystems = {
+      "/var/spool/asterisk" = {
+        device = "10.40.10.1:/mnt/data/server/phobos/asterisk/spool";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "_netdev" ];
+      };
+      "/var/log/asterisk" = {
+        device = "10.40.10.1:/mnt/data/server/phobos/asterisk/log";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "_netdev" ];
+      };
+    };
+
     services.asterisk = {
       enable = true;
       confFiles = {
@@ -137,10 +150,13 @@ in {
     };
 
     users = {
-      users.asterisk = {
-        isSystemUser = true;
-        uid = 192;
-        group = "asterisk";
+      users = {
+        asterisk = {
+          isSystemUser = true;
+          uid = 192;
+          group = "asterisk";
+        };
+        yaro.extraGroups = ["asterisk"];
       };
       groups.asterisk.gid = 192;
     };
