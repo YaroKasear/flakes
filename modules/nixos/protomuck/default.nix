@@ -45,7 +45,7 @@ in {
         description = "ProtoMUCK server for ${cfg.game-name}.";
         after = [
           "network.target"
-          "${replaceStrings ["/"] ["-"]}.mount"
+          "${replaceStrings ["/"] ["-"] cfg.game-directory}.mount"
         ];
         wantedBy = ["multi-user.target"];
         preStart = ''
