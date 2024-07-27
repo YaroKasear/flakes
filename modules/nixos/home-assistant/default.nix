@@ -23,7 +23,7 @@ in {
     };
 
     fileSystems."/mnt/home-assistant/config" = {
-      device = "storage.kasear.net:/mnt/data/server/${config.networking.hostName}/home-assistant/config";
+      device = "10.40.10.1:/mnt/data/server/${config.networking.hostName}/home-assistant/config";
       fsType = "nfs";
       options = [ "nfsvers=4.2" "_netdev" ];
     };

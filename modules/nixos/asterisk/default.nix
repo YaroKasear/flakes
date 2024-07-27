@@ -64,12 +64,12 @@ in {
 
     fileSystems = {
       "/var/spool/asterisk" = {
-        device = "storage.kasear.net:/mnt/data/server/phobos/asterisk/spool";
+        device = "10.40.10.1:/mnt/data/server/phobos/asterisk/spool";
         fsType = "nfs";
         options = [ "nfsvers=4.2" "_netdev" ];
       };
       "/var/log/asterisk" = {
-        device = "storage.kasear.net:/mnt/data/server/phobos/asterisk/log";
+        device = "10.40.10.1:/mnt/data/server/phobos/asterisk/log";
         fsType = "nfs";
         options = [ "nfsvers=4.2" "_netdev" ];
       };
