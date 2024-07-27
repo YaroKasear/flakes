@@ -43,7 +43,7 @@ with pkgs;
   fileSystems."/etc/hass" = {
     device = "storage.kasear.net:/mnt/data/server/phobos/home-assistant/config";
     fsType = "nfs";
-    options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
+    options = [ "nfsvers=4.2" "_netdev" ];
   };
 
   system.stateVersion = "24.05";
