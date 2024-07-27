@@ -24,8 +24,11 @@ in {
       users.protomuck = {
         isSystemUser = true;
         group = "protomuck";
+        uid = 20001;
       };
-      groups.protomuck = {};
+      groups.protomuck = {
+        gid = 20001;
+      };
     };
 
     # Be advised you need to lok onto the MUCK fully on its very first run or there will be segfaults on
