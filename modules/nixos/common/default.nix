@@ -151,7 +151,7 @@ in {
       dnsmasq = {
         enable = mkDefault true;
         settings = {
-          "server" = ["10.10.10.1"];
+          "server" = ["10.10.10.2"];
         };
       };
       fwupd = enabled;

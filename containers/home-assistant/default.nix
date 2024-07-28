@@ -12,7 +12,6 @@ with pkgs;
     configWritable = true;
     extraComponents = [
       "esphome"
-      "generic"
       "google_translate"
       "tplink"
       "met"

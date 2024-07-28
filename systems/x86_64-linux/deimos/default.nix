@@ -75,8 +75,7 @@ in {
       #   matchConfig.Name = "wg0";
       #   address = ["10.60.10.1/32"];
       #   DHCP = "no";
-      #   dns = ["10.10.10.1"];
-      #   ntp = ["10.10.10.1"];
+      #   dns = ["10.10.10.2"];
       #   gateway = ["10.60.0.1"];
       #   networkConfig = {
       #     LinkLocalAddressing = false;
