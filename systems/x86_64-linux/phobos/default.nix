@@ -47,20 +47,20 @@ in {
     enable = true;
 
     netdevs = {
-      # "10-iot" = {
-      #   netdevConfig = {
-      #     Kind = "vlan";
-      #     Name = "vlan30";
-      #   };
-      #   vlanConfig.Id = 30;
-      # };
-      # "20-storage" = {
-      #   netdevConfig = {
-      #     Kind = "vlan";
-      #     Name = "vlan40";
-      #   };
-      #   vlanConfig.Id = 40;
-      # };
+      "10-iot" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan30";
+        };
+        vlanConfig.Id = 30;
+      };
+      "20-storage" = {
+        netdevConfig = {
+          Kind = "vlan";
+          Name = "vlan40";
+        };
+        vlanConfig.Id = 40;
+      };
     };
 
     networks = {
@@ -78,30 +78,30 @@ in {
         };
         linkConfig.RequiredForOnline = "routable";
       };
-      # "40-iot" = {
-      #   matchConfig.Name = "vlan30";
-      #   networkConfig = {
-      #     DHCP = "ipv4";
-      #     LinkLocalAddressing = false;
-      #     IPv6AcceptRA = false;
-      #   };
-      #   dhcpV4Config = {
-      #     UseRoutes = false;
-      #   };
-      #   linkConfig.RequiredForOnline = "routable";
-      # };
-      # "50-storage" = {
-      #   matchConfig.Name = "vlan40";
-      #   networkConfig = {
-      #     DHCP = "ipv4";
-      #     LinkLocalAddressing = false;
-      #     IPv6AcceptRA = false;
-      #   };
-      #   dhcpV4Config = {
-      #     UseRoutes = false;
-      #   };
-      #   linkConfig.RequiredForOnline = "routable";
-      # };
+      "40-iot" = {
+        matchConfig.Name = "vlan30";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        dhcpV4Config = {
+          UseRoutes = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "50-storage" = {
+        matchConfig.Name = "vlan40";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        dhcpV4Config = {
+          UseRoutes = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
     };
   };
 
