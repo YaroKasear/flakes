@@ -13,7 +13,7 @@ with pkgs;
     extraComponents = [
       "esphome"
       "google_translate"
-      "kasa"
+      "tplink"
       "met"
       "radio_browser"
     ];
