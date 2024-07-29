@@ -36,11 +36,6 @@ in {
     hostName = "phobos";
     firewall = {
       enable = true;
-      logRefusedConnections = true;
-      logRefusedPackets = true;
-      logRefusedUnicastsOnly = false;
-      logReversePathDrops = true;
-      checkReversePath = "loose";
       allowedTCPPorts = [
         1880
       ];
