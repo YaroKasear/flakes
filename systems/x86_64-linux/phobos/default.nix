@@ -40,6 +40,7 @@ in {
       logRefusedPackets = true;
       logRefusedUnicastsOnly = false;
       logReversePathDrops = true;
+      checkReversePath = "loose";
       allowedTCPPorts = [
         1880
       ];
