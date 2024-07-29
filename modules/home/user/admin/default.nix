@@ -27,6 +27,7 @@ in {
       nil
       nvd
       snowfallorg.flake
+      tcpdump
       (mkIf is-linux traceroute)
       virt-manager
       vulkan-tools

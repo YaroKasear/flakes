@@ -137,7 +137,6 @@ in {
 
     networking = {
       firewall = {
-        enable = true;
         allowedUDPPorts = [ 5060 ];
         allowedUDPPortRanges = [{
           from = 10000;
