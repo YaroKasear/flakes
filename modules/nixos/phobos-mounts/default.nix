@@ -11,26 +11,26 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # boot.initrd.systemd.services.rollback = {
-    #   description = "Clear root filesystem.";
-    #   wantedBy = [
-    #     "initrd.target"
-    #   ];
-    #   after = [
-    #     "zfs-import-system.service"
-    #   ];
-    #   before = [
-    #     "sysroot.mount"
-    #   ];
-    #   path = with pkgs; [
-    #     zfs
-    #   ];
-    #   unitConfig.DefaultDependencies = "no";
-    #   serviceConfig.Type = "oneshot";
-    #   script = ''
-    #     zfs rollback -r system@blank && echo "!!! ROOT FILESYSTEM WIPED !!!"
-    #   '';
-    # };
+    boot.initrd.systemd.services.rollback = {
+      description = "Clear root filesystem.";
+      wantedBy = [
+        "initrd.target"
+      ];
+      after = [
+        "zfs-import-system.service"
+      ];
+      before = [
+        "sysroot.mount"
+      ];
+      path = with pkgs; [
+        zfs
+      ];
+      unitConfig.DefaultDependencies = "no";
+      serviceConfig.Type = "oneshot";
+      script = ''
+        zfs rollback -r system@blank && echo "!!! ROOT FILESYSTEM WIPED !!!"
+      '';
+    };
 
     disko.devices = ./config.nix;
 
