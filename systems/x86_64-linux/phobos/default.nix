@@ -109,7 +109,6 @@ in {
     asterisk = enabled;
     home-assistant = enabled;
     nodered = enabled;
-    pam = disabled;
     phobos-mounts = enabled;
     # https://github.com/YaroKasear/flakes/issues/3
     protomuck = {
