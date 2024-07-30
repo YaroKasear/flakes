@@ -34,28 +34,22 @@ in {
 
     disko.devices = ./config.nix;
 
-    # environment = {
-    #   etc = {
-    #     "ssh/ssh_host_ed25519_key".source = "/persistent/etc/ssh/ssh_host_ed25519_key";
-    #     "ssh/ssh_host_ed25519_key.pub".source = "/persistent/etc/ssh/ssh_host_ed25519_key.pub";
-    #   };
-    #   persistence."/persistent" = {
-    #     hideMounts = true;
-    #     directories = [
-    #       "/etc/ssh"
-    #       "/run/log/journal"
-    #       "/var/lib/nixos"
-    #       "/var/log"
-    #     ];
-    #     files = [
-    #       "/var/db/sudo/lectured/1000"
-    #     ];
-    #   };
-    # };
+    environment = {
+      etc = {
+        "ssh/ssh_host_ed25519_key".source = "/persistent/etc/ssh/ssh_host_ed25519_key";
+        "ssh/ssh_host_ed25519_key.pub".source = "/persistent/etc/ssh/ssh_host_ed25519_key.pub";
+      };
+      persistence."/persistent" = {
+        hideMounts = true;
+        directories = [
+          "/var/lib/nixos"
+        ];
+      };
+    };
 
-    # fileSystems = {
-    #   "/persistent".neededForBoot = true;
-    # };
+    fileSystems = {
+      "/persistent".neededForBoot = true;
+    };
 
     services.zfs.autoScrub = enabled;
   };
