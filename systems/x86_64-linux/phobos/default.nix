@@ -7,7 +7,7 @@ let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 in {
   age = {
-    identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDufZoSg+Rv4WD2EJ7RCPRN8v4Db7ypwpd7yKH7a9Tax";
     };
