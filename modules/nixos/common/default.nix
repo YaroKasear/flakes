@@ -63,6 +63,12 @@ in {
       wget
     ];
 
+    fileSystems."${config.home-manager.users.yaro.united.user.directories.home}/flake" = {
+      device = "storage.kasear.net:/mnt/data/flake";
+      fsType = "nfs";
+      options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];
+    };
+
     hardware.enableRedistributableFirmware = lib.mkDefault true;
 
     home-manager.backupFileExtension = "bak";
