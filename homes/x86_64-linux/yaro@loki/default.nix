@@ -160,7 +160,6 @@ with lib.united;
           directory = "${data-directory}/Steam";
           method = "symlink";
         }
-        "flakes"
       ];
     };
   };
