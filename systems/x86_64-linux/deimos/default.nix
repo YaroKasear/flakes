@@ -8,6 +8,7 @@ let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 in {
   age = {
+    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     rekey = {
     };
     secrets = {
@@ -63,7 +64,7 @@ in {
     };
     networks = {
       "30-dmz" = {
-        matchConfig.Name = "enp9s0";
+        matchConfig.Name = "eno2";
         networkConfig = {
           DHCP = "ipv4";
           LinkLocalAddressing = false;
@@ -101,5 +102,11 @@ in {
   united = {
     deimos-mounts = enabled;
     server = enabled;
+    pam = disabled;
+  };
+
+  users.users.yaro = {
+    hashedPasswordFile = null;
+    initialPassword = "changeme";
   };
 }
