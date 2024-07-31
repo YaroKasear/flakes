@@ -1,8 +1,8 @@
 {
   disk = {
-    ssd = {
+    hdd = {
       type = "disk";
-      device = "/dev/disk/by-id/nvme-Samsung_SSD_960_EVO_500GB_S3X4NB0K140749K";
+      device = "/dev/disk/by-id/ata-ST3500413AS_Z2APBLRN";
       content = {
         type = "gpt";
         partitions = {
