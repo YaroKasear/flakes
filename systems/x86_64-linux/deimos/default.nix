@@ -106,11 +106,5 @@ in {
   united = {
     deimos-mounts = enabled;
     server = enabled;
-    pam = disabled;
-  };
-
-  users.users.yaro = {
-    hashedPasswordFile = null;
-    initialPassword = "changeme";
   };
 }
