@@ -10,6 +10,7 @@ in {
   age = {
     identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     rekey = {
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAIRAWvwciM1bRmFjdQs0JGmQMReOKOM8xnLKukiYZD2";
     };
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
@@ -65,6 +66,9 @@ in {
     networks = {
       "30-dmz" = {
         matchConfig.Name = "eno2";
+        vlan = [
+
+        ];
         networkConfig = {
           DHCP = "ipv4";
           LinkLocalAddressing = false;
