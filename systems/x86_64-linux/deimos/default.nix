@@ -99,7 +99,7 @@ in {
   };
 
   united = {
-    phobos-mounts = enabled;
+    deimos-mounts = enabled;
     server = enabled;
   };
 }
