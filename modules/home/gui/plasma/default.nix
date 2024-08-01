@@ -64,7 +64,7 @@ in {
           windowTitle = general;
         };
 
-        powerdevil = {
+        powerdevil.AC = {
           powerButtonAction = "shutDown";
           autoSuspend.action = "nothing";
           turnOffDisplay.idleTimeout = "never";
