@@ -14,11 +14,11 @@ in {
       autoStart = true;
       config = ../../../containers/nodered/default.nix;
       ephemeral = true;
-        bindMounts = {
-          "/var/lib/node-red" = {
-            hostPath = "/mnt/nodered/user";
-            isReadOnly = false;
-          };
+      bindMounts = {
+        "/var/lib/node-red" = {
+          hostPath = "/mnt/nodered/user";
+          isReadOnly = false;
+        };
       };
     };
 

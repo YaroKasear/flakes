@@ -118,11 +118,17 @@ in {
       dnsmasq = {
         enable = mkDefault true;
         settings = {
-          "server" = ["10.10.0.1"];
+          "server" = [
+            "10.10.0.1"
+            "10.0.0.1"
+          ];
         };
       };
       fwupd = enabled;
-      openssh = enabled;
+      openssh = {
+        enable = true;
+        settings.PasswordAuthentication = false;
+      };
       resolved = disabled; # systemd-resolved is cancer
       udev.packages = [
         pkgs.yubikey-personalization
@@ -142,10 +148,11 @@ in {
       users = {
         root.hashedPassword = lib.mkDefault "!";
         yaro = {
+          uid = 1000;
           description = config.home-manager.users.yaro.united.user.fullName;
           home = config.home-manager.users.yaro.united.user.directories.home;
           isNormalUser = true;
-          extraGroups = ["wheel" "systemd-journal"];
+          extraGroups = ["wheel" "systemd-journal" "yaro"];
           shell = pkgs.zsh;
           hashedPasswordFile = mkDefault config.age.secrets.yaro-password.path;
           openssh.authorizedKeys.keys = [
@@ -153,6 +160,7 @@ in {
           ];
         };
       };
+      groups.yaro.gid = 3001;
     };
   };
 }

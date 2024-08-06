@@ -52,9 +52,7 @@ in {
       };
     };
 
-    fileSystems = {
-      "/persistent".neededForBoot = true;
-    };
+    fileSystems."/persistent".neededForBoot = true;
 
     services.zfs.autoScrub = enabled;
   };
