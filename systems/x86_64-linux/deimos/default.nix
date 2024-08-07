@@ -219,7 +219,7 @@ in {
             word1 = wordList1[Math.floor(Math.random() * wordList1.length)];
             word2 = wordList2[Math.floor(Math.random() * wordList2.length)];
 
-            $('#text').text("CURRENTLY " + word1 + "-" + word2 + "<p class="small">1 tiny so far!</p>");
+            $('#text').text("CURRENTLY " + word1 + "-" + word2 + "<p class=\"small\">1 tiny so far!</p>");
           }
         </script>
       </body>
