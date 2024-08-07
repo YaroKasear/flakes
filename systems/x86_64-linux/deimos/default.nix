@@ -154,7 +154,7 @@ in {
     vaultwarden = enabled;
   };
 
-  # ADD ANY SHORT-TERM CONTAINERS/DOMAINS BELOW
+  # START SHORT-TERM CONTAINERS/DOMAINS
 
   containers.hazelnut = let
     app = "hashazelnutpoppedyet";
@@ -172,56 +172,12 @@ in {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       </head>
 
-      <body class="bg-black text-warning" onload="doTheThing()">
+      <body class="bg-black text-success">
         <div class="container-fluid d-flex display-1 align-items-center justify-content-center" style="height: 100vh;" id="text">
-          CURRENTLY DELIVERING
+          YES! 4 TINIES!
         </div>
         <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script>
-          wordList1 = [
-            "CAT",
-            "CLAW",
-            "CUDDLE",
-            "FELINE",
-            "FLUFF",
-            "FUR",
-            "KITTEN",
-            "MEOW",
-            "PAW",
-            "PURR",
-            "TABBY",
-            "WHISKER"
-          ];
-
-          wordList2 = [
-            "BIRTHING",
-            "BLOOMING",
-            "CRAFTING",
-            "CREATING",
-            "FABRICATING",
-            "FLOWERING",
-            "FORGING",
-            "HATCHING",
-            "MAKING",
-            "MULTIPLYING",
-            "PLANTING",
-            "POPPING",
-            "PRINTING",
-            "PRODUCING",
-            "SPAWNING",
-            "SPROUTING",
-            "WEAVING",
-            "WONDERING"
-          ];
-
-          function doTheThing() {
-            word1 = wordList1[Math.floor(Math.random() * wordList1.length)];
-            word2 = wordList2[Math.floor(Math.random() * wordList2.length)];
-
-            $('#text').text("CURRENTLY " + word1 + "-" + word2 + "<p class=\"small\">1 tiny so far!</p>");
-          }
-        </script>
       </body>
 
       </html>
@@ -269,4 +225,6 @@ in {
       sslCertificateKey = "/var/lib/acme/default/key.pem";
     };
   };
+
+  # END CONTAINERS/DOMAINS
 }
