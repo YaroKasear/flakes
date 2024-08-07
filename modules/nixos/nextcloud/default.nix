@@ -53,6 +53,7 @@ in {
                 default_phone_region = "US";
                 log_type = "file";
                 maintenance_window_start = 1;
+                trusted_domains = ["kasear.net"];
                 trusted_proxies = ["192.168.1.1"];
               };
               secretFile = "/var/secrets.json";

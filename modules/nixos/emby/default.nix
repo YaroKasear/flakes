@@ -50,7 +50,7 @@ let
 
   app = "media";
   address = "192.168.1.15";
-  dataDir = "/var/lib/emby";
+  dataDir = "/mnt/config";
   domain = "${app}.kasear.net";
 in {
   options.united.emby = {
@@ -82,10 +82,13 @@ in {
             SupplementaryyGroups = ["render" "video"];
             DynamicUser = true;
             StateDirectory = "emby";
-            ReadWritePaths = "-/dev/dri";
+            ReadWritePaths = [
+              "-/dev/dri"
+              dataDir
+            ];
             RestartForceExitStatus = 3;
-            AmbientCapabilities = "";
-            CapabilityBoundingSet = "";
+            AmbientCapabilities = "CAP_NET_BIND_SERVICE";
+            CapabilityBoundingSet = "CAP_NET_BIND_SERVICE";
             LockPersonality = true;
             ProtectControlGroups = true;
             ProtectKernelModules = true;
@@ -96,7 +99,7 @@ in {
         networking = {
           firewall = {
             enable = true;
-            allowedTCPPorts = [ 8096 ];
+            allowedTCPPorts = [ 80 ];
           };
           useHostResolvConf = lib.mkForce false;
         };
@@ -124,7 +127,7 @@ in {
         system.stateVersion = "24.05";
       };
       bindMounts = {
-        "/mnt/${dataDir}" = {
+        ${dataDir} = {
           hostPath = "/mnt/${domain}/config";
           isReadOnly = false;
         };
@@ -144,7 +147,7 @@ in {
     };
 
     containers.nginx-proxy.config.services.nginx.virtualHosts.${domain} = network.create-proxy {
-      port = 8096;
+      port = 80;
       host = address;
       extra-config = {
         forceSSL = true;
