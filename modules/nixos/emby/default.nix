@@ -99,6 +99,7 @@ in {
         networking = {
           firewall = {
             enable = true;
+            logReversePathDrops = true;
             allowedTCPPorts = [ 80 ];
           };
           useHostResolvConf = lib.mkForce false;
@@ -108,8 +109,8 @@ in {
           enable = mkDefault true;
           settings = {
             "server" = [
-              "10.10.0.1"
-              "10.0.0.1"
+              "1.1.1.1"
+              "1.0.0.1"
             ];
           };
         };

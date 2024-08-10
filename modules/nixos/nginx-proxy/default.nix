@@ -33,6 +33,7 @@ in {
             certs = {
               "default" = {
                 domain = "*.kasear.net";
+                extraDomainNames = ["kasear.net"];
               };
             };
             defaults = {
