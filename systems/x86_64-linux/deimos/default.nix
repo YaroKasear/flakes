@@ -131,6 +131,12 @@ in {
     nginx-yaro = enabled;
     server = enabled;
     vaultwarden = enabled;
+    pam = disabled;
+  };
+
+  users.users.yaro = {
+    hashedPassword = "$y$j9T$D8WO490nUlzpgUBt7gT4r/$93ufQ1aZ4t24DWwenfKyyfOIhkFJ6t1H.XmAskXncV8";
+    hashedPasswordFile = null;
   };
 
   # START SHORT-TERM CONTAINERS/DOMAINS
