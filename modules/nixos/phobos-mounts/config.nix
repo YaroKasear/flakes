@@ -15,6 +15,13 @@
               mountpoint = "/boot";
             };
           };
+          swap = {
+            size = "24G";
+            content = {
+              type = "swap";
+              randomEncryption = true;
+            };
+          };
           system = {
             size = "100%";
             content = {
@@ -22,13 +29,6 @@
               pool = "system";
             };
           };
-          # swap = {
-          #   size = "24G";
-          #   content = {
-          #     type = "swap";
-          #     randomEncryption = true;
-          #   };
-          # };
         };
       };
     };
@@ -51,14 +51,6 @@
           type = "zfs_fs";
           mountpoint = "/nix";
         };
-        # swap = {
-        #   type = "zfs_volume";
-        #   size = "12G";
-        #   content = {
-        #     type = "swap";
-        #     randomEncryption = true;
-        #   };
-        # };
       };
     };
   };
