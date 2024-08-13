@@ -117,11 +117,5 @@ in {
       main-port = 2560;
     };
     server = enabled;
-    pam = disabled;
-  };
-
-  users.users.yaro = {
-    hashedPassword = "$y$j9T$pD91nYpyZUxeDPTBMjw8l1$I.OJ0eKFxr17b2lzO6pSyoNHp0LnjS7dLrkMy4UBuF6";
-    hashedPasswordFile = null;
   };
 }
