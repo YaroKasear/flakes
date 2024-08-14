@@ -10,7 +10,7 @@ in {
   age = {
     identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
     rekey = {
-      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAIRAWvwciM1bRmFjdQs0JGmQMReOKOM8xnLKukiYZD2";
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBR7FHCr/xnQhQ0eeU14MoH78bF1XQwhA34juRFC9S3A";
     };
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
