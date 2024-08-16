@@ -58,9 +58,9 @@ in {
 
     services = {
       gpm = enabled;
-      openvpn.servers.work = {
-        config = "config ${config.age.secrets.work-vpn.path}";
-      };
+      # openvpn.servers.work = {
+      #   config = "config ${config.age.secrets.work-vpn.path}";
+      # };
       pcscd = enabled;
     };
 

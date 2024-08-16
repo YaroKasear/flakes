@@ -150,7 +150,7 @@
           plasma-manager.homeManagerModules.plasma-manager
         ];
       in {
-        "cnelson@loki".modules = home-modules;
+        # "cnelson@loki".modules = home-modules;
         "yaro@deimos".modules = home-modules;
         "yaro@europa".modules = home-modules;
         "yaro@io".modules = home-modules;

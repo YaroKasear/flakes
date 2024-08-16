@@ -45,7 +45,7 @@ in {
       text = ''
         #!${pkgs.bash}/bin/sh
 
-        CURRENT_IP=$(curl -s https://api.ipify.org)
+        CURRENT_IP=$(dig +short myip.opendns.com @resolver1.opendns.com)
         STORED_IP=$(cat /var/lib/ip-change/current_ip)
         CONF_FILE="/etc/asterisk/pjsip_dynamic_ip.conf"
 

@@ -135,5 +135,65 @@ in {
 
   # START SHORT-TERM CONTAINERS/DOMAINS
 
+  containers = {
+    jellyfin = {
+      autoStart = false;
+      ephemeral = true;
+      privateNetwork = true;
+      hostAddress = "192.168.1.1";
+      localAddress = "192.168.1.18";
+
+      config = { ... }: {
+        services = {
+          jellyfin = {
+            enable = true;
+            openFirewall = true;
+          };
+          dnsmasq = {
+            enable = true;
+            settings = {
+              "server" = [
+                "1.1.1.1"
+                "1.0.0.1"
+              ];
+            };
+          };
+        };
+
+        users = {
+          users.jellyfin = {
+            uid = config.users.users.yaro.uid;
+          };
+          groups.jellyfin.gid = config.users.groups.yaro.gid;
+        };
+
+        system.stateVersion = "24.05";
+      };
+      bindMounts = {
+        "/mnt/pictures" = {
+          hostPath = "/mnt/media.kasear.net/pictures";
+          isReadOnly = false;
+        };
+        "/mnt/music" = {
+          hostPath = "/mnt/media.kasear.net/music";
+          isReadOnly = false;
+        };
+        "/mnt/video" = {
+          hostPath = "/mnt/media.kasear.net/video";
+          isReadOnly = false;
+        };
+      };
+    };
+    nginx-proxy.config.services.nginx.virtualHosts."jellyfin.kasear.net" = network.create-proxy {
+      port = 8096;
+      host = "192.168.1.18";
+      extra-config = {
+        forceSSL = true;
+        sslCertificate = "/var/lib/acme/default/cert.pem";
+        sslCertificateKey = "/var/lib/acme/default/key.pem";
+      };
+    };
+  };
+
   # END CONTAINERS/DOMAINS
 }

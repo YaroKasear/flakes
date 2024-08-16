@@ -11,7 +11,7 @@ in {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
     secrets = {
-      cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+      # cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
       mosquitto-password = {
         rekeyFile = secrets-directory + "mosquitto-password.age";
         path = "/run/mosquitto-password";
@@ -19,35 +19,35 @@ in {
         mode = "400";
         symlink = false;
       };
-      work-env = {
-        rekeyFile = secrets-directory + "work-env.age";
-        path = "${cnelson.united.user.directories.home}/.alysson-env";
-        owner = "cnelson";
-        mode = "400";
-        symlink = false;
-      };
-      work-mysql-init = {
-        rekeyFile = secrets-directory + "work-mysql-init.age";
-        path = "/run/mysql-init";
-        owner = "mysql";
-        mode = "400";
-        symlink = false;
-      };
-      work-npm = {
-        rekeyFile = secrets-directory + "work-npm.age";
-        path = "${cnelson.united.user.directories.home}/.npmrc";
-        owner = "cnelson";
-        mode = "400";
-        symlink = false;
-      };
-      work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
-      "worlds.tf" = {
-        rekeyFile = secrets-directory + "worlds.tf.age";
-        path = "${yaro.united.user.directories.home}/.worlds.tf";
-        owner = "yaro";
-        mode = "400";
-        symlink = false;
-      };
+      # work-env = {
+      #   rekeyFile = secrets-directory + "work-env.age";
+      #   path = "${cnelson.united.user.directories.home}/.alysson-env";
+      #   owner = "cnelson";
+      #   mode = "400";
+      #   symlink = false;
+      # };
+      # work-mysql-init = {
+      #   rekeyFile = secrets-directory + "work-mysql-init.age";
+      #   path = "/run/mysql-init";
+      #   owner = "mysql";
+      #   mode = "400";
+      #   symlink = false;
+      # };
+      # work-npm = {
+      #   rekeyFile = secrets-directory + "work-npm.age";
+      #   path = "${cnelson.united.user.directories.home}/.npmrc";
+      #   owner = "cnelson";
+      #   mode = "400";
+      #   symlink = false;
+      # };
+      # work-vpn.rekeyFile = secrets-directory + "work-vpn.age";
+      # "worlds.tf" = {
+      #   rekeyFile = secrets-directory + "worlds.tf.age";
+      #   path = "${yaro.united.user.directories.home}/.worlds.tf";
+      #   owner = "yaro";
+      #   mode = "400";
+      #   symlink = false;
+      # };
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     };
   };
@@ -58,23 +58,23 @@ in {
       nssmdns4 = true;
       openFirewall = true;
     };
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-      ensureUsers = [
-        {
-          name = "cnelson";
-          ensurePermissions = {
-            "*.*" = "ALL PRIVILEGES";
-          };
-        }
-      ];
-      initialScript = config.age.secrets.work-mysql-init.path;
-    };
+    # mysql = {
+    #   enable = true;
+    #   package = pkgs.mariadb;
+    #   ensureUsers = [
+    #     {
+    #       name = "cnelson";
+    #       ensurePermissions = {
+    #         "*.*" = "ALL PRIVILEGES";
+    #       };
+    #     }
+    #   ];
+    #   initialScript = config.age.secrets.work-mysql-init.path;
+    # };
     printing = enabled;
   };
 
-  snowfallorg.users.cnelson.admin = false;
+  # snowfallorg.users.cnelson.admin = false;
 
   united = {
     loki = enabled;
@@ -84,6 +84,9 @@ in {
       use-wayland = true;
     };
     wayland.compositor = "plasma";
+    web-applications.services = [{
+      name = "test";
+    }];
   };
 
   systemd.coredump.enable = true;
@@ -91,14 +94,14 @@ in {
   users = {
     users = {
       yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
-      cnelson = {
-        description = cnelson.united.user.fullName;
-        home = cnelson.united.user.directories.home;
-        isNormalUser = true;
-        extraGroups = ["video" "audio" "lp"];
-        shell = pkgs.zsh;
-        hashedPasswordFile = config.age.secrets.cnelson-password.path;
-      };
+      # cnelson = {
+      #   description = cnelson.united.user.fullName;
+      #   home = cnelson.united.user.directories.home;
+      #   isNormalUser = true;
+      #   extraGroups = ["video" "audio" "lp"];
+      #   shell = pkgs.zsh;
+      #   hashedPasswordFile = config.age.secrets.cnelson-password.path;
+      # };
     };
   };
 }
