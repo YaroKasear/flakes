@@ -84,9 +84,16 @@ in {
       use-wayland = true;
     };
     wayland.compositor = "plasma";
-    web-applications.services = [{
-      name = "test";
-    }];
+    web-applications.services = [
+      {
+        name = "test";
+      }
+      {
+        name = "all";
+        enable = false;
+        serverType = "apache";
+      }
+    ];
   };
 
   systemd.coredump.enable = true;
