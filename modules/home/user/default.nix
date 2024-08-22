@@ -43,7 +43,7 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      username = mkDefault "yaro";
+      username = mkDefault cfg.name;
       homeDirectory = mkDefault cfg.directories.home;
       file = {
         pfp = mkIf (cfg.icon != null) {

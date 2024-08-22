@@ -13,8 +13,7 @@ in {
     containers.hass = {
       autoStart = true;
       config = ../../../containers/home-assistant/default.nix;
-      ephemeral = true;
-      bindMounts = {
+            bindMounts = {
         "/etc/hass" = {
           hostPath = "/mnt/home-assistant/config";
           isReadOnly = false;

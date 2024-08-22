@@ -28,12 +28,7 @@ in {
   networking = {
     hostId = "59d99151";
     hostName = "deimos";
-    firewall = {
-      checkReversePath = "loose";
-      logRefusedConnections = true;
-      logRefusedPackets = true;
-      logReversePathDrops = true;
-    };
+    firewall.checkReversePath = "loose";
     wg-quick.interfaces = {
       wg0 = {
         address = ["10.60.10.1/32"];

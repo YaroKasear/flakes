@@ -24,14 +24,13 @@ in {
     containers = {
       "nginx-${app}" = {
         autoStart = true;
-        ephemeral = true;
 
         config = { pkgs, ... }:
         {
           security.acme = {
             acceptTerms = true;
             certs = {
-              "default" = {
+              default = {
                 domain = "*.kasear.net";
                 extraDomainNames = ["kasear.net"];
               };

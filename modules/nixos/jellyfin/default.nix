@@ -32,8 +32,7 @@ in {
 
     containers.${app} = {
       autoStart = true;
-      ephemeral = true;
-      privateNetwork = true;
+            privateNetwork = true;
       hostAddress = "192.168.1.1";
       localAddress = address;
       forwardPorts = [

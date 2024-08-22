@@ -21,8 +21,7 @@ in {
     mosquitto = {
       autoStart = true;
       config = ../../../containers/mosquitto/default.nix;
-      ephemeral = true;
-      bindMounts = {
+            bindMounts = {
         "/var/yaro-password" = {
           hostPath = config.age.secrets.mosquitto-yaro-password.path;
           isReadOnly = true;

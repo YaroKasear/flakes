@@ -19,7 +19,7 @@ with lib.united;
     rust = enabled;
     sonic3air = enabled;
     tinyfugue = enabled;
-    wayland.compositor = "plasma"; # TODO: Some day nVidia will be good wnough for Sway.`
+    wayland.compositor = "plasma";
     wine = enabled;
     user = {
       directories = {
