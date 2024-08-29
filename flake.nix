@@ -49,6 +49,11 @@
 
     impermanence.url = "github:nix-community/impermanence";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.0.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -125,6 +130,7 @@
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
+          lix-module.nixosModules.default
         ];
         hosts.loki.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
@@ -150,7 +156,6 @@
           plasma-manager.homeManagerModules.plasma-manager
         ];
       in {
-        "cnelson@loki".modules = home-modules;
         "yaro@deimos".modules = home-modules;
         "yaro@europa".modules = home-modules;
         "yaro@io".modules = home-modules;
