@@ -16,6 +16,7 @@ with pkgs;
       "tplink"
       "met"
       "radio_browser"
+      "xiaomi_miio"
     ];
   };
 

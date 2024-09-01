@@ -1,4 +1,5 @@
 { lib, pkgs, inputs, config, ... }:
+with lib;
 with lib.united;
 with config.home-manager.users;
 
@@ -19,6 +20,7 @@ in {
         mode = "400";
         symlink = false;
       };
+      cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     };
   };
@@ -58,5 +60,14 @@ in {
 
   systemd.coredump.enable = true;
 
-  users.users.yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+  users.users = {
+    yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+    cnelson = {
+      description = config.home-manager.users.cnelson.united.user.fullName;
+      home = config.home-manager.users.cnelson.united.user.directories.home;
+      isNormalUser = true;
+      shell = pkgs.zsh;
+      hashedPasswordFile = mkDefault config.age.secrets.cnelson-password.path;
+    };
+  };
 }

@@ -64,11 +64,61 @@ in {
           windowTitle = general;
         };
 
+        input.keyboard.numlockOnStartup = "on";
+
+        kwin = {
+          virtualDesktops = {
+            number = 4;
+            names = [
+              "Main"
+              "Multimedia"
+              "System & Programming"
+              "Gaming"
+            ];
+            rows = 2;
+          };
+          effects = {
+            blur = enabled;
+            desktopSwitching.animation = "slide";
+            wobblyWindows = enabled;
+          };
+          nightLight = {
+            enable = true;
+            location = {
+              latitude = "42.0327";
+              longitude = "-97.42";
+            };
+            mode = "location";
+          };
+          titlebarButtons.left = [];
+        };
+
         powerdevil.AC = {
           powerButtonAction = "shutDown";
           autoSuspend.action = "nothing";
           turnOffDisplay.idleTimeout = "never";
         };
+
+        window-rules = [
+          {
+            description = "Firefox Picture-In-Picture";
+            match = {
+              title = "Picture-in-Picture";
+              window-class = {
+                value = "firefox";
+                type = "substring";
+              };
+              window-types = ["normal"];
+            };
+            apply = {
+              above = true;
+              desktops = true;
+              skippager = true;
+              skipswitcher = true;
+              skiptaskbar = true;
+            };
+          }
+        ];
 
         workspace = {
           clickItemTo = "select";
@@ -88,50 +138,11 @@ in {
             };
           };
           kwinrc = {
-            Desktops = {
-              Id_1 = "c698a291-b9e2-4d58-804f-7939e0b0d748";
-              Id_2 = "19f5a1ed-4506-4f91-9d50-8117011b1d43";
-              Id_3 = "88ea78bd-94d7-4898-82f5-39310744f518";
-              Id_4 = "682dae2d-0911-44e6-8e80-ad6580b91323";
-              Number = 4;
-              Rows = 2;
-            };
-            Effect-blur.BlurStrength = 3;
             Effect-overview.BorderActivate = 9;
             MouseBindings.CommandTitlebarWheel = "Shade/Unshade";
-            NightColor = {
-              Active = true;
-              LatitudeFixed = 42.0327;
-              LongitudeFixed = -97.42;
-              Mode = "Location";
-            };
             Xwayland.Scale = 1;
-
           };
           ksmserverrc.General.loginMode = "emptySession";
-          kwinrulesrc = {
-            "1" = {
-              Description = "Window settings for firefox";
-              above = true;
-              aboverule = 3;
-              desktopsrule = 3;
-              skippager = true;
-              skippagerrule = 3;
-              skipswitcher = true;
-              skipswitcherrule = 3;
-              skiptaskbar = true;
-              skiptaskbarrule = 3;
-              title = "Picture-in-Picture";
-              titlematch = 1;
-              types = 1;
-              wmclass = "firefox";
-              wmclassmatch = 1;
-            };
-            General = {
-              count = 1;
-              rules = "1";
-            };
-          };
         };
       };
     };

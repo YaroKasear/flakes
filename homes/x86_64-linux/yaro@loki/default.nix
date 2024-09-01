@@ -138,7 +138,6 @@ with lib.united;
       skypeforlinux
       telegram-desktop
       united.python-fabric
-      # united.sonic3air
     ];
     persistence."/persistent${config.united.user.directories.home}" =
     let
