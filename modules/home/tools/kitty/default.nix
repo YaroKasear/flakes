@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 with lib;
 with lib.united;
@@ -14,10 +14,7 @@ in {
     programs = {
       kitty = {
         enable = true;
-        font = {
-          name = config.united.style.fonts.terminal;
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-        };
+        font = config.united.style.fonts.terminal;
         shellIntegration = {
           enableBashIntegration = true;
           enableZshIntegration = true;

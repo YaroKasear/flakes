@@ -19,6 +19,8 @@ in {
       packages = with pkgs; [
         aha
         inputs.plasma-manager.packages.${pkgs.system}.rc2nix
+        config.united.style.fonts.interface.package
+        config.united.style.fonts.terminal.package
       ];
       persistence = mkIf config.united.persistent.enable {
         "/persistent${config.united.user.directories.home}" =
@@ -48,16 +50,16 @@ in {
 
         fonts = rec {
           general = {
-            family = config.united.style.fonts.interface;
-            pointSize = 10;
+            family = config.united.style.fonts.interface.name;
+            pointSize = config.united.style.fonts.interface.size;
           };
           fixedWidth = {
-            family = config.united.style.fonts.terminal;
-            pointSize = 10;
+            family = config.united.style.fonts.terminal.name;
+            pointSize = config.united.style.fonts.terminal.size;
           };
           small = {
-            family = config.united.style.fonts.interface;
-            pointSize = 8;
+            family = config.united.style.fonts.interface.name;
+            pointSize = config.united.style.fonts.interface.size - 2;
           };
           toolbar = general;
           menu = general;

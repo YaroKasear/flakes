@@ -10,7 +10,10 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [pkgs.nil];
+    home.packages = [
+      pkgs.nil
+      config.united.style.fonts.terminal.package
+    ];
 
     programs = {
       vscode = {
@@ -30,15 +33,16 @@ in {
         }));
         mutableExtensionsDir = false;
         userSettings = {
-          "editor.wordWrap"= "on";
-          "git.confirmSync"= false;
-          "git.enableSmartCommit"= true;
-          "workbench.startupEditor"= "none";
-          "files.trimTrailingWhitespace"= true;
-          "editor.renderWhitespace"= "boundary";
-          "security.workspace.trust.untrustedFiles"= "open";
-          "editor.tabSize"= 2;
-          "editor.fontFamily"= "'FiraCode Nerd Font Mono','Droid Sans Mono', 'monospace', monospace";
+          "editor.wordWrap" = "on";
+          "git.confirmSync" = false;
+          "git.enableSmartCommit" = true;
+          "workbench.startupEditor" = "none";
+          "files.trimTrailingWhitespace" = true;
+          "editor.renderWhitespace" = "boundary";
+          "security.workspace.trust.untrustedFiles" = "open";
+          "editor.tabSize" = 2;
+          "editor.fontFamily" = "'${config.united.style.fonts.terminal.name}','Droid Sans Mono', 'monospace', monospace";
+          "editor.fontSize" = config.united.style.fonts.terminal.size;
           "editor.fontLigatures" = true;
           "update.mode"= "none";
           "files.enableTrash" = false;

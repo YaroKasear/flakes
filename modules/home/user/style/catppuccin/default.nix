@@ -103,7 +103,7 @@ in {
         background_blur 32
         tab_bar_min_tabs 2
 
-        font_features Fira Code +cv02 +cv05 +cv09 +cv14 +ss04 +cv16 +cv31 +cv25 +cv26 +cv32 +cv28 +ss10 +zero +onum
+        font_features ${config.united.style.fonts.terminal.name} +cv02 +cv05 +cv09 +cv14 +ss04 +cv16 +cv31 +cv25 +cv26 +cv32 +cv28 +ss10 +zero +onum
         tab_bar_edge                bottom
         tab_bar_style               powerline
         tab_powerline_style         slanted

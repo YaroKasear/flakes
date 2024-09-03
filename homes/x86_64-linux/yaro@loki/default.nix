@@ -39,6 +39,11 @@ with lib.united;
       catppuccin.latte = disabled;
       catppuccin.macchiato = disabled;
       catppuccin.mocha = enabled;
+      fonts.terminal = {
+        name = "Departure Mono";
+        package = pkgs.united.departure-mono;
+        size = 11;
+      };
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;

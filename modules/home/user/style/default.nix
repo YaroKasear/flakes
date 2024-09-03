@@ -1,18 +1,38 @@
-{ lib, config, inputs, ... }:
+{ lib, config, inputs, pkgs, ... }:
 
 with lib;
 with lib.united;
 let
   inherit (lib.united) mkOpt enabled;
 
+  font = {
+    options = {
+      name = mkOpt types.str null "Name of the font.";
+      package = mkOpt types.package null "Font package to use for the font.";
+      size = mkOpt types.int 10 "Point size of the font.";
+    };
+  };
+
   cfg = config.united.style;
 in {
   options.united.style = {
     enable = mkEnableOption "Style module!";
     fonts = {
-      emoji = mkOpt types.str "Noto Color Emoji" "Emoji font!";
-      interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
-      terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
+      # emoji = mkOpt types.str "Noto Color Emoji" "Emoji font!";
+      emoji = mkOpt (types.submodule font) {
+        name = "Noto Color Emoji";
+        package = pkgs.noto-fonts-color-emoji;
+      } "Emoji font!";
+      # interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
+      interface = mkOpt (types.submodule font) (mkMerge [{
+        name = "FiraCode Nerd Font";
+        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      }]) "User interface font!";
+      # terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
+      terminal = mkOpt (types.submodule font) (mkMerge [{
+        name = "FiraCode Nerd Font Mono";
+        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+      }]) "Terminal font!";
     };
     wallpaper = mkOpt types.path ../wallpaper/files/tcloud.png "Wallpaper!";
     windows = {
@@ -106,6 +126,9 @@ in {
     gtk = enabled;
 
     home = {
+      packages = [
+        cfg.fonts.emoji.package
+      ];
       file = {
         "style/test.html".text = ''
           <html>

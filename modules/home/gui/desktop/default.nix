@@ -28,7 +28,6 @@ in {
       [
         font-awesome
         nerdfonts
-        noto-fonts-color-emoji
         powerline-fonts
         unifont
         unifont_upper
