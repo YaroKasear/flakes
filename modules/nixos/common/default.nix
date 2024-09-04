@@ -52,7 +52,8 @@ in {
     };
 
     console = {
-      font = "${pkgs.kbd}/share/consolefonts/Lat2-Terminus16.psfu.gz";
+      earlySetup = true;
+      font = "${pkgs.terminus_font}/share/consolefonts/ter-i20n.psf.gz";
       keyMap = "us";
     };
 

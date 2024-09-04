@@ -25,6 +25,12 @@ in {
     };
   };
 
+  environment.etc.issue.text = ''
+    ░█░░░█▀█░█░█░▀█▀
+    ░█░░░█░█░█▀▄░░█░
+    ░▀▀▀░▀▀▀░▀░▀░▀▀▀
+  '';
+
   services = {
     avahi = {
       enable = true;
