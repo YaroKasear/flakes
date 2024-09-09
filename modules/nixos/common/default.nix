@@ -6,10 +6,15 @@ let
   common-secrets = inputs.self + "/secrets/common/";
 
   cfg = config.united.common;
+
+  breakupString = s: strings.splitString "" s;
+
+  spaceString = s: strings.concatMapStrings (x: " " + x) (breakupString s);
 in {
   options.united.common = {
     enable = mkEnableOption "Common";
     splash = mkEnableOption "Boot splash";
+    banner = mkOpt types.lines ''[32m<<[31m${strings.toUpper (spaceString config.networking.hostName)} [32m>>[0m'' "Banner for TTY login screen.";
   };
 
   config = mkIf cfg.enable {
@@ -57,12 +62,23 @@ in {
       keyMap = "us";
     };
 
-    environment.systemPackages = with pkgs; [
-      lm_sensors
-      nfs-utils
-      nix-diff
-      wget
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        lm_sensors
+        nfs-utils
+        nix-diff
+        wget
+      ];
+      etc.issue.text = ''
+
+        ${cfg.banner}
+
+        [32;40m${config.system.nixos.distroName} ${config.system.nixos.label}[0m
+        [95;40m\s \r (\l \b)[0m
+        [95;40m\t \d[0m
+
+      '';
+    };
 
     fileSystems."${config.home-manager.users.yaro.united.user.directories.home}/flakes" = {
       device = "storage.kasear.net:/mnt/data/flake";

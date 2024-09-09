@@ -98,9 +98,9 @@ let
         };
 
         system.stateVersion = "24.05";
-      };
+      } // app.extraConfig;
     };
-  } // app.extraConfig ) (builtins.filter (app: app.enable) cfg.services));
+  }) (builtins.filter (app: app.enable) cfg.services));
 
 in {
   options.united.web-applications = rec {

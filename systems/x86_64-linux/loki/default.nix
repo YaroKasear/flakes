@@ -25,12 +25,6 @@ in {
     };
   };
 
-  environment.etc.issue.text = ''
-    ░█░░░█▀█░█░█░▀█▀
-    ░█░░░█░█░█▀▄░░█░
-    ░▀▀▀░▀▀▀░▀░▀░▀▀▀
-  '';
-
   services = {
     avahi = {
       enable = true;
@@ -42,7 +36,16 @@ in {
 
   united = {
     loki = enabled;
-    common.splash = true;
+    common = {
+      splash = true;
+      banner = ''
+        [90;40m░░░░░░░░░░░░░░░░░[0m
+        [90;40m░[32m█[90m░░░[32m█▀█[90m░[32m█[90m░[32m█[90m░[32m▀[32m█▀[90m░[0m
+        [90;40m░[32m█[90m░░░[32m█[90m░[32m█[90m░[32m█▀[32m▄[90m░░[32m█[90m░░[0m
+        [90;40m░[32m▀▀▀[90m░[32m▀▀▀[90m░[32m▀[90m░[32m▀[90m░[32m▀[32m▀▀[90m░[0m
+        [90;40m░░░░░░░░░░░░░░░░░[0m
+      '';
+    };
     desktop = {
       enable = true;
       use-wayland = true;
@@ -53,12 +56,15 @@ in {
       tlsConfig.readOnly = true;
       services = [
         {
-          name = "test";
-          backend = "php";
-        }
-        {
-          name = "all";
-          serverType = "apache";
+          name = "cnelson";
+          dataDir = "/etc/cnelson";
+          extraConfig.environment.etc = {
+            "cnelson/index.html".source = ./files/cnelson/index.html;
+            "cnelson/bootstrap".source = "${pkgs.twitterBootstrap}";
+            "cnelson/css".source = ./files/cnelson/css;
+            "cnelson/images".source = ./files/cnelson/images;
+            "cnelson/js".source = ./files/cnelson/js;
+          };
         }
       ];
     };
