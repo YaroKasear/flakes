@@ -13,12 +13,15 @@ in {
     boot = {
       initrd = {
         availableKernelModules = [
-          "nvme"
-          "xhci_pci"
           "ahci"
-          "usbhid"
+          "nfs"
+          "nfs4"
+          "nvme"
           "sd_mod"
+          "usbhid"
+          "xhci_pci"
         ];
+        supportedFilesystems = ["nfs" "nfs4"];
       };
       kernelModules = [
         "nvidia-uvm"

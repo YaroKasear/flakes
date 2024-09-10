@@ -15,8 +15,15 @@
               mountpoint = "/boot";
             };
           };
+          swap = {
+            size = "48G";
+            content = {
+              type = "swap";
+              randomEncryption = true;
+            };
+          };
           system = {
-            size = "100%";
+            size = "208G";
             content = {
               type = "zfs";
               pool = "system";
@@ -39,26 +46,26 @@
       mountpoint = "/";
       postCreateHook = "zfs snapshot system@blank";
       datasets = {
-        "games" = {
-          type = "zfs_fs";
-          mountpoint = "/games";
-        };
-        persistent = {
-          type = "zfs_fs";
-          mountpoint = "/persistent";
-        };
+        # "games" = {
+        #   type = "zfs_fs";
+        #   mountpoint = "/games";
+        # };
+        # persistent = {
+        #   type = "zfs_fs";
+        #   mountpoint = "/persistent";
+        # };
         "nix" = {
           type = "zfs_fs";
           mountpoint = "/nix";
         };
-        swap = {
-          type = "zfs_volume";
-          size = "48G";
-          content = {
-            type = "swap";
-            randomEncryption = true;
-          };
-        };
+        # swap = {
+        #   type = "zfs_volume";
+        #   size = "48G";
+        #   content = {
+        #     type = "swap";
+        #     randomEncryption = true;
+        #   };
+        # };
       };
     };
   };

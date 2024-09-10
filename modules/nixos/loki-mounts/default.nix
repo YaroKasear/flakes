@@ -53,7 +53,6 @@ in {
     };
 
     fileSystems = {
-      "/persistent".neededForBoot = true;
       "/home/yaro/Nextcloud" = {
         device = "storage.kasear.net:/mnt/data/user/yaro/cloud";
         fsType = "nfs";
@@ -63,6 +62,12 @@ in {
         device = "storage.kasear.net:/mnt/data/containers";
         fsType = "nfs";
         options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
+      };
+      "/persistent" = {
+        device = "storage.kasear.net:/mnt/loki/persistent";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
+        neededForBoot = true;
       };
     };
 
