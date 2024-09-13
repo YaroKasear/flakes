@@ -46,9 +46,6 @@ in {
           "/var/lib/nixos"
           "/var/log"
         ];
-        files = [
-          "/var/db/sudo/lectured/1000"
-        ];
       };
     };
 
@@ -64,10 +61,12 @@ in {
         options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
       };
       "/persistent" = {
-        device = "storage.kasear.net:/mnt/loki/persistent";
-        fsType = "nfs";
-        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
         neededForBoot = true;
+      };
+      "/mnt/windows" = {
+        device = "/dev/disk/by-label/WINDOWS";
+        fsType = "ntfs";
+        options = [ "windows_names" ];
       };
     };
 

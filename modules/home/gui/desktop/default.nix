@@ -31,7 +31,7 @@ in {
         powerline-fonts
         unifont
         unifont_upper
-        symbola
+        # symbola
       ];
     };
   };

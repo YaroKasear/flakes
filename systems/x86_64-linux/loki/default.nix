@@ -25,6 +25,8 @@ in {
     };
   };
 
+  boot.supportedFilesystems = ["ntfs"];
+
   services = {
     avahi = {
       enable = true;
