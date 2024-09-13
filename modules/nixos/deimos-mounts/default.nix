@@ -46,9 +46,6 @@ in {
           "/var/lib/nixos"
           "/var/log"
         ];
-        files = [
-          "/var/db/sudo/lectured/1000"
-        ];
       };
     };
 
