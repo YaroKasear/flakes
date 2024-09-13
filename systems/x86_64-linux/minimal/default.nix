@@ -1,9 +1,13 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, inputs, ... }:
 with lib.united;
 with config.home-manager.users;
 
 {
-  age.rekey.masterIdentities = [ ./files/yubikey.pub ];
+  age.rekey = {
+    masterIdentities = [ ./files/yubikey.pub ];
+    localStorageDir = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/rekey";
+    storageMode = "local";
+  };
 
   boot = {
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;

@@ -130,7 +130,7 @@
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
-          # lix-module.nixosModules.default
+          lix-module.nixosModules.default
         ];
         hosts.loki.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
