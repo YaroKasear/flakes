@@ -13,7 +13,8 @@
     agenix.url = "github:ryantm/agenix";
 
     agenix-rekey = {
-      url = "github:oddlama/agenix-rekey";
+      # url = "github:oddlama/agenix-rekey"; https://github.com/oddlama/agenix-rekey/pull/41
+      url = "github:oddlama/agenix-rekey/126b4a5133eb361cbf5bf90e44c71b6f830845ec";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -156,14 +157,13 @@
           plasma-manager.homeManagerModules.plasma-manager
         ];
       in {
-        "cnelson@loki".modules = home-modules;
+        "guest@loki".modules = home-modules;
         "yaro@deimos".modules = home-modules;
         "yaro@europa".modules = home-modules;
         "yaro@io".modules = home-modules;
         "yaro@loki".modules = home-modules;
         "yaro@gwyn".modules = home-modules;
         "yaro@gwynix".modules = home-modules;
-        "yaro@minimal".modules = home-modules;
         "yaro@phobos".modules = home-modules;
         "yaro@titan".modules = home-modules;
       };

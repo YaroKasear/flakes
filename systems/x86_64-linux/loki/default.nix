@@ -20,7 +20,14 @@ in {
         mode = "400";
         symlink = false;
       };
-      cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+      guest-password.rekeyFile = secrets-directory + "guest-password.age";
+      "worlds.tf" = {
+        rekeyFile = secrets-directory + "worlds.tf.age";
+        path = "/run/worlds.tf";
+        owner = "yaro";
+        mode = "400";
+        symlink = false;
+      };
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     };
   };
@@ -76,12 +83,12 @@ in {
 
   users.users = {
     yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
-    cnelson = {
-      description = config.home-manager.users.cnelson.united.user.fullName;
-      home = config.home-manager.users.cnelson.united.user.directories.home;
+    guest = {
+      description = config.home-manager.users.guest.united.user.fullName;
+      home = config.home-manager.users.guest.united.user.directories.home;
       isNormalUser = true;
       shell = pkgs.zsh;
-      hashedPasswordFile = mkDefault config.age.secrets.cnelson-password.path;
+      hashedPasswordFile = mkDefault config.age.secrets.guest-password.path;
     };
   };
 }

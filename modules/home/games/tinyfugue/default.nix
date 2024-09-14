@@ -113,7 +113,7 @@ in
         /def -mregexp -t"> Guest(\d) has connected.*" -F -p2 = /repeat -10 1 page guest%P1 = Hello! Welcome to TLK MUCK! Please let me know of any questions! Use the command 'page wanachi="message"' without the single quotes to do so!
         /def -mregexp -t"> Guest(\d) has connected.*" -p1 = /repeat -0.1 30 /beep
 
-        /load -q ~/.worlds.tf
+        /load -q /run/worlds.tf
       '';
     };
   };
