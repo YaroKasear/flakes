@@ -20,7 +20,6 @@ in {
         mode = "400";
         symlink = false;
       };
-      guest-password.rekeyFile = secrets-directory + "guest-password.age";
       "worlds.tf" = {
         rekeyFile = secrets-directory + "worlds.tf.age";
         path = "/run/worlds.tf";
@@ -81,14 +80,5 @@ in {
 
   systemd.coredump.enable = true;
 
-  users.users = {
-    yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
-    guest = {
-      description = config.home-manager.users.guest.united.user.fullName;
-      home = config.home-manager.users.guest.united.user.directories.home;
-      isNormalUser = true;
-      shell = pkgs.zsh;
-      hashedPasswordFile = mkDefault config.age.secrets.guest-password.path;
-    };
-  };
+  users.users.yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
 }
