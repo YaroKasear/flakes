@@ -24,6 +24,8 @@ in {
       packages = with pkgs;
       [
         bitwarden
+        hunspell
+        hunspellDicts.en_US-large
         libreoffice-fresh
         playerctl
         yubioath-flutter
