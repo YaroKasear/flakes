@@ -12,7 +12,7 @@ in {
 
   config = mkIf cfg.enable {
     boot = {
-      kernelPackages = pkgs.linuxPackages_xanmod;
+      kernelPackages = pkgs.unstable.linuxPackages_xanmod_latest;
       tmp.useTmpfs = true;
     };
 
