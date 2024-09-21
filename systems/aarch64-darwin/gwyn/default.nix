@@ -4,9 +4,11 @@ with lib.united;
 {
   nix = {
     settings = {
-      auto-optimise-store = true;
+      auto-optimise-store = false; # https://github.com/NixOS/nix/issues/7273
       experimental-features = "nix-command flakes";
+      keep-derivations = false;
     };
+    optimise.automatic = true;
     gc = {
       automatic = true;
       interval.Day = 7;
