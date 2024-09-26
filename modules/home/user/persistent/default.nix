@@ -28,13 +28,14 @@ in {
           "${config-directory}/Code"
           "${config-directory}/Nextcloud"
           "${data-directory}/keyrings"
+          (mkIf config.united.plasma.enable "${data-directory}/kwalletd")
           "${data-directory}/zoxide"
           "${state-directory}/wireplumber"
           ".mozilla"
           ".thunderbird"
         ];
         files = [
-          # ".zsh_history"
+          (mkIf config.united.plasma.enable "${config-directory}/kwinoutputconfig.json")
           "${cache-directory}/wofi-dmenu"
           "${cache-directory}/wofi-drun"
           "${cache-directory}/wofi-run"

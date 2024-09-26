@@ -13,6 +13,7 @@ in {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
     secrets = {
+      cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
       mosquitto-password = {
         rekeyFile = secrets-directory + "mosquitto-password.age";
         path = "/run/mosquitto-password";
@@ -93,5 +94,12 @@ in {
 
   systemd.coredump.enable = true;
 
-  users.users.yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+  users.users = {
+    cnelson = {
+      hashedPasswordFile = config.age.secrets.cnelson-password.path;
+      isNormalUser = true;
+      shell = pkgs.zsh;
+    };
+    yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+  };
 }

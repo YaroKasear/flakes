@@ -22,22 +22,6 @@ in {
         config.united.style.fonts.interface.package
         config.united.style.fonts.terminal.package
       ];
-      persistence = mkIf config.united.persistent.enable {
-        "/persistent${config.united.user.directories.home}" =
-        let
-          mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
-
-          config-directory = mkHomeCanon config.united.user.directories.config;
-          data-directory = mkHomeCanon config.united.user.directories.data;
-        in {
-          directories = [
-            "${data-directory}/kwalletd"
-          ];
-          files = [
-            "${config-directory}/kwinoutputconfig.json"
-          ];
-        };
-      };
     };
 
     programs = {
