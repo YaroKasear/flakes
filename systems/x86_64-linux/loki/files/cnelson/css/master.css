@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    min-height: calc(100vh - 50px);
+}
+
+body::after {
+    content: '';
+    display: block;
+    height: calc(66px + 1em);
+}
+
+footer {
+    height: 66px;
+}

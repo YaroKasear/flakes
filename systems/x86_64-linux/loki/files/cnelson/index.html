@@ -3,128 +3,290 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv=“Pragma” content=”no-cache”>
     <meta http-equiv=“Expires” content=”-1″>
     <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
-    <!-- CSS Stylesheets -->
-    <link rel="stylesheet" href="css/master.css" type="text/css" />
-    <!-- UNCOMMENT WHEN DONE -->
-    <!-- link rel="stylesheet" href="bootstrap/css/bootstrap.css" type="text/css" /-->
-    <!-- DELETE WHEN DONE -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="css/tailwind.css" type="text/css" />
     <title>Conrad Nelson</title>
 </head>
 
-<body>
+<body class="bg-gray-950 text-green-600">
 
-    <nav>
-        <div>
 
+    <nav class="rounded-b-lg bg-green-600 text-gray-950">
+        <div class="container p-2 mb-3 *:flex *:flex-row *:basis-full *:items-center *:gap-3">
+            <a href="http://cnelson.containers">
+                <img src="images/techkat.png" alt="The Techkat" class="rounded w-12">
+                Conrad Nelson
+            </a>
         </div>
     </nav>
+    <div class="container mx-auto">
 
-    <header>
-        <h1>Hello, I'm Conrad!</h1>
-        <img src="images/propic.png" alt="Picture of Me!">
-        </headerz`>
+        <div>
 
-        <section id="about">
-            <p>I am an experienced Survey Programmer and Homelab Operator residing in Norfolk, Nebraska.</p>
-        </section>
+            <header class="container mx-auto my-3">
+                <h1 class="text-6xl">Hello, I'm Conrad!</h1>
+            </header>
 
-        <section id="resume">
-            <h2>Professional Experience</h2>
-            <div>
-                <span>
-                    <h3>Braun Research, Inc.</h3>
-                </span><span>Princeton, NJ</span>
-                <span>CATI/Internet Programmer</span><span>February 2012 - August 2024</span>
-            </div>
-            <div>
-                <ul>
-                    <li>
-                        Survey Programming Expertise: Enhanced client success by following survey programming and design
-                        best practices, delivering over 50 survey scripts annually, resulting in reliable and timely
-                        data collection for clients.
-                    </li>
-                    <li>
-                        Rapid Deployment: Accelerated survey developoment to within 1 to 2 days by optimizing the
-                        programming workflow and managing project timelines effectively, consistently meeting tight
-                        client deadlines.
-                    </li>
-                    <li>
-                        On-Call Support: Provided rapid response to survey logic errors and data issues by ensuring a
-                        swift response-time, ensuring minimal survey disruptions in less than 1 hour.
-                    </li>
-                </ul>
-            </div>
-
-            <h2>Core Competencies</h2>
-            <div>
-                <ul>
-                    <li>Linux System Administration</li>
-                    <li>Network Administration</li>
-                    <li>Programming</li>
-                    <li>Market Research</li>
-                    <li>Data Analytics</li>
-                </ul>
-            </div>
-
-            <h2>Technical Skills</h2>
-            <div>
-                <div>
-                    <h3>Operating Systems</h3>
-                    <ul>
-                        <li>Debian</li>
-                        <li>CentOS</li>
-                        <li>Arch Linux</li>
-                        <li>NixOS</li>
-                    </ul>
+            <section id="profile" class="float-right m-3 flex flex-col items-center">
+                <img src="images/propic.jpg" alt="Picture of Me!" class="w-64 rounded-pill mb-3">
+                <div class="flex justify-center space-x-4">
+                    <a href="https://github.com/YaroKasear" target="_blank">
+                        <iconify-icon icon="bi:github" width="64"></iconify-icon>
+                    </a>
+                    <a href="https://www.linkedin.com/in/conrad-nelson-3ab5b542/" target="_blank">
+                        <iconify-icon icon="bi:linkedin" width="64"></iconify-icon>
+                    </a>
+                    <a href="https://profile.indeed.com/p/conradn-w49k5z2" target="_blank">
+                        <iconify-icon icon="cib:indeed" width="64"></iconify-icon>
+                    </a>
                 </div>
-                <div>
-                    <h3>Programming Languages</h3>
-                    <ul>
-                        <li>Python</li>
-                        <li>C</li>
-                        <li>C++</li>
-                        <li>Hypertext Markup Language (HTML)</li>
-                        <li>Cascading Style Sheets (CSS)</li>
-                        <li>JavaScript</li>
-                        <li>Bourne Again Shell (BASH)</li>
-                        <li>Nix</li>
-                        <li>Multi-User Forth (MUF)</li>
-                        <li>Message Parsing Interpreter (MPI)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="social">
-            <ul>
-                <li><a href="https://github.com/YaroKasear" target="_blank"><iconify-icon
-                            icon="arcticons:github"></iconify-icon></a></li>
-                <li><a href="https://www.linkedin.com/in/conrad-nelson-3ab5b542/" target="_blank"><iconify-icon
-                            icon="arcticons:linkedin"></iconify-icon></a></li>
-                <li><a href="https://profile.indeed.com/p/conradn-w49k5z2" target="_blank"><iconify-icon
-                            icon="arcticons:indeed"></iconify-icon></a></li>
-            </ul>
-        </section>
+            <section id="summary">Knowledge is a powerful tool for skill development and personal
+                effectiveness. I am dedicated to pursuing continuous learning and honing practical skills through
+                hands-on
+                experimentation with technology and data analysis. With a deep passion for computing, I leverage my
+                homelab
+                and online resources to continually expand my expertise and drive personal growth.
+            </section>
 
-        <!-- UNCOMMENT WHEN DONE -->
-        <!-- script src="bootstrap/js/bootstrap.js"></script -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+            <section id="qualifications">
+                <h2>SUMMARY OF QUALIFICATIONS</h2>
+                <ul>
+                    <li>Experience as a systems administrator
+                        and network administrator through a homelab setting</li>
+                    <li>Strong Linux operating systems support
+                        experience</li>
+                    <li>Troubleshooting and analytical skills
+                        gained through hands-on experience</li>
+                    <li>Possess strong communication and
+                        collaboration skills</li>
+                    <li>Strong prioritization skills for
+                        ensuring the highest levels of support to business and each user</li>
+                </ul>
+            </section>
+
+            <section id="skills">
+                <h2>SKILLS</h2>
+                <section id="techskills">
+                    <h3>Technical Skills</h3>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Linux Expertise</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://archlinux.org/">
+                                    <iconify-icon icon="devicon:archlinux" width="32"></iconify-icon>Arch
+                                    Linux
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.centos.org/">
+                                    <iconify-icon icon="devicon:centos" width="32" alt="CentOS"></iconify-icon>CentOS
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.debian.org/">
+                                    <iconify-icon icon="devicon:debian" width="32"></iconify-icon>Debian
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.gentoo.org/">
+                                    <iconify-icon icon="devicon:gentoo" width="32"></iconify-icon>Gentoo
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://nixos.org/">
+                                    <iconify-icon icon="devicon:nixos" width="32"></iconify-icon>NixOS
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Microsoft Office Proficiency</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://www.microsoft.com/en-us/microsoft-365/excel">
+                                    <iconify-icon icon="vscode-icons:file-type-excel" width="32"></iconify-icon>Excel
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.microsoft.com/en-us/microsoft-365/word">
+                                    <iconify-icon icon="vscode-icons:file-type-word" width="32"></iconify-icon>Word
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Programming Proficiency</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://www.gnu.org/software/bash/">
+                                    <iconify-icon icon="devicon:bash" width="32"></iconify-icon>BASH
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.iso.org/standard/74528.html">
+                                    <iconify-icon icon="devicon:c" width="32"></iconify-icon>C
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://isocpp.org/">
+                                    <iconify-icon icon="devicon:cplusplus" width="32"></iconify-icon>C++
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.w3.org/TR/CSS/#css">
+                                    <iconify-icon icon="devicon:css3" width="32"></iconify-icon>CSS
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://html.spec.whatwg.org/">
+                                    <iconify-icon icon="devicon:html5" width="32"></iconify-icon>HTML
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">
+                                    <iconify-icon icon="devicon:javascript" width="32"></iconify-icon>JavaScript
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.json.org/json-en.html">
+                                    <iconify-icon icon="devicon:json" width="32"></iconify-icon>JSON
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://nixos.org/">
+                                    <iconify-icon icon="devicon:nixos" width="32"></iconify-icon>Nix
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.python.org/">
+                                    <iconify-icon icon="devicon:python" width="32"></iconify-icon>Python
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.w3.org/XML/">
+                                    <iconify-icon icon="devicon:xml" width="32"></iconify-icon>XML
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Specialized Platforms</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>Alysson (Proprietary Survey Platform)</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Data Tools</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://learn.microsoft.com/en-us/dax/">Data Analysis Expressions
+                                    (DAX)</a>
+                            </div>
+                            <div>
+                                <a href="https://pandas.pydata.org/">
+                                    <iconify-icon icon="devicon:pandas" width="32"></iconify-icon>Pandas
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://learn.microsoft.com/en-us/power-query/power-query-what-is-power-query">Power
+                                    Query</a>
+                            </div>
+
+                            <div>
+                                <a href="https://www.microsoft.com/en-us/power-platform/products/power-bi/">
+                                    <iconify-icon icon="logos:microsoft-power-bi" width="24"></iconify-icon>PowerBI
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://www.analyticalgroup.com/WinCross.html">WinCross</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <div>
+                                <h4>Web Services and Applications</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <a href="https://httpd.apache.org/">
+                                    <iconify-icon icon="devicon:apache" width="32"></iconify-icon>Apache
+                                    HTTP Server
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://nextcloud.com/">
+                                    <iconify-icon icon="tabler:brand-nextcloud" width="32"></iconify-icon>Nextcloud
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://nginx.org/en/">
+                                    <iconify-icon icon="devicon:nginx" width="32"></iconify-icon>NGINX
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://nginx.org/en/">
+                                    <iconify-icon icon="simple-icons:vaultwarden" width="32"></iconify-icon>Vaultwarden
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    • Server Infrastructure: NGINX Proxy Manager, Portainer, Docker, Kernel-based Virtual Machines,
+                    Mosquitto, Let's Encrypt
+                    • Networking Skills: pfSense, OPNSense, VyOS, Unbound, dnsmasq, pi-hole, SSH, VLANs, WireGuard VPNs,
+                    firewall management
+                    • Storage: Linux Filesystems (ext4, XFS, btrfs), Zettabyte Filesystem, TrueNAS CORE, TrueNAS SCALE,
+                    NFS,
+                    SMB, iSCSI
+                    • Telephony: Asterisk, FreePBX, IP Phones
+                </section>
+
+                Soft Skills
+                • Outstanding written communication skills.
+                • Client interaction skills.
+                • Collaborative problem solving.
+                • Excellent time management skills.
+                • Project organization skills.
+            </section>
+
+            <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js"></script>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <img src="images/qrcode.png" alt="8A67 6FDC AAD9 2918 4299  D020 151A 8F04 01FB 2E85" id="qrcode">
+        <div inline></iconify-icon>2023 Conrad Nelson
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
 </body>
 
-<footer>
-    <div class="copyright-text">© Copyright 2023 Conrad Nelson</div>
-    <div><img src="images/qrcode.png" alt="8A67 6FDC AAD9 2918 4299  D020 151A 8F04 01FB 2E85"></div>
-</footer>
-
-<!-- Our codes -->
-<script src="js/main.js"></script>
+</html>

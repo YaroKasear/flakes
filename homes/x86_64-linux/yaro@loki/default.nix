@@ -141,6 +141,7 @@ with lib.united;
       makemkv
       mosquitto
       skypeforlinux
+      tailwindcss
       telegram-desktop
     ];
     persistence."/persistent${config.united.user.directories.home}" =
