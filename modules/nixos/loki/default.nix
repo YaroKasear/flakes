@@ -51,6 +51,8 @@ in {
       hostId = "1d84728f";
     };
 
+    services.pcscd = enabled;
+
     systemd.network = {
       enable = true;
 
