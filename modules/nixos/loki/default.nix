@@ -51,7 +51,11 @@ in {
       hostId = "1d84728f";
     };
 
-    services.pcscd = enabled;
+    services = {
+      gpm = enabled;
+      pcscd = enabled;
+      yubikey-agent = enabled;
+    };
 
     systemd.network = {
       enable = true;
