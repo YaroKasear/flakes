@@ -30,7 +30,6 @@ in {
     };
 
     boot = {
-      kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd.systemd = enabled;
       kernelModules = [
         "usb-storage"

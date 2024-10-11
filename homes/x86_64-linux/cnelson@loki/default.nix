@@ -5,7 +5,7 @@ with lib.united;
   home.packages = with pkgs;
   [
     nodejs
-    (python3Full.withPackages(ps: with ps; [
+    (python3.withPackages(ps: with ps; [
       jupyter
       pandas
     ]))

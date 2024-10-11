@@ -22,10 +22,8 @@ in {
       pulseaudio
     ];
 
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
       extraPackages = [pkgs.vulkan-validation-layers];
     };
 
@@ -65,11 +63,6 @@ in {
         ENV{ID_USB_SERIAL}=="Yubico_YubiKey_OTP+FIDO+CCID_0016751940",\
         RUN+="${pkgs.systemd}/bin/loginctl unlock-sessions"
       '';
-    };
-
-    sound = {
-      enable = true;
-      mediaKeys = enabled;
     };
 
     systemd.user.services.polkit-gnome-authentication-agent-1 = {

@@ -89,18 +89,14 @@ in {
         };
         routes = [
           {
-            routeConfig = {
-              Destination = "10.10.0.0/16";
-              Gateway = "10.0.0.2";
-              GatewayOnLink = true;
-            };
+            Destination = "10.10.0.0/16";
+            Gateway = "10.0.0.2";
+            GatewayOnLink = true;
           }
           {
-            routeConfig = {
-              Destination = "10.20.0.0/16";
-              Gateway = "10.0.0.2";
-              GatewayOnLink = true;
-            };
+            Destination = "10.20.0.0/16";
+            Gateway = "10.0.0.2";
+            GatewayOnLink = true;
           }
         ];
         linkConfig.RequiredForOnline = "routable";

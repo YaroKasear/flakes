@@ -13,8 +13,10 @@ in {
     security.pam = {
       u2f = {
         enable = mkDefault true;
-        authFile = "${config.age.secrets.yubikey-auth.path}";
-        cue = true;
+        settings = {
+          authFile = "${config.age.secrets.yubikey-auth.path}";
+          cue = true;
+        };
         control = "sufficient";
       };
       yubico = {

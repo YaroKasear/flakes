@@ -46,6 +46,7 @@ in {
           services = {
             nextcloud = {
               enable = true;
+              package = pkgs.nextcloud30;
               hostName = domain;
               https = true;
               database.createLocally = true;

@@ -22,7 +22,7 @@ in {
       };
       Service = {
         Restart = "always";
-        Environment = "PATH=${pkgs.gnome3.gnome-keyring}/bin";
+        Environment = "PATH=${pkgs.gnome-keyring}/bin";
         ExecStart = "${pkgs.protonmail-bridge}/bin/protonmail-bridge --no-window --log-level info --noninteractive";
       };
       Install = {

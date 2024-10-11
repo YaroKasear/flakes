@@ -18,19 +18,19 @@ in {
     programs = {
       vscode = {
         enable = true;
-        package = mkIf config.united.wayland.enable (pkgs.vscode.overrideAttrs (e: {
-          desktopItem = e.desktopItem.override (d: {
-            exec = "${d.exec} --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
-            actions.new-empty-window = {
-              name = "New Empty Window";
-              exec = "code --new-window %F --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
-              icon = "vscode";
-            };
-          });
-          urlHandlerDesktopItem = e.urlHandlerDesktopItem.override (d: {
-            exec = "code --open-url %U --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
-          });
-        }));
+        # package = mkIf config.united.wayland.enable (pkgs.vscode.overrideAttrs (e: {
+        #   desktopItems = e.desktopItems.override (d: {
+        #     exec = "${d.exec} --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
+        #     actions.new-empty-window = {
+        #       name = "New Empty Window";
+        #       exec = "code --new-window %F --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
+        #       icon = "vscode";
+        #     };
+        #   });
+        #   urlHandlerDesktopItem = e.urlHandlerDesktopItem.override (d: {
+        #     exec = "code --open-url %U --ozone-platform=\"wayland\" --enable-features=\"WaylandWindowDecorations\"";
+        #   });
+        # }));
         mutableExtensionsDir = false;
         userSettings = {
           "editor.wordWrap" = "on";
