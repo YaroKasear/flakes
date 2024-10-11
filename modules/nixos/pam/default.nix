@@ -7,6 +7,7 @@ let
 in {
   options.united.pam = {
     enable = mkEnableOption "PAM";
+    debug = mkEnableOption "Enables debug mode!";
   };
 
   config = mkIf cfg.enable {
@@ -14,8 +15,9 @@ in {
       u2f = {
         enable = mkDefault true;
         settings = {
-          authFile = "${config.age.secrets.yubikey-auth.path}";
+          authfile = "${config.age.secrets.yubikey-auth.path}";
           cue = true;
+          debug = cfg.debug;
         };
         control = "sufficient";
       };
@@ -23,6 +25,7 @@ in {
         enable = mkDefault true;
         id = "65698";
         control = "sufficient";
+        debug = cfg.debug;
       };
       services = {
         kde = { # Taking off multifactor as Plasma's screensaver lock thing doesn't seem to play nice with it.
