@@ -54,7 +54,6 @@ in {
     services = {
       gpm = enabled;
       pcscd = enabled;
-      yubikey-agent = enabled;
     };
 
     systemd.network = {
