@@ -54,8 +54,12 @@ in {
                 default_phone_region = "US";
                 log_type = "file";
                 maintenance_window_start = 1;
+                overwritehost = "cloud.kasear.net";
+                overwriteprotocol = "https";
+                "overwrite.cli.url" = "https://cloud.kasear.net";
                 trusted_domains = ["kasear.net"];
                 trusted_proxies = [
+                  "10.0.10.1/32"
                   "173.245.48.0/20"
                   "103.21.244.0/22"
                   "103.22.200.0/22"
