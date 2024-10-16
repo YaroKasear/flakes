@@ -92,6 +92,9 @@ in {
       enable = true;
       use-wayland = true;
     };
+    unbound = {
+      enable = true;
+    };
     wayland.compositor = "plasma";
     web-applications = {
       hostInterface = "enp9s0";

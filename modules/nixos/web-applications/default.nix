@@ -20,7 +20,34 @@ let
       dataDir = mkOpt (types.nullOr types.path) null "Where the service should have read-write data access.";
       serverType = mkOpt (types.enum ["apache" "nginx" "custom"]) "nginx" "What server to use: Apache's httpd, Nginx, or a custom server.";
       backend = mkOpt (types.enum ["php" "python" "perl" "custom" "none"]) "none" "What scripting language to use in the backend.";
+      bindMounts = mkOpt (types.attrsOf (types.submodule bindMountOpts)) {} "An extra list of directories that is bound to the container.";
       extraConfig = mkOpt types.attrs {} "Any additional configuration options for the service.";
+    };
+  };
+
+  bindMountOpts = { name, ... }: {
+
+    options = {
+      mountPoint = mkOption {
+        example = "/mnt/usb";
+        type = types.str;
+        description = "Mount point on the container file system.";
+      };
+      hostPath = mkOption {
+        default = null;
+        example = "/home/alice";
+        type = types.nullOr types.str;
+        description = "Location of the host path to be mounted.";
+      };
+      isReadOnly = mkOption {
+        default = true;
+        type = types.bool;
+        description = "Determine whether the mounted path will be accessed in read-only mode.";
+      };
+    };
+
+    config = {
+      mountPoint = mkDefault name;
     };
   };
 
@@ -35,6 +62,7 @@ let
         baseIP = (network.ip4.toNumber { a = 192; b = 168; c = 1; d = 2; });
         ip = network.ip4.fromNumber (baseIP + i) 24;
       in "${toString ip.a}.${toString ip.b}.${toString ip.c}.${toString ip.d}";
+      bindMounts = app.bindMounts;
       config = { ... }: {
         networking.firewall = {
           enable = true;
@@ -97,23 +125,26 @@ let
           groups.${app.name}.gid = app.gid;
         };
 
-        system.stateVersion = "24.05";
+        system.stateVersion = "unstable";
       } // app.extraConfig;
     };
   }) (builtins.filter (app: app.enable) cfg.services));
 
 in {
-  options.united.web-applications = rec {
+  options.united.web-applications = {
     hostInterface = mkOpt types.str null "Interface to use for container NAT.";
+    hostIP = mkOpt types.str null "IP address to use for container NAT.";
     services = mkOpt (types.listOf (types.submodule webService)) [] "List of web services to set up.";
-    defaultDomain = mkOpt types.str "kasear.net" "Default domain for the services to run under.";
+    defaultDomain = mkOpt types.str null "Default domain for the services to run under.";
     extraDomains = mkOpt (types.listOf types.str) [] "Additional domains available for the services to run under.";
-    adminEmail = mkOpt types.stre "webmaster@${defaultDomain}" "Webmaster's email address.";
+    adminEmail = mkOpt types.str "webmaster@${cfg.defaultDomain}" "Webmaster's email address.";
     tlsConfig = {
       certificate = mkOpt types.path "/var/lib/acme/default/cert.pem" "Path to TLS certificate.";
       privateKey = mkOpt types.path "/var/lib/acme/default/key.pem" "Path to TLS private key.";
       readOnly = mkOpt types.bool false "Whether or not to use ACME in this instance to maintain the certificate. If you wish to manage certificates manually or with a different tool or instance of this module on another service, set this to true.";
       method = mkOpt (types.enum ["dns" "http"]) "dns" "Method for which to do ACME challenge.";
+      provider = mkOpt types.str null "Provider for LE to use for TLS verification.";
+      dnsIP = mkOpt types.str null "DNS nameserver to use for DNS challenge authentication.";
       group = mkOpt types.str "nginx" "Group to run ACME as.";
     };
   };
@@ -122,13 +153,16 @@ in {
     containers = {
       nginx-proxy = {
         autoStart = true;
-        config = {
+        config = { ... }: {
           security.acme = mkIf (cfg.tlsConfig.readOnly != true) {
             acceptTerms = true;
             certs = {
               default = {
                 domain = "*.${cfg.defaultDomain}";
-                extraDomainNames = ["${defaultDomain}"] ++ cfg.extraDomains;
+                extraDomainNames = ["${cfg.defaultDomain}"] ++ cfg.extraDomains;
+                dnsProvider = mkIf (cfg.tlsConfig.method == "dns") cfg.tlsConfig.provider;
+                dnsResolver = mkIf (cfg.tlsConfig.method == "dns") cfg.tlsConfig.dnsIP;
+                dnsPropagationCheck = (cfg.tlsConfig.method == "dns");
               };
             };
             defaults = {
@@ -159,10 +193,10 @@ in {
                   };
                 };
               }
-            ) (builtins.filter (app: app.enable && app.serverType == "nginx") cfg.services));
+            ) (builtins.filter (app: app.enable) cfg.services));
 
           };
-          system.stateVersion = "24.05";
+          system.stateVersion = "unstable";
         };
       };
     } // appContainers;

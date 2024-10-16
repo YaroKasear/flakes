@@ -16,6 +16,9 @@ in {
       "console=ttyS0,115200"
     ];
 
-    united.common = enabled;
+    united = {
+      common = enabled;
+      unbound = enabled;
+    };
   };
 }
