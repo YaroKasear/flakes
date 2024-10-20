@@ -39,11 +39,6 @@ with lib.united;
       catppuccin.latte = disabled;
       catppuccin.macchiato = disabled;
       catppuccin.mocha = enabled;
-      fonts.terminal = {
-        name = "Departure Mono";
-        package = pkgs.united.departure-mono;
-        size = 11;
-      };
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;
@@ -132,6 +127,26 @@ with lib.united;
     }
   ];
 
+  programs.vscode.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "m68k";
+        publisher = "steventattersall";
+        version = "0.0.1";
+        sha256 = "SMY/brrbBLT33z/t/k/RfMCbDjI6z9maBofzQ1Q2Fco=";
+      }
+      {
+        name = "es7-react-js-snippets";
+        publisher = "dsznajder";
+        version = "4.4.3";
+        sha256 = "QF950JhvVIathAygva3wwUOzBLjBm7HE3Sgcp7f20Pc=";
+      }
+  ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home = {
     packages = with pkgs; [
       audacity
@@ -143,6 +158,11 @@ with lib.united;
       skypeforlinux
       tailwindcss
       telegram-desktop
+      (python3.withPackages(ps: with ps; [
+        jupyter
+        pandas
+        scikit-learn
+      ]))
     ];
     persistence."/persistent${config.united.user.directories.home}" =
     let

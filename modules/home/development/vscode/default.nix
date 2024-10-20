@@ -40,10 +40,13 @@ in {
           "files.trimTrailingWhitespace" = true;
           "editor.renderWhitespace" = "boundary";
           "security.workspace.trust.untrustedFiles" = "open";
-          "editor.tabSize" = 2;
+          "editor.defaultFormatter" = "esbenp.prettier-vscode";
           "editor.fontFamily" = "'${config.united.style.fonts.terminal.name}','Droid Sans Mono', 'monospace', monospace";
           "editor.fontSize" = config.united.style.fonts.terminal.size;
           "editor.fontLigatures" = true;
+          "editor.formatOnSave" = true;
+          "editor.formatOnPaste" = true;
+          "editor.tabSize" = 2;
           "update.mode"= "none";
           "files.enableTrash" = false;
         };
@@ -65,6 +68,36 @@ in {
             publisher = "ms-vscode";
             version = "0.5.2024062701";
             sha256 = "0apk60zc5hrf2hjxiffp6q49yckma4k2gid2lm03mv0nm8yifxfk";
+          }
+          {
+            name = "prettier-vscode";
+            publisher = "esbenp";
+            version = "11.0.0";
+            sha256 = "pNjkJhof19cuK0PsXJ/Q/Zb2H7eoIkfXJMLZJ4lDn7k=";
+          }
+          {
+            name = "code-runner";
+            publisher = "formulahendry";
+            version = "0.12.2";
+            sha256 = "TI5K6n3QfJwgFz5xhpdZ+yzi9VuYGcSzdBckZ68DsUQ=";
+          }
+          {
+            name = "direnv";
+            publisher = "mkhl";
+            version = "0.17.0";
+            sha256 = "9sFcfTMeLBGw2ET1snqQ6Uk//D/vcD9AVsZfnUNrWNg=";
+          }
+          {
+            name = "nix-ide";
+            publisher = "jnoortheen";
+            version = "0.3.1";
+            sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
+          }
+          {
+            name = "python";
+            publisher = "ms-python";
+            version = "2024.17.2024100202";
+            sha256 = "3H2Y/tciLHVTMTJdHuCMyfCLQGpRCjEFiVc1P+6MTU0=";
           }
         ];
       };

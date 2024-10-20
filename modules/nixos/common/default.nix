@@ -89,7 +89,7 @@ in {
 
     hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-    home-manager.backupFileExtension = "bak";
+    home-manager.backupFileExtension = "hm-backup";
 
     i18n.defaultLocale = "en_US.UTF-8";
 
