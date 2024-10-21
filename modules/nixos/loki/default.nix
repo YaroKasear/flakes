@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 with lib.united;
@@ -53,7 +53,10 @@ in {
 
     services = {
       gpm = enabled;
-      pcscd = enabled;
+      pcscd = {
+        enable = true;
+        plugins = [ pkgs.stable.ccid ];
+      };
     };
 
     systemd.network = {

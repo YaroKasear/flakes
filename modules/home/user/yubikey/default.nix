@@ -40,6 +40,8 @@ in {
         ];
         scdaemonSettings = {
           disable-ccid = true;
+          # log-file = "/tmp/scdaemon-yaro.log";
+          # pcsc-driver = "${pkgs.ccid}/pcsc/drivers/ifd-ccid.bundle/Contents/Linux/libccid.so";
         };
       };
     };
