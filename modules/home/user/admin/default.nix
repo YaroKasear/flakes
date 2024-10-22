@@ -6,7 +6,8 @@ let
   is-linux = pkgs.stdenv.isLinux;
 
   cfg = config.united.admin;
-in {
+in
+{
   options.united.admin = {
     enable = mkEnableOption "Admin";
   };
@@ -25,6 +26,7 @@ in {
       (mkIf is-linux glxinfo)
       pciutils
       nil
+      (mkIf config.united.vscode.enable nixpkgs-fmt)
       nvd
       snowfallorg.flake
       tcpdump
@@ -36,7 +38,7 @@ in {
 
     programs = {
       zsh = mkIf config.united.zsh.enable {
-        oh-my-zsh.plugins = ["sudo"];
+        oh-my-zsh.plugins = [ "sudo" ];
         shellAliases = {
           update-config = "flake boot ${config.united.user.directories.home}/flakes/#";
           save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
@@ -51,13 +53,21 @@ in {
         userSettings = {
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
+          "nix.serverSettings" = {
+            "nil" = {
+              formatting.command = [ "nixpkgs-fmt" ];
+            };
+          };
+          "[nix]" = {
+            "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          };
         };
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "nix-ide";
             publisher = "jnoortheen";
-            version = "0.3.1";
-            sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
+            version = "0.3.5";
+            sha256 = "12sg67mn3c8mjayh9d6y8qaky00vrlnwwx58v1f1m4qrbdjqab46";
           }
         ];
       };

@@ -132,13 +132,13 @@ with lib.united;
         name = "m68k";
         publisher = "steventattersall";
         version = "0.0.1";
-        sha256 = "SMY/brrbBLT33z/t/k/RfMCbDjI6z9maBofzQ1Q2Fco=";
+        sha256 = "1jhm6ra47ww70sddkkrs6879ph3ws57zxv9zvzvv816vp9p3zij8";
       }
       {
         name = "es7-react-js-snippets";
         publisher = "dsznajder";
         version = "4.4.3";
-        sha256 = "QF950JhvVIathAygva3wwUOzBLjBm7HE3Sgcp7f20Pc=";
+        sha256 = "1xyhysvsf718vp2b36y1p02b6hy1y2nvv80chjnqcm3gk387jps0";
       }
   ];
 
