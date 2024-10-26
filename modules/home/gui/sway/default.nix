@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.sway;
-in {
+in
+{
   options.united.sway = {
     enable = mkEnableOption "Sway";
   };
@@ -14,7 +15,7 @@ in {
       enable = true;
       swaynag = enabled;
       config = {
-        menu = "wofi --show drun";
+        menu = "${pkgs.wofi}/bin/wofi --show drun";
         modifier = "Mod4";
         output = {
           DP-3 = {

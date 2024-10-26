@@ -71,7 +71,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-rice.url = "github:bertof/nix-rice";
+    nix-rice.url = "github:bertof/nix-rice?rev=dddd03ed3c5e05c728b0df985f7af905b002f588";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -154,25 +154,27 @@
         ];
       };
 
-      homes.users = let
-        home-modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          plasma-manager.homeManagerModules.plasma-manager
-        ];
-      in {
-        "cnelson@loki".modules = home-modules;
-        "yaro@deimos".modules = home-modules;
-        "yaro@europa".modules = home-modules;
-        "yaro@io".modules = home-modules;
-        "yaro@loki".modules = home-modules;
-        "yaro@gwyn".modules = home-modules;
-        "yaro@gwynix".modules = home-modules;
-        "yaro@phobos".modules = home-modules;
-        "yaro@titan".modules = home-modules;
-      };
+      homes.users =
+        let
+          home-modules = with inputs; [
+            impermanence.nixosModules.home-manager.impermanence
+            nix-index-database.hmModules.nix-index
+            nixvim.homeManagerModules.nixvim
+            nur.hmModules.nur
+            plasma-manager.homeManagerModules.plasma-manager
+          ];
+        in
+        {
+          "cnelson@loki".modules = home-modules;
+          "yaro@deimos".modules = home-modules;
+          "yaro@europa".modules = home-modules;
+          "yaro@io".modules = home-modules;
+          "yaro@loki".modules = home-modules;
+          "yaro@gwyn".modules = home-modules;
+          "yaro@gwynix".modules = home-modules;
+          "yaro@phobos".modules = home-modules;
+          "yaro@titan".modules = home-modules;
+        };
     };
 }
 

@@ -6,9 +6,10 @@ with config.home-manager.users;
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 
-in {
+in
+{
   age = {
-    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
+    identityPaths = [ "/persistent/etc/ssh/ssh_host_ed25519_key" ];
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
@@ -33,7 +34,7 @@ in {
     };
   };
 
-  boot.supportedFilesystems = ["ntfs"];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   hardware.bluetooth = {
     enable = true;
@@ -50,13 +51,15 @@ in {
     printing = enabled;
     rstudio-server = {
       enable = true;
-      package = pkgs.rstudioServerWrapper.override { packages = with pkgs.rPackages;
-      [
-        ggplot2
-        Rcpp
-        readxl
-        tidyverse
-      ]; };
+      package = pkgs.rstudioServerWrapper.override {
+        packages = with pkgs.rPackages;
+          [
+            ggplot2
+            Rcpp
+            readxl
+            tidyverse
+          ];
+      };
     };
   };
 
@@ -114,32 +117,34 @@ in {
         {
           name = "survey";
           serverType = "custom";
-          extraConfig = let
-            kfile = pkgs.writeText "surveykey" "DBA5FA2FFFB8FC1109BA9CCCBFA3F583";
-            nfile = pkgs.writeText "surveynonce" "08BB00BEDAFA705CD51E09DF";
-          in {
-            services = {
-              limesurvey = {
-                enable = true;
-                encryptionKeyFile = kfile;
-                encryptionNonceFile = nfile;
-                virtualHost = {
-                  hostName = "survey.kasear.net";
-                  adminAddr = "webmaster.survey@kasear.net";
+          extraConfig =
+            let
+              kfile = pkgs.writeText "surveykey" "DBA5FA2FFFB8FC1109BA9CCCBFA3F583";
+              nfile = pkgs.writeText "surveynonce" "08BB00BEDAFA705CD51E09DF";
+            in
+            {
+              services = {
+                limesurvey = {
+                  enable = true;
+                  encryptionKeyFile = kfile;
+                  encryptionNonceFile = nfile;
+                  virtualHost = {
+                    hostName = "survey.kasear.net";
+                    adminAddr = "webmaster.survey@kasear.net";
+                  };
+                };
+                mysql = {
+                  enable = true;
+                  package = pkgs.mariadb;
+                  dataDir = "/var/lib/mysql";
                 };
               };
-              mysql = {
-                enable = true;
-                package = pkgs.mariadb;
-                dataDir = "/var/lib/mysql";
+
+              users = {
+                users.limesurvey.uid = 3456;
+                groups.limesurvey.gid = 3456;
               };
             };
-
-            users = {
-              users.limesurvey.uid = 3456;
-              groups.limesurvey.gid = 3456;
-            };
-          };
         }
       ];
     };
@@ -155,6 +160,6 @@ in {
       isNormalUser = true;
       shell = pkgs.zsh;
     };
-    yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+    yaro.extraGroups = [ "video" "audio" "lp" "gamemode" ];
   };
 }

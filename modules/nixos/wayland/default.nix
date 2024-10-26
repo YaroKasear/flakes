@@ -1,15 +1,17 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 with lib.united;
 let
   cfg = config.united.wayland;
-in {
+in
+{
   options.united.wayland = {
     enable = mkEnableOption "Wayland";
     compositor = mkOption {
       type = types.enum [
         "plasma"
+        "sway"
         "wayfire"
       ];
       default = "plasma";
@@ -26,6 +28,10 @@ in {
           wf-shell
           wayfire-plugins-extra
         ];
+      };
+      sway = mkIf (cfg.compositor == "sway") {
+        enable = true;
+        wrapperFeatures.gtk = true;
       };
     };
 

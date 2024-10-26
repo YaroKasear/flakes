@@ -10,7 +10,8 @@ let
   breakupString = s: strings.splitString "" s;
 
   spaceString = s: strings.concatMapStrings (x: " " + x) (breakupString s);
-in {
+in
+{
   options.united.common = {
     enable = mkEnableOption "Common";
     splash = mkEnableOption "Boot splash";
@@ -52,8 +53,11 @@ in {
       };
       plymouth = {
         enable = cfg.splash;
-        themePackages = with pkgs; [(catppuccin-plymouth.override{ variant = "mocha"; })];
-        theme = "catppuccin-mocha";
+        themePackages = with pkgs; [
+          (catppuccin-plymouth.override { variant = "mocha"; })
+          config.nur.repos.abszero.plymouth-themes
+        ];
+        theme = "green_blocks";
       };
     };
 
@@ -110,7 +114,10 @@ in {
         min-free = ${toString (1024 * 1024 * 1024)}
         max-free = ${toString (5 * 1024 * 1024 * 1024)}
       '';
-      settings.auto-optimise-store = true;
+      settings = {
+        auto-optimise-store = true;
+        trusted-users = [ "yaro" ];
+      };
     };
 
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
@@ -171,7 +178,7 @@ in {
           description = config.home-manager.users.yaro.united.user.fullName;
           home = config.home-manager.users.yaro.united.user.directories.home;
           isNormalUser = true;
-          extraGroups = ["wheel" "systemd-journal" "yaro"];
+          extraGroups = [ "wheel" "systemd-journal" "yaro" ];
           shell = pkgs.zsh;
           hashedPasswordFile = mkDefault config.age.secrets.yaro-password.path;
           openssh.authorizedKeys.keys = [

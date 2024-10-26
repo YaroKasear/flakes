@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.loki;
-in {
+in
+{
   options.united.loki = {
     enable = mkEnableOption "Common configuration for Loki.";
   };
@@ -21,7 +22,7 @@ in {
           "usbhid"
           "xhci_pci"
         ];
-        supportedFilesystems = ["nfs" "nfs4"];
+        supportedFilesystems = [ "nfs" "nfs4" ];
       };
       kernelModules = [
         "nvidia-uvm"
@@ -55,7 +56,7 @@ in {
       gpm = enabled;
       pcscd = {
         enable = true;
-        plugins = [ pkgs.stable.ccid ];
+        # plugins = [ pkgs.stable.ccid ];
       };
     };
 
@@ -73,7 +74,7 @@ in {
       networks = {
         "20-main" = {
           matchConfig.Name = "enp9s0";
-          vlan = ["vlan30"];
+          vlan = [ "vlan30" ];
           networkConfig = {
             DHCP = "ipv4";
             LinkLocalAddressing = false;
