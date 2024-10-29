@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.plasma;
-in {
+in
+{
   options.united.plasma = {
     enable = mkEnableOption "Plasma";
   };
@@ -33,24 +34,24 @@ in {
       }
     '';
 
-    environment.systemPackages = with pkgs; [catppuccin-sddm-corners];
+    environment.systemPackages = with pkgs; [ catppuccin-sddm-corners ];
 
     security.pam.services.login.rules.auth.kwallet.order = config.security.pam.services.login.rules.auth.u2f.order - 20;
 
     services = {
-        displayManager = {
-          sddm = {
-            enable = true;
-            package = mkForce pkgs.libsForQt5.sddm;
-            wayland = enabled;
-            settings = {
-              General.Numlock = "on";
-            };
-            extraPackages = pkgs.lib.mkForce [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
-            theme = "catppuccin-sddm-corners";
+      displayManager = {
+        sddm = {
+          enable = true;
+          package = mkForce pkgs.libsForQt5.sddm;
+          wayland = enabled;
+          settings = {
+            General.Numlock = "on";
           };
-          defaultSession = "plasma";
+          extraPackages = pkgs.lib.mkForce [ pkgs.libsForQt5.qt5.qtgraphicaleffects ];
+          theme = "catppuccin-sddm-corners";
         };
+        defaultSession = "plasma";
+      };
       desktopManager.plasma6 = {
         enable = true;
         enableQt5Integration = true;

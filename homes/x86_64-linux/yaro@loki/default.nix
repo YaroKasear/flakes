@@ -155,6 +155,7 @@ with lib.united;
       gimp
       handbrake
       makemkv
+      prismlauncher
       mosquitto
       skypeforlinux
       tailwindcss

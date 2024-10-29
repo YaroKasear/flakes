@@ -162,4 +162,6 @@ in
     };
     yaro.extraGroups = [ "video" "audio" "lp" "gamemode" ];
   };
+
+  united.minecraft = enabled;
 }
