@@ -71,6 +71,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-rice.url = "github:bertof/nix-rice?rev=dddd03ed3c5e05c728b0df985f7af905b002f588";
 
     nixvim = {
@@ -136,6 +141,7 @@
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
+          nix-minecraft.nixosModules.minecraft-servers
           nur.nixosModules.nur
           lix-module.nixosModules.default
         ];
