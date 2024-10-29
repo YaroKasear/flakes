@@ -6,22 +6,23 @@ with config.home-manager.users;
 
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
-in {
+in
+{
   age = {
-    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
+    identityPaths = [ "/persistent/etc/ssh/ssh_host_ed25519_key" ];
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBR7FHCr/xnQhQ0eeU14MoH78bF1XQwhA34juRFC9S3A";
     };
     secrets = {
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
       wireguard-key =
-      {
-        rekeyFile = secrets-directory + "wireguard-key";
-        path = "/var/wg-key";
-        owner = "systemd-network";
-        mode = "400";
-        symlink = false;
-      };
+        {
+          rekeyFile = secrets-directory + "wireguard-key";
+          path = "/var/wg-key";
+          owner = "systemd-network";
+          mode = "400";
+          symlink = false;
+        };
     };
   };
 
@@ -36,14 +37,14 @@ in {
     };
     wg-quick.interfaces = {
       wg0 = {
-        address = ["10.60.10.1/32"];
-        dns = ["10.10.0.1" "10.0.0.1"];
+        address = [ "10.60.10.1/32" ];
+        dns = [ "10.10.0.1" "10.0.0.1" ];
         privateKeyFile = config.age.secrets.wireguard-key.path;
 
         peers = [
           {
             publicKey = "ycvzU34e3KpPadkwkNYFpq2R1n2IkqWbs8ZDBo8NA3c=";
-            allowedIPs = ["0.0.0.0/0" "::/0"];
+            allowedIPs = [ "0.0.0.0/0" "::/0" ];
             endpoint = "45.79.35.167:2001";
             persistentKeepalive = 25;
           }
@@ -126,6 +127,7 @@ in {
     deimos-mounts = enabled;
     emby = disabled;
     jellyfin = enabled;
+    minecraft = enabled;
     nextcloud = enabled;
     nginx-default = enabled;
     nginx-proxy = enabled;
@@ -151,98 +153,98 @@ in {
       localAddress = "192.168.1.18";
 
       config = { pkgs, ... }:
-      {
-        services.nginx = {
-          enable = true;
-          recommendedOptimisation = true;
-          virtualHosts."prime.kasear.net".locations."/".root = "/etc/prime";
-        };
-
-        networking = {
-          firewall = {
+        {
+          services.nginx = {
             enable = true;
-            allowedTCPPorts = [ 80 ];
+            recommendedOptimisation = true;
+            virtualHosts."prime.kasear.net".locations."/".root = "/etc/prime";
           };
-        };
 
-        environment.etc = {
-          "prime/index.html".text = ''
-            <!doctype html>
-            <html lang="en">
+          networking = {
+            firewall = {
+              enable = true;
+              allowedTCPPorts = [ 80 ];
+            };
+          };
 
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <title>Is it Prime?</title>
-              <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-              <style>
-                body,
-                html {
-                  height: 100vh;
-                  transition: background-color .5s;
-                }
+          environment.etc = {
+            "prime/index.html".text = ''
+              <!doctype html>
+              <html lang="en">
 
-                .btn {
-                  transition: all .5s;
-                }
-              </style>
-            </head>
-
-            <body>
-              <div class="container d-flex flex-column justify-content-center h-100">
-                <div class="border shadow-sm p-3 rounded bg-light">
-                  <div class="input-group input-group-sm">
-                    <span class="input-group-text user-select-none">Input Number</span>
-                    <input type="number" class="form-control shadow-none" id="numberBox" placeholder="Number!" oninput="numUpdate()" autocomplete="off">
-                    <button class="btn btn-primary disabled" id="primeButton" onclick="checkPrime()">Is it prime?</button>
-                  </div>
-                </div>
-              </div>
-              <script src="bootstrap/js/bootstrap.min.js"></script>
-              <script>
-                const $ = document.querySelector.bind(document);
-
-                function numUpdate() {
-                  let numberBox = $('#numberBox');
-                  let primeButton = $('#primeButton');
-
-                  if (!numberBox.value) {
-                    primeButton.classList.add('disabled');
-                  } else {
-                    primeButton.classList.remove('disabled');
+              <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <title>Is it Prime?</title>
+                <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+                <style>
+                  body,
+                  html {
+                    height: 100vh;
+                    transition: background-color .5s;
                   }
 
-                  if (numberBox.value < 0) numberBox.value = 0;
-                }
+                  .btn {
+                    transition: all .5s;
+                  }
+                </style>
+              </head>
 
-                function checkPrime() {
-                  let body = $('body');
-                  let numberBox = $('#numberBox');
-                  let bPrime = isPrime(numberBox.value);
+              <body>
+                <div class="container d-flex flex-column justify-content-center h-100">
+                  <div class="border shadow-sm p-3 rounded bg-light">
+                    <div class="input-group input-group-sm">
+                      <span class="input-group-text user-select-none">Input Number</span>
+                      <input type="number" class="form-control shadow-none" id="numberBox" placeholder="Number!" oninput="numUpdate()" autocomplete="off">
+                      <button class="btn btn-primary disabled" id="primeButton" onclick="checkPrime()">Is it prime?</button>
+                    </div>
+                  </div>
+                </div>
+                <script src="bootstrap/js/bootstrap.min.js"></script>
+                <script>
+                  const $ = document.querySelector.bind(document);
 
-                  body.classList.remove(bPrime ? "bg-danger" : "bg-success");
-                  body.classList.add(bPrime ? "bg-success" : "bg-danger");
-                }
+                  function numUpdate() {
+                    let numberBox = $('#numberBox');
+                    let primeButton = $('#primeButton');
 
-                function isPrime(n) {
-                  if (n < 2) return false;
-                  if (n == 2) return true;
+                    if (!numberBox.value) {
+                      primeButton.classList.add('disabled');
+                    } else {
+                      primeButton.classList.remove('disabled');
+                    }
 
-                  for (let i = 2; i <= Math.sqrt(n); ++i)
-                    if (n % i == 0) return false;
+                    if (numberBox.value < 0) numberBox.value = 0;
+                  }
 
-                  return true;
-                }
-              </script>
-            </body>
+                  function checkPrime() {
+                    let body = $('body');
+                    let numberBox = $('#numberBox');
+                    let bPrime = isPrime(numberBox.value);
 
-            </html>
-          '';
-          "prime/bootstrap".source = "${pkgs.twitterBootstrap}";
-      };
+                    body.classList.remove(bPrime ? "bg-danger" : "bg-success");
+                    body.classList.add(bPrime ? "bg-success" : "bg-danger");
+                  }
 
-        system.stateVersion = "24.05";
-      };
+                  function isPrime(n) {
+                    if (n < 2) return false;
+                    if (n == 2) return true;
+
+                    for (let i = 2; i <= Math.sqrt(n); ++i)
+                      if (n % i == 0) return false;
+
+                    return true;
+                  }
+                </script>
+              </body>
+
+              </html>
+            '';
+            "prime/bootstrap".source = "${pkgs.twitterBootstrap}";
+          };
+
+          system.stateVersion = "24.05";
+        };
     };
     nginx-proxy.config.services.nginx.virtualHosts."prime.kasear.net" = network.create-proxy {
       host = "192.168.1.18";

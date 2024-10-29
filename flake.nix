@@ -65,6 +65,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-minecraft = {
+      url = "github:Infinidoge/nix-minecraft";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-rice.url = "github:bertof/nix-rice";
 
     nixvim = {
@@ -132,6 +137,7 @@
           nix-gaming.nixosModules.pipewireLowLatency
           nur.nixosModules.nur
           lix-module.nixosModules.default
+          nix-minecraft.nixosModules.minecraft-servers
         ];
         hosts.loki.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
@@ -148,25 +154,27 @@
         ];
       };
 
-      homes.users = let
-        home-modules = with inputs; [
-          impermanence.nixosModules.home-manager.impermanence
-          nix-index-database.hmModules.nix-index
-          nixvim.homeManagerModules.nixvim
-          nur.hmModules.nur
-          plasma-manager.homeManagerModules.plasma-manager
-        ];
-      in {
-        "cnelson@loki".modules = home-modules;
-        "yaro@deimos".modules = home-modules;
-        "yaro@europa".modules = home-modules;
-        "yaro@io".modules = home-modules;
-        "yaro@loki".modules = home-modules;
-        "yaro@gwyn".modules = home-modules;
-        "yaro@gwynix".modules = home-modules;
-        "yaro@phobos".modules = home-modules;
-        "yaro@titan".modules = home-modules;
-      };
+      homes.users =
+        let
+          home-modules = with inputs; [
+            impermanence.nixosModules.home-manager.impermanence
+            nix-index-database.hmModules.nix-index
+            nixvim.homeManagerModules.nixvim
+            nur.hmModules.nur
+            plasma-manager.homeManagerModules.plasma-manager
+          ];
+        in
+        {
+          "cnelson@loki".modules = home-modules;
+          "yaro@deimos".modules = home-modules;
+          "yaro@europa".modules = home-modules;
+          "yaro@io".modules = home-modules;
+          "yaro@loki".modules = home-modules;
+          "yaro@gwyn".modules = home-modules;
+          "yaro@gwynix".modules = home-modules;
+          "yaro@phobos".modules = home-modules;
+          "yaro@titan".modules = home-modules;
+        };
     };
 }
 
