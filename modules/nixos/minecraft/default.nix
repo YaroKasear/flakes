@@ -1,4 +1,4 @@
-{ lib, config, pkgs, inputs, ... }:
+{ lib, config, inputs, ... }:
 
 with lib;
 with lib.united;
@@ -7,31 +7,57 @@ let
 in
 {
   options.united.minecraft = {
-    enable = mkEnableOption "minecraft";
+    enable = mkEnableOption "Minecraft";
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+    containers = {
+      "minecraft-creative" = {
+        autoStart = true;
+        specialArgs = { inherit inputs; };
+        config = { config, inputs, pkgs, ... }: {
+          imports = [
+            inputs.nix-minecraft.nixosModules.minecraft-servers
+          ];
 
-    services.minecraft-servers = {
-      enable = true;
-      eula = true;
-      openFirewall = true;
-      servers = {
-        creative = {
-          enable = true;
-          package = pkgs.papermcServers.papermc;
-          whitelist = {
-            YaroKasear = "92f74cef-4495-491a-a0e0-d2f9806022d3";
+          nixpkgs = {
+            overlays = [ inputs.nix-minecraft.overlay ];
+            config.allowUnfree = true;
           };
-          serverProperties = {
-            force-gamemode = true;
-            gamemode = 0;
-            server-port = 25567;
-            white-list = true;
+
+          services.minecraft-servers = {
+            enable = true;
+            eula = true;
+            openFirewall = true;
+            servers = {
+              creative = {
+                enable = true;
+                autoStart = true;
+                package = inputs.nix-minecraft.packages.x86_64-linux.paper-server;
+                whitelist = {
+                  YaroKasear = "92f74cef-4495-491a-a0e0-d2f9806022d3";
+                };
+                serverProperties = {
+                  force-gamemode = true;
+                  gamemode = 1;
+                  white-list = true;
+                };
+              };
+              # proxy = {
+              #   enable = true;
+              #   package = pkgs.velocityServers.velocity;
+              # };
+            };
           };
+
+          system.stateVersion = "24.05";
         };
       };
     };
+
+    networking.firewall.allowedTCPPortRanges = [{
+      from = 25001;
+      to = 25000;
+    }];
   };
 }
