@@ -5,7 +5,8 @@ with lib.united;
 let
   cfg = config.united.loki-mounts;
 
-in {
+in
+{
   options.united.loki-mounts = {
     enable = mkEnableOption "loki-mounts";
   };
@@ -57,6 +58,11 @@ in {
       };
       "/mnt/containers" = {
         device = "storage.kasear.net:/mnt/data/containers";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
+      };
+      "/mnt/servers" = {
+        device = "storage.kasear.net:/mnt/data/server";
         fsType = "nfs";
         options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" "_netdev" ];
       };

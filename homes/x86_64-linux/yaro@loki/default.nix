@@ -181,6 +181,7 @@ with lib.united;
           "${config-directory}/skypeforlinux"
           "${config-directory}/StardewValley/Saves"
           "${config-directory}/discord"
+          "${data-directory}/PrismLauncher"
           "${data-directory}/protonmail"
           "${data-directory}/TelegramDesktop"
           {

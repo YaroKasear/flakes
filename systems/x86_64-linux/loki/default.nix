@@ -154,13 +154,16 @@ in
 
   snowfallorg.users.cnelson.admin = false;
 
-  users.users = {
-    cnelson = {
-      hashedPasswordFile = config.age.secrets.cnelson-password.path;
-      isNormalUser = true;
-      shell = pkgs.zsh;
+  users = {
+    users = {
+      cnelson = {
+        hashedPasswordFile = config.age.secrets.cnelson-password.path;
+        isNormalUser = true;
+        shell = pkgs.zsh;
+      };
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" ];
     };
-    yaro.extraGroups = [ "video" "audio" "lp" "gamemode" ];
+    groups.minecraft.gid = 3007;
   };
 
   united.minecraft = enabled;
