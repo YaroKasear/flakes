@@ -49,6 +49,10 @@ let
         url = "https://mediafilez.forgecdn.net/files/5485/417/craftbook-3.10.11.jar";
         sha256 = "vgZ9epujY0lBhpe7LnE6rRSjFVlnHH2vZNB0klpjp0g=";
       };
+      PCGF_PluginLib = pkgs.fetchurl {
+        url = "https://ci.pcgamingfreaks.at/job/PluginLib/lastStableBuild/artifact/target/PCGF_PluginLib-1.0.39.7-SNAPSHOT.jar";
+        sha256 = "RxIHOUjonp3szNZQCoLOx2rINW7UpaMyHT6a/QaiUpY=";
+      };
     });
 
   whiteList = {
