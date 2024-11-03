@@ -161,9 +161,10 @@ in
         isNormalUser = true;
         shell = pkgs.zsh;
       };
-      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" ];
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
     };
     groups.minecraft.gid = 3007;
+    groups.acme.gid = 3003;
   };
 
   united.minecraft = enabled;
