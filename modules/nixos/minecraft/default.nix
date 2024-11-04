@@ -98,7 +98,8 @@ in
               creative = {
                 enable = true;
                 autoStart = true;
-                package = inputs.nix-minecraft.packages.x86_64-linux.paper-server;
+                # package = inputs.nix-minecraft.packages.x86_64-linux.paper-server;
+                package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                 whitelist = whiteList;
                 serverProperties = {
                   gamemode = 1;
@@ -154,7 +155,7 @@ in
               survival = {
                 enable = true;
                 autoStart = true;
-                package = inputs.nix-minecraft.packages.x86_64-linux.paper-server;
+                package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                 whitelist = whiteList;
                 serverProperties = {
                   gamemode = 0;

@@ -6,9 +6,10 @@ with config.home-manager.users;
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 
-in {
+in
+{
   age = {
-    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
+    identityPaths = [ "/persistent/etc/ssh/ssh_host_ed25519_key" ];
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ117s7oMUXt8PUsb5hlkbyGCdYgSHXdeaq7GQhFi5z7";
     };
@@ -32,7 +33,7 @@ in {
     };
   };
 
-  boot.supportedFilesystems = ["ntfs"];
+  boot.supportedFilesystems = [ "ntfs" ];
 
   hardware.bluetooth = {
     enable = true;
@@ -49,13 +50,15 @@ in {
     printing = enabled;
     rstudio-server = {
       enable = true;
-      package = pkgs.rstudioServerWrapper.override { packages = with pkgs.rPackages;
-      [
-        ggplot2
-        Rcpp
-        readxl
-        tidyverse
-      ]; };
+      package = pkgs.rstudioServerWrapper.override {
+        packages = with pkgs.rPackages;
+          [
+            ggplot2
+            Rcpp
+            readxl
+            tidyverse
+          ];
+      };
     };
   };
 
@@ -121,6 +124,6 @@ in {
       isNormalUser = true;
       shell = pkgs.zsh;
     };
-    yaro.extraGroups = ["video" "audio" "lp" "gamemode"];
+    yaro.extraGroups = [ "video" "audio" "lp" "gamemode" ];
   };
 }
