@@ -53,6 +53,10 @@ let
         url = "https://ci.pcgamingfreaks.at/job/PluginLib/lastStableBuild/artifact/target/PCGF_PluginLib-1.0.39.7-SNAPSHOT.jar";
         sha256 = "RxIHOUjonp3szNZQCoLOx2rINW7UpaMyHT6a/QaiUpY=";
       };
+      CodeBots = pkgs.fetchurl {
+        url = "https://hangarcdn.papermc.io/plugins/alantr7/CodeBots/versions/0.1.2/PAPER/CodeBots-0.1.2.jar";
+        sha256 = "ZKMTFpvDCSpwBg8fym5eGko4w6MpAk8tgarx1BvN21U=";
+      };
     });
 
   whiteList = {
