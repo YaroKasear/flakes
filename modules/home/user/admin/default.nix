@@ -45,8 +45,8 @@ in
           ssh = "kitten ssh";
           load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
           upgrade-system = "nix flake update ${config.united.user.directories.home}/flakes/# && flake boot ${config.united.user.directories.home}/flakes/#";
-          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
-          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff --color always | less";
+          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd --color=always diff | less";
         };
       };
       vscode = mkIf config.united.vscode.enable {
