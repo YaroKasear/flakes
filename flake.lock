@@ -212,11 +212,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1731060864,
-        "narHash": "sha256-aYE7oAYZ+gPU1mPNhM0JwLAQNgjf0/JK1BF1ln2KBgk=",
+        "lastModified": 1731274291,
+        "narHash": "sha256-cZ0QMpv5p2a6WEE+o9uu0a4ma6RzQDOQTbm7PbixWz8=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "5e40e02978e3bd63c2a6a9fa6fa8ba0e310e747f",
+        "rev": "486250f404f4a4f4f33f8f669d83ca5f6e6b7dfc",
         "type": "github"
       },
       "original": {
@@ -828,11 +828,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730837930,
-        "narHash": "sha256-0kZL4m+bKBJUBQse0HanewWO0g8hDdCvBhudzxgehqc=",
+        "lastModified": 1731235328,
+        "narHash": "sha256-NjavpgE9/bMe/ABvZpyHIUeYF1mqR5lhaep3wB79ucs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2f607e07f3ac7e53541120536708e824acccfaa8",
+        "rev": "60bb110917844d354f3c18e05450606a435d2d10",
         "type": "github"
       },
       "original": {
@@ -904,11 +904,11 @@
     "lix": {
       "flake": false,
       "locked": {
-        "lastModified": 1731235488,
-        "narHash": "sha256-RMv1RqyGy88LnKx3XWqVuKlTxdZW6oB4K72LdndM2ZM=",
-        "rev": "d1d96cc4c8bd661a65c6159039a9d7e7e8fdf771",
+        "lastModified": 1731334117,
+        "narHash": "sha256-GoddkPg0/UDv06KcQJiOYP/2IzruYorbI03QRCjN3K8=",
+        "rev": "8a9094303bc7873c979e54ea20b9f50464ee3965",
         "type": "tarball",
-        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/d1d96cc4c8bd661a65c6159039a9d7e7e8fdf771.tar.gz?rev=d1d96cc4c8bd661a65c6159039a9d7e7e8fdf771"
+        "url": "https://git.lix.systems/api/v1/repos/lix-project/lix/archive/8a9094303bc7873c979e54ea20b9f50464ee3965.tar.gz?rev=8a9094303bc7873c979e54ea20b9f50464ee3965"
       },
       "original": {
         "type": "tarball",
@@ -1048,11 +1048,11 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1730919458,
-        "narHash": "sha256-yMO0T0QJlmT/x4HEyvrCyigGrdYfIXX3e5gWqB64wLg=",
+        "lastModified": 1731332224,
+        "narHash": "sha256-0ctfVp27ingWtY7dbP5+QpSQ98HaOZleU0teyHQUAw0=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "e1cc1f6483393634aee94514186d21a4871e78d7",
+        "rev": "184687ae1a3139faa4746168baf071f60d0310c8",
         "type": "github"
       },
       "original": {
@@ -1199,11 +1199,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1731155487,
-        "narHash": "sha256-+D57j7BcV5O3XH9za3c3XXVLHr+F+enThAN2EeF6H/M=",
+        "lastModified": 1731320643,
+        "narHash": "sha256-c8xUQooqorHg9drXUMYm8mcgHGOQr9eIpixc50OeQxI=",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "31364af1990067d5529846a2ebf17a42c5ab22ff",
+        "rev": "de2a7944d0f2b87a1836a671f8eab372039e70f7",
         "type": "github"
       },
       "original": {
@@ -1214,11 +1214,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1731253523,
-        "narHash": "sha256-b1/4ZL34f8SQPEEeewXFBxl4fGGEoLqdgxUF+OqI6AU=",
+        "lastModified": 1731336490,
+        "narHash": "sha256-hoH/MuM9TDJgxFt2HeHWiF2NOSxSYH7ImFpRvivJkfA=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "5103d0ba9b445d72f0298f1d8c6eabb0cde1d69c",
+        "rev": "7a90da52e605c22684cedc506e02d574042baa72",
         "type": "github"
       },
       "original": {
