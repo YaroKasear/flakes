@@ -7,7 +7,7 @@
       {
         users = {
           yaro = {
-            acl = ["readwrite #"];
+            acl = [ "readwrite #" ];
             hashedPasswordFile = "/var/yaro-password";
           };
           nodered = {
@@ -17,14 +17,14 @@
             ];
           };
           homeassistant = {
-            acl = [];
+            acl = [ ];
           };
           tasker = {
-            acl = [];
+            acl = [ ];
           };
         };
       }
     ];
   };
-  system.stateVersion = "24.05";
+  system.stateVersion = "unstable";
 }

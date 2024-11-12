@@ -167,5 +167,5 @@ in
     groups.acme.gid = 3003;
   };
 
-  # united.minecraft = enabled;
+  united.minecraft = disabled;
 }

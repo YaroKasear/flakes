@@ -8,7 +8,8 @@ let
   app = "vikali";
   dataDir = "/srv/www/root";
   domain = "${app}.kasear.net";
-in {
+in
+{
   options.united.apache-vikali = {
     enable = mkEnableOption "apache-vikali";
   };
@@ -99,7 +100,7 @@ in {
     #       groups.${app}.gid = 1002;
     #     };
 
-    #     system.stateVersion = "24.05";
+    #     system.stateVersion = "unstable";
     #   };
     #   bindMounts."${dataDir}" = {
     #     hostPath = "/mnt/${domain}";

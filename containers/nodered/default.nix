@@ -15,5 +15,5 @@
     groups.node-red.gid = 2000;
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "unstable";
 }

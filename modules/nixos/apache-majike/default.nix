@@ -9,7 +9,8 @@ let
   address = "192.168.1.14";
   dataDir = "/srv/www/root";
   domain = "${app}.kasear.net";
-in {
+in
+{
   options.united.apache-majike = {
     enable = mkEnableOption "apache-majike";
   };
@@ -17,7 +18,7 @@ in {
   config = mkIf cfg.enable {
     containers."apache-${app}" = {
       autoStart = true;
-            privateNetwork = true;
+      privateNetwork = true;
       hostAddress = "192.168.1.1";
       localAddress = address;
       config = { ... }: {
@@ -69,7 +70,7 @@ in {
           groups.${app}.gid = 1002;
         };
 
-        system.stateVersion = "24.05";
+        system.stateVersion = "unstable";
       };
       bindMounts."${dataDir}" = {
         hostPath = "/mnt/${domain}";

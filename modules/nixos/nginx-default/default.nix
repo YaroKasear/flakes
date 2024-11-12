@@ -9,7 +9,8 @@ let
   address = "192.168.1.12";
   dataDir = "/srv/www/root";
   domain = "${app}.kasear.net";
-in {
+in
+{
   options.united.nginx-default = {
     enable = mkEnableOption "nginx-default";
   };
@@ -18,33 +19,33 @@ in {
     containers = {
       "nginx-${app}" = {
         autoStart = true;
-                privateNetwork = true;
+        privateNetwork = true;
         hostAddress = "192.168.1.1";
         localAddress = address;
 
         config = { pkgs, ... }:
-        {
-          services = {
-            nginx = {
-              enable = true;
-              recommendedOptimisation = true;
-              virtualHosts."_".locations = {
-                "/" = {
-                  root = dataDir;
+          {
+            services = {
+              nginx = {
+                enable = true;
+                recommendedOptimisation = true;
+                virtualHosts."_".locations = {
+                  "/" = {
+                    root = dataDir;
+                  };
                 };
               };
             };
-          };
 
-          networking = {
-            firewall = {
-              enable = true;
-              allowedTCPPorts = [ 80 ];
+            networking = {
+              firewall = {
+                enable = true;
+                allowedTCPPorts = [ 80 ];
+              };
             };
-          };
 
-          system.stateVersion = "24.05";
-        };
+            system.stateVersion = "unstable";
+          };
 
         bindMounts = {
           "/srv/www/root" = {

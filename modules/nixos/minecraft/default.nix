@@ -160,7 +160,7 @@ in
             autoStart = true;
             specialArgs = { inherit inputs; };
             bindMounts = {
-              "/etc/forwarding.secret".hostPath = "/var/forwarding.secret";
+              "/etc/mc-proxy/forwarding.secret".hostPath = "/var/forwarding.secret";
             };
             config = { config, inputs, pkgs, ... }: {
               imports = [
@@ -172,15 +172,23 @@ in
                 config.allowUnfree = true;
               };
 
-              programs.java.enable = true;
+              programs = {
+                java.enable = true;
+                bash.shellAliases.console = "tmux -S /run/mcproxy.sock attach";
+              };
 
               environment = {
                 etc = {
-                  "mc-proxy/start.sh".text = ''
-                    #!/bin/sh
+                  "mc-proxy/start.sh" = {
+                    text = ''
+                      #!/bin/sh
 
-                    java -Xms1G -Xmx1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity*.jar
-                  '';
+                      ${pkgs.tmux}/bin/tmux -S /run/mcproxy.sock new -d java -Xms1G -Xmx1G -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar velocity*.jar
+                      ${pkgs.tmux}/bin/tmux -S /run/mcproxy.sock server-access -aw nobody
+                      ${pkgs.coreutils}/bin/chmod 660 /run/mcproxy.sock
+                    '';
+                    mode = "0700";
+                  };
                   "mc-proxy/velocity.toml" = {
                     source = proxy-config;
                     mode = "0600";
@@ -188,6 +196,32 @@ in
                   "mc-proxy/velocity.jar".source = "${inputs.nix-minecraft.packages.x86_64-linux.velocity-server}/lib/minecraft/server.jar";
                 };
                 systemPackages = [ pkgs.tmux ];
+              };
+
+              systemd.services.mcproxy = {
+                path = [ config.programs.java.package ];
+                script = ''
+                  cd /etc/mc-proxy
+                  ./start.sh
+                '';
+                preStop = ''
+                  function server_running {
+                    ${pkgs.tmux}/bin/tmux -S /run/mcproxy.sock has-session
+                  }
+
+                  if ! server_running ; then
+                    exit 0
+                  fi
+
+                  ${pkgs.tmux}/bin/tmux -S /run/mcproxy.sock send-keys shutdown Enter
+
+                  while server_running; do sleep 1s; done
+                '';
+                serviceConfig = {
+                  Type = "forking";
+                  GuessMainPID = true;
+                };
+                wantedBy = [ "multi-user.target" ];
               };
 
               users = {
@@ -199,7 +233,7 @@ in
                 groups.minecraft.gid = 3007;
               };
 
-              system.stateVersion = "24.05";
+              system.stateVersion = "unstable";
             };
           };
 
@@ -237,6 +271,13 @@ in
                   package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                   whitelist = whiteList;
                   files."config/paper-global.yml" = paper-config;
+                  extraStartPre = ''
+                    mkdir -p /srv/minecraft/creative/plugins
+
+                    for plugin in /srv/minecraft/creative/mods/*.jar; do
+                      ln -sf "$plugin" /srv/minecraft/creative/plugins/
+                    done
+                  '';
                   serverProperties = {
                     gamemode = 1;
                     motd = "\\u00A7cHeartbeat\\u00A7r Communications \\u00A7n\\u00A7aCreative \\u00A7rWorld";
@@ -248,9 +289,7 @@ in
               };
             };
 
-            programs.bash.shellAliases = {
-              console = "tmux -S /run/minecraft/creative.sock attach";
-            };
+            programs.bash.shellAliases.console = "tmux -S /run/minecraft/creative.sock attach";
 
             users = {
               users.minecraft = {
@@ -261,7 +300,7 @@ in
               groups.minecraft.gid = 3007;
             };
 
-            system.stateVersion = "24.05";
+            system.stateVersion = "unstable";
           };
         };
         survival = {
@@ -297,6 +336,13 @@ in
                   package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                   whitelist = whiteList;
                   files."config/paper-global.yml" = paper-config;
+                  extraStartPre = ''
+                    mkdir -p /srv/minecraft/survival/plugins
+
+                    for plugin in /srv/minecraft/survival/mods/*.jar; do
+                      ln -sf "$plugin" /srv/minecraft/survival/plugins/
+                    done
+                  '';
                   serverProperties = {
                     gamemode = 0;
                     motd = "\\u00A7cHeartbeat\\u00A7r Communications \\u00A7n\\u00A79Survival \\u00A7rWorld";
@@ -309,9 +355,7 @@ in
               };
             };
 
-            programs.bash.shellAliases = {
-              console = "tmux -S /run/minecraft/survival.sock attach";
-            };
+            programs.bash.shellAliases.console = "tmux -S /run/minecraft/survival.sock attach";
 
             users = {
               users.minecraft = {
@@ -322,7 +366,7 @@ in
               groups.minecraft.gid = 3007;
             };
 
-            system.stateVersion = "24.05";
+            system.stateVersion = "unstable";
           };
         };
         lobby =
@@ -359,6 +403,13 @@ in
                     package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                     whitelist = whiteList;
                     files."config/paper-global.yml" = paper-config;
+                    extraStartPre = ''
+                      mkdir -p /srv/minecraft/lobby/plugins
+
+                      for plugin in /srv/minecraft/lobby/mods/*.jar; do
+                        ln -sf "$plugin" /srv/minecraft/lobby/plugins/
+                      done
+                    '';
                     serverProperties = {
                       difficulty = 0;
                       gamemode = 2;
@@ -377,9 +428,7 @@ in
                 };
               };
 
-              programs.bash.shellAliases = {
-                console = "tmux -S /run/minecraft/lobby.sock attach";
-              };
+              programs.bash.shellAliases.console = "tmux -S /run/minecraft/lobby.sock attach";
 
               users = {
                 users.minecraft = {
@@ -390,15 +439,12 @@ in
                 groups.minecraft.gid = 3007;
               };
 
-              system.stateVersion = "24.05";
+              system.stateVersion = "unstable";
             };
           };
       };
 
-    networking.firewall.allowedTCPPorts = [
-      25000
-      25001
-    ];
+    networking.firewall.allowedTCPPorts = [ 25565 ];
 
     users = {
       users.minecraft = {
