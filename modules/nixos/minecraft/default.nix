@@ -91,6 +91,16 @@ in
         path = "/var/secrets-file";
         symlink = false;
       };
+      "dbscript" = {
+        rekeyFile = secrets-directory + "dbscript.age";
+        path = "/var/dbscript";
+        symlink = false;
+      };
+      "proxy-luckperms-config.yml" = {
+        rekeyFile = secrets-directory + "proxy-luckperms-config.yml.age";
+        path = "/var/proxy-luckperms-config.yml";
+        symlink = false;
+      };
     };
 
     containers =
@@ -161,6 +171,8 @@ in
             specialArgs = { inherit inputs; };
             bindMounts = {
               "/etc/mc-proxy/forwarding.secret".hostPath = "/var/forwarding.secret";
+              "/etc/mc-proxy/dbscript".hostPath = "/var/dbscript";
+              "/etc/mc-proxy/plugins/luckperms/config.yml".hostPath = "/var/proxy-luckperms-config.yml";
             };
             config = { config, inputs, pkgs, ... }: {
               imports = [
@@ -194,8 +206,26 @@ in
                     mode = "0600";
                   };
                   "mc-proxy/velocity.jar".source = "${inputs.nix-minecraft.packages.x86_64-linux.velocity-server}/lib/minecraft/server.jar";
+                  "mc-proxy/plugins/luckperms.jar".source = pkgs.fetchurl {
+                    url = "https://download.luckperms.net/1561/velocity/LuckPerms-Velocity-5.4.146.jar";
+                    sha256 = "rM2Feew9jJwbw7E2hkEmAOab9zdiLB6jGTbeLgiZFSU=";
+                  };
                 };
                 systemPackages = [ pkgs.tmux ];
+              };
+
+              services.mysql = {
+                enable = true;
+                dataDir = "/var/lib/mysql";
+                ensureDatabases = [ "luckperms" ];
+                ensureUsers = [{
+                  name = "luckperms";
+                  ensurePermissions = {
+                    "luckperms.*" = "ALL PRIVILEGES";
+                  };
+                }];
+                initialScript = "/etc/mc-proxy/dbscript";
+                package = pkgs.mariadb;
               };
 
               systemd.services.mcproxy = {
@@ -270,7 +300,19 @@ in
                   # package = inputs.nix-minecraft.packages.x86_64-linux.paper-server;
                   package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                   whitelist = whiteList;
-                  files."config/paper-global.yml" = paper-config;
+                  files = {
+                    "config/paper-global.yml" = paper-config;
+                    "plugins/LuckPerms/config.yml" = (pkgs.formats.yaml { }).generate "config.yml" {
+                      server = "creative";
+                      storage-method = "mariadb";
+                      data = {
+                        address = "localhost";
+                        database = "luckperms";
+                        username = "luckperms";
+                        password = "@dbsecret@";
+                      };
+                    };
+                  };
                   extraStartPre = ''
                     mkdir -p /srv/minecraft/creative/plugins
 
@@ -335,7 +377,19 @@ in
                   autoStart = true;
                   package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                   whitelist = whiteList;
-                  files."config/paper-global.yml" = paper-config;
+                  files = {
+                    "config/paper-global.yml" = paper-config;
+                    "plugins/LuckPerms/config.yml" = (pkgs.formats.yaml { }).generate "config.yml" {
+                      server = "survival";
+                      storage-method = "mariadb";
+                      data = {
+                        address = "localhost";
+                        database = "luckperms";
+                        username = "luckperms";
+                        password = "@dbsecret@";
+                      };
+                    };
+                  };
                   extraStartPre = ''
                     mkdir -p /srv/minecraft/survival/plugins
 
@@ -402,7 +456,19 @@ in
                     autoStart = true;
                     package = inputs.nix-minecraft.legacyPackages.x86_64-linux.paperServers.paper-1_21_1-build_131;
                     whitelist = whiteList;
-                    files."config/paper-global.yml" = paper-config;
+                    files = {
+                      "config/paper-global.yml" = paper-config;
+                      "plugins/LuckPerms/config.yml" = (pkgs.formats.yaml { }).generate "config.yml" {
+                        server = "lobby";
+                        storage-method = "mariadb";
+                        data = {
+                          address = "localhost";
+                          database = "luckperms";
+                          username = "luckperms";
+                          password = "@dbsecret@";
+                        };
+                      };
+                    };
                     extraStartPre = ''
                       mkdir -p /srv/minecraft/lobby/plugins
 
