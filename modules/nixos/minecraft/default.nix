@@ -55,13 +55,13 @@ let
         url = "https://ci.pcgamingfreaks.at/job/PluginLib/lastStableBuild/artifact/target/PCGF_PluginLib-1.0.39.7-SNAPSHOT.jar";
         sha256 = "RxIHOUjonp3szNZQCoLOx2rINW7UpaMyHT6a/QaiUpY=";
       };
-      CodeBots = pkgs.fetchurl {
-        url = "https://hangarcdn.papermc.io/plugins/alantr7/CodeBots/versions/0.1.2/PAPER/CodeBots-0.1.2.jar";
-        sha256 = "ZKMTFpvDCSpwBg8fym5eGko4w6MpAk8tgarx1BvN21U=";
-      };
       WorldEditSUI = pkgs.fetchurl {
         url = "https://hangarcdn.papermc.io/plugins/kennytv/WorldEditSUI/versions/1.7.4/PAPER/WorldEditSUI-1.7.4.jar";
         sha256 = "cAbPnllEx14bV8wZ3IjtF/wXmg4oNU/aQkqjKpWqw9g=";
+      };
+      Citizens = pkgs.fetchurl {
+        url = "https://ci.citizensnpcs.co/job/citizens2/3583/artifact/dist/target/Citizens-2.0.35-b3583.jar";
+        sha256 = "YUnQOb8iSBw6/rSEvRF4gv38RTcwGWCk799rSipiBls=";
       };
     });
 
@@ -95,6 +95,8 @@ in
         rekeyFile = secrets-directory + "dbscript.age";
         path = "/var/dbscript";
         symlink = false;
+        owner = "84";
+        mode = "400";
       };
       "proxy-luckperms-config.yml" = {
         rekeyFile = secrets-directory + "proxy-luckperms-config.yml.age";
@@ -210,6 +212,14 @@ in
                     url = "https://download.luckperms.net/1561/velocity/LuckPerms-Velocity-5.4.146.jar";
                     sha256 = "rM2Feew9jJwbw7E2hkEmAOab9zdiLB6jGTbeLgiZFSU=";
                   };
+                  "mc-proxy/plugins/viaversion.jar".source = pkgs.fetchurl {
+                    url = "https://hangarcdn.papermc.io/plugins/ViaVersion/ViaVersion/versions/5.1.1/PAPER/ViaVersion-5.1.1.jar";
+                    sha256 = "TkLoOjkdVFzwrdTTjoUXR5IVx/O3Y8aMdf34D989LFk=";
+                  };
+                  "mc-proxy/plugins/viabackwards.jar".source = pkgs.fetchurl {
+                    url = "https://hangarcdn.papermc.io/plugins/ViaVersion/ViaBackwards/versions/5.1.1/PAPER/ViaBackwards-5.1.1.jar";
+                    sha256 = "f0f2vfsq8j4RAB4sPhicSCF9BaitiALIdJswDqHPQg4=";
+                  };
                 };
                 systemPackages = [ pkgs.tmux ];
               };
@@ -251,6 +261,7 @@ in
                   Type = "forking";
                   GuessMainPID = true;
                 };
+                requires = [ "mysql.service" ];
                 wantedBy = [ "multi-user.target" ];
               };
 

@@ -13,7 +13,7 @@ in
 
   config = mkIf cfg.enable {
     home = {
-      stateVersion = "24.11";
+      stateVersion = "25.05";
       packages = with pkgs;
         let
           cowsay = inputs.cowsay.packages.${system}.cowsay;

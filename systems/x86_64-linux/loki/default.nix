@@ -83,7 +83,7 @@ in
   united = {
     loki = enabled;
     common = {
-      splash = true;
+      splash = false;
       banner = ''
         [90;40m░░░░░░░░░░░░░░░░░[0m
         [90;40m░[32m█[90m░░░[32m█▀█[90m░[32m█[90m░[32m█[90m░[32m▀[32m█▀[90m░[0m
@@ -167,5 +167,5 @@ in
     groups.acme.gid = 3003;
   };
 
-  united.minecraft = enabled;
+  united.minecraft = disabled;
 }
