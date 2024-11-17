@@ -5,9 +5,10 @@ with lib.united;
 
 let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
-in {
+in
+{
   age = {
-    identityPaths = ["/persistent/etc/ssh/ssh_host_ed25519_key"];
+    identityPaths = [ "/persistent/etc/ssh/ssh_host_ed25519_key" ];
     rekey = {
       hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJxsAeBUl/O+YJ7mGfwH3BskpBV1eSDKJ0QQPlnIEoDK";
     };
@@ -21,7 +22,7 @@ in {
     mosquitto = {
       autoStart = true;
       config = ../../../containers/mosquitto/default.nix;
-            bindMounts = {
+      bindMounts = {
         "/var/yaro-password" = {
           hostPath = config.age.secrets.mosquitto-yaro-password.path;
           isReadOnly = true;
@@ -106,6 +107,7 @@ in {
 
   united = {
     asterisk = enabled;
+    audiobookshelf = enabled;
     home-assistant = enabled;
     nodered = enabled;
     phobos-mounts = enabled;

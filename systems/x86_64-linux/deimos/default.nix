@@ -31,9 +31,6 @@ in
     hostName = "deimos";
     firewall = {
       checkReversePath = "loose";
-      logRefusedConnections = true;
-      logRefusedPackets = true;
-      logReversePathDrops = true;
     };
     wg-quick.interfaces = {
       wg0 = {
@@ -62,6 +59,7 @@ in
       extraCommands = ''
         iptables -t nat -A POSTROUTING -d 10.10.0.0/16 -j SNAT --to-source 10.0.10.1
         iptables -t nat -A POSTROUTING -d 10.20.0.0/16 -j SNAT --to-source 10.0.10.1
+        iptables -t nat -A POSTROUTING -d 10.50.0.0/16 -j SNAT --to-source 10.0.10.1
       '';
     };
   };
@@ -99,6 +97,13 @@ in
           {
             routeConfig = {
               Destination = "10.20.0.0/16";
+              Gateway = "10.0.0.2";
+              GatewayOnLink = true;
+            };
+          }
+          {
+            routeConfig = {
+              Destination = "10.50.0.0/16";
               Gateway = "10.0.0.2";
               GatewayOnLink = true;
             };
