@@ -61,6 +61,7 @@ in
           ];
       };
     };
+    tailscale.extraUpFlags = [ "--exit-node=" ];
   };
 
   i18n.extraLocaleSettings = {

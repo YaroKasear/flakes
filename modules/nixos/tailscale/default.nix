@@ -23,7 +23,7 @@ in
         (mkIf cfg.exitNode "--advertise-routes=10.0.10.1/32,10.10.10.2/32,10.40.10.1/32")
         "--login-server=https://vpn.kasear.net"
         (mkIf (cfg.exitNode != true) "--shields-up")
-
+        "--exit-node-allow-lan-access"
       ];
       useRoutingFeatures =
         if cfg.exitNode then
