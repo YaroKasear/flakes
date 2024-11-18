@@ -99,6 +99,7 @@ in
     unbound = {
       enable = true;
     };
+    tailscale = enabled;
     wayland.compositor = "plasma";
     web-applications = {
       hostInterface = "enp9s0";
