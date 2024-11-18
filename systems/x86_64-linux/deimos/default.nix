@@ -64,66 +64,71 @@ in
     };
   };
 
-  systemd.network = {
-    enable = true;
-    netdevs = {
-      "10-storage" = {
-        netdevConfig = {
-          Kind = "vlan";
-          Name = "vlan40";
+  systemd = {
+    network = {
+      enable = true;
+      netdevs = {
+        "10-storage" = {
+          netdevConfig = {
+            Kind = "vlan";
+            Name = "vlan40";
+          };
+          vlanConfig.Id = 40;
         };
-        vlanConfig.Id = 40;
+      };
+      networks = {
+        "20-dmz" = {
+          matchConfig.Name = "eno2";
+          vlan = [
+            "vlan40"
+          ];
+          networkConfig = {
+            DHCP = "ipv4";
+            LinkLocalAddressing = false;
+            IPv6AcceptRA = false;
+          };
+          routes = [
+            {
+              routeConfig = {
+                Destination = "10.10.0.0/16";
+                Gateway = "10.0.0.2";
+                GatewayOnLink = true;
+              };
+            }
+            {
+              routeConfig = {
+                Destination = "10.20.0.0/16";
+                Gateway = "10.0.0.2";
+                GatewayOnLink = true;
+              };
+            }
+            {
+              routeConfig = {
+                Destination = "10.50.0.0/16";
+                Gateway = "10.0.0.2";
+                GatewayOnLink = true;
+              };
+            }
+          ];
+          linkConfig.RequiredForOnline = "routable";
+        };
+        "30-storage" = {
+          matchConfig.Name = "vlan40";
+          networkConfig = {
+            DHCP = "ipv4";
+            LinkLocalAddressing = false;
+            IPv6AcceptRA = false;
+          };
+          dhcpV4Config = {
+            UseRoutes = false;
+          };
+          linkConfig.RequiredForOnline = "routable";
+        };
       };
     };
-    networks = {
-      "20-dmz" = {
-        matchConfig.Name = "eno2";
-        vlan = [
-          "vlan40"
-        ];
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        routes = [
-          {
-            routeConfig = {
-              Destination = "10.10.0.0/16";
-              Gateway = "10.0.0.2";
-              GatewayOnLink = true;
-            };
-          }
-          {
-            routeConfig = {
-              Destination = "10.20.0.0/16";
-              Gateway = "10.0.0.2";
-              GatewayOnLink = true;
-            };
-          }
-          {
-            routeConfig = {
-              Destination = "10.50.0.0/16";
-              Gateway = "10.0.0.2";
-              GatewayOnLink = true;
-            };
-          }
-        ];
-        linkConfig.RequiredForOnline = "routable";
-      };
-      "30-storage" = {
-        matchConfig.Name = "vlan40";
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        dhcpV4Config = {
-          UseRoutes = false;
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
-    };
+    extraConfig = ''
+      DefaultLimitNOFILE = 16384
+    '';
   };
 
   united = {
@@ -131,6 +136,7 @@ in
     apache-majike = enabled;
     deimos-mounts = enabled;
     emby = disabled;
+    headscale = enabled;
     jellyfin = enabled;
     minecraft = enabled;
     nextcloud = enabled;
