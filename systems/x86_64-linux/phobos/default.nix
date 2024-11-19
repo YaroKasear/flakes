@@ -123,7 +123,7 @@ in
     server = enabled;
     tailscale = {
       enable = true;
-      exitNode = true;
+      router = true;
     };
     common.banner = ''
       [90;40m░░░░░░░░░░░░░░░░░░░░░░░░░[0m
