@@ -1,10 +1,8 @@
-{ lib, config, inputs, ... }:
+{ lib, config, ... }:
 
 with lib;
 with lib.united;
 let
-  common-secrets = inputs.self + "/secrets/common/";
-
   mkLocalData = a: attrsets.mapAttrsToList (name: value: "\"${name}. IN A ${value}\"") a;
 
   external = "10.0.0.1";
@@ -22,10 +20,12 @@ let
   frontend = "10.50.0.1";
 
   cfg = config.united.unbound;
-in {
+in
+{
   options.united.unbound = {
     enable = mkEnableOption "Unbound";
-    hosts = mkOpt (types.attrsOf types.str) {
+    hosts = mkOpt (types.attrsOf types.str)
+      {
         "io.dmz.kasear.net" = external;
         "deimos.dmz.kasear.net" = public;
         "europa.main.kasear.net" = internal;
@@ -56,6 +56,7 @@ in {
         "test.kasear.net" = public;
         "vault.kasear.net" = public;
         "vikali.kasear.net" = public;
+        "vpn.kasear.net" = public;
         "yaro.kasear.net" = public;
       } "List of local-zone hostnames and their IP addresses.";
   };
@@ -65,6 +66,7 @@ in {
       unbound = {
         enable = true;
         blocklist = enabled;
+        resolveLocalQueries = false;
         settings = {
           server = {
             access-control = [
@@ -72,40 +74,28 @@ in {
               "127.0.0.1/8 allow"
             ];
             interface = "0.0.0.0";
-            tls-upstream = true;
-            include = mkForce [
-              # "${config.age.secrets."local-zone.conf".path}"
-              "${inputs.blocklist.packages.x86_64-linux.default}/blocklist.conf"
-            ];
-            local-zone = ["\"kasear.net\" transparent"];
+            tls-upstream = (!config.united.tailscale.enable);
+            local-zone = [ "\"kasear.net\" transparent" ];
             local-data = (mkLocalData cfg.hosts);
+            logfile = "log/unbound.log";
+            log-time-ascii = "yes";
+            log-queries = "yes";
+            log-replies = "yes";
           };
-          include = "${config.age.secrets."forward-zone.conf".path}";
+          forward-zone = {
+            name = "\".\"";
+            forward-addr =
+              if config.united.tailscale.enable then [
+                "100.100.100.100"
+              ] else [
+                "1.1.1.1@853#cloudflare-dns.com"
+                "1.0.0.1@853#cloudflare-dns.com"
+              ];
+          };
         };
       };
       resolved = disabled;
       dnsmasq = disabled;
-    };
-
-    age = {
-      secrets = {
-        "forward-zone.conf" = {
-          rekeyFile = common-secrets + "forward-zone.conf.age";
-          owner = "unbound";
-          group = "unbound";
-          symlink = false;
-          mode = "644";
-          path = "/var/forward-zone.conf";
-        };
-        "local-zone.conf" = {
-          rekeyFile = common-secrets + "local-zone.conf.age";
-          owner = "unbound";
-          group = "unbound";
-          symlink = false;
-          mode = "400";
-          path = "/var/local-zone.conf";
-        };
-      };
     };
   };
 }

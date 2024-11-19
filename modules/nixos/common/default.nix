@@ -144,10 +144,14 @@ in
       dnsmasq = {
         enable = mkDefault true;
         settings = {
-          "server" = [
-            "10.10.0.1"
-            "10.0.0.1"
-          ];
+          "server" =
+            if config.united.tailscale.enable then
+              [ "100.100.100.100" ]
+            else
+              [
+                "10.10.0.1"
+                "10.0.0.1"
+              ];
         };
       };
       fwupd = enabled;
