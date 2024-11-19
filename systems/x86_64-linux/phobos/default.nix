@@ -40,6 +40,9 @@ in
         1880
       ];
       allowedUDPPorts = [ 53 ];
+      logRefusedConnections = true;
+      logRefusedPackets = true;
+      logReversePathDrops = true;
     };
   };
 
@@ -118,6 +121,10 @@ in
       main-port = 2560;
     };
     server = enabled;
+    tailscale = {
+      enable = true;
+      exitNode = true;
+    };
     common.banner = ''
       [90;40m░░░░░░░░░░░░░░░░░░░░░░░░░[0m
       [90;40m░[91m█▀█[90m░[91m█[90m░[91m█[90m░[91m█▀█[90m░[91m█▀▄[90m░[91m█▀█[90m░[91m█▀▀[90m░[0m

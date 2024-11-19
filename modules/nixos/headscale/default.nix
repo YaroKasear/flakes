@@ -34,9 +34,9 @@ in
               dns_config = {
                 base_domain = "mesh.kasear.net";
                 nameservers = [
-                  "10.0.0.1"
-                  "10.10.0.1"
+                  "10.10.10.2"
                 ];
+                override_local_dns = true;
               };
             };
           };
