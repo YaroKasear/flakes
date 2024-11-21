@@ -22,7 +22,7 @@ in
       authKeyFile = config.age.secrets."tsAuthFile-${config.networking.hostName}".path;
       extraUpFlags = [
         "--accept-routes${if cfg.accept-routes then "" else "=false"}"
-        (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.2/32,10.40.10.1/32")
+        (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.1/32,10.40.10.1/32")
         "--login-server=https://vpn.kasear.net"
         (mkIf (cfg.router != true) "--shields-up")
       ];
