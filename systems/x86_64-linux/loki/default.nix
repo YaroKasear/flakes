@@ -97,9 +97,6 @@ in
       enable = true;
       use-wayland = true;
     };
-    unbound = {
-      enable = true;
-    };
     tailscale = enabled;
     wayland.compositor = "plasma";
     web-applications = {
