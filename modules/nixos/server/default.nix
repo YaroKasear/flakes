@@ -5,7 +5,8 @@ with lib.united;
 let
   cfg = config.united.server;
 
-in {
+in
+{
   options.united.server = {
     enable = mkEnableOption "server";
   };
@@ -16,6 +17,11 @@ in {
       "console=ttyS0,115200"
     ];
 
-    united.common = enabled;
+    services.dnsmasq = disabled;
+
+    united = {
+      common = enabled;
+      unbound = enabled;
+    };
   };
 }

@@ -144,6 +144,7 @@ in
     nginx-proxy = enabled;
     nginx-yaro = enabled;
     server = enabled;
+    pam = disabled;
     vaultwarden = enabled;
     common.banner = ''
       [90;40m░░░░░░░░░░░░░░░░░░░░░░░░░[0m
