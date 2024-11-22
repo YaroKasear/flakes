@@ -35,7 +35,7 @@ in
     wg-quick.interfaces = {
       wg0 = {
         address = [ "10.60.10.1/32" ];
-        dns = [ "10.10.0.1" "10.0.0.1" ];
+        dns = [ "10.10.10.1" "10.0.10.1" ];
         privateKeyFile = config.age.secrets.wireguard-key.path;
 
         peers = [
