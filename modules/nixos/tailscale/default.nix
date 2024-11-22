@@ -11,6 +11,7 @@ in
   options.united.tailscale = {
     enable = mkEnableOption "Tailscale";
     router = mkEnableOption "Whether or not this node should be used as an exit point.";
+    accept-dns = mkOpt types.bool true "Whether to accept DNS from the tailnet.";
     accept-routes = mkOpt types.bool false "Whether to accept routes from a Tailscale router.";
   };
 
@@ -21,8 +22,9 @@ in
       enable = true;
       authKeyFile = config.age.secrets."tsAuthFile-${config.networking.hostName}".path;
       extraUpFlags = [
+        "--accept-dns${if cfg.accept-dns then "" else "=false"}"
         "--accept-routes${if cfg.accept-routes then "" else "=false"}"
-        (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.2/32,10.40.10.1/32")
+        (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.1/32,10.40.10.1/32")
         "--login-server=https://vpn.kasear.net"
         (mkIf (cfg.router != true) "--shields-up")
       ];

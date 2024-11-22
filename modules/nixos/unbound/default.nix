@@ -11,7 +11,7 @@ let
   coreSwitch = "10.10.0.2";
   desktopSwitch = "10.10.0.3";
   wirelessAccessPoint = "10.10.0.4";
-  private = "10.10.10.2";
+  private = "10.10.10.1";
   printer = "10.10.20.1";
   tuner = "10.10.20.2";
   camera1 = "10.30.30.1";
@@ -66,15 +66,16 @@ in
       unbound = {
         enable = true;
         blocklist = enabled;
-        resolveLocalQueries = false;
+        resolveLocalQueries = (!config.united.tailscale.enable) || (!config.united.tailscale.accept-dns);
         settings = {
           server = {
             access-control = [
               "10.0.0.0/8 allow"
               "127.0.0.1/8 allow"
+              "100.64.0.0/10 allow"
             ];
             interface = "0.0.0.0";
-            tls-upstream = (!config.united.tailscale.enable);
+            tls-upstream = (!config.united.tailscale.enable) || (!config.united.tailscale.accept-dns);
             local-zone = [ "\"kasear.net\" transparent" ];
             local-data = (mkLocalData cfg.hosts);
             logfile = "log/unbound.log";
@@ -85,7 +86,7 @@ in
           forward-zone = {
             name = "\".\"";
             forward-addr =
-              if config.united.tailscale.enable then [
+              if config.united.tailscale.enable && config.united.tailscale.accept-dns then [
                 "100.100.100.100"
               ] else [
                 "1.1.1.1@853#cloudflare-dns.com"

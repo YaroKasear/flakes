@@ -145,12 +145,12 @@ in
         enable = mkDefault true;
         settings = {
           "server" =
-            if config.united.tailscale.enable then
+            if config.united.tailscale.enable && config.united.tailscale.accept-dns then
               [ "100.100.100.100" ]
             else
               [
-                "10.10.0.1"
-                "10.0.0.1"
+                "10.10.10.1"
+                "10.0.10.1"
               ];
         };
       };
