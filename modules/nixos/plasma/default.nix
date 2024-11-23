@@ -8,6 +8,7 @@ in
 {
   options.united.plasma = {
     enable = mkEnableOption "Plasma";
+    enableSDDM = mkEnableOption "Whether or not to use SDDM.";
   };
 
   config = mkIf cfg.enable {
@@ -41,7 +42,7 @@ in
     services = {
       displayManager = {
         sddm = {
-          enable = true;
+          enable = cfg.enableSDDM;
           package = mkForce pkgs.libsForQt5.sddm;
           wayland = enabled;
           settings = {

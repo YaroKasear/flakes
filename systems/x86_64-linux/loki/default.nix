@@ -149,6 +149,10 @@ in
     };
   };
 
+  networking.extraHosts = ''
+    10.0.10.1 vpn.kasear.net
+  '';
+
   systemd.coredump.enable = true;
 
   snowfallorg.users.cnelson.admin = false;
