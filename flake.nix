@@ -173,7 +173,7 @@
           "yaro@gwyn".modules = home-modules;
           "yaro@gwynix".modules = home-modules;
           "yaro@phobos".modules = home-modules;
-          "yaro@titan".modules = home-modules;
+          "yaro@woodlandnode".modules = home-modules;
         };
     };
 }

@@ -56,5 +56,4 @@ in
   services.openssh.enable = true;
 
   hardware.enableRedistributableFirmware = true;
-  system.stateVersion = "23.11";
 }

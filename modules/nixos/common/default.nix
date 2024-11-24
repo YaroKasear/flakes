@@ -10,7 +10,8 @@ let
   breakupString = s: strings.splitString "" s;
 
   spaceString = s: strings.concatMapStrings (x: " " + x) (breakupString s);
-in {
+in
+{
   options.united.common = {
     enable = mkEnableOption "Common";
     splash = mkEnableOption "Boot splash";
@@ -51,7 +52,7 @@ in {
       };
       plymouth = {
         enable = cfg.splash;
-        themePackages = with pkgs; [(catppuccin-plymouth.override{ variant = "mocha"; })];
+        themePackages = with pkgs; [ (catppuccin-plymouth.override { variant = "mocha"; }) ];
         theme = "catppuccin-mocha";
       };
     };
@@ -95,7 +96,7 @@ in {
     networking = {
       networkmanager = disabled;
       useDHCP = false;
-      wireless = disabled;
+      wireless = mkDefault disabled;
     };
 
     nix = {
@@ -170,7 +171,7 @@ in {
           description = config.home-manager.users.yaro.united.user.fullName;
           home = config.home-manager.users.yaro.united.user.directories.home;
           isNormalUser = true;
-          extraGroups = ["wheel" "systemd-journal" "yaro"];
+          extraGroups = [ "wheel" "systemd-journal" "yaro" ];
           shell = pkgs.zsh;
           hashedPasswordFile = mkDefault config.age.secrets.yaro-password.path;
           openssh.authorizedKeys.keys = [
