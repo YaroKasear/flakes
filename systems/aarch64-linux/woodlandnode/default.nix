@@ -29,6 +29,7 @@ in
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
     };
+    initrd.systemd = disabled;
   };
 
   fileSystems = {
