@@ -43,7 +43,7 @@ in
     hostName = hostname;
     wireless = {
       enable = true;
-      environmentFile = age.secrets.wireless-secret.path;
+      environmentFile = config.age.secrets.wireless-secret.path;
       networks."${SSID}".pskRaw = SSIDpassword;
       interfaces = [ interface ];
     };
