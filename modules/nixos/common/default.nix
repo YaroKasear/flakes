@@ -30,7 +30,7 @@ in
       };
     };
 
-    boot = mkIf (pkgs.system == "x86_64-linux") {
+    boot = (mkIf (pkgs.system == "x86_64-linux")) {
       kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
       initrd.systemd = enabled;
       kernelModules = [
