@@ -30,9 +30,9 @@ in
       };
     };
 
-    boot = {
+    boot = mkIf pkgs.system == "x86_64-linux" {
       kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
-      initrd.systemd = mkDefault enabled;
+      initrd.systemd = enabled;
       kernelModules = [
         "usb-storage"
       ];
