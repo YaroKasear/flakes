@@ -81,7 +81,7 @@ in
       '';
     };
 
-    fileSystems."${config.home-manager.users.yaro.united.user.directories.home}/flakes" = {
+    fileSystems."${config.home-manager.users.yaro.united.user.directories.home}/flakes" = mkIf cfg.mountFlake {
       device = "storage.kasear.net:/mnt/data/flake";
       fsType = "nfs";
       options = [ "nfsvers=4.2" "x-systemd.automount" "noauto" "x-systemd.idle-timeout=600" ];

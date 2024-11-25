@@ -6,7 +6,7 @@ let
   secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 
   SSID = "Heartbeat Communications - Main";
-  SSIDpassword = "ext:psk";
+  SSIDpassword = "@psk@";
   interface = "wlan0";
   hostname = "woodlandnode";
 in
@@ -45,16 +45,33 @@ in
     wireless = {
       enable = true;
       environmentFile = config.age.secrets.wireless-secret.path;
-      networks."${SSID}".pskRaw = SSIDpassword;
+      networks."${SSID}".psk = SSIDpassword;
       interfaces = [ interface ];
     };
   };
 
-  united.common = enabled;
+  united = {
+    common = {
+      enable = true;
+      mountFlake = false;
+    };
+    pam = disabled;
+  };
 
   environment.systemPackages = with pkgs; [ vim ];
 
   services.openssh.enable = true;
+
+  systemd.network = {
+    enable = true;
+    networks."10-wifi" = {
+      matchConfig.Name = "wlan0";
+      networkConfig = {
+        DHCP = "ipv4";
+      };
+      linkConfig.RequiredForOnline = "routable";
+    };
+  };
 
   hardware.enableRedistributableFirmware = true;
 }
