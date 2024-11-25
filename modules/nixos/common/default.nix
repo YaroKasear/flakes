@@ -16,6 +16,7 @@ in
     enable = mkEnableOption "Common";
     splash = mkEnableOption "Boot splash";
     banner = mkOpt types.lines ''[32m<<[31m${strings.toUpper (spaceString config.networking.hostName)} [32m>>[0m'' "Banner for TTY login screen.";
+    mountFlake = mkEnableOption "Should I mount the flake from the storage server?";
   };
 
   config = mkIf cfg.enable {
