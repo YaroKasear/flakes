@@ -8,7 +8,7 @@ let
   SSID = "Heartbeat Communications - Main";
   SSIDpassword = "@psk@";
   interface = "wlan0";
-  hostname = "woodlandnode";
+  hostname = "silvanus";
 in
 {
   age = {
