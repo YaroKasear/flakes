@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.pam;
-in {
+in
+{
   options.united.pam = {
     enable = mkEnableOption "PAM";
     debug = mkEnableOption "Enables debug mode!";
@@ -28,7 +29,8 @@ in {
         debug = cfg.debug;
       };
       services = {
-        kde = { # Taking off multifactor as Plasma's screensaver lock thing doesn't seem to play nice with it.
+        kde = {
+          # Taking off multifactor as Plasma's screensaver lock thing doesn't seem to play nice with it.
           u2fAuth = false;
           yubicoAuth = false;
         };
@@ -40,7 +42,11 @@ in {
             };
             yubico.order = u2f.order + 10;
           };
-	        u2fAuth = true;
+          u2fAuth = true;
+          kwallet = {
+            enable = config.united.plasma.enable;
+            forceRun = (!config.united.plasma.enableSDDM);
+          };
         };
         sudo = with config.security.pam.services.sudo.rules.auth; {
           rules.auth = {

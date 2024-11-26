@@ -65,23 +65,23 @@ in
       earlySetup = true;
       font = "${pkgs.terminus_font}/share/consolefonts/ter-i20n.psf.gz";
       keyMap = "us";
-      colors = [
-        "073642"
-        "dc322f"
-        "859900"
-        "b58900"
-        "268bd2"
-        "d33682"
-        "2aa198"
-        "eee8d5"
-        "002b36"
-        "cb4b16"
-        "586e75"
-        "657b83"
-        "839496"
-        "6c71c4"
-        "93a1a1"
-        "fdf6e3"
+      colors = with config.home-manager.users.yaro.united.style.colors; [
+        "${strings.removePrefix "#" color0}"
+        "${strings.removePrefix "#" color1}"
+        "${strings.removePrefix "#" color2}"
+        "${strings.removePrefix "#" color3}"
+        "${strings.removePrefix "#" color4}"
+        "${strings.removePrefix "#" color5}"
+        "${strings.removePrefix "#" color6}"
+        "${strings.removePrefix "#" color7}"
+        "${strings.removePrefix "#" color8}"
+        "${strings.removePrefix "#" color9}"
+        "${strings.removePrefix "#" color10}"
+        "${strings.removePrefix "#" color11}"
+        "${strings.removePrefix "#" color12}"
+        "${strings.removePrefix "#" color13}"
+        "${strings.removePrefix "#" color14}"
+        "${strings.removePrefix "#" color15}"
       ];
     };
 

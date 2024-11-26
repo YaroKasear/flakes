@@ -14,25 +14,29 @@ let
   };
 
   cfg = config.united.style;
-in {
+in
+{
   options.united.style = {
     enable = mkEnableOption "Style module!";
     fonts = {
       # emoji = mkOpt types.str "Noto Color Emoji" "Emoji font!";
-      emoji = mkOpt (types.submodule font) {
-        name = "Noto Color Emoji";
-        package = pkgs.noto-fonts-color-emoji;
-      } "Emoji font!";
+      emoji = mkOpt (types.submodule font)
+        {
+          name = "Noto Color Emoji";
+          package = pkgs.noto-fonts-color-emoji;
+        } "Emoji font!";
       # interface = mkOpt types.str "FiraCode Nerd Font" "User interface font!";
-      interface = mkOpt (types.submodule font) (mkMerge [{
-        name = "FiraCode Nerd Font";
-        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-      }]) "User interface font!";
+      interface = mkOpt (types.submodule font)
+        (mkMerge [{
+          name = "FiraCode Nerd Font";
+          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        }]) "User interface font!";
       # terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
-      terminal = mkOpt (types.submodule font) (mkMerge [{
-        name = "FiraCode Nerd Font Mono";
-        package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-      }]) "Terminal font!";
+      terminal = mkOpt (types.submodule font)
+        (mkMerge [{
+          name = "FiraCode Nerd Font Mono";
+          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+        }]) "Terminal font!";
     };
     wallpaper = mkOpt types.path ../wallpaper/files/tcloud.png "Wallpaper!";
     windows = {
@@ -102,16 +106,16 @@ in {
       mark3_background = mkOpt types.str "${cfg.colors.black}" "Mark 1 background color!";
       mark3_foreground = mkOpt types.str "#f274bc" "Mark 1 foreground color!";
 
-      color0 = mkOpt types.str  "${toRgbHex {r = 0;   g = 0;   b = 0;   a = 255;}}" "Color 0";
-      color1 = mkOpt types.str  "${toRgbHex {r = 170; g = 0;   b = 0;   a = 255;}}" "Color 1";
-      color2 = mkOpt types.str  "${toRgbHex {r = 0;   g = 170; b = 0;   a = 255;}}" "Color 2";
-      color3 = mkOpt types.str  "${toRgbHex {r = 170; g = 85;  b = 0;   a = 255;}}" "Color 3";
-      color4 = mkOpt types.str  "${toRgbHex {r = 0;   g = 0;   b = 170; a = 255;}}" "Color 4";
-      color5 = mkOpt types.str  "${toRgbHex {r = 170; g = 0;   b = 170; a = 255;}}" "Color 5";
-      color6 = mkOpt types.str  "${toRgbHex {r = 0;   g = 170; b = 170; a = 255;}}" "Color 6";
-      color7 = mkOpt types.str  "${toRgbHex {r = 170; g = 170; b = 170; a = 255;}}" "Color 7";
-      color8 = mkOpt types.str  "${toRgbHex {r = 85;  g = 85;  b = 85;  a = 255;}}" "Color 8";
-      color9 = mkOpt types.str  "${toRgbHex {r = 255; g = 85;  b = 85;  a = 255;}}" "Color 9";
+      color0 = mkOpt types.str "${toRgbHex {r = 0;   g = 0;   b = 0;   a = 255;}}" "Color 0";
+      color1 = mkOpt types.str "${toRgbHex {r = 170; g = 0;   b = 0;   a = 255;}}" "Color 1";
+      color2 = mkOpt types.str "${toRgbHex {r = 0;   g = 170; b = 0;   a = 255;}}" "Color 2";
+      color3 = mkOpt types.str "${toRgbHex {r = 170; g = 85;  b = 0;   a = 255;}}" "Color 3";
+      color4 = mkOpt types.str "${toRgbHex {r = 0;   g = 0;   b = 170; a = 255;}}" "Color 4";
+      color5 = mkOpt types.str "${toRgbHex {r = 170; g = 0;   b = 170; a = 255;}}" "Color 5";
+      color6 = mkOpt types.str "${toRgbHex {r = 0;   g = 170; b = 170; a = 255;}}" "Color 6";
+      color7 = mkOpt types.str "${toRgbHex {r = 170; g = 170; b = 170; a = 255;}}" "Color 7";
+      color8 = mkOpt types.str "${toRgbHex {r = 85;  g = 85;  b = 85;  a = 255;}}" "Color 8";
+      color9 = mkOpt types.str "${toRgbHex {r = 255; g = 85;  b = 85;  a = 255;}}" "Color 9";
       color10 = mkOpt types.str "${toRgbHex {r = 85;  g = 255; b = 85;  a = 255;}}" "Color 10";
       color11 = mkOpt types.str "${toRgbHex {r = 255; g = 255; b = 85;  a = 255;}}" "Color 11";
       color12 = mkOpt types.str "${toRgbHex {r = 85;  g = 85;  b = 255; a = 255;}}" "Color 12";
