@@ -27,7 +27,7 @@ in
         "--accept-dns${if cfg.accept-dns then "" else "=false"}"
         "--accept-routes${if cfg.accept-routes then "" else "=false"}"
         # (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.1/32,10.40.10.1/32")
-        "--advertise-routes=${if cfg.router then "10.0.10.1/32,10.10.10.1/32,10.40.10.1/32" else null}"
+        "--advertise-routes=${if cfg.router then "10.0.10.1/32,10.10.10.1/32,10.40.10.1/32" else ""}"
         "--login-server=https://vpn.kasear.net"
         # (mkIf (cfg.router != true && cfg.accept-connections != true) "--shields-up")
         "--shields-up=${toString cfg.accept-connections}"
