@@ -82,6 +82,7 @@ in
 
   united.tailscale = {
     enable = true;
+    accept-connections = true;
     accept-dns = true;
     accept-routes = true;
   };
