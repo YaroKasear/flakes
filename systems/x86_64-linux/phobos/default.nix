@@ -108,6 +108,8 @@ in
     };
   };
 
+  environment.persistence."/persistent".directories = [ "/var/lib/tailscale" ];
+
   united = {
     asterisk = enabled;
     audiobookshelf = enabled;

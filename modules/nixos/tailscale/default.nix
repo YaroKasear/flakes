@@ -14,7 +14,6 @@ in
     accept-dns = mkOpt types.bool false "Whether to accept DNS from the tailnet.";
     accept-routes = mkOpt types.bool false "Whether to accept routes from a Tailscale router.";
     local-network = mkEnableOption "Is the node on the same network as the control plane?";
-    impermanence = mkEnableOption "Are you using an impermanent setup?";
   };
 
   config = mkIf cfg.enable {
@@ -48,7 +47,5 @@ in
         ''
       else
         null;
-
-    environment.persistence."/persistent".directories = mkIf cfg.impermanence [ "/var/lib/tailscale" ];
   };
 }
