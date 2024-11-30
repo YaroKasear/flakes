@@ -30,7 +30,8 @@ in
         "--advertise-routes=${if cfg.router then "10.0.10.1/32,10.10.10.1/32,10.40.10.1/32" else ""}"
         "--login-server=https://vpn.kasear.net"
         # (mkIf (cfg.router != true && cfg.accept-connections != true) "--shields-up")
-        "--shields-up=${toString cfg.accept-connections}"
+        "--shields-up=${if cfg.accept-connections then "false" else "true"}"
+        # (mkIf (cfg.router || cfg.accept-connections == true) "--ssh")
       ];
       useRoutingFeatures =
         if cfg.router then
