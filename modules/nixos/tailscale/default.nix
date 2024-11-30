@@ -29,6 +29,7 @@ in
         (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.1/32,10.40.10.1/32")
         "--login-server=https://vpn.kasear.net"
         (mkIf (cfg.router != true && cfg.accept-connections != true) "--shields-up")
+        (mkIf (cfg.router || cfg.accept-connections == true) "--ssh")
       ];
       useRoutingFeatures =
         if cfg.router then
