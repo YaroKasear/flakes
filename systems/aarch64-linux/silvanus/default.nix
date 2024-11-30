@@ -94,8 +94,8 @@ in
           LinkLocalAddressing = false;
           IPv6AcceptRA = false;
         };
+        linkConfig.RequiredForOnline = "routable";
       };
-      linkConfig.RequiredForOnline = "routable";
     };
   };
 
