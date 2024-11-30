@@ -17,7 +17,10 @@ with lib.united;
     persistent = enabled;
     protonmail-bridge = enabled;
     rust = enabled;
-    sonic3air = enabled;
+    sonic3air = {
+      enable = true;
+      ROM = "/mnt/games/Emulation/roms/genesis/Sonic_Knuckles_wSonic3.bin";
+    };
     tinyfugue = enabled;
     wayland.compositor = "plasma";
     wine = enabled;
@@ -157,6 +160,7 @@ with lib.united;
       makemkv
       prismlauncher
       mosquitto
+      nixos-icons
       skypeforlinux
       tailwindcss
       telegram-desktop

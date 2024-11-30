@@ -29,13 +29,13 @@ in
       interface = mkOpt (types.submodule font)
         (mkMerge [{
           name = "FiraCode Nerd Font";
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+          package = pkgs.nerd-fonts.fira-code;
         }]) "User interface font!";
       # terminal = mkOpt types.str "FiraCode Nerd Font Mono" "Terminal font!";
       terminal = mkOpt (types.submodule font)
         (mkMerge [{
           name = "FiraCode Nerd Font Mono";
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+          package = pkgs.nerd-fonts.fira-code;
         }]) "Terminal font!";
     };
     wallpaper = mkOpt types.path ../wallpaper/files/tcloud.png "Wallpaper!";
