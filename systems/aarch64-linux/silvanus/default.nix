@@ -63,6 +63,12 @@ in
       '';
     };
     pam = disabled;
+    tailscale = {
+      enable = true;
+      accept-connections = true;
+      accept-dns = true;
+      accept-routes = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [ vim ];
@@ -71,20 +77,26 @@ in
 
   systemd.network = {
     enable = true;
-    networks."10-wifi" = {
-      matchConfig.Name = "wlan0";
-      networkConfig = {
-        DHCP = "ipv4";
+    networks = {
+      "10-ethernet" = {
+        matchConfig.Name = "end0";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "20-wifi" = {
+        matchConfig.Name = "wlan0";
+        networkConfig = {
+          DHCP = "ipv4";
+          LinkLocalAddressing = false;
+          IPv6AcceptRA = false;
+        };
       };
       linkConfig.RequiredForOnline = "routable";
     };
-  };
-
-  united.tailscale = {
-    enable = true;
-    accept-connections = true;
-    accept-dns = true;
-    accept-routes = true;
   };
 
   hardware.enableRedistributableFirmware = true;
