@@ -80,5 +80,11 @@ in
     };
   };
 
+  united.tailscale = {
+    enable = true;
+    accept-dns = true;
+    accept-routes = true;
+  };
+
   hardware.enableRedistributableFirmware = true;
 }
