@@ -13,6 +13,8 @@ in
     router = mkEnableOption "Whether or not this node should be used as an exit point.";
     accept-dns = mkOpt types.bool false "Whether to accept DNS from the tailnet.";
     accept-routes = mkOpt types.bool false "Whether to accept routes from a Tailscale router.";
+    local-network = mkEnableOption "Is the node on the same network as the control plane?";
+    impermanence = mkEnableOption "Are you using an impermanent setup?";
   };
 
   config = mkIf cfg.enable {
@@ -35,6 +37,18 @@ in
           "client";
     };
 
-    environment.persistence."/persistent".directories = [ "/var/lib/tailscale" ];
+    # We need this so that nodes who use the tailnet for DNS can even connect to the control plane
+    networking.extraHosts =
+      if cfg.accept-dns && cfg.local-network then
+        "10.0.10.1 vpn.kasear.net"
+      else if cfg.accept-dns then
+        ''
+          104.21.28.95 vpn.kasear.net
+          172.67.145.80 vpn.kasear.net
+        ''
+      else
+        null;
+
+    environment.persistence."/persistent".directories = mkIf cfg.impermanence [ "/var/lib/tailscale" ];
   };
 }
