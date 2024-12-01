@@ -73,6 +73,8 @@ in
 
   environment.systemPackages = with pkgs; [ vim ];
 
+  programs.argon.one = enabled;
+
   services.openssh.enable = true;
 
   systemd.network = {

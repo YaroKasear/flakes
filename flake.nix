@@ -18,6 +18,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    argon40-nix = {
+      url = "github:guusvanmeerveld/argon40-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     blocklist = {
       url = "github:mirosval/unbound-blocklist";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -153,6 +158,7 @@
           nixos-hardware.nixosModules.common-pc
         ];
         hosts.silvanus.modules = with inputs; [
+          argon40-nix.nixosModules.default
           nixos-hardware.nixosModules.raspberry-pi-4
         ];
       };
