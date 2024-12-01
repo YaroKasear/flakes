@@ -3,7 +3,7 @@ with lib;
 with lib.united;
 
 let
-  # secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
+  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 
   # SSID = "Heartbeat Communications - Main";
   # SSIDpassword = "@psk@";
@@ -11,16 +11,16 @@ let
   hostname = "silvanus";
 in
 {
-  # age = {
-  #   identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  #   rekey = {
-  #     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN9GDqDSCLAeQB6VT+7wOnG81HLi1yaub+pnpQLOJCDq";
-  #   };
-  #   secrets = {
-  #     wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
-  #     yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-  #   };
-  # };
+  age = {
+    identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+    rekey = {
+      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN9GDqDSCLAeQB6VT+7wOnG81HLi1yaub+pnpQLOJCDq";
+    };
+    secrets = {
+      # wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
+      yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
+    };
+  };
 
   fileSystems = {
     "/" = {
