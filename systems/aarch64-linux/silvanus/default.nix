@@ -98,8 +98,8 @@ in
       };
     };
   };
-
   hardware = {
+    deviceTree.filter = "bcm2711-rpi-4*.dtb";
     enableRedistributableFirmware = true;
     raspberry-pi."4" = {
       apply-overlays-dtmerge = enabled;
