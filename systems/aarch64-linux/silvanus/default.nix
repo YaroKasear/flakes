@@ -100,6 +100,7 @@ in
   };
 
   hardware = {
+    apply-overlays-dtmerge = enabled;
     enableRedistributableFirmware = true;
     raspberry-pi."4".xhci = enabled;
   };
