@@ -133,7 +133,6 @@ in
       router = true;
       accept-connections = true;
     };
-    pam = disabled;
     common = {
       banner = ''
         [90;40m░░░░░░░░░░░░░░░░░░░░░░░░░[0m

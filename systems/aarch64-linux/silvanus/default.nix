@@ -3,24 +3,24 @@ with lib;
 with lib.united;
 
 let
-  secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
+  # secrets-directory = inputs.self + "/secrets/${pkgs.system}/${config.networking.hostName}/";
 
-  SSID = "Heartbeat Communications - Main";
-  SSIDpassword = "@psk@";
-  interface = "wlan0";
+  # SSID = "Heartbeat Communications - Main";
+  # SSIDpassword = "@psk@";
+  # interface = "wlan0";
   hostname = "silvanus";
 in
 {
-  age = {
-    identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    rekey = {
-      hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN9GDqDSCLAeQB6VT+7wOnG81HLi1yaub+pnpQLOJCDq";
-    };
-    secrets = {
-      wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
-      yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
-    };
-  };
+  # age = {
+  #   identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  #   rekey = {
+  #     hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN9GDqDSCLAeQB6VT+7wOnG81HLi1yaub+pnpQLOJCDq";
+  #   };
+  #   secrets = {
+  #     wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
+  #     yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
+  #   };
+  # };
 
   fileSystems = {
     "/" = {
@@ -32,12 +32,12 @@ in
 
   networking = {
     hostName = hostname;
-    wireless = {
-      enable = true;
-      environmentFile = config.age.secrets.wireless-secret.path;
-      networks."${SSID}".psk = SSIDpassword;
-      interfaces = [ interface ];
-    };
+    # wireless = {
+    #   enable = true;
+    #   environmentFile = config.age.secrets.wireless-secret.path;
+    #   networks."${SSID}".psk = SSIDpassword;
+    #   interfaces = [ interface ];
+    # };
   };
 
   united = {
@@ -79,22 +79,15 @@ in
         };
         linkConfig.RequiredForOnline = "routable";
       };
-      "20-wifi" = {
-        matchConfig.Name = "wlan0";
-        networkConfig = {
-          DHCP = "ipv4";
-          LinkLocalAddressing = false;
-          IPv6AcceptRA = false;
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
+      # "20-wifi" = {
+      #   matchConfig.Name = "wlan0";
+      #   networkConfig = {
+      #     DHCP = "ipv4";
+      #     LinkLocalAddressing = false;
+      #     IPv6AcceptRA = false;
+      #   };
+      #   linkConfig.RequiredForOnline = "routable";
+      # };
     };
-  };
-  hardware = {
-    deviceTree.filter = "bcm2711-rpi-4*.dtb";
-    # raspberry-pi."4" = {
-    #   apply-overlays-dtmerge = enabled;
-    #   xhci = enabled;
-    # };
   };
 }
