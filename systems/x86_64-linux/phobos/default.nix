@@ -80,6 +80,9 @@ in
           IPv6AcceptRA = false;
         };
         linkConfig.RequiredForOnline = "routable";
+        dhcpV4Config = {
+          RouteMetric = 100;
+        };
       };
       "40-iot" = {
         matchConfig.Name = "vlan30";
@@ -89,6 +92,7 @@ in
           IPv6AcceptRA = false;
         };
         dhcpV4Config = {
+          RouteMetric = 9999;
           UseRoutes = false;
         };
         linkConfig.RequiredForOnline = "routable";
@@ -101,6 +105,7 @@ in
           IPv6AcceptRA = false;
         };
         dhcpV4Config = {
+          RouteMetric = 9999;
           UseRoutes = false;
         };
         linkConfig.RequiredForOnline = "routable";
@@ -126,6 +131,7 @@ in
     tailscale = {
       enable = true;
       router = true;
+      accept-connections = true;
     };
     pam = disabled;
     common = {

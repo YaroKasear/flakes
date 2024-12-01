@@ -50,6 +50,6 @@ in
           172.67.145.80 vpn.kasear.net
         ''
       else
-        null;
+        "";
   };
 }
