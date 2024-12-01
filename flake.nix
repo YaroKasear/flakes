@@ -152,6 +152,9 @@
         hosts.deimos.modules = with inputs; [
           nixos-hardware.nixosModules.common-pc
         ];
+        hosts.silvanus.modules = with inputs; [
+          nixos-hardware.nixosModules.raspberry-pi-4
+        ];
       };
 
       homes.users =
