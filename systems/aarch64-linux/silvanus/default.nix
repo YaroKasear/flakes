@@ -22,14 +22,6 @@ in
     };
   };
 
-  boot = {
-    loader = {
-      grub.enable = false;
-      generic-extlinux-compatible.enable = true;
-    };
-    initrd.systemd = disabled;
-  };
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";
@@ -100,7 +92,6 @@ in
   };
   hardware = {
     deviceTree.filter = "bcm2711-rpi-4*.dtb";
-    enableRedistributableFirmware = true;
     raspberry-pi."4" = {
       apply-overlays-dtmerge = enabled;
       xhci = enabled;
