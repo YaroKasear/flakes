@@ -80,6 +80,9 @@ in
             LinkLocalAddressing = false;
             IPv6AcceptRA = false;
           };
+          dhcpV4Config = {
+            RouteMetric = 100;
+          };
           linkConfig.RequiredForOnline = "routable";
         };
         "30-storage" = {
@@ -91,6 +94,7 @@ in
           };
           dhcpV4Config = {
             UseRoutes = false;
+            RouteMetric = 9999;
           };
           linkConfig = {
             MTUBytes = "9000";
@@ -106,6 +110,7 @@ in
           };
           dhcpV4Config = {
             UseRoutes = false;
+            RouteMetric = 9999;
           };
           linkConfig.RequiredForOnline = "routable";
         };
