@@ -103,7 +103,7 @@ in
     enableRedistributableFirmware = true;
     raspberry-pi."4" = {
       apply-overlays-dtmerge = enabled;
-      xhci = enabled;
+      xhci = disabled;
     };
   };
 }
