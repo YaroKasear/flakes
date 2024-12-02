@@ -1,7 +1,7 @@
 { lib, config, pkgs, inputs, ... }:
-
 with lib;
 with lib.united;
+
 let
   common-secrets = inputs.self + "/secrets/common/";
 
@@ -134,7 +134,7 @@ in
       '';
       settings = {
         auto-optimise-store = true;
-        trusted-users = [ "yaro" ];
+        trusted-users = config.users.groups.wheel.members;
       };
     };
 
