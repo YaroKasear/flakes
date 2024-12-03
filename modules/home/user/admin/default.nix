@@ -42,12 +42,22 @@ in
         shellAliases = {
           update-config = "flake boot ${config.united.user.directories.home}/flakes/#";
           save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
-          ssh = "kitten ssh";
           load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
           upgrade-system = "nix flake update ${config.united.user.directories.home}/flakes/# && flake boot ${config.united.user.directories.home}/flakes/#";
           update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff --color always | less";
           update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd --color=always diff | less";
         };
+        initExtra = ''
+          	  ssh () {
+          		if [[ -z "''${KITTY_PID}" ]]; then
+                  echo "Not running on KITTY..."
+          		    ${pkgs.openssh}/bin/ssh $@
+          		  else
+                  echo "Running on KITTY..."
+          		    kitten ssh $@
+          		fi
+          	  }
+          	'';
       };
       vscode = mkIf config.united.vscode.enable {
         userSettings = {
