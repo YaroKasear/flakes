@@ -12,7 +12,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    home.file.".local/share/Sonic3AIR/Sonic_Knuckles_wSonic3.bin".source = config.lib.file.mkOutOfStoreSymlink cfg.ROM;
 
     xdg = {
       desktopEntries = {
@@ -26,7 +25,20 @@ in
           icon = "${config.united.user.directories.games}/sonic3air/sonic3air_linux/data/icon.png";
         };
       };
-      # configFile."Sonic3AIR/settings.json".source = ./files/settings.json;
+      dataFile = {
+        "Sonic3AIR/Sonic_Knuckles_wSonic3.bin".source = config.lib.file.mkOutOfStoreSymlink cfg.ROM;
+        "Sonic3AIR/settings.json".source = ./files/settings.json;
+        "Sonic3AIR/mods/active-mods.json".text = builtins.toJSON {
+          ActiveMods = [
+            "yaromusicmod"
+          ];
+          UseLegacyLoading = false;
+        };
+        "Sonic3AIR/mods/yaromusicmod" = {
+          source = config.lib.file.mkOutOfStoreSymlink "/mnt/music/Sonic the Hedgehog/Sonic 3 AIR Yaro Music Mod/";
+          recursive = true;
+        };
+      };
     };
   };
 }
