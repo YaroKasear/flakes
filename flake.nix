@@ -8,7 +8,10 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-    nur.url = "github:nix-community/NUR";
+    nur = {
+      url = "github:nix-community/NUR/42a0caa391c4d396d7e125e4ee035ab1dcd3f978";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     agenix.url = "github:ryantm/agenix";
 
