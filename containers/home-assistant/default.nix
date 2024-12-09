@@ -29,7 +29,7 @@ with pkgs;
         {
           owner = "zachowj";
           repo = "hass-node-red";
-          rev = "v4.0.1";
+          rev = "v4.1.1";
           sha256 = "ePphcSWSWhI51iNJsKryuo52ck7S5LuNREfvndIuVfs=";
         } + "/custom_components/nodered";
     };
@@ -38,5 +38,5 @@ with pkgs;
     ];
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

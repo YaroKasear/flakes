@@ -6,7 +6,8 @@ let
   is-linux = pkgs.stdenv.isLinux;
 
   cfg = config.united.admin;
-in {
+in
+{
   options.united.admin = {
     enable = mkEnableOption "Admin";
   };
@@ -25,6 +26,7 @@ in {
       (mkIf is-linux glxinfo)
       pciutils
       nil
+      (mkIf config.united.vscode.enable nixpkgs-fmt)
       nvd
       snowfallorg.flake
       tcpdump
@@ -36,28 +38,46 @@ in {
 
     programs = {
       zsh = mkIf config.united.zsh.enable {
-        oh-my-zsh.plugins = ["sudo"];
+        oh-my-zsh.plugins = [ "sudo" ];
         shellAliases = {
           update-config = "flake boot ${config.united.user.directories.home}/flakes/#";
           save-config = "pushd ${config.united.user.directories.home}/flakes; git add .; git commit -m \"$(date)\"; git push origin main; popd";
-          ssh = "kitten ssh";
           load-config = "pushd ${config.united.user.directories.home}/flakes; git pull; popd";
           upgrade-system = "nix flake update ${config.united.user.directories.home}/flakes/# && flake boot ${config.united.user.directories.home}/flakes/#";
-          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff";
-          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+          update-diff = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nix-diff --color always | less";
+          update-log = "${pkgs.coreutils-full}/bin/ls /nix/var/nix/profiles | grep system- | sort -V | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd --color=always diff | less";
         };
+        initExtra = ''
+          	  ssh () {
+          		if [[ -z "''${KITTY_PID}" ]]; then
+                  echo "Not running on KITTY..."
+          		    ${pkgs.openssh}/bin/ssh $@
+          		  else
+                  echo "Running on KITTY..."
+          		    kitten ssh $@
+          		fi
+          	  }
+          	'';
       };
       vscode = mkIf config.united.vscode.enable {
         userSettings = {
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
+          "nix.serverSettings" = {
+            "nil" = {
+              formatting.command = [ "nixpkgs-fmt" ];
+            };
+          };
+          "[nix]" = {
+            "editor.defaultFormatter" = "jnoortheen.nix-ide";
+          };
         };
         extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "nix-ide";
             publisher = "jnoortheen";
-            version = "0.3.1";
-            sha256 = "1cpfckh6zg8byi6x1llkdls24w9b0fvxx4qybi9zfcy5gc60r6nk";
+            version = "0.3.5";
+            sha256 = "12sg67mn3c8mjayh9d6y8qaky00vrlnwwx58v1f1m4qrbdjqab46";
           }
         ];
       };

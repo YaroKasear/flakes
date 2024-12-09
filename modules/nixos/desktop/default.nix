@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.desktop;
-in {
+in
+{
   options.united.desktop = {
     enable = mkEnableOption "Desktop";
     use-wayland = mkEnableOption "Make use of Wayland instead of Xorg.";
@@ -22,11 +23,9 @@ in {
       pulseaudio
     ];
 
-    hardware.opengl = {
+    hardware.graphics = {
       enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-      extraPackages = [pkgs.vulkan-validation-layers];
+      extraPackages = [ pkgs.vulkan-validation-layers ];
     };
 
     programs.dconf = enabled;
@@ -34,7 +33,7 @@ in {
     security.pam.services = {
       login = with config.security.pam.services.login.rules.auth; {
         rules.auth.gnome_keyring.order = u2f.order - 10;
-	      u2fAuth = true;
+        u2fAuth = true;
       };
     };
 
@@ -67,11 +66,6 @@ in {
       '';
     };
 
-    sound = {
-      enable = true;
-      mediaKeys = enabled;
-    };
-
     systemd.user.services.polkit-gnome-authentication-agent-1 = {
       description = "polkit-gnome-authentication-agent-1";
       wantedBy = [ "graphical-session.target" ];
@@ -90,7 +84,6 @@ in {
 
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
       config.common.default = mkIf (!config.united.wayland.enable) "*";
     };
   };

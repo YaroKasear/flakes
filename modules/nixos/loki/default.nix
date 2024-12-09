@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.loki;
-in {
+in
+{
   options.united.loki = {
     enable = mkEnableOption "Common configuration for Loki.";
   };
@@ -21,7 +22,7 @@ in {
           "usbhid"
           "xhci_pci"
         ];
-        supportedFilesystems = ["nfs" "nfs4"];
+        supportedFilesystems = [ "nfs" "nfs4" ];
       };
       kernelModules = [
         "nvidia-uvm"
@@ -54,7 +55,6 @@ in {
     services = {
       gpm = enabled;
       pcscd = enabled;
-      yubikey-agent = enabled;
     };
 
     systemd.network = {
@@ -71,11 +71,14 @@ in {
       networks = {
         "20-main" = {
           matchConfig.Name = "enp9s0";
-          vlan = ["vlan30"];
+          vlan = [ "vlan30" ];
           networkConfig = {
             DHCP = "ipv4";
             LinkLocalAddressing = false;
             IPv6AcceptRA = false;
+          };
+          dhcpV4Config = {
+            RouteMetric = 100;
           };
           linkConfig.RequiredForOnline = "routable";
         };
@@ -88,6 +91,7 @@ in {
           };
           dhcpV4Config = {
             UseRoutes = false;
+            RouteMetric = 9999;
           };
           linkConfig = {
             MTUBytes = "9000";
@@ -103,6 +107,7 @@ in {
           };
           dhcpV4Config = {
             UseRoutes = false;
+            RouteMetric = 9999;
           };
           linkConfig.RequiredForOnline = "routable";
         };

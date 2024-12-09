@@ -22,6 +22,8 @@ in
     };
   };
 
+  boot.loader.systemd-boot = disabled;
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";

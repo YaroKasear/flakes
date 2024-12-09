@@ -16,7 +16,8 @@ let
   dataDir = "/var/lib/jellyfin";
   domain = "${app}.kasear.net";
   secrets-directory = inputs.self + "/secrets/modules/nginx-${app}/";
-in {
+in
+{
   options.united.jellyfin = {
     enable = mkEnableOption "jellyfin";
   };
@@ -32,7 +33,7 @@ in {
 
     containers.${app} = {
       autoStart = true;
-            privateNetwork = true;
+      privateNetwork = true;
       hostAddress = "192.168.1.1";
       localAddress = address;
       forwardPorts = [
@@ -47,10 +48,10 @@ in {
           protocol = "udp";
         }
       ];
-      config = { ... } : {
+      config = { ... }: {
         networking.useHostResolvConf = lib.mkForce false;
 
-        environment.systemPackages = [python3];
+        environment.systemPackages = [ python3 ];
 
         services = {
           jellyfin = {
@@ -79,7 +80,7 @@ in {
             };
           };
           timers.xmltv = {
-            wantedBy = ["time.target"];
+            wantedBy = [ "time.target" ];
             timerConfig = {
               OnCalendar = "daily";
               Persistent = true;
@@ -90,7 +91,7 @@ in {
         users = {
           users.jellyfin = {
             uid = 3004;
-            extraGroups = ["media"];
+            extraGroups = [ "media" ];
           };
           groups = {
             jellyfin.gid = 3006;
@@ -98,7 +99,7 @@ in {
           };
         };
 
-        system.stateVersion = "24.05";
+        system.stateVersion = "24.11";
       };
       bindMounts = {
         ${dataDir} = {

@@ -5,28 +5,30 @@ with lib.united;
 let
   cfg = config.united.common;
 
-in {
+in
+{
   options.united.common = {
     enable = mkEnableOption "Common";
   };
 
   config = mkIf cfg.enable {
     home = {
-      stateVersion = "24.05";
+      stateVersion = "24.11";
       packages = with pkgs;
-      let
-        cowsay = inputs.cowsay.packages.${system}.cowsay;
-      in [
-        chroma
-        cowsay
-        file
-        fortune
-        killall
-        fastfetch
-        p7zip
-        thefuck
-        unzip
-      ];
+        let
+          cowsay = inputs.cowsay.packages.${system}.cowsay;
+        in
+        [
+          chroma
+          cowsay
+          file
+          fortune
+          killall
+          fastfetch
+          p7zip
+          thefuck
+          unzip
+        ];
     };
 
     programs = {

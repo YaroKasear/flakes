@@ -35,14 +35,14 @@ in {
           {
             name = "catppuccin-vsc";
             publisher = "catppuccin";
-            version = "3.14.0";
-            sha256 = "066wsdjck2aq7gznl772ymkw5rd52mc0imkjw52m4x11b13hbm4h";
+            version = "3.15.2";
+            sha256 = "0jxm31jn73a31124cj1rg766j7p55bj131lydwr6vlbbq85qqwkd";
           }
           {
             name = "catppuccin-vsc-icons";
             publisher = "catppuccin";
-            version = "1.13.0";
-            sha256 = "0baygqdjxca7igk5paqi45ls4szvvhc9890aaaxvcdqw8fain2z2";
+            version = "1.17.0";
+            sha256 = "1w4x7xnq8d4dkjbrgajpvd2imllzp39cwxfggx0ykbadaq70h809";
           }
         ];
         userSettings = {

@@ -1,7 +1,7 @@
 { lib, config, pkgs, inputs, ... }:
-
 with lib;
 with lib.united;
+
 let
   common-secrets = inputs.self + "/secrets/common/";
 
@@ -31,8 +31,7 @@ in
       };
     };
 
-    boot = (mkIf (pkgs.system == "x86_64-linux")) {
-      kernelPackages = mkDefault config.boot.zfs.package.latestCompatibleLinuxPackages;
+    boot = {
       initrd.systemd = enabled;
       kernelModules = [
         "usb-storage"
@@ -43,8 +42,10 @@ in
       loader = {
         timeout = 0;
         systemd-boot = {
-          enable = true;
+          enable = mkDefault true;
           configurationLimit = 5;
+          memtest86.enable = (pkgs.system == "x86_64-linux");
+          netbootxyz = enabled;
         };
         efi = {
           canTouchEfiVariables = true;
@@ -53,8 +54,11 @@ in
       };
       plymouth = {
         enable = cfg.splash;
-        themePackages = with pkgs; [ (catppuccin-plymouth.override { variant = "mocha"; }) ];
-        theme = "catppuccin-mocha";
+        themePackages = with pkgs; [
+          (catppuccin-plymouth.override { variant = "mocha"; })
+          config.nur.repos.abszero.plymouth-themes
+        ];
+        theme = "green_blocks";
       };
     };
 
@@ -62,6 +66,24 @@ in
       earlySetup = true;
       font = "${pkgs.terminus_font}/share/consolefonts/ter-i20n.psf.gz";
       keyMap = "us";
+      colors = with config.home-manager.users.yaro.united.style.colors; [
+        "${strings.removePrefix "#" color0}"
+        "${strings.removePrefix "#" color1}"
+        "${strings.removePrefix "#" color2}"
+        "${strings.removePrefix "#" color3}"
+        "${strings.removePrefix "#" color4}"
+        "${strings.removePrefix "#" color5}"
+        "${strings.removePrefix "#" color6}"
+        "${strings.removePrefix "#" color7}"
+        "${strings.removePrefix "#" color8}"
+        "${strings.removePrefix "#" color9}"
+        "${strings.removePrefix "#" color10}"
+        "${strings.removePrefix "#" color11}"
+        "${strings.removePrefix "#" color12}"
+        "${strings.removePrefix "#" color13}"
+        "${strings.removePrefix "#" color14}"
+        "${strings.removePrefix "#" color15}"
+      ];
     };
 
     environment = {
@@ -90,7 +112,7 @@ in
 
     hardware.enableRedistributableFirmware = lib.mkDefault true;
 
-    home-manager.backupFileExtension = "bak";
+    home-manager.backupFileExtension = "hm-backup";
 
     i18n.defaultLocale = "en_US.UTF-8";
 
@@ -113,7 +135,7 @@ in
       '';
       settings = {
         auto-optimise-store = true;
-        trusted-users = [ "yaro" ];
+        trusted-users = config.users.groups.wheel.members;
       };
     };
 
@@ -162,7 +184,7 @@ in
       ];
     };
 
-    system.stateVersion = "24.05";
+    system.stateVersion = "24.11";
 
     systemd.enableEmergencyMode = false;
 

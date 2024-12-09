@@ -129,7 +129,7 @@ in
             groups.minecraft.gid = 3007;
           };
 
-          system.stateVersion = "24.05";
+          system.stateVersion = "24.11";
         };
       };
       survival = {
@@ -186,7 +186,7 @@ in
             groups.minecraft.gid = 3007;
           };
 
-          system.stateVersion = "24.05";
+          system.stateVersion = "24.11";
         };
       };
     };

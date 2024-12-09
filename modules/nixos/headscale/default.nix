@@ -31,9 +31,9 @@ in
               listen_addr = "0.0.0.0:8080";
               metrics_listen_addr = "0.0.0.0:9090";
               ip_prefixes = [ "100.64.0.0/10" ];
-              dns_config = {
+              dns = {
                 base_domain = "mesh.kasear.net";
-                nameservers = [
+                nameservers.global = [
                   "100.64.0.4"
                 ];
                 override_local_dns = true;

@@ -7,7 +7,8 @@ let
   secrets-directory = inputs.self + "/secrets/modules/nginx-${app}/";
 
   app = "proxy";
-in {
+in
+{
   options.united.nginx-proxy = {
     enable = mkEnableOption "nginx-proxy";
   };
@@ -26,46 +27,46 @@ in {
         autoStart = true;
 
         config = { pkgs, ... }:
-        {
-          security.acme = {
-            acceptTerms = true;
-            certs = {
-              default = {
-                domain = "*.kasear.net";
-                extraDomainNames = ["kasear.net"];
+          {
+            security.acme = {
+              acceptTerms = true;
+              certs = {
+                default = {
+                  domain = "*.kasear.net";
+                  extraDomainNames = [ "kasear.net" ];
+                };
+              };
+              defaults = {
+                email = "yaro@kasear.net";
+                group = "${app}";
+                dnsProvider = "cloudflare";
+                dnsResolver = "1.1.1.1";
+                environmentFile = config.age.secrets."cf-credentials.env".path;
               };
             };
-            defaults = {
-              email = "yaro@kasear.net";
-              group = "${app}";
-              dnsProvider = "cloudflare";
-              dnsResolver = "1.1.1.1";
-              environmentFile = config.age.secrets."cf-credentials.env".path;
-            };
-          };
 
-          services = {
-            nginx = {
-              enable = true;
-              package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
-              recommendedOptimisation = true;
-              recommendedProxySettings = true;
-              recommendedTlsSettings = true;
-            };
-          };
-
-          users = {
-            users.acme.uid = 3001;
-            groups = {
-              proxy = {
-                gid = 3003;
-                members = ["nginx" "acme"];
+            services = {
+              nginx = {
+                enable = true;
+                package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
+                recommendedOptimisation = true;
+                recommendedProxySettings = true;
+                recommendedTlsSettings = true;
               };
             };
-          };
 
-          system.stateVersion = "24.05";
-        };
+            users = {
+              users.acme.uid = 3001;
+              groups = {
+                proxy = {
+                  gid = 3003;
+                  members = [ "nginx" "acme" ];
+                };
+              };
+            };
+
+            system.stateVersion = "24.11";
+          };
 
         bindMounts = {
           "/var/lib/acme" = {

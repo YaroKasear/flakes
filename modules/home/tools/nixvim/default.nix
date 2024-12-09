@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.nixvim;
-in {
+in
+{
   options.united.nixvim = {
     enable = mkEnableOption "Nixvim";
   };

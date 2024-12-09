@@ -135,7 +135,6 @@ in
     apache-vikali = enabled;
     apache-majike = enabled;
     deimos-mounts = enabled;
-    emby = disabled;
     headscale = enabled;
     jellyfin = enabled;
     minecraft = enabled;

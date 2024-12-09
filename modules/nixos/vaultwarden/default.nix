@@ -10,7 +10,8 @@ let
   address = "192.168.1.16";
   dataDir = "/var/lib/bitwarden_rs/";
   domain = "${app}.kasear.net";
-in {
+in
+{
   options.united.vaultwarden = {
     enable = mkEnableOption "vaultwarden";
   };
@@ -19,19 +20,19 @@ in {
     age = {
       secrets = {
         "vaultwarden.env" =
-        {
-          rekeyFile = secrets-directory + "vaultwarden.env.age";
-          path = "/var/vaultwarden.env";
-          owner = "vaultwarden";
-          mode = "400";
-          symlink = false;
-        };
+          {
+            rekeyFile = secrets-directory + "vaultwarden.env.age";
+            path = "/var/vaultwarden.env";
+            owner = "vaultwarden";
+            mode = "400";
+            symlink = false;
+          };
       };
     };
 
     containers.${app} = {
       autoStart = true;
-            privateNetwork = true;
+      privateNetwork = true;
       hostAddress = "192.168.1.1";
       localAddress = address;
       config = { ... }: {
@@ -70,7 +71,7 @@ in {
           };
         };
 
-        system.stateVersion = "24.05";
+        system.stateVersion = "24.11";
       };
       bindMounts.${dataDir} = {
         hostPath = "/mnt/${domain}";

@@ -6,7 +6,8 @@ let
   is-linux = pkgs.stdenv.isLinux;
 
   cfg = config.united.yubikey;
-in {
+in
+{
   options.united.yubikey = {
     enable = mkEnableOption "Yubikey";
   };

@@ -26,12 +26,9 @@ in
       extraUpFlags = [
         "--accept-dns${if cfg.accept-dns then "" else "=false"}"
         "--accept-routes${if cfg.accept-routes then "" else "=false"}"
-        # (mkIf cfg.router "--advertise-routes=10.0.10.1/32,10.10.10.1/32,10.40.10.1/32")
         "--advertise-routes=${if cfg.router then "10.0.10.1/32,10.10.10.1/32,10.40.10.1/32" else ""}"
         "--login-server=https://vpn.kasear.net"
-        # (mkIf (cfg.router != true && cfg.accept-connections != true) "--shields-up")
         "--shields-up=${if cfg.accept-connections then "false" else "true"}"
-        # (mkIf (cfg.router || cfg.accept-connections == true) "--ssh")
       ];
       useRoutingFeatures =
         if cfg.router then

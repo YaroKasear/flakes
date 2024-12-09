@@ -33,7 +33,10 @@ in
     };
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
+  boot = {
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+    supportedFilesystems = [ "ntfs" ];
+  };
 
   hardware.bluetooth = {
     enable = true;
@@ -60,6 +63,7 @@ in
           ];
       };
     };
+    tailscale.extraUpFlags = [ "--exit-node=" ];
   };
 
   i18n.extraLocaleSettings = {
@@ -82,7 +86,7 @@ in
   united = {
     loki = enabled;
     common = {
-      splash = true;
+      splash = false;
       banner = ''
         [90;40m░░░░░░░░░░░░░░░░░[0m
         [90;40m░[32m█[90m░░░[32m█▀█[90m░[32m█[90m░[32m█[90m░[32m▀[32m█▀[90m░[0m
@@ -97,34 +101,28 @@ in
     };
     tailscale = enabled;
     wayland.compositor = "plasma";
-    web-applications = {
-      hostInterface = "enp9s0";
-      tlsConfig.readOnly = true;
-      services = [
-        {
-          name = "cnelson";
-          dataDir = "/etc/cnelson";
-          extraConfig.environment.etc = {
-            "cnelson/index.html".source = ./files/cnelson/index.html;
-            "cnelson/css".source = ./files/cnelson/css;
-            "cnelson/images".source = ./files/cnelson/images;
-            "cnelson/js".source = ./files/cnelson/js;
-          };
-        }
-      ];
-    };
   };
+
+  networking.extraHosts = ''
+    10.0.10.1 vpn.kasear.net
+  '';
 
   systemd.coredump.enable = true;
 
   snowfallorg.users.cnelson.admin = false;
 
-  users.users = {
-    cnelson = {
-      hashedPasswordFile = config.age.secrets.cnelson-password.path;
-      isNormalUser = true;
-      shell = pkgs.zsh;
+  users = {
+    users = {
+      cnelson = {
+        hashedPasswordFile = config.age.secrets.cnelson-password.path;
+        isNormalUser = true;
+        shell = pkgs.zsh;
+      };
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
     };
-    yaro.extraGroups = [ "video" "audio" "lp" "gamemode" ];
+    groups.minecraft.gid = 3007;
+    groups.acme.gid = 3003;
   };
+
+  united.minecraft = disabled;
 }

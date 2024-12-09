@@ -7,7 +7,8 @@ let
   is-darwin = pkgs.stdenv.isDarwin;
 
   cfg = config.united.desktop;
-in {
+in
+{
   options.united.desktop = {
     enable = mkEnableOption "desktop";
   };
@@ -25,14 +26,13 @@ in {
 
     home = {
       packages = with pkgs;
-      [
-        font-awesome
-        nerdfonts
-        powerline-fonts
-        unifont
-        unifont_upper
-        symbola
-      ];
+        [
+          font-awesome
+          powerline-fonts
+          unifont
+          unifont_upper
+          symbola
+        ];
     };
   };
 }

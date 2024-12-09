@@ -3,7 +3,7 @@ with lib.united;
 
 {
   united = {
-    admin = enabled;#  = enabled;
+    admin = enabled; #  = enabled;
     am2r = enabled;
     common = enabled;
     desktop = {
@@ -17,7 +17,10 @@ with lib.united;
     persistent = enabled;
     protonmail-bridge = enabled;
     rust = enabled;
-    sonic3air = enabled;
+    sonic3air = {
+      enable = true;
+      ROM = "/mnt/games/Emulation/roms/genesis/Sonic_Knuckles_wSonic3.bin";
+    };
     tinyfugue = enabled;
     wayland.compositor = "plasma";
     wine = enabled;
@@ -39,11 +42,6 @@ with lib.united;
       catppuccin.latte = disabled;
       catppuccin.macchiato = disabled;
       catppuccin.mocha = enabled;
-      fonts.terminal = {
-        name = "Departure Mono";
-        package = pkgs.united.departure-mono;
-        size = 11;
-      };
       effects.shadow = {
         active-color = config.united.style.colors.active_border_color;
         inactive-color = config.united.style.colors.inactive_border_color;
@@ -67,6 +65,7 @@ with lib.united;
           };
         }
         "org.kde.plasma.marginsseparator"
+        "org.kde.plasma.mediacontroller"
         "org.kde.plasma.panelspacer"
         "org.kde.plasma.marginsseparator"
         {
@@ -132,6 +131,26 @@ with lib.united;
     }
   ];
 
+  programs.vscode.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "m68k";
+      publisher = "steventattersall";
+      version = "0.0.1";
+      sha256 = "1jhm6ra47ww70sddkkrs6879ph3ws57zxv9zvzvv816vp9p3zij8";
+    }
+    {
+      name = "es7-react-js-snippets";
+      publisher = "dsznajder";
+      version = "4.4.3";
+      sha256 = "1xyhysvsf718vp2b36y1p02b6hy1y2nvv80chjnqcm3gk387jps0";
+    }
+  ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   home = {
     packages = with pkgs; [
       audacity
@@ -139,33 +158,42 @@ with lib.united;
       gimp
       handbrake
       makemkv
+      prismlauncher
       mosquitto
+      nixos-icons
       skypeforlinux
       tailwindcss
       telegram-desktop
+      (python3.withPackages (ps: with ps; [
+        jupyter
+        pandas
+        scikit-learn
+      ]))
     ];
     persistence."/persistent${config.united.user.directories.home}" =
-    let
-      mkHomeCanon = dir: lib.replaceStrings ["${config.united.user.directories.home}/"] [""] dir;
+      let
+        mkHomeCanon = dir: lib.replaceStrings [ "${config.united.user.directories.home}/" ] [ "" ] dir;
 
-      config-directory = mkHomeCanon config.united.user.directories.config;
-      data-directory = mkHomeCanon config.united.user.directories.data;
-    in {
-      allowOther = true;
-      directories = [
-        "${config-directory}/heroic"
-        "${config-directory}/protonmail"
-        "${config-directory}/skypeforlinux"
-        "${config-directory}/StardewValley/Saves"
-        "${config-directory}/discord"
-        "${data-directory}/protonmail"
-        "${data-directory}/TelegramDesktop"
-        {
-          directory = "${data-directory}/Steam";
-          method = "symlink";
-        }
-      ];
-    };
+        config-directory = mkHomeCanon config.united.user.directories.config;
+        data-directory = mkHomeCanon config.united.user.directories.data;
+      in
+      {
+        allowOther = true;
+        directories = [
+          "${config-directory}/heroic"
+          "${config-directory}/protonmail"
+          "${config-directory}/skypeforlinux"
+          "${config-directory}/StardewValley/Saves"
+          "${config-directory}/discord"
+          "${data-directory}/PrismLauncher"
+          "${data-directory}/protonmail"
+          "${data-directory}/TelegramDesktop"
+          {
+            directory = "${data-directory}/Steam";
+            method = "symlink";
+          }
+        ];
+      };
   };
 
   xdg = {
@@ -231,8 +259,8 @@ with lib.united;
           };
         };
         gpg = {
-            key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
-            signByDefault = true;
+          key = "8A676FDCAAD929184299D020151A8F0401FB2E85";
+          signByDefault = true;
         };
       };
     };
