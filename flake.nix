@@ -9,15 +9,14 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nur = {
-      url = "github:nix-community/NUR/42a0caa391c4d396d7e125e4ee035ab1dcd3f978";
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agenix.url = "github:ryantm/agenix";
 
     agenix-rekey = {
-      url = "github:oddlama/agenix-rekey"; # https://github.com/oddlama/agenix-rekey/pull/41
-      # url = "github:oddlama/agenix-rekey/126b4a5133eb361cbf5bf90e44c71b6f830845ec";
+      url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,10 +55,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence/63f4d0443e32b0dd7189001ee1894066765d18a5"; # https://github.com/nix-community/impermanence/issues/215
+    impermanence.url = "github:nix-community/impermanence";
 
     lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/main.tar.gz";
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
