@@ -9,15 +9,14 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nur = {
-      url = "github:nix-community/NUR/42a0caa391c4d396d7e125e4ee035ab1dcd3f978";
+      url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     agenix.url = "github:ryantm/agenix";
 
     agenix-rekey = {
-      url = "github:oddlama/agenix-rekey"; # https://github.com/oddlama/agenix-rekey/pull/41
-      # url = "github:oddlama/agenix-rekey/126b4a5133eb361cbf5bf90e44c71b6f830845ec";
+      url = "github:oddlama/agenix-rekey";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -51,7 +50,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence.url = "github:nix-community/impermanence/63f4d0443e32b0dd7189001ee1894066765d18a5"; # https://github.com/nix-community/impermanence/issues/215
+    impermanence.url = "github:nix-community/impermanence";
 
     lix = {
       url = "https://git.lix.systems/lix-project/lix/archive/main.tar.gz";
@@ -79,7 +78,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-rice.url = "github:bertof/nix-rice?rev=dddd03ed3c5e05c728b0df985f7af905b002f588";
+    nix-rice.url = "github:bertof/nix-rice";
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -145,7 +144,7 @@
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
           nix-minecraft.nixosModules.minecraft-servers
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           lix-module.nixosModules.default
         ];
         hosts.loki.modules = with inputs; [
@@ -169,7 +168,7 @@
             impermanence.nixosModules.home-manager.impermanence
             nix-index-database.hmModules.nix-index
             nixvim.homeManagerModules.nixvim
-            nur.hmModules.nur
+            nur.modules.homeManager.default
             plasma-manager.homeManagerModules.plasma-manager
           ];
         in

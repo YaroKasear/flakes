@@ -1,11 +1,12 @@
 { lib, config, pkgs, inputs, ... }:
 with lib;
 with lib.united;
-with inputs.nix-rice.lib.color;
+with inputs.nix-rice.lib.nix-rice.color;
 
 let
   cfg = config.united.plasma;
-in {
+in
+{
   options.united.plasma = {
     enable = mkEnableOption "Plasma";
   };
@@ -26,7 +27,7 @@ in {
 
     programs = {
       firefox.package = pkgs.firefox.override {
-        cfg.nativeMessagingHosts.packages = [pkgs.kdePackages.plasma-browser-integration];
+        cfg.nativeMessagingHosts.packages = [ pkgs.kdePackages.plasma-browser-integration ];
       };
       plasma = {
         enable = true;
@@ -76,7 +77,7 @@ in {
             };
             mode = "location";
           };
-          titlebarButtons.left = [];
+          titlebarButtons.left = [ ];
         };
 
         powerdevil.AC = {
@@ -94,7 +95,7 @@ in {
                 value = "firefox";
                 type = "substring";
               };
-              window-types = ["normal"];
+              window-types = [ "normal" ];
             };
             apply = {
               above = true;

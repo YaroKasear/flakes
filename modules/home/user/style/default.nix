@@ -53,7 +53,7 @@ in
         inactive-color = mkOpt types.str "${cfg.colors.black}" "Color of the drop shadow in RGB hex notation.";
       };
     };
-    colors = with inputs.nix-rice.lib.color; {
+    colors = with inputs.nix-rice.lib.nix-rice.color; {
       black = mkOpt types.str "${cfg.colors.black_dull}" "My black color!";
       red = mkOpt types.str "${cfg.colors.red_dull}" "My red color!";
       green = mkOpt types.str "${cfg.colors.green_dull}" "My green color!";
