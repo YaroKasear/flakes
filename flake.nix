@@ -142,7 +142,7 @@
           disko.nixosModules.disko
           impermanence.nixosModules.impermanence
           nix-gaming.nixosModules.pipewireLowLatency
-          nur.nixosModules.nur
+          nur.modules.nixos.default
           lix-module.nixosModules.default
           nix-minecraft.nixosModules.minecraft-servers
         ];
