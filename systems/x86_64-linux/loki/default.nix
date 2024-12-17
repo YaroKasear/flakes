@@ -53,7 +53,7 @@ in
     };
     printing = enabled;
     rstudio-server = {
-      enable = true;
+      enable = false;
       package = pkgs.rstudioServerWrapper.override {
         packages = with pkgs.rPackages;
           [
@@ -65,16 +65,6 @@ in
       };
     };
     tailscale.extraUpFlags = [ "--exit-node=" ];
-  };
-
-  i18n.extraLocaleSettings = {
-    LC_CTYPE = "en_US.UTF-8";
-    LC_COLLATE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
   };
 
   systemd.user.services.mpris-proxy = {
@@ -102,54 +92,54 @@ in
     };
     tailscale = enabled;
     wayland.compositor = "plasma";
-    web-applications = {
-      hostInterface = "enp9s0";
-      tlsConfig.readOnly = true;
-      services = [
-        {
-          name = "cnelson";
-          dataDir = "/etc/cnelson";
-          extraConfig.environment.etc = {
-            "cnelson/index.html".source = ./files/cnelson/index.html;
-            "cnelson/css".source = ./files/cnelson/css;
-            "cnelson/images".source = ./files/cnelson/images;
-            "cnelson/js".source = ./files/cnelson/js;
-          };
-        }
-        {
-          name = "survey";
-          serverType = "custom";
-          extraConfig =
-            let
-              kfile = pkgs.writeText "surveykey" "DBA5FA2FFFB8FC1109BA9CCCBFA3F583";
-              nfile = pkgs.writeText "surveynonce" "08BB00BEDAFA705CD51E09DF";
-            in
-            {
-              services = {
-                limesurvey = {
-                  enable = true;
-                  encryptionKeyFile = kfile;
-                  encryptionNonceFile = nfile;
-                  virtualHost = {
-                    hostName = "survey.kasear.net";
-                    adminAddr = "webmaster.survey@kasear.net";
-                  };
-                };
-                mysql = {
-                  enable = true;
-                  package = pkgs.mariadb;
-                  dataDir = "/var/lib/mysql";
-                };
-              };
+    # web-applications = {
+    #   hostInterface = "enp9s0";
+    #   tlsConfig.readOnly = true;
+    #   services = [
+    #     {
+    #       name = "cnelson";
+    #       dataDir = "/etc/cnelson";
+    #       extraConfig.environment.etc = {
+    #         "cnelson/index.html".source = ./files/cnelson/index.html;
+    #         "cnelson/css".source = ./files/cnelson/css;
+    #         "cnelson/images".source = ./files/cnelson/images;
+    #         "cnelson/js".source = ./files/cnelson/js;
+    #       };
+    #     }
+    #     {
+    #       name = "survey";
+    #       serverType = "custom";
+    #       extraConfig =
+    #         let
+    #           kfile = pkgs.writeText "surveykey" "DBA5FA2FFFB8FC1109BA9CCCBFA3F583";
+    #           nfile = pkgs.writeText "surveynonce" "08BB00BEDAFA705CD51E09DF";
+    #         in
+    #         {
+    #           services = {
+    #             limesurvey = {
+    #               enable = true;
+    #               encryptionKeyFile = kfile;
+    #               encryptionNonceFile = nfile;
+    #               virtualHost = {
+    #                 hostName = "survey.kasear.net";
+    #                 adminAddr = "webmaster.survey@kasear.net";
+    #               };
+    #             };
+    #             mysql = {
+    #               enable = true;
+    #               package = pkgs.mariadb;
+    #               dataDir = "/var/lib/mysql";
+    #             };
+    #           };
 
-              users = {
-                users.limesurvey.uid = 3456;
-                groups.limesurvey.gid = 3456;
-              };
-            };
-        }
-      ];
-    };
+    #           users = {
+    #             users.limesurvey.uid = 3456;
+    #             groups.limesurvey.gid = 3456;
+    #           };
+    #         };
+    #     }
+    #   ];
+    # };
   };
 
   networking.extraHosts = ''
@@ -162,15 +152,15 @@ in
 
   users = {
     users = {
-      cnelson = {
-        hashedPasswordFile = config.age.secrets.cnelson-password.path;
-        isNormalUser = true;
-        shell = pkgs.zsh;
-      };
+      # cnelson = {
+      #   hashedPasswordFile = config.age.secrets.cnelson-password.path;
+      #   isNormalUser = true;
+      #   shell = pkgs.zsh;
+      # };
       yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
     };
-    groups.minecraft.gid = 3007;
-    groups.acme.gid = 3003;
+    # groups.minecraft.gid = 3007;
+    # groups.acme.gid = 3003;
   };
 
   united.minecraft = disabled;

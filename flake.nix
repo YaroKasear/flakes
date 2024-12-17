@@ -78,7 +78,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-rice.url = "github:bertof/nix-rice";
+    nix-rice = {
+      url = "github:bertof/nix-rice";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -173,7 +176,7 @@
           ];
         in
         {
-          "cnelson@loki".modules = home-modules;
+          # "cnelson@loki".modules = home-modules;
           "yaro@deimos".modules = home-modules;
           "yaro@europa".modules = home-modules;
           "yaro@io".modules = home-modules;
