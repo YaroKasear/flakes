@@ -8,7 +8,7 @@ let
 
   app = "vault";
   address = "192.168.1.16";
-  dataDir = "/var/lib/bitwarden_rs/";
+  dataDir = "/var/lib/vaultwarden/";
   domain = "${app}.kasear.net";
 in
 {

@@ -171,7 +171,7 @@
             impermanence.nixosModules.home-manager.impermanence
             nix-index-database.hmModules.nix-index
             nixvim.homeManagerModules.nixvim
-            nur.hmModules.nur
+            nur.modules.homeManager.default
             plasma-manager.homeManagerModules.plasma-manager
           ];
         in
