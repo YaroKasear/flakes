@@ -6,7 +6,7 @@ let
   cfg = config.united.blightmud;
 
 in
-  {
+{
   options.united.blightmud = {
     enable = mkEnableOption "Blightmud";
   };
@@ -14,9 +14,9 @@ in
   config = mkIf cfg.enable {
     home = {
       packages = with pkgs;
-      [
-        blightmud
-      ];
+        [
+          blightmud
+        ];
     };
   };
 }

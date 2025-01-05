@@ -5,6 +5,7 @@ with lib.united;
   united = {
     admin = enabled; #  = enabled;
     am2r = enabled;
+    blightmud = enabled;
     common = enabled;
     desktop = {
       enable = true;
@@ -21,7 +22,7 @@ with lib.united;
       enable = true;
       ROM = "/mnt/games/Emulation/roms/genesis/Sonic_Knuckles_wSonic3.bin";
     };
-    tinyfugue = enabled;
+    tinyfugue = disabled;
     wayland.compositor = "plasma";
     wine = enabled;
     user = {
