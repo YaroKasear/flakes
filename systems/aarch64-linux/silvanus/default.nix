@@ -135,7 +135,7 @@ in
         '';
     };
     timers.runtest = {
-      after = "systemd-networkd-wait-online.service";
+      after = [ "systemd-networkd-wait-online.service" ];
     };
   };
 }
