@@ -23,6 +23,7 @@ in
   };
 
   boot.loader.systemd-boot = disabled;
+  boot.initrd.systemd.enableTpm2 = false;
 
   fileSystems = {
     "/" = {
