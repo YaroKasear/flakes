@@ -169,6 +169,7 @@ with lib.united;
         jupyter
         pandas
         scikit-learn
+        iwlib
       ]))
     ];
     persistence."/persistent${config.united.user.directories.home}" =

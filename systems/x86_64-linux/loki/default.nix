@@ -15,6 +15,7 @@ in
     };
     secrets = {
       cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+      wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
       mosquitto-password = {
         rekeyFile = secrets-directory + "mosquitto-password.age";
         path = "/run/mosquitto-password";
@@ -45,6 +46,22 @@ in
     settings.General.Enable = "Source,Sink,Media,Socket";
   };
 
+  networking.wireless = {
+    enable = mkForce true;
+    secretsFile = config.age.secrets.wireless-secret.path;
+    networks."Heartbeat Communications - Main".pskRaw = "ext:psk";
+    interfaces = [ "wlp7s0" ];
+  };
+
+  nix.settings = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   services = {
     avahi = {
       enable = true;
@@ -65,6 +82,16 @@ in
       };
     };
     tailscale.extraUpFlags = [ "--exit-node=" ];
+  };
+
+  systemd.network.networks."50-wifi" = {
+    matchConfig.Name = "wlp2s0";
+    networkConfig = {
+      DHCP = "ipv4";
+      LinkLocalAddressing = false;
+      IPv6AcceptRA = false;
+    };
+    linkConfig.RequiredForOnline = "routable";
   };
 
   systemd.user.services.mpris-proxy = {
@@ -92,54 +119,6 @@ in
     };
     tailscale = enabled;
     wayland.compositor = "plasma";
-    # web-applications = {
-    #   hostInterface = "enp9s0";
-    #   tlsConfig.readOnly = true;
-    #   services = [
-    #     {
-    #       name = "cnelson";
-    #       dataDir = "/etc/cnelson";
-    #       extraConfig.environment.etc = {
-    #         "cnelson/index.html".source = ./files/cnelson/index.html;
-    #         "cnelson/css".source = ./files/cnelson/css;
-    #         "cnelson/images".source = ./files/cnelson/images;
-    #         "cnelson/js".source = ./files/cnelson/js;
-    #       };
-    #     }
-    #     {
-    #       name = "survey";
-    #       serverType = "custom";
-    #       extraConfig =
-    #         let
-    #           kfile = pkgs.writeText "surveykey" "DBA5FA2FFFB8FC1109BA9CCCBFA3F583";
-    #           nfile = pkgs.writeText "surveynonce" "08BB00BEDAFA705CD51E09DF";
-    #         in
-    #         {
-    #           services = {
-    #             limesurvey = {
-    #               enable = true;
-    #               encryptionKeyFile = kfile;
-    #               encryptionNonceFile = nfile;
-    #               virtualHost = {
-    #                 hostName = "survey.kasear.net";
-    #                 adminAddr = "webmaster.survey@kasear.net";
-    #               };
-    #             };
-    #             mysql = {
-    #               enable = true;
-    #               package = pkgs.mariadb;
-    #               dataDir = "/var/lib/mysql";
-    #             };
-    #           };
-
-    #           users = {
-    #             users.limesurvey.uid = 3456;
-    #             groups.limesurvey.gid = 3456;
-    #           };
-    #         };
-    #     }
-    #   ];
-    # };
   };
 
   networking.extraHosts = ''
@@ -152,16 +131,13 @@ in
 
   users = {
     users = {
-      # cnelson = {
-      #   hashedPasswordFile = config.age.secrets.cnelson-password.path;
-      #   isNormalUser = true;
-      #   shell = pkgs.zsh;
-      # };
       yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
     };
     # groups.minecraft.gid = 3007;
-    # groups.acme.gid = 3003;
+    groups.acme.gid = 3003;
   };
+
+  environment.systemPackages = with pkgs; [ cudatoolkit ];
 
   united.minecraft = disabled;
 }
