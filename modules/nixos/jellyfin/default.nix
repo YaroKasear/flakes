@@ -119,6 +119,10 @@ in
           hostPath = "/mnt/${domain}/video";
           isReadOnly = false;
         };
+        "/mnt/sonic" = {
+          hostPath = "/mnt/${domain}/sonic";
+          isReadOnly = false;
+        };
       };
     };
 
@@ -159,6 +163,11 @@ in
       };
       "/mnt/${domain}/music" = {
         device = "storage.kasear.net:/mnt/data/storage/music";
+        fsType = "nfs";
+        options = [ "nfsvers=4.2" "_netdev" ];
+      };
+      "/mnt/${domain}/sonic" = {
+        device = "storage.kasear.net:/mnt/data/storage/music/Sonic the Hedgehog";
         fsType = "nfs";
         options = [ "nfsvers=4.2" "_netdev" ];
       };
