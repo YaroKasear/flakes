@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 with lib;
 with lib.united;
@@ -9,6 +9,27 @@ let
   address = "192.168.1.19";
   dataDir = "/var/lib/headscale";
   domain = "${app}.kasear.net";
+
+  acl = pkgs.writeText "acl.json" (builtins.toJSON {
+    acls = [
+      {
+        action = "accept";
+        src = [ "*" ];
+        dst = [ "*:*" ];
+      }
+    ];
+    ssh = [
+      {
+        action = "check";
+        src = [ "*" ];
+        dst = [ "*:*" ];
+        users = [
+          "yaro"
+          "deck"
+        ];
+      }
+    ];
+  });
 in
 {
   options.united.headscale = {
@@ -24,22 +45,24 @@ in
       config = { ... }: {
 
         services = {
-          headscale = {
-            enable = true;
-            settings = {
-              server_url = "https://${app}.kasear.net";
-              listen_addr = "0.0.0.0:8080";
-              metrics_listen_addr = "0.0.0.0:9090";
-              ip_prefixes = [ "100.64.0.0/10" ];
-              dns = {
-                base_domain = "mesh.kasear.net";
-                nameservers.global = [
-                  "100.64.0.4"
-                ];
-                override_local_dns = true;
+          headscale =
+            {
+              enable = true;
+              settings = {
+                server_url = "https://${app}.kasear.net";
+                listen_addr = "0.0.0.0:8080";
+                metrics_listen_addr = "0.0.0.0:9090";
+                ip_prefixes = [ "100.64.0.0/10" ];
+                dns = {
+                  base_domain = "mesh.kasear.net";
+                  nameservers.global = [
+                    "100.64.0.4"
+                  ];
+                  override_local_dns = true;
+                };
+                policy.path = acl;
               };
             };
-          };
           dnsmasq = {
             enable = true;
             settings = {
