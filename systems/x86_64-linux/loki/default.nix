@@ -137,7 +137,16 @@ in
     groups.acme.gid = 3003;
   };
 
-  environment.systemPackages = with pkgs; [ cudatoolkit ];
+  environment.systemPackages = with pkgs; [ cudatoolkit qemu ];
 
   united.minecraft = disabled;
+
+  ## EXPERIMENT BELOW
+
+  services.gns3-server = {
+    enable = true;
+    dynamips = enabled;
+    vpcs = enabled;
+    ubridge = enabled;
+  };
 }

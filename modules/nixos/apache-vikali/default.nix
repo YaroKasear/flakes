@@ -100,7 +100,7 @@ in
     #       groups.${app}.gid = 1002;
     #     };
 
-    #     system.stateVersion = "unstable";
+    #     system.stateVersion = "25.05";
     #   };
     #   bindMounts."${dataDir}" = {
     #     hostPath = "/mnt/${domain}";

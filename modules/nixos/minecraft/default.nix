@@ -274,7 +274,7 @@ in
                 groups.minecraft.gid = 3007;
               };
 
-              system.stateVersion = "unstable";
+              system.stateVersion = "25.05";
             };
           };
 
@@ -353,7 +353,7 @@ in
               groups.minecraft.gid = 3007;
             };
 
-            system.stateVersion = "unstable";
+            system.stateVersion = "25.05";
           };
         };
         survival = {
@@ -431,7 +431,7 @@ in
               groups.minecraft.gid = 3007;
             };
 
-            system.stateVersion = "unstable";
+            system.stateVersion = "25.05";
           };
         };
         lobby =
@@ -516,7 +516,7 @@ in
                 groups.minecraft.gid = 3007;
               };
 
-              system.stateVersion = "unstable";
+              system.stateVersion = "25.05";
             };
           };
       };

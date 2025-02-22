@@ -15,13 +15,13 @@ let
       gid = mkOpt types.int 1000 "Group ID to use for running the service.";
       domain = mkOpt domainName "kasear.net" "Domain of the application.";
       mainPort = mkOpt types.int 80 "Main port for the service.";
-      otherPorts = mkOpt (types.listOf types.int) [] "Other ports for the service.";
+      otherPorts = mkOpt (types.listOf types.int) [ ] "Other ports for the service.";
       useTLS = mkOpt types.bool true "Use TLS encryption.";
       dataDir = mkOpt (types.nullOr types.path) null "Where the service should have read-write data access.";
-      serverType = mkOpt (types.enum ["apache" "nginx" "custom"]) "nginx" "What server to use: Apache's httpd, Nginx, or a custom server.";
-      backend = mkOpt (types.enum ["php" "python" "perl" "custom" "none"]) "none" "What scripting language to use in the backend.";
-      bindMounts = mkOpt (types.attrsOf (types.submodule bindMountOpts)) {} "An extra list of directories that is bound to the container.";
-      extraConfig = mkOpt types.attrs {} "Any additional configuration options for the service.";
+      serverType = mkOpt (types.enum [ "apache" "nginx" "custom" ]) "nginx" "What server to use: Apache's httpd, Nginx, or a custom server.";
+      backend = mkOpt (types.enum [ "php" "python" "perl" "custom" "none" ]) "none" "What scripting language to use in the backend.";
+      bindMounts = mkOpt (types.attrsOf (types.submodule bindMountOpts)) { } "An extra list of directories that is bound to the container.";
+      extraConfig = mkOpt types.attrs { } "Any additional configuration options for the service.";
     };
   };
 
@@ -51,105 +51,110 @@ let
     };
   };
 
-  appContainers = builtins.listToAttrs (lists.imap0 (i: app:
-  {
-    name = "${app.name}";
-    value = {
-      autoStart = true;
-            privateNetwork = true;
-      hostAddress = "192.168.1.1";
-      localAddress = let
-        baseIP = (network.ip4.toNumber { a = 192; b = 168; c = 1; d = 2; });
-        ip = network.ip4.fromNumber (baseIP + i) 24;
-      in "${toString ip.a}.${toString ip.b}.${toString ip.c}.${toString ip.d}";
-      bindMounts = app.bindMounts;
-      config = { ... }: {
-        networking.firewall = {
-          enable = true;
-          allowedTCPPorts = [app.mainPort] ++ app.otherPorts;
-        };
+  appContainers = builtins.listToAttrs (lists.imap0
+    (i: app:
+      {
+        name = "${app.name}";
+        value = {
+          autoStart = true;
+          privateNetwork = true;
+          hostAddress = "192.168.1.1";
+          localAddress =
+            let
+              baseIP = (network.ip4.toNumber { a = 192; b = 168; c = 1; d = 2; });
+              ip = network.ip4.fromNumber (baseIP + i) 24;
+            in
+            "${toString ip.a}.${toString ip.b}.${toString ip.c}.${toString ip.d}";
+          bindMounts = app.bindMounts;
+          config = { ... }: {
+            networking.firewall = {
+              enable = true;
+              allowedTCPPorts = [ app.mainPort ] ++ app.otherPorts;
+            };
 
-        services = {
-          phpfpm = mkIf (app.backend == "php" && app.serverType == "nginx") {
-            pools.${app.name} = {
-              user = app.name;
-              settings = {
-                "listen.owner" = app.name;
-                "pm" = "dynamic";
-                "pm.max_children" = 32;
-                "pm.max_requests" = 500;
-                "pm.start_servers" = 2;
-                "pm.min_spare_servers" = 2;
-                "pm.max_spare_servers" = 5;
-                "php_admin_value[error_log]" = "stderr";
-                "php_admin_flag[log_errors]" = true;
-                "catch_workers_output" = true;
+            services = {
+              phpfpm = mkIf (app.backend == "php" && app.serverType == "nginx") {
+                pools.${app.name} = {
+                  user = app.name;
+                  settings = {
+                    "listen.owner" = app.name;
+                    "pm" = "dynamic";
+                    "pm.max_children" = 32;
+                    "pm.max_requests" = 500;
+                    "pm.start_servers" = 2;
+                    "pm.min_spare_servers" = 2;
+                    "pm.max_spare_servers" = 5;
+                    "php_admin_value[error_log]" = "stderr";
+                    "php_admin_flag[log_errors]" = true;
+                    "catch_workers_output" = true;
+                  };
+                  phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+                };
               };
-              phpEnv."PATH" = lib.makeBinPath [ pkgs.php ];
+              httpd = mkIf (app.serverType == "apache") {
+                enable = true;
+                enablePerl = app.backend == "perl";
+                enablePHP = app.backend == "php";
+                user = app.name;
+                group = app.name;
+                virtualHosts."${app.name}.${app.domain}" = {
+                  adminAddr = "webmaster.${app.name}@${app.domain}";
+                  documentRoot = app.dataDir;
+                  hostName = "${app.name}.${app.domain}";
+                };
+              };
+              nginx = mkIf (app.serverType == "nginx") {
+                enable = true;
+                user = app.name;
+                group = app.name;
+                recommendedOptimisation = true;
+                virtualHosts."${app.name}.${app.domain}".locations."/" = {
+                  root = app.dataDir;
+                  extraConfig = mkIf (app.backend == "php") ''
+                    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                    fastcgi_pass unix:${config.containers.${app.name}.config.services.phpfpm.pools.${app.name}.socket};
+                    include ${pkgs.nginx}/conf/fastcgi.conf;
+                  '';
+                };
+              };
             };
-          };
-          httpd = mkIf (app.serverType == "apache") {
-            enable = true;
-            enablePerl = app.backend == "perl";
-            enablePHP = app.backend == "php";
-            user = app.name;
-            group = app.name;
-            virtualHosts."${app.name}.${app.domain}" = {
-              adminAddr = "webmaster.${app.name}@${app.domain}";
-              documentRoot = app.dataDir;
-              hostName = "${app.name}.${app.domain}";
+
+            users = {
+              users.${app.name} = {
+                uid = app.uid;
+                group = app.name;
+                isSystemUser = true;
+              };
+              groups.${app.name}.gid = app.gid;
             };
-          };
-          nginx = mkIf (app.serverType == "nginx") {
-            enable = true;
-            user = app.name;
-            group = app.name;
-            recommendedOptimisation = true;
-            virtualHosts."${app.name}.${app.domain}".locations."/" = {
-              root = app.dataDir;
-              extraConfig = mkIf (app.backend == "php") ''
-                fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_pass unix:${config.containers.${app.name}.config.services.phpfpm.pools.${app.name}.socket};
-                include ${pkgs.nginx}/conf/fastcgi.conf;
-              '';
-            };
-          };
+
+            system.stateVersion = "25.05";
+          } // app.extraConfig;
         };
+      })
+    (builtins.filter (app: app.enable) cfg.services));
 
-        users = {
-          users.${app.name} = {
-            uid = app.uid;
-            group = app.name;
-            isSystemUser = true;
-          };
-          groups.${app.name}.gid = app.gid;
-        };
-
-        system.stateVersion = "unstable";
-      } // app.extraConfig;
-    };
-  }) (builtins.filter (app: app.enable) cfg.services));
-
-in {
+in
+{
   options.united.web-applications = {
     hostInterface = mkOpt types.str null "Interface to use for container NAT.";
     hostIP = mkOpt types.str null "IP address to use for container NAT.";
-    services = mkOpt (types.listOf (types.submodule webService)) [] "List of web services to set up.";
+    services = mkOpt (types.listOf (types.submodule webService)) [ ] "List of web services to set up.";
     defaultDomain = mkOpt types.str null "Default domain for the services to run under.";
-    extraDomains = mkOpt (types.listOf types.str) [] "Additional domains available for the services to run under.";
+    extraDomains = mkOpt (types.listOf types.str) [ ] "Additional domains available for the services to run under.";
     adminEmail = mkOpt types.str "webmaster@${cfg.defaultDomain}" "Webmaster's email address.";
     tlsConfig = {
       certificate = mkOpt types.path "/var/lib/acme/default/cert.pem" "Path to TLS certificate.";
       privateKey = mkOpt types.path "/var/lib/acme/default/key.pem" "Path to TLS private key.";
       readOnly = mkOpt types.bool false "Whether or not to use ACME in this instance to maintain the certificate. If you wish to manage certificates manually or with a different tool or instance of this module on another service, set this to true.";
-      method = mkOpt (types.enum ["dns" "http"]) "dns" "Method for which to do ACME challenge.";
+      method = mkOpt (types.enum [ "dns" "http" ]) "dns" "Method for which to do ACME challenge.";
       provider = mkOpt types.str null "Provider for LE to use for TLS verification.";
       dnsIP = mkOpt types.str null "DNS nameserver to use for DNS challenge authentication.";
       group = mkOpt types.str "nginx" "Group to run ACME as.";
     };
   };
 
-  config = mkIf (cfg.services != []) {
+  config = mkIf (cfg.services != [ ]) {
     containers = {
       nginx-proxy = {
         autoStart = true;
@@ -159,7 +164,7 @@ in {
             certs = {
               default = {
                 domain = "*.${cfg.defaultDomain}";
-                extraDomainNames = ["${cfg.defaultDomain}"] ++ cfg.extraDomains;
+                extraDomainNames = [ "${cfg.defaultDomain}" ] ++ cfg.extraDomains;
                 dnsProvider = mkIf (cfg.tlsConfig.method == "dns") cfg.tlsConfig.provider;
                 dnsResolver = mkIf (cfg.tlsConfig.method == "dns") cfg.tlsConfig.dnsIP;
                 dnsPropagationCheck = (cfg.tlsConfig.method == "dns");
@@ -172,31 +177,35 @@ in {
           };
 
           services.nginx = rec {
-            enable = virtualHosts != {};
+            enable = virtualHosts != { };
             package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
             recommendedOptimisation = true;
             recommendedProxySettings = true;
             recommendedTlsSettings = true;
-            virtualHosts = builtins.listToAttrs (lists.imap0 (i: app:
-              {
-                name = "${app.name}.${app.domain}";
-                value = network.create-proxy {
-                  host = let
-                    baseIP = (network.ip4.toNumber { a = 192; b = 168; c = 1; d = 2; });
-                    ip = network.ip4.fromNumber (baseIP + i) 24;
-                  in "${toString ip.a}.${toString ip.b}.${toString ip.c}.${toString ip.d}";
-                  port = app.mainPort;
-                  extra-config = {
-                    forceSSL = app.useTLS;
-                    sslCertificate = cfg.tlsConfig.certificate;
-                    sslCertificateKey = cfg.tlsConfig.privateKey;
+            virtualHosts = builtins.listToAttrs (lists.imap0
+              (i: app:
+                {
+                  name = "${app.name}.${app.domain}";
+                  value = network.create-proxy {
+                    host =
+                      let
+                        baseIP = (network.ip4.toNumber { a = 192; b = 168; c = 1; d = 2; });
+                        ip = network.ip4.fromNumber (baseIP + i) 24;
+                      in
+                      "${toString ip.a}.${toString ip.b}.${toString ip.c}.${toString ip.d}";
+                    port = app.mainPort;
+                    extra-config = {
+                      forceSSL = app.useTLS;
+                      sslCertificate = cfg.tlsConfig.certificate;
+                      sslCertificateKey = cfg.tlsConfig.privateKey;
+                    };
                   };
-                };
-              }
-            ) (builtins.filter (app: app.enable) cfg.services));
+                }
+              )
+              (builtins.filter (app: app.enable) cfg.services));
 
           };
-          system.stateVersion = "unstable";
+          system.stateVersion = "25.05";
         };
       };
     } // appContainers;

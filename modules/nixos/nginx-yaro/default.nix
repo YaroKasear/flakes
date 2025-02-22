@@ -83,7 +83,7 @@ in
               groups.${app}.gid = 3001;
             };
 
-            system.stateVersion = "unstable";
+            system.stateVersion = "25.05";
           };
 
         bindMounts."${dataDir}" = {
