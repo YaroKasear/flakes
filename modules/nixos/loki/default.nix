@@ -45,6 +45,19 @@ in
         nvidiaSettings = true;
         package = config.boot.kernelPackages.nvidiaPackages.latest;
       };
+      printers = {
+        ensurePrinters = [
+          {
+            name = "Lab_Printer";
+            location = "Laboratory";
+            deviceUri = "ipp://10.10.20.1/ipp/print";
+            model = "everywhere";
+            ppdOptions = {
+              PageSize = "Letter";
+            };
+          }
+        ];
+      };
     };
 
     networking = {

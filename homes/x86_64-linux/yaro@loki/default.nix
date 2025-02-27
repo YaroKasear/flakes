@@ -165,6 +165,8 @@ with lib.united;
       skypeforlinux
       tailwindcss
       telegram-desktop
+      qemu
+      gns3-gui
       (python3.withPackages (ps: with ps; [
         jupyter
         pandas

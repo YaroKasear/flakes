@@ -131,13 +131,13 @@ in
 
   users = {
     users = {
-      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" "gns3" ];
     };
     # groups.minecraft.gid = 3007;
     groups.acme.gid = 3003;
   };
 
-  environment.systemPackages = with pkgs; [ cudatoolkit qemu ];
+  environment.systemPackages = with pkgs; [ cudatoolkit inetutils ];
 
   united.minecraft = disabled;
 
@@ -148,5 +148,13 @@ in
     dynamips = enabled;
     vpcs = enabled;
     ubridge = enabled;
+    settings = {
+      Qemu = {
+        enable_kvm = true;
+        qemu_path = "${pkgs.qemu}/bin/qemu-system-x86_64";
+      };
+    };
   };
+
+  virtualisation.libvirtd = enabled;
 }
