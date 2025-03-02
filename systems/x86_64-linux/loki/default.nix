@@ -131,7 +131,7 @@ in
 
   users = {
     users = {
-      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" "gns3" ];
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" "wireshark" ];
     };
     # groups.minecraft.gid = 3007;
     groups.acme.gid = 3003;
@@ -141,20 +141,7 @@ in
 
   united.minecraft = disabled;
 
-  ## EXPERIMENT BELOW
+  # EXPERIMENTAL STUFF BELOW
 
-  services.gns3-server = {
-    enable = true;
-    dynamips = enabled;
-    vpcs = enabled;
-    ubridge = enabled;
-    settings = {
-      Qemu = {
-        enable_kvm = true;
-        qemu_path = "${pkgs.qemu}/bin/qemu-system-x86_64";
-      };
-    };
-  };
-
-  virtualisation.libvirtd = enabled;
+  programs.wireshark = enabled;
 }
