@@ -50,6 +50,7 @@ in
                 hostName = domain;
                 https = true;
                 database.createLocally = true;
+                maxUploadSize = "10G";
                 settings = {
                   default_phone_region = "US";
                   log_type = "file";
@@ -120,6 +121,7 @@ in
                 set_real_ip_from 2c0f:f248::/32;
                 real_ip_header X-Forwarded-For;
                 real_ip_recursive on;
+                client_body_buffer_size 400M;
               '';
               dnsmasq = {
                 enable = mkDefault true;
@@ -175,6 +177,7 @@ in
           forceSSL = true;
           sslCertificate = "/var/lib/acme/default/cert.pem";
           sslCertificateKey = "/var/lib/acme/default/key.pem";
+          # client_body_buffer_size = "400M";
         };
       };
     };
