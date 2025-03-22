@@ -184,6 +184,7 @@ with lib.united;
       {
         allowOther = true;
         directories = [
+          (mkHomeCanon ".paradoxlauncher")
           "${config-directory}/heroic"
           "${config-directory}/protonmail"
           "${config-directory}/skypeforlinux"
@@ -192,6 +193,7 @@ with lib.united;
           "${data-directory}/PrismLauncher"
           "${data-directory}/protonmail"
           "${data-directory}/TelegramDesktop"
+          "${data-directory}/Paradox Interactive"
           {
             directory = "${data-directory}/Steam";
             method = "symlink";
