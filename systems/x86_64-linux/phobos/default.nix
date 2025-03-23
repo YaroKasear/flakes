@@ -118,6 +118,7 @@ in
   united = {
     asterisk = enabled;
     audiobookshelf = enabled;
+    gitlab = enabled;
     home-assistant = enabled;
     nodered = enabled;
     phobos-mounts = enabled;
