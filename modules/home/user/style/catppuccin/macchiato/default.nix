@@ -8,7 +8,8 @@ let
   home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin.macchiato;
-in {
+in
+{
   options.united.style.catppuccin.macchiato = {
     enable = mkEnableOption "catppuccin Macchiato theme!";
   };
@@ -123,7 +124,7 @@ in {
       packages = [
         (pkgs.catppuccin.override { variant = "macchiato"; })
         (mkIf is-linux pkgs.catppuccin-cursors.macchiatoDark)
-        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["macchiato"]; }))
+        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = [ "macchiato" ]; }))
       ];
     };
 
@@ -184,7 +185,7 @@ in {
       };
       plasma = {
         configFile = {
-          kwinrc."org.kde.kdecoration2"= {
+          kwinrc."org.kde.kdecoration2" = {
             library = "org.kde.kwin.aurorae";
             NoPlugin = false;
             theme = "__aurorae__svg__CatppuccinMacchiato-Modern";
@@ -199,7 +200,7 @@ in {
         '';
       };
       vscode = mkIf config.united.vscode.enable {
-        userSettings = {
+        profiles.default.userSettings = {
           "workbench.colorTheme" = "Catppuccin Macchiato";
           "workbench.iconTheme" = "catppuccin-macchiato";
         };
@@ -211,15 +212,17 @@ in {
 
     united.style.catppuccin = enabled;
 
-    xdg.configFile = let
-      catppuccin = (pkgs.catppuccin.override { variant = "macchiato"; });
-    in {
-      "btop/themes/catppuccin_macchiato.theme" = mkIf config.united.btop.enable {
-        source = "${catppuccin}/btop/catppuccin_macchiato.theme";
+    xdg.configFile =
+      let
+        catppuccin = (pkgs.catppuccin.override { variant = "macchiato"; });
+      in
+      {
+        "btop/themes/catppuccin_macchiato.theme" = mkIf config.united.btop.enable {
+          source = "${catppuccin}/btop/catppuccin_macchiato.theme";
+        };
+        "zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
+          source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh";
+        };
       };
-      "zsh/catppuccin_macchiato-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
-        source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_macchiato-zsh-syntax-highlighting.zsh";
-      };
-    };
   };
 }

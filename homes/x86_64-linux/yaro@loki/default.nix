@@ -132,7 +132,7 @@ with lib.united;
     }
   ];
 
-  programs.vscode.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+  programs.vscode.profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
     {
       name = "m68k";
       publisher = "steventattersall";

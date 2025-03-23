@@ -8,7 +8,8 @@ let
   home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin.frappe;
-in {
+in
+{
   options.united.style.catppuccin.frappe = {
     enable = mkEnableOption "catppuccin Frappe theme!";
   };
@@ -123,7 +124,7 @@ in {
       packages = [
         (pkgs.catppuccin.override { variant = "frappe"; })
         (mkIf is-linux pkgs.catppuccin-cursors.frappeDark)
-        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["frappe"]; }))
+        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = [ "frappe" ]; }))
       ];
     };
 
@@ -183,7 +184,7 @@ in {
       };
       plasma = {
         configFile = {
-          kwinrc."org.kde.kdecoration2"= {
+          kwinrc."org.kde.kdecoration2" = {
             library = "org.kde.kwin.aurorae";
             NoPlugin = false;
             theme = "__aurorae__svg__CatppuccinFrappe-Modern";
@@ -198,7 +199,7 @@ in {
         '';
       };
       vscode = mkIf config.united.vscode.enable {
-        userSettings = {
+        profiles.default.userSettings = {
           "workbench.colorTheme" = "Catppuccin Frappé";
           "workbench.iconTheme" = "catppuccin-frappe";
         };
@@ -210,15 +211,17 @@ in {
 
     united.style.catppuccin = enabled;
 
-    xdg.configFile = let
-      catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
-    in {
-      "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
-        source = "${catppuccin}/btop/catppuccin_frappe.theme";
+    xdg.configFile =
+      let
+        catppuccin = (pkgs.catppuccin.override { variant = "frappe"; });
+      in
+      {
+        "btop/themes/catppuccin_frappe.theme" = mkIf config.united.btop.enable {
+          source = "${catppuccin}/btop/catppuccin_frappe.theme";
+        };
+        "zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
+          source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh";
+        };
       };
-      "zsh/catppuccin_frappe-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
-        source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_frappe-zsh-syntax-highlighting.zsh";
-      };
-    };
   };
 }

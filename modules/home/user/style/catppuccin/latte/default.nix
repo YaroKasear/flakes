@@ -8,7 +8,8 @@ let
   home-directory = config.united.user.directories.home;
 
   cfg = config.united.style.catppuccin.latte;
-in {
+in
+{
   options.united.style.catppuccin.latte = {
     enable = mkEnableOption "catppuccin Latte theme!";
   };
@@ -123,7 +124,7 @@ in {
       packages = [
         (pkgs.catppuccin.override { variant = "latte"; })
         (mkIf is-linux pkgs.catppuccin-cursors.latteBlue)
-        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = ["latte"]; }))
+        (mkIf config.united.plasma.enable (pkgs.catppuccin-kde.override { flavour = [ "latte" ]; }))
       ];
     };
 
@@ -183,7 +184,7 @@ in {
       };
       plasma = {
         configFile = {
-          kwinrc."org.kde.kdecoration2"= {
+          kwinrc."org.kde.kdecoration2" = {
             library = "org.kde.kwin.aurorae";
             NoPlugin = false;
             theme = "__aurorae__svg__CatppuccinLatte-Modern";
@@ -198,7 +199,7 @@ in {
         '';
       };
       vscode = mkIf config.united.vscode.enable {
-        userSettings = {
+        profiles.default.userSettings = {
           "workbench.colorTheme" = "Catppuccin Latte";
           "workbench.iconTheme" = "catppuccin-latte";
         };
@@ -210,15 +211,17 @@ in {
 
     united.style.catppuccin = enabled;
 
-    xdg.configFile = let
-      catppuccin = (pkgs.catppuccin.override { variant = "latte"; });
-    in {
-      "btop/themes/catppuccin_latte.theme" = mkIf config.united.btop.enable {
-        source = "${catppuccin}/btop/catppuccin_latte.theme";
+    xdg.configFile =
+      let
+        catppuccin = (pkgs.catppuccin.override { variant = "latte"; });
+      in
+      {
+        "btop/themes/catppuccin_latte.theme" = mkIf config.united.btop.enable {
+          source = "${catppuccin}/btop/catppuccin_latte.theme";
+        };
+        "zsh/catppuccin_latte-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
+          source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
+        };
       };
-      "zsh/catppuccin_latte-zsh-syntax-highlighting.zsh" = mkIf config.united.zsh.enable {
-        source = "${inputs.catppuccin-zsh-highlighing}/themes/catppuccin_latte-zsh-syntax-highlighting.zsh";
-      };
-    };
   };
 }

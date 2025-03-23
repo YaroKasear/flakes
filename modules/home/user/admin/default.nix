@@ -60,7 +60,7 @@ in
           	'';
       };
       vscode = mkIf config.united.vscode.enable {
-        userSettings = {
+        profiles.default.userSettings = {
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nil";
           "nix.serverSettings" = {
@@ -72,7 +72,7 @@ in
             "editor.defaultFormatter" = "jnoortheen.nix-ide";
           };
         };
-        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "nix-ide";
             publisher = "jnoortheen";

@@ -4,7 +4,8 @@ with lib;
 with lib.united;
 let
   cfg = config.united.vscode;
-in {
+in
+{
   options.united.vscode = {
     enable = mkEnableOption "Vscode";
   };
@@ -19,7 +20,7 @@ in {
       vscode = {
         enable = true;
         mutableExtensionsDir = false;
-        userSettings = {
+        profiles.default.userSettings = {
           "editor.wordWrap" = "on";
           "git.confirmSync" = false;
           "git.enableSmartCommit" = true;
@@ -34,10 +35,10 @@ in {
           "editor.formatOnSave" = true;
           "editor.formatOnPaste" = true;
           "editor.tabSize" = 2;
-          "update.mode"= "none";
+          "update.mode" = "none";
           "files.enableTrash" = false;
         };
-        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "code-runner";
             publisher = "formulahendry";

@@ -5,7 +5,8 @@ with lib.united;
 let
   cfg = config.united.style.catppuccin;
 
-in {
+in
+{
   options.united.style.catppuccin = {
     enable = mkEnableOption "Default settings not to be overridden by Catppuccin themes.";
   };
@@ -31,7 +32,7 @@ in {
         ];
       };
       vscode = mkIf config.united.vscode.enable {
-        extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        profiles.default.extensions = pkgs.vscode-utils.extensionsFromVscodeMarketplace [
           {
             name = "catppuccin-vsc";
             publisher = "catppuccin";
@@ -45,11 +46,11 @@ in {
             sha256 = "1w4x7xnq8d4dkjbrgajpvd2imllzp39cwxfggx0ykbadaq70h809";
           }
         ];
-        userSettings = {
+        profiles.default.userSettings = {
           "editor.semanticHighlighting.enabled" = true;
           "terminal.integrated.minimumContrastRatio" = 1;
-           "window.titleBarStyle" = "custom";
-           gopls = {
+          "window.titleBarStyle" = "custom";
+          gopls = {
             "ui.semanticTokens" = true;
           };
         };
