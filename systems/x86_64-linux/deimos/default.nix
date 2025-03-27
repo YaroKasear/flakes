@@ -120,11 +120,22 @@ in {
     apache-vikali = enabled;
     apache-majike = disabled;
     deimos-mounts = enabled;
+<<<<<<< Updated upstream
     jellyfin = disabled;
     nextcloud = disabled;
     nginx-default = disabled;
     nginx-proxy = disabled;
     nginx-yaro = disabled;
+=======
+    headscale = enabled;
+    jellyfin = enabled;
+    minecraft = enabled;
+    forgejo = enabled;
+    nextcloud = enabled;
+    nginx-default = enabled;
+    nginx-proxy = enabled;
+    nginx-yaro = enabled;
+>>>>>>> Stashed changes
     server = enabled;
     vaultwarden = disabled;
     common.banner = ''

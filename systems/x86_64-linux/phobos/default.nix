@@ -39,6 +39,12 @@ in {
         1880
       ];
       allowedUDPPorts = [ 53 ];
+<<<<<<< Updated upstream
+=======
+      # logRefusedConnections = true;
+      # logRefusedPackets = true;
+      # logReversePathDrops = true;
+>>>>>>> Stashed changes
     };
   };
 
@@ -106,6 +112,10 @@ in {
 
   united = {
     asterisk = enabled;
+<<<<<<< Updated upstream
+=======
+    audiobookshelf = enabled;
+>>>>>>> Stashed changes
     home-assistant = enabled;
     nodered = enabled;
     phobos-mounts = enabled;
