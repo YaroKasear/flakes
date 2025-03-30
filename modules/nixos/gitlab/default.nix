@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 { lib, config, inputs, ... }:
 
 with lib;
@@ -83,5 +84,21 @@ in
     services.openssh.enable = true;
 
     systemd.services.gitlab-backup.environment.BACKUP = "dump";
+=======
+{ lib, config, inputs, pkgs, ... }:
+
+with lib;
+with lib.united;
+
+{
+  options.united.gitlab = {
+    enable = mkEnableOption "gitlab";
+  };
+
+  config = mkIf cfg.enable {
+    services.gitlab = {
+      enable = true;
+    };
+>>>>>>> Stashed changes
   };
 }
