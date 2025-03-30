@@ -132,6 +132,7 @@ in
     headscale = enabled;
     jellyfin = enabled;
     minecraft = enabled;
+    forgejo = enabled;
     nextcloud = enabled;
     nginx-default = enabled;
     nginx-proxy = enabled;

@@ -28,27 +28,33 @@ in
 
         config = { pkgs, ... }:
           {
-            security.acme = {
-              acceptTerms = true;
-              certs = {
-                default = {
-                  domain = "*.kasear.net";
-                  extraDomainNames = [ "kasear.net" ];
+            security = {
+              pam.services.nginx.setEnvironment = false;
+              acme = {
+                acceptTerms = true;
+                certs = {
+                  default = {
+                    domain = "*.kasear.net";
+                    extraDomainNames = [ "kasear.net" ];
+                  };
+                };
+                defaults = {
+                  email = "yaro@kasear.net";
+                  group = "${app}";
+                  dnsProvider = "cloudflare";
+                  dnsResolver = "1.1.1.1";
+                  environmentFile = config.age.secrets."cf-credentials.env".path;
                 };
               };
-              defaults = {
-                email = "yaro@kasear.net";
-                group = "${app}";
-                dnsProvider = "cloudflare";
-                dnsResolver = "1.1.1.1";
-                environmentFile = config.age.secrets."cf-credentials.env".path;
-              };
             };
+
+            programs.zsh.enable = true;
 
             services = {
               nginx = {
                 enable = true;
                 package = pkgs.nginxStable.override { openssl = pkgs.libressl; };
+                additionalModules = [ pkgs.nginxModules.pam ];
                 recommendedOptimisation = true;
                 recommendedProxySettings = true;
                 recommendedTlsSettings = true;
@@ -57,8 +63,12 @@ in
             };
 
             users = {
-              users.acme.uid = 3001;
+              users = {
+                acme.uid = 3001;
+                yaro = config.users.users.yaro;
+              };
               groups = {
+                yaro = config.users.groups.yaro;
                 proxy = {
                   gid = 3003;
                   members = [ "nginx" "acme" ];
@@ -67,6 +77,10 @@ in
             };
 
             system.stateVersion = "24.11";
+
+            systemd.services.nginx.serviceConfig = {
+              SupplementaryGroups = [ "shadow" ];
+            };
           };
 
         bindMounts = {
@@ -78,6 +92,7 @@ in
             hostPath = config.age.secrets."cf-credentials.env".path;
             isReadOnly = true;
           };
+	  "${config.age.secrets.yaro-password.path}".hostPath = config.age.secrets.yaro-password.path;
         };
       };
     };

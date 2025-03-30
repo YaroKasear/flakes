@@ -40,9 +40,9 @@ in
         1880
       ];
       allowedUDPPorts = [ 53 ];
-      logRefusedConnections = true;
-      logRefusedPackets = true;
-      logReversePathDrops = true;
+      # logRefusedConnections = true;
+      # logRefusedPackets = true;
+      # logReversePathDrops = true;
     };
   };
 
@@ -118,7 +118,6 @@ in
   united = {
     asterisk = enabled;
     audiobookshelf = enabled;
-    gitlab = enabled;
     home-assistant = enabled;
     nodered = enabled;
     phobos-mounts = enabled;

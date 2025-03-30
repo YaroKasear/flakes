@@ -39,6 +39,7 @@ in
         "camera1.iot.kasear.net" = camera1;
         "camera2.iot.kasear.net" = camera2;
         "eris.jupiter.kasear.net" = frontend;
+        "git.kasear.net" = public;
         "public.kasear.net" = public;
         "private.kasear.net" = private;
         "storage.kasear.net" = storage;
@@ -79,9 +80,6 @@ in
             local-zone = [ "\"kasear.net\" transparent" ];
             local-data = (mkLocalData cfg.hosts);
             logfile = "log/unbound.log";
-            log-time-ascii = "yes";
-            log-queries = "yes";
-            log-replies = "yes";
           };
           forward-zone = {
             name = "\".\"";
