@@ -98,6 +98,17 @@ in
 
               proxyWebsockets = proxy-web-sockets;
             };
+            "~* \.(js|css)$" = {
+              proxyPass =
+                "http://${host}${if port != null then ":${builtins.toString port}" else ""}";
+
+              extraConfig = ''
+                proxy_hide_header Cache-Control;
+                add_header Cache-Control "public, max-age=21600" always;
+              '';
+
+              recommendedProxySettings = true;
+            };
           };
         };
   };

@@ -76,6 +76,12 @@ in
               };
             };
 
+            networking.firewall = {
+	      logRefusedConnections = true;
+	      logRefusedPackets = true;
+	      logReversePathDrops = true;
+	    };
+
             system.stateVersion = "24.11";
 
             systemd.services.nginx.serviceConfig = {

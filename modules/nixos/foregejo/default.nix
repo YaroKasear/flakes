@@ -69,7 +69,10 @@ in
 
           users.users.yaro = config.users.users.yaro;
 
-          programs.zsh.enable = true;
+          programs = {
+            tcpdump.enable = true;
+            zsh.enable = true;
+          };
 
           system.stateVersion = "24.11";
         };
@@ -90,12 +93,6 @@ in
           forceSSL = true;
           sslCertificate = "/var/lib/acme/default/cert.pem";
           sslCertificateKey = "/var/lib/acme/default/key.pem";
-          extraConfig = ''
-            auth_pam "Password required!";
-            auth_pam_service_name "nginx";
-
-            client_max_body_size 512M;
-          '';
         };
       };
     };
