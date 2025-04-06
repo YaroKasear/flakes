@@ -46,7 +46,8 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/a802defb16dcdcc7fd0ff5a2d7be913ce2fe79e7";
+      # Bad commit: bb036cb35383982066e01a6ac8d45597132cf5d5
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
