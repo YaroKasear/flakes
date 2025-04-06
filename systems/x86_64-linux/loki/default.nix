@@ -144,6 +144,4 @@ in
   # EXPERIMENTAL STUFF BELOW
 
   programs.wireshark = enabled;
-
-  united.gitlab = enabled;
 }
