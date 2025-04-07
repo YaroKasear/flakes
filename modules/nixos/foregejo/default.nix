@@ -8,7 +8,7 @@ let
 
   app = "git";
   address = "192.168.1.20";
-  # dataDir = "/var/lib/forgejo";
+  dataDir = "/var/lib/forgejo";
   domain = "${app}.kasear.net";
 in
 {
@@ -44,21 +44,36 @@ in
               # ${adminCmd} change-password --username ${user} --password "$(tr -d '\n' < ${pwd})" || true
             '';
 
-          services.forgejo = {
-            enable = true;
-            database.type = "postgres";
-            # Enable support for Git Large File Storage
-            lfs.enable = true;
-            settings = {
-              server = {
-                DOMAIN = domain;
-                # You need to specify this to remove the port from URLs in the web UI.
-                ROOT_URL = "https://${domain}/";
-                HTTP_ADDR = "0.0.0.0";
-                HTTP_PORT = 3000;
+          services = {
+            forgejo = {
+              enable = true;
+              database.user = app;
+              lfs.enable = true;
+              stateDir = dataDir;
+              user = app;
+              group = app;
+              settings = {
+                server = {
+                  DOMAIN = domain;
+                  ROOT_URL = "https://${domain}/";
+                  HTTP_ADDR = "0.0.0.0";
+                  HTTP_PORT = 3000;
+                };
+                migration = {
+                  ALLOWED_DOMAINS = "*.github.com,github.com,gitlab.com";
+                  ALLOW_LOCALNETWORKS = true;
+                };
+                service.DISABLE_REGISTRATION = true;
               };
-              # You can temporarily allow registration to create an admin user.
-              service.DISABLE_REGISTRATION = true;
+            };
+            dnsmasq = {
+              enable = mkDefault true;
+              settings = {
+                server = [
+                  "1.1.1.1"
+                  "1.0.0.1"
+                ];
+              };
             };
           };
 
@@ -67,20 +82,23 @@ in
             allowedTCPPorts = [ 3000 ];
           };
 
-          users.users.yaro = config.users.users.yaro;
-
           programs = {
             tcpdump.enable = true;
             zsh.enable = true;
           };
 
+          users = {
+            users.${app} = config.users.users.${app};
+            groups.${app} = config.users.groups.${app};
+          };
+
           system.stateVersion = "24.11";
         };
         bindMounts = {
-          # ${dataDir} = {
-          #   hostPath = "/mnt/${domain}/data";
-          #   isReadOnly = false;
-          # };
+          ${dataDir} = {
+            hostPath = "/mnt/${domain}/data";
+            isReadOnly = false;
+          };
           "/var/pwd".hostPath = config.age.secrets.forgejo-password.path;
           "/run/agenix/yaro-password".hostPath = config.age.secrets.yaro-password.path;
         };
@@ -97,13 +115,19 @@ in
       };
     };
 
+    fileSystems."/mnt/${domain}" = {
+      device = "storage.kasear.net:/mnt/data/server/${config.networking.hostName}/forgejo";
+      fsType = "nfs";
+      options = [ "nfsvers=4.2" "_netdev" ];
+    };
+
     users = {
       users.${app} = {
         group = app;
         isSystemUser = true;
-        uid = 999;
+        uid = 3006;
       };
-      groups.${app}.gid = 999;
+      groups.${app}.gid = 3008;
     };
   };
 }

@@ -29,12 +29,15 @@ in
           wayfire-plugins-extra
         ];
       };
-      sway = mkIf (cfg.compositor == "sway") {
-        enable = true;
-        wrapperFeatures.gtk = true;
-      };
+      # sway = mkIf (cfg.compositor == "sway") {
+      #   enable = true;
+      #   wrapperFeatures.gtk = true;
+      # };
     };
 
-    united.plasma.enable = cfg.compositor == "plasma";
+    united = {
+      plasma.enable = cfg.compositor == "plasma";
+      sway.enable = cfg.compositor == "sway";
+    };
   };
 }

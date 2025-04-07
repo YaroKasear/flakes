@@ -15,6 +15,7 @@ in
     };
     secrets = {
       cnelson-password.rekeyFile = secrets-directory + "cnelson-password.age";
+      wireless-secret.rekeyFile = secrets-directory + "wireless-secret.age";
       mosquitto-password = {
         rekeyFile = secrets-directory + "mosquitto-password.age";
         path = "/run/mosquitto-password";
@@ -29,6 +30,7 @@ in
         mode = "400";
         symlink = false;
       };
+
       yaro-password.rekeyFile = secrets-directory + "yaro-password.age";
     };
   };
@@ -44,6 +46,22 @@ in
     settings.General.Enable = "Source,Sink,Media,Socket";
   };
 
+  networking.wireless = {
+    enable = mkForce true;
+    secretsFile = config.age.secrets.wireless-secret.path;
+    networks."Heartbeat Communications - Main".pskRaw = "ext:psk";
+    interfaces = [ "wlp7s0" ];
+  };
+
+  nix.settings = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   services = {
     avahi = {
       enable = true;
@@ -52,7 +70,7 @@ in
     };
     printing = enabled;
     rstudio-server = {
-      enable = true;
+      enable = false;
       package = pkgs.rstudioServerWrapper.override {
         packages = with pkgs.rPackages;
           [
@@ -66,14 +84,14 @@ in
     tailscale.extraUpFlags = [ "--exit-node=" ];
   };
 
-  i18n.extraLocaleSettings = {
-    LC_CTYPE = "en_US.UTF-8";
-    LC_COLLATE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-    LC_MESSAGES = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
+  systemd.network.networks."50-wifi" = {
+    matchConfig.Name = "wlp2s0";
+    networkConfig = {
+      DHCP = "ipv4";
+      LinkLocalAddressing = false;
+      IPv6AcceptRA = false;
+    };
+    linkConfig.RequiredForOnline = "routable";
   };
 
   systemd.user.services.mpris-proxy = {
@@ -100,7 +118,7 @@ in
       use-wayland = true;
     };
     tailscale = enabled;
-    wayland.compositor = "plasma";
+    wayland.compositor = "sway";
   };
 
   networking.extraHosts = ''
@@ -113,16 +131,17 @@ in
 
   users = {
     users = {
-      cnelson = {
-        hashedPasswordFile = config.age.secrets.cnelson-password.path;
-        isNormalUser = true;
-        shell = pkgs.zsh;
-      };
-      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" ];
+      yaro.extraGroups = [ "video" "audio" "lp" "gamemode" "minecraft" "acme" "wireshark" ];
     };
-    groups.minecraft.gid = 3007;
+    # groups.minecraft.gid = 3007;
     groups.acme.gid = 3003;
   };
 
+  environment.systemPackages = with pkgs; [ cudatoolkit inetutils ];
+
   united.minecraft = disabled;
+
+  # EXPERIMENTAL STUFF BELOW
+
+  programs.wireshark = enabled;
 }
