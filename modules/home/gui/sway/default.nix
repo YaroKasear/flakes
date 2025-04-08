@@ -8,6 +8,10 @@ in
 {
   options.united.sway = {
     enable = mkEnableOption "Sway";
+    monitor = {
+      width = mkOpt types.int 2560 "Horizontal resolution.";
+      height = mkOpt types.int 1440 "Vertical resolution.";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -20,11 +24,13 @@ in
         bars = [ ];
         menu = "${pkgs.wofi}/bin/wofi --show drun";
         modifier = "Mod4";
+        terminal = "kitty";
+        defaultWorkspace = "workspace number 1";
         output = {
           DP-3 = {
             mode = "${toString cfg.monitor.width}x${toString cfg.monitor.height}@144Hz";
             bg = "${config.united.style.wallpaper} tile ${config.united.style.colors.background}";
-            adaptive_sync = "on";
+            adaptive_sync = "off";
           };
         };
         startup = [
@@ -123,7 +129,6 @@ in
         grim
         libva
         slurp
-        swaynotificationcenter
         wl-clipboard
         kdePackages.xwaylandvideobridge
         libnotify

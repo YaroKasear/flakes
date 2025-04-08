@@ -118,7 +118,7 @@ in
       use-wayland = true;
     };
     tailscale = enabled;
-    wayland.compositor = "plasma";
+    wayland.compositor = "sway";
   };
 
   networking.extraHosts = ''
